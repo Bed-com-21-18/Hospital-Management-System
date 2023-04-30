@@ -1,17 +1,9 @@
 <?php
-// data base connection details
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "hospital_ms";
 
-// create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+session_start();
+include('includes/db_connection.php');
 
-// check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+include('includes/doctor.php');
 
 // select all patients from the Patient table
 $sql = "SELECT * FROM Patient";
