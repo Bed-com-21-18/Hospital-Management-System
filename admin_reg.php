@@ -109,8 +109,9 @@
                 <h3 class="text-center text-info p-2">
                     Admin list 
                 </h3>
+                <hr>
                     <!-- search -->
-                        <p>Search Users</p>
+                        
                         <input class="form-control me-1" id="myInput" style="width:100%; max-width:20rem" type="text" placeholder="Search" aria-label="Search">             
                 <hr>
                 <?php

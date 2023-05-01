@@ -26,7 +26,7 @@
                         <span class="text-warning"><i>Welcome to</i></span> HOSPITAL MANAGEMENT SYSTEM</span> 
                     </h1>
                     <hr>
-                    <p class="lead my-4">
+                    <p class="my-4">
                         This is a system that stores patients information for easy...
 
                     </p>
@@ -34,13 +34,13 @@
                 <div class="container pt-4">
                     <div class="row text-center g-4">
                         <div class="col-md">
-                            <a href="doctor_login.php"><button class="btn btn-primary">Doctor Login</button></a>
+                            <a href="doctor_login.php"><button class="btn btn-primary">Doctors Login</button></a>
                         </div>
                         <div class="col-md">
-                            <a href="user_login.php"><button class="btn btn-primary">Hospital attendants Login</button></a>
+                            <a href="user_login.php"><button class="btn btn-primary">Nurses Login</button></a>
                         </div>
                         <div class="col-md">
-                            <a href="admin_login.php"><button  class="btn btn-primary">Admin Login</button></a>
+                            <a href="admin_login.php"><button  class="btn btn-primary">Admins Login</button></a>
                         </div>
                     </div>
                 </div>

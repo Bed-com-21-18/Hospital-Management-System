@@ -2,8 +2,17 @@
     session_start();
     include "comfig.php";
 
-    if (isset($_POST['uname']) && isset($_POST['pwd']) && 
-        isset($_POST['prof']) && isset($_POST['re_pwd'])){
+    $id = 0;
+    $update = false;
+    $prof = '';
+    $uname = '';
+    $pwd = '';
+
+    if (isset($_POST['save'])){
+        $uname = $_POST['uname'];
+        $prof = $_POST['prof'];
+        $pwd = $_POST['pwd'];
+        $re_pwd = $_POST['re_pwd'];
 
         //validation
         function validate($data){
@@ -80,4 +89,31 @@
       
           }
       }
+
+      if(isset($_GET['edit'])){
+        $id = $_GET['edit'];
+        $update = true;
+        $sql2 = "SELECT * FROM user WHERE id='$id'";
+        $result2 = $mysqli->query($sql2);
+      
+            $row = $result2->fetch_assoc();
+            $id = $row['id'];
+            $uname = $row['uname'];
+            $prof = $row['prof'];
+            $pwd = $row['pwd'];
+                 
+        
+      }
+
+      if(isset($_POST['update'])){
+        $id = $_POST['id'];
+        $uname = $_POST['uname'];
+        $prof = $_POST['prof'];
+
+        $sql3 = "UPDATE user SET uname='$uname', prof='$prof' WHERE id='$id'";
+        $result3 = $mysqli->query($sql3);
+
+        header("Location: user_reg.php?success=Successfully updated");
+        exit();
+    }
 ?>

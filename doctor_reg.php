@@ -53,6 +53,7 @@
                            <?php } ?>
                            
                            <div class="form-group mb-3">
+                           <input type="hidden" name="id" value="<?= $id; ?>"/>
                                <label>Username</label>
                                <?php if (isset($_GET['uname'])) {?>
                                <input type="text" name="uname" class="form-control" 
@@ -99,10 +100,10 @@
                 <h3 class="text-center text-info">
                     Doctors list
                 </h3>
-                  <!-- search -->
-                  <p>Search Users</p>
-                        <input class="form-control me-1" id="myInput" style="width:100%; max-width:20rem" type="text" placeholder="Search" aria-label="Search">             
                 <hr>
+                  <!-- search -->
+                        <input class="form-control me-1" id="myInput" style="width:100%; max-width:20rem" type="text" placeholder="Search" aria-label="Search">             
+                
                 <?php
                     $sql = "SELECT * FROM doctor ORDER BY id DESC";
                     $result = $mysqli->query($sql);
