@@ -39,7 +39,7 @@
                             <h3 class="card-title mb-3 text-primary">Manage billing</h3>
                             <p class="card-text">something here.
                             </p>
-                            <a href="dashboard.php" class="btn btn-primary">view</a>
+                            <a href="dashboard.php" class="btn btn-primary">Manage</a>
                         </div>
                     </div>
                 </div>
