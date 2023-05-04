@@ -1,0 +1,33 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+h1 {
+  color: #0099cc;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="checkbox"] {
+  margin-left: 20px;
+}
+
+select {
+  margin-bottom: 10px;
+}
+
+input[type="submit"] {
+  background-color: #0099cc;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #006699;
+}

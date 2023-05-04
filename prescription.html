@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prescription Form</title>
+    <link rel="stylesheet" type="text/css" href="prescription.css">
+
+</head>
+<body>
+    <h1>Prescription Form</h1>
+    <form method="POST" action="prescription.php">
+        <label for="user_type">User Type:</label><br>
+        <select name="user_type">
+            <option value="adult">Adult</option>
+            <option value="infant">Infant</option>
+        </select><br><br>
+        <label for="symptoms">Symptoms:</label><br>
+        <input type="checkbox" name="symptoms[]" value="headache"> Headache<br>
+        <input type="checkbox" name="symptoms[]" value="fever"> Fever<br>
+        <input type="checkbox" name="symptoms[]" value="sore throat"> Sore Throat<br>
+        <input type="checkbox" name="symptoms[]" value="ear infection"> Ear Infection<br>
+        <input type="checkbox" name="symptoms[]" value="pain"> Pain<br>
+        <input type="checkbox" name="symptoms[]" value="allergies"> Allergies<br>
+        <input type="checkbox" name="symptoms[]" value="insomnia"> Insomnia<br>
+        <input type="checkbox" name="symptoms[]" value="high blood pressure"> High Blood Pressure<br>
+        <input type="checkbox" name="symptoms[]" value="high cholesterol"> High Cholesterol<br><br>
+        <input type="submit" name="submit" value="Generate Prescription">
+    </form>
+</body>
+</html>
