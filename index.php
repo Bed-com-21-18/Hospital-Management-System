@@ -2,7 +2,6 @@
 
 session_start();
 include('includes/db_connection.php');
-
 include('includes/doctor.php');
 
 // select all patients from the Patient table
