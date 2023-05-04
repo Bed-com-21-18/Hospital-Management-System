@@ -1,0 +1,35 @@
+Paracetamol
+Ibuprofen
+Azithromycin
+Prednisone
+Cetirizine
+Ondansetron
+Loperamide
+Diphenhydramine
+Acetaminophen
+buprofen
+Aspirin
+Dextromethorphan
+Guaifenesin
+Albuterol
+Prednisone
+Oxygen
+Panadol
+Buffen
+Carbamazepine
+Doxcyclin
+Poaxcyclin
+Intoxcyclin
+Indosine
+Hedax
+
+
+
+reserver
+
+CREATE TABLE `drug` (
+  `drug_name` varchar(255) NOT NULL,
+  `symptoms` varchar(255) NOT NULL,
+  `drug_price` decimal(10, 2) NOT NULL,
+  PRIMARY KEY (`drug_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
