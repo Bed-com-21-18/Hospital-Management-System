@@ -29,6 +29,27 @@
     <section class="p-5 bg-secondary"> 
         <div class="container">
             <div class="row text-center g-4">
+           
+                <div class="col-md">
+                    <div class="card text-dark">
+                    
+                        <div class="card-body text-center">
+                            <div class="h1 mb-3">
+                                <i class="bi bi-graph-up text-primary"></i>
+                            </div>
+                            <h3 class="card-title mb-3 text-primary"></h3>
+                            <p class="card-text">something here.
+                            </p>
+                            <a href="addpatient.php" class="btn btn-primary">Add patient</a>
+                            <br>
+                            <br>
+                             <a href="patient_list.php" class="btn btn-primary">Patient list</a>
+
+                        </div>
+                    </div>
+                </div>
+
+
                 <div class="col-md">
                     <div class="card text-dark">
                     

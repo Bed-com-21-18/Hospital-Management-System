@@ -13,6 +13,7 @@
         }
 
         $uname = validate($_POST['uname']);
+        $username = validate($_POST['uname']);
         $pwd = validate($_POST['pwd']);
 
         if(empty($uname)) {
@@ -33,6 +34,7 @@
                   $row = $result->fetch_assoc();
                    if($row['uname'] === $uname && $row['pwd'] === $pwd){
                         $_SESSION['uname'] = $row['uname'];
+                        $_SESSION['username'] =  $row['username'];
                         $_SESSION['prof'] = $row['prof'];
                         $_SESSION['id'] = $row['id'];
 

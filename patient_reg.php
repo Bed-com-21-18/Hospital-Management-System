@@ -1,78 +1,164 @@
-<?php 
-    session_start();
+    <?php
+   
 
-    if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
+
+session_start();
+
 
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Hospital Management System</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-        <link rel="stylesheet" href="style.css"/>
-        <link rel="stylesheet" href="bootstrap-5.0.0/css/bootstrap.min.css"/>
-    </head>
-    <body>
 
-    <!-- Navbar -->
-        <?php
-            include "unavbar.php";
-        ?>
-        
-         <!--Form-->
-        <div class="row justify-content-center p-5 bg-light">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="text-center">PATIENT REGISTRATION</h4>
-                    </div>
-                    <div class="card-body">
-                        <form action="logindb.php" method="POST">
-                        <div class="form-group mb-3">
-                            <label>Full name</label>
-                            <input type="text" name="name" class="form-control" required/>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label>Address</label>
-                            <input type="text" name="address" class="form-control" required/>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label>Location</label>
-                            <input type="text" name="location" class="form-control" required/>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label>Date</label>
-                            <input type="date" name="dates" class="form-control" required/>
-                        </div>
-                        <div class="form-group p-2"> 
-                            <label class="px-2">Gender</label> <br/>
-                            <input name="male" type="radio"/>
-                            <label>Male</label>
-                            <input name="female" type="radio"/>
-                            <label>Female</label>
-                        </div>
-                        <div class="form-group mb-3 text-center">
-                            <button type="submit" name="login" class="btn btn-primary">Submit</button>
-                        </div>
-                        </form>
-                    </div>
+<head>
+<meta charset= "UTF-8">
+<meta name="author" content="Edson Magombo">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Hospital Management System</title>
+<!-- Latest compiled and manifest CSS -->
+<link rel= "stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<!-- jQuery Library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <!-- Popper JS -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+ <!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <b><h2 class="text-center text-dark mt-2">
+                  Patient Registration 
+                </h2></b>
+                <hr>
+
+                <?php if(isset($_SESSION['response'])){ ?>
+                <div class="alert alert-<?= $_SESSION['res_type']; ?> alert-dismissible text-center">
+                 <button type="button" class="close" data-dismiss="alert">&times; </button>
+                 <b><?= $_SESSION['response']; ?></b>
                 </div>
+                 <?php } unset($_SESSION['response']); ?>
+                 
             </div>
-      </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+            <h3 class="text-center text-info">Add Patient</h3>
+            <form action="action.php" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                <input type = "text" name="name" class="form-control" placeholder="Enter Name" required>
+                </div>
+                <div class="form-group">
+                <input type = "date" name="date" class="form-control" placeholder="Enter DoB" required>
+                <label for="female">Female</label>
+                <input type="radio" id="female" name="gender" value="female">
 
+                <label for="male">Male</label>
+                <input type="radio" id="male" name="gender" value="male">
 
-        <!-- footer -->
-        <?php
-            include "footer.php";
-        ?>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    </body>
-</html> 
-<?php 
-    }else {
-        header("Location: home_login.php");
-        exit();
-    }
-?> 
+                </div>
+                <div class="form-group">
+                <input type = "text" name="nid" class="form-control" placeholder="Enter Nationa ID" required>
+                </div>
+                <div class="form-group">
+                <input type = "email" name="email" class="form-control" placeholder="Enter e-mail" required>
+                </div>
+                <div class="form-group">
+                <input type ="tel" name="phoneNumber" class="form-control" placeholder="Enter Phone Number" required>
+                </div>
+                <div class="form-group">
+                <input type = "text" name="district" class="form-control" placeholder="Enter Home" required>
+                </div>
+                <div class="form-group">
+                <input type = "text" name="village" class="form-control" placeholder="Enter Home Village" required>
+                </div>
+
+                <div class="form-group">
+                <input type = "text" name="residential" class="form-control" placeholder="Enter Residential Address" required>
+                </div>
+                <input type="submit" name="add" class="btn btn-primary btn-block" value="Register">
+            </form>
+            </div>
+            <div class="col-md-8">
+
+                <?php 
+              // Connect to the database
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbname = "hms";
+                $conn = new mysqli($servername, $username, $password, $dbname);
+
+                // Check connection
+                if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+                }
+                $query= "SELECT * FROM patient ORDER by id DESC";
+                $stmt= $conn-> prepare($query);
+                $stmt->execute();
+                $result= $stmt ->get_result();
+                ?>
+            <h3 class="text-center text-info">Patients Records</h3>
+             <p>Type first names, last names or emails to search:</p>  
+                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                <br>                  
+                        
+            <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Age</th>
+                        <th>Name</th>
+                        <th>Date of Birth</th>
+                        <th>Gender</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Home  Village</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody id = "myTable">
+                        <?php while ($row= $result->fetch_assoc()){ ?>
+
+                        
+                    <tr>
+                        <td><?= $row['id']; ?></td>
+                        <td><?= $row['age']; ?></td>
+                        <td><?= $row['name']; ?></td>
+                        <td><?= $row['date']; ?></td>
+                        <td><?= $row['gender']; ?></td>
+                        <td><?= $row['email']; ?></td>
+                        <td><?= $row['phoneNumber']; ?></td>
+                        <td><?= $row['village']; ?></td>
+
+                        <td>
+                            <a href="#" class="badge badge-primary p-2"> Details</a>
+                            <a href="#" class="badge badge-danger p-2"> Delete</a>
+                            <a href="#" class="badge badge-success p-2"> Edit</a>
+                        </td>
+                    </tr>
+                        <?php } ?>
+                    
+                    
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>  
+    </div>
+
+                    <script>
+                        $(document).ready(function(){
+                        $("#myInput").on("keyup", function() {
+                            var myInput = $(this).val().toLowerCase();
+                            $("#myTable tr").filter(function() {
+                            $(this).toggle($(this).text().toLowerCase().indexOf(myInput) > -1)
+                            });
+                        });
+                        });
+                        </script>
+</body>
+</html>

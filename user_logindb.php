@@ -36,7 +36,7 @@
                         $_SESSION['prof'] = $row['prof'];
                         $_SESSION['id'] = $row['id'];
 
-                        header("Location: services.php");
+                        header("Location: nurse_dashboard.php");
                         exit();
                    }else {
                         header("Location: user_login.php?error=Incorrect surname or password");
