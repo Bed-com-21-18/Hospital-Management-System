@@ -12,10 +12,16 @@
     <body>
       
       <!--NavBar-->
-        <nav class="navbar navbar-expand-lg py-3"style="background-color:#F1F6F9;" >
+      <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
             <div class="container">
-                         
-
+                <h5 class="navbar-brand"><i>HOSPITAL MANAGEMENT SYSTEM</i></h5>
+                <button 
+                class="navbar-toggler" 
+                type="button" 
+                data-bs-toggle="collapse" 
+                data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse" id="navmenu">
                     <ul class="navbar-nav ms-auto">
                     <li class="nav-item">

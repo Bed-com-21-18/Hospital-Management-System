@@ -1,10 +1,6 @@
 <?php
 // Connect to the database
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "hms";
-$conn = new mysqli($servername, $username, $password, $dbname);
+include 'comfig.php';
 
 // Check connection
 if ($conn->connect_error) {
@@ -25,13 +21,28 @@ if(isset($_POST['add'])){
     $age = $currentYear - $birthYear;
 
 
-    $query="INSERT INTO patient (name,date,gender,age,phoneNumber,district,village,residential) 
-    VALUES(?,?,?,?,?,?,?,?)";
-    $stmt=$conn->prepare($query);
-    $stmt-> bind_param ('sssdssss', $name, $date, $gender, $age, $phoneNumber, $district, $village, $residential);
-    $stmt->execute();
-    header('location:patient_list_user.php');
-    $_SESSION['response']= "Successfully Added a Patient!!!";
-    $_SESSION['res_type']= "success";
+    $user_data = 'name='. $name. '&phoneNumber='. $phoneNumber; 
+
+    $sql = "SELECT * FROM patient WHERE phoneNumber ='$phoneNumber' AND name='$name'";
+    $result = $mysqli->query($sql);
+
+    if (mysqli_num_rows($result) > 0){
+        header ("Location: patient_reg.php?error=The username already exist&$user_data");
+        exit();
+     }else {
+    //insert user
+        $sql2 = "INSERT INTO patient (name,date,gender,age,phoneNumber,district,village,residential) 
+        VALUES('$name', '$date', '$gender', '$age', '$phoneNumber', '$district', '$village', '$residential')";
+         if ($mysqli->query($sql2) === TRUE){
+            // header ("Location: patient_reg.php?success=Successfully registered");
+            // exit();
+            echo "<script>alert('Successfully Submitted');
+            window.location.href = 'patient_reg.php';
+            </script>";
+         }else{
+            header ("Location: patient_reg.php?error=unknown error&$user_data");
+            exit();
+         }
+   }
 }
 ?>

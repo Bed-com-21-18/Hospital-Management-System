@@ -53,8 +53,11 @@ if ($stmt->execute()) {
   
     // Set the session message and redirect back to send_to_lab.php
     $_SESSION['message'] = $message;
-    header('Location: lab_results_success.php');
-    exit();
+    // header('Location: lab_results_success.php');
+    // exit();
+    echo "<script>alert('Successfully sent');
+    window.location.href = 'laboratory.php';
+    </script>";
   } else {
     // Display an error message if the resultss data could not be updated
     $response = '<div class="alert alert-danger" role="alert">

@@ -56,7 +56,7 @@ if ($result2->num_rows > 0) {
     ?>
     <div class="container">
     <div class="table-responsive">
-        <table class="table table-bordered  bg-secondary text-light">
+        <table class="table table-bordered  bg-light">
             <thead class="thead-light">
                 <tr>
                     <th>Name</th>

@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="bootstrap-5.0.0/css/bootstrap.min.css"/>
-    
+    <link rel="stylesheet" href="home.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
 </head>
@@ -26,7 +26,7 @@
     <!-- side bar -->
 
              <!--Cards-->
-     <section class="bg-secondary"> 
+     <section class=""> 
         <h4 class="bg-light p-2 text-center text-secondary">Modules</h4>
     <div class="container p-4">
         <div class="row text-center g-4">

@@ -12,6 +12,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<!-- Responsive meta tag -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="home.css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script>
             $(document).ready(function(){
@@ -49,11 +50,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
             </div>
         </nav>
 
-	<div class="container">
-		<div class="table-responsive">
-			 
-		<table class="table table-bordered  bg-secondary text-light">
-			<thead class="thead-light">
+	<div class="p-2">
+		<div class="row">
+		<div class="col-md-12"> 
+		<table class="table table-hover bg-light" style="overflow:auto">
+                 <thead class="table table-hover">
 				<tr>
 					<th>Name</th>
 					<th>Date of Birth</th>
@@ -77,7 +78,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 				if ($conn->connect_error) {
 					die("Connection failed: " . $conn->connect_error);
 				}
-                $query = "SELECT * FROM patient ORDER BY name ASC";
+                $query = "SELECT * FROM patient ORDER BY id DESC";
                 $stmt = $conn->prepare($query);
                 $stmt->execute();
                 $result = $stmt->get_result();
@@ -112,6 +113,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 
 			</tbody>
 		</table>             
+	</div>
 	</div>
 </div>
    

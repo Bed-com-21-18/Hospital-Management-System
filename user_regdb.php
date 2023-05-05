@@ -53,7 +53,7 @@
             //checking if the user exit
            $sql = "SELECT * FROM user WHERE prof ='$prof' AND uname='$uname'";
            if (mysqli_num_rows($mysqli->query($sql)) > 0){
-                header ("Location: user_reg.php?error=The username already exit&$user_data");
+                header ("Location: user_reg.php?error=The username already exist&$user_data");
                 exit();
            }else {
             //insert user

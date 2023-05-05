@@ -33,7 +33,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                 </div>
 
 		
-		<table class="table table-bordered bg-secondary text-light" id='myInput'>
+		<table class="table table-bordered bg-light" id='myInput'>
 			<thead class="thead-light">
 				<tr>
 

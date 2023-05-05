@@ -33,7 +33,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 			<h5 class="navbar-brand text-center"> Patient History</h5>
             </div>
         </nav>
-
+<div class="p-4">
 
 				<?php
             
@@ -59,10 +59,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                     echo "<tr><td colspan='15' class='text-center'>No Medical History found for <b> ".$row['name']."</b></td></tr>";
                     } else {
                     ?>
-                    	<div class="container">
+                    	<div class="container text-center">
 		                    <div class="table-responsive">
 
-                                <table class="table table-bordered  bg-secondary text-light">
+                                <table class="table table-bordered  bg-light">
 			                <thead class="thead-light">
 				        <tr>
 					
@@ -96,6 +96,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
         <br><br>             
         <button class='btn btn-primary mb-3' onclick='window.history.back()'> Go Back</button>
 	</div>
+</div>
 </div>
    
 <!-- Bootstrap JS -->

@@ -35,7 +35,7 @@
       <div class="row text-center g-4">
         <div class="col-md">
           <div class="dropdown">
-            <button class="btn dropdown-toggle bg-primary" type="button" id="loginDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#EEEEEE;">
+            <button class="btn dropdown-toggle" type="button" id="loginDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#EEEEEE;">
               Login
             </button>
             <ul class="dropdown-menu" aria-labelledby="loginDropdown">
