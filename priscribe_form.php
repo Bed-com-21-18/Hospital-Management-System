@@ -1,4 +1,6 @@
-
+<?php  session_start();
+            include "dnavbar.php";
+        ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,14 +9,19 @@
   <title>Prescribe Patient</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
+<script>
+  function goBack() {
+    window.history.back();
+  }
+  </script>
 <body>
   <div class="container">
     <h3>Prescribe Patient</h3>
     <form method="POST" action="prescribe.php">
       <div class="form-group">
         <label for="patient-id">Patient ID:</label>
-        <p><i><b>please enter patient id generated upon patient registration</i></b></p>
-        <input type="text" class="form-control" id="patient_id" name="patient_id" required>
+        <input type="text" class="form-control" id="appoint_id" name="appoint_id" placeholder="Appointment Number" required><br>
+      <input type="text" class="form-control" id="patient_id" name="patient_id" placeholder="Patient ID" required> 
       </div>
       <div class="form-group" method="POST" >
         <label for="medical-history"><b>Medical History:</b></label><br>
@@ -62,11 +69,14 @@
         <div class="form-group" method="POST" >
           <label for="others"><b>Others:</b></label>
           <textarea class="form-control" id="others" name="others" rows="1" ></textarea>
-        </div>    
-      <button type="submit" class="btn btn-primary">Prescribe</button>
+        </div>          
+        <button type="submit" class="btn btn-primary">Prescribe</button> &nbsp;&nbsp;&nbsp;&nbsp;
+      <button onclick="goBack()" class="btn btn-secondary">Go Back</button>
     </form>
   </div>
-  
+  <?php 
+        include 'footer.php';
+    ?>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

@@ -48,8 +48,8 @@
                             <div class="h1 mb-3">
                                 <i class="bi bi-people-fill text-primary"></i>
                             </div>
-                            <h3 class="card-title mb-3 text-primary">Register patient</h3>
-                            <a href="patient_reg.php" class="btn btn-primary">proceed</a>                   
+                            <h3 class="card-title mb-3 text-primary">Book Appointment</h3>
+                            <a href="book_appointment.php" class="btn btn-primary">proceed</a>                   
                         </div>
                     </div>
                 </div>

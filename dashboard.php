@@ -38,12 +38,9 @@
                                 <i class="bi bi-graph-up text-primary"></i>
                             </div>
                             <h3 class="card-title mb-3 text-primary"></h3>
-                            <p class="card-text">something here.
-                            </p>
-                            <a href="addpatient.php" class="btn btn-primary">Add patient</a>
-                            <br>
-                            <br>
-                             <a href="patient_list.php" class="btn btn-primary">Patient list</a>
+                            <h3 class="card-title mb-3 text-primary">Patient List</h3>
+                            <p class="card-text">see the list of all patient in the system</p>
+                             <a href="patient_list.php" class="btn btn-primary">Proceed</a>
 
                         </div>
                     </div>
@@ -58,8 +55,8 @@
                                 <i class="bi bi-graph-up text-primary"></i>
                             </div>
                             <h3 class="card-title mb-3 text-primary">Manage billing</h3>
-                            <p class="card-text">something here.
-                            </p>
+                            
+                            <p class="card-text">View or delete bills</p>
                             <a href="dashboard.php" class="btn btn-primary">Manage</a>
                         </div>
                     </div>

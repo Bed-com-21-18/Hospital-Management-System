@@ -28,16 +28,16 @@
                             <a href="home.php" class="nav-link bi bi-house-fill"> Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="services.php" class="nav-link"> Services</a>
+                            <a href="nurse_dashboard.php" class="nav-link"> Services</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle bi bi-person-fill" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <?php echo $_SESSION['uname']; ?></a>
                             </a>
                             <ul class="dropdown-menu text-center">
-                                <li><a class="dropdown-item" href="uchange_pwd.php">change password</a></li>
+                                <li><a class="dropdown-item" href="uchange_pwd.php">Change password</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="logout.php">logout</a></li>
+                                <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                             </ul>
                         </li>
                     </ul>

@@ -1,0 +1,72 @@
+<?php
+
+session_start();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $patient_id = $_POST['patient_id'];
+  $_SESSION['patient_id'] = $_POST['patient_id'];
+  $date = $_POST['date'];
+  $time = $_POST['time'];
+  $professional = $_POST['professional'];
+  $reason = $_POST['reason'];
+  $booked_at = date("H:i:s d-m-Y ");
+
+  // Connect to the database
+  $host = 'localhost';
+  $username = 'root';
+  $password = '';
+  $database = 'hms';
+  $conn = mysqli_connect($host, $username, $password, $database);
+
+  // Check if the connection was successful
+  if (!$conn) {
+    die('Connection failed: ' . mysqli_connect_error());
+  }
+
+  // Check if the user is logged in
+  if (isset($_SESSION['uname'])) {
+    $username = $_SESSION['uname'];
+  }
+
+  // Check if the patient ID exists in the patient table
+  $sql = "SELECT * FROM patient WHERE id = ?";
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("s", $patient_id);
+  $stmt->execute();
+  $result = $stmt->get_result();
+
+  if ($result->num_rows === 0) {
+    // Display an error message if the patient ID does not exist in the patient table
+    echo '<div class="alert alert-danger" role="alert">
+      Error: The patient ID does not exist. Please make sure the you have entered the ID of registered patient.
+      <br>
+      <br><button class="btn btn-danger" onclick="history.back()">Go Back</button>
+    </div>';
+  } else {
+    // Prepare the SQL query to insert the appointment data into the database
+    $sql = "INSERT INTO appointments (patient_id, date, time, professional, reason, booked_by, booked_at) 
+            VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+    // Bind the parameters and execute the SQL query
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sssssss", $patient_id, $date, $time, $professional, $reason, $username, $booked_at);
+
+    if ($stmt->execute()) {
+      // Redirect the user to the dashboard page upon successful appointment booking
+     
+      header("Location: book_app_success.php");
+      $_SESSION['patient_id'] = $_POST['patient_id'];
+      $_SESSION['patient_id'] = $patient_id;
+      exit;
+    } else {
+      // Display an error message if the appointment booking failed
+      echo '<div class="alert alert-danger" role="alert">
+        Error: ' . $sql . '<br>' . mysqli_error($conn) . '
+        <button class="btn btn-danger" onclick="history.back()">Go Back</button>
+      </div>';
+    }
+  }
+
+  // Close the database connection
+  mysqli_close($conn);
+}

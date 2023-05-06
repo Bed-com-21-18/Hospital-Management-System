@@ -1,11 +1,9 @@
-    <?php
+
    
+ <?php 
+  session_start();
+ include 'unavbar.php'; ?>   
 
-
-session_start();
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -161,4 +159,7 @@ session_start();
                         });
                         </script>
 </body>
+<?php 
+ include 'footer.php'; ?>   
+
 </html>
