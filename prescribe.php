@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+
+<?php
+ session_start();
+            include "dnavbar.php";
+        ?>
+        <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -14,8 +19,12 @@
     <div class="row">
       <div class="col-sm-12">
         <?php
-        session_start();
-        
+ 
+        if (!isset($_SESSION['uname'])) {
+          // User is not authenticated, redirect to login page
+          header("Location: doctor_login.php");
+          exit();
+        }
         // Connect to the database
         $servername = "localhost";
         $username = "root";
@@ -33,6 +42,7 @@
           $medical_history = $_POST["medical-history"]; // This is an array
           $symptoms = $_POST["symptoms"]; // This is an array
           $others = $_POST["others"];
+          $appoint_id = $_POST["appoint_id"];
           
 
           // Prepare and execute the query
@@ -50,20 +60,21 @@
             // Display the patient details if the query execution succeeded
             $patient = $stmt->get_result()->fetch_assoc();
             echo "<h1 class='mb-4'>Prescription Summary</h1>";
-echo "<h4 class='mb-3'>Section A: Patient Details</h4>";
-echo "<div class='table-responsive'>";
-echo "<table class='table table-bordered'>";
-echo "<tbody>";
-echo "<tr><td><strong>Name:</strong></td><td>" . $patient["name"] . "</td></tr>";
-echo "<tr><td><strong>Phone number:</strong></td><td>" . $patient["phoneNumber"] . "</td></tr>";
-echo "<tr><td><strong>Age:</strong></td><td>" . $patient["age"] . "</td></tr>";
-echo "<tr><td><strong>Gender:</strong></td><td>" . $patient["gender"] . "</td></tr>";
-echo "<tr><td><strong>District:</strong></td><td>" . $patient["district"] . "</td></tr>";
-echo "<tr><td><strong>Village:</strong></td><td>" . $patient["village"] . "</td></tr>";
-echo "<tr><td><strong>Residential:</strong></td><td>" . $patient["residential"] . "</td></tr>";
-echo "</tbody>";
-echo "</table>";
-echo "</div>";
+              echo "<h4 class='mb-3'>Section A: Patient Details</h4>";
+              echo "<div class='table-responsive'>";
+              echo "<table class='table table-bordered'>";
+              echo "<tbody>";
+              echo "<tr><td><strong>Name:</strong></td><td>" . $patient["id"] . "</td></tr>";
+              echo "<tr><td><strong>Name:</strong></td><td>" . $patient["name"] . "</td></tr>";
+              echo "<tr><td><strong>Phone number:</strong></td><td>" . $patient["phoneNumber"] . "</td></tr>";
+              echo "<tr><td><strong>Age:</strong></td><td>" . $patient["age"] . "</td></tr>";
+              echo "<tr><td><strong>Gender:</strong></td><td>" . $patient["gender"] . "</td></tr>";
+              echo "<tr><td><strong>District:</strong></td><td>" . $patient["district"] . "</td></tr>";
+              echo "<tr><td><strong>Village:</strong></td><td>" . $patient["village"] . "</td></tr>";
+              echo "<tr><td><strong>Residential:</strong></td><td>" . $patient["residential"] . "</td></tr>";
+              echo "</tbody>";
+              echo "</table>";
+              echo "</div>";
 
           }
 
@@ -194,11 +205,12 @@ echo "</div>";
 
 
 }
+
 if (isset($_SESSION['uname'])) {
-    $username = $_SESSION['uname'];
-    $stmt = $conn->prepare("SELECT * FROM doctor WHERE uname = ?");
-    $stmt->bind_param("s", $username);
-    $result = $stmt->execute();
+  $username = $_SESSION['uname'];
+  $stmt = $conn->prepare("SELECT * FROM doctor WHERE uname = ?");
+  $stmt->bind_param("s", $username);
+  $result = $stmt->execute();
 
   if ($result === false) {
     // Display an error message if the query execution failed
@@ -210,14 +222,30 @@ if (isset($_SESSION['uname'])) {
     echo "<div class='col-sm-12'>";
     echo "</div>";
     echo "<p class='list-group-item'><b style='color: green;'>Prescribed by</b><b> " . $doctor['uname'] . "</b>&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  <b style='color: green;'>Prescribed at </b><b>".$prescribed_on." </b></p>";
-    echo "</div>";
+ echo "</div>";
     // Update patient table with prescription details
-    
   $prescribed_by = $doctor['uname'];
-  
+  $appoint_status = 'Prescribed by ' . $doctor['uname'];
   $stmt = $conn->prepare("UPDATE patient SET prescribed_by=?, prescribed_on=? WHERE id=?");
   $stmt->bind_param("ssi", $prescribed_by, $prescribed_on, $patient_id);
   $stmt->execute();
+  $stmt2 = $conn->prepare("UPDATE appointments SET status=? WHERE id=?");
+
+if (!$stmt2) {
+  echo '<div class="alert alert-danger" role="alert">
+    Error: ' . mysqli_error($conn) . '
+  </div>';
+  exit;
+}
+
+$stmt2->bind_param("ss", $appoint_status, $appoint_id);
+
+if (!$stmt2->execute()) {
+  echo '<div class="alert alert-danger" role="alert">
+    Error: ' . $stmt2->error . '
+  </div>';
+  exit;
+}
 
 
   }
@@ -235,6 +263,9 @@ $conn->close();
 </div>
 </div>
 </div>
+<?php 
+        include 'footer.php';
+    ?>
   <!-- Bootstrap JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

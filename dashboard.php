@@ -30,7 +30,27 @@
         <div class="container">
             <div class="row text-center g-4">
            
+<<<<<<< HEAD
                 
+=======
+                <div class="col-md">
+                    <div class="card text-dark">
+                    
+                        <div class="card-body text-center">
+                            <div class="h1 mb-3">
+                                <i class="bi bi-graph-up text-primary"></i>
+                            </div>
+                            <h3 class="card-title mb-3 text-primary"></h3>
+                            <h3 class="card-title mb-3 text-primary">Patient List</h3>
+                            <p class="card-text">see the list of all patient in the system</p>
+                             <a href="patient_list.php" class="btn btn-primary">Proceed</a>
+
+                        </div>
+                    </div>
+                </div>
+
+
+>>>>>>> 64f5a9756596132f5d03e431421906d1f95d7f28
                 <div class="col-md">
                     <div class="card text-dark">
                     
@@ -39,6 +59,7 @@
                                 <i class="bi bi-graph-up text-primary"></i>
                             </div>
                             <h3 class="card-title mb-3 text-primary">Manage billing</h3>
+<<<<<<< HEAD
                             <p class="card-text">something here.
                             </p>
                             <a href="Bilings/add_drugfee.php" class="btn btn-primary">Manage</a>
@@ -72,6 +93,11 @@
                             <p class="card-text">something here.
                             </p>
                             <a href="patient_list.php" class="btn btn-primary">Patient list</a>
+=======
+                            
+                            <p class="card-text">View or delete bills</p>
+                            <a href="dashboard.php" class="btn btn-primary">Manage</a>
+>>>>>>> 64f5a9756596132f5d03e431421906d1f95d7f28
                         </div>
                     </div>
                 </div>

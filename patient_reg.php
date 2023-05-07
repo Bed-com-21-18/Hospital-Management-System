@@ -1,11 +1,9 @@
-    <?php
+
    
+ <?php 
+  session_start();
+ include 'unavbar.php'; ?>   
 
-
-session_start();
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,25 +44,20 @@ session_start();
         </div>
         <div class="row">
             <div class="col-md-4">
-            <h3 class="text-center text-info">Add Patient</h3>
-            <form action="action.php" method="post" enctype="multipart/form-data">
+            <h3 class="text-center text-info">Register New Patient</h3>
+            <form action="patient_reg_action.php" method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                <input type = "text" name="name" class="form-control" placeholder="Enter Name" required>
+                <input type = "text" name="name" class="form-control" placeholder="Enter Full Name" required>
                 </div>
                 <div class="form-group">
                 <input type = "date" name="date" class="form-control" placeholder="Enter DoB" required>
+                <label for="male"><b>Gender:  </b></label>
                 <label for="female">Female</label>
-                <input type="radio" id="female" name="gender" value="female">
+                <input type="radio" id="Female" name="gender" value="Female">
 
                 <label for="male">Male</label>
-                <input type="radio" id="male" name="gender" value="male">
+                <input type="radio" id="Male" name="gender" value="Male">
 
-                </div>
-                <div class="form-group">
-                <input type = "text" name="nid" class="form-control" placeholder="Enter Nationa ID" required>
-                </div>
-                <div class="form-group">
-                <input type = "email" name="email" class="form-control" placeholder="Enter e-mail" required>
                 </div>
                 <div class="form-group">
                 <input type ="tel" name="phoneNumber" class="form-control" placeholder="Enter Phone Number" required>
@@ -109,15 +102,19 @@ session_start();
             <table class="table table-bordered table-striped">
                     <thead>
                     <tr>
+<<<<<<< HEAD
                         <th>#</th>
                         <th>AGE</th>
+=======
+                        <th>Patient ID</th>
+>>>>>>> 64f5a9756596132f5d03e431421906d1f95d7f28
                         <th>Name</th>
                         <th>Date of Birth</th>
+                        <th>Age</th>
                         <th>Gender</th>
-                        <th>Email</th>
-                        <th>Phone Number</th>
+                        <th>Phone No.</th>
                         <th>Home  Village</th>
-                        <th>Action</th>
+
                     </tr>
                     </thead>
                     <tbody id = "myTable">
@@ -126,19 +123,14 @@ session_start();
                         
                     <tr>
                         <td><?= $row['id']; ?></td>
-                        <td><?= $row['age']; ?></td>
                         <td><?= $row['name']; ?></td>
                         <td><?= $row['date']; ?></td>
+                        <td><?= $row['age']; ?></td>
                         <td><?= $row['gender']; ?></td>
-                        <td><?= $row['email']; ?></td>
                         <td><?= $row['phoneNumber']; ?></td>
                         <td><?= $row['village']; ?></td>
 
-                        <td>
-                            <a href="#" class="badge badge-primary p-2"> Details</a>
-                            <a href="#" class="badge badge-danger p-2"> Delete</a>
-                            <a href="#" class="badge badge-success p-2"> Edit</a>
-                        </td>
+
                     </tr>
                         <?php } ?>
                     
@@ -161,4 +153,7 @@ session_start();
                         });
                         </script> -->
 </body>
+<?php 
+ include 'footer.php'; ?>   
+
 </html>

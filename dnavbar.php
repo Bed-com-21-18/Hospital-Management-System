@@ -31,7 +31,7 @@
                             <a href="doc_dashboard.php" class="nav-link"> Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link"> Appointments</a>
+                            <a href="view_appointment.php" class="nav-link"> Appointments</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle bi bi-person-fill" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
