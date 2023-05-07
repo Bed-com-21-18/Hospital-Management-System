@@ -30,26 +30,7 @@
         <div class="container">
             <div class="row text-center g-4">
            
-                <div class="col-md">
-                    <div class="card text-dark">
-                    
-                        <div class="card-body text-center">
-                            <div class="h1 mb-3">
-                                <i class="bi bi-graph-up text-primary"></i>
-                            </div>
-                            <h3 class="card-title mb-3 text-primary"></h3>
-                            <p class="card-text">something here.
-                            </p>
-                            <a href="addpatient.php" class="btn btn-primary">Add patient</a>
-                            <br>
-                            <br>
-                             <a href="patient_list.php" class="btn btn-primary">Patient list</a>
-
-                        </div>
-                    </div>
-                </div>
-
-
+                
                 <div class="col-md">
                     <div class="card text-dark">
                     
@@ -60,7 +41,37 @@
                             <h3 class="card-title mb-3 text-primary">Manage billing</h3>
                             <p class="card-text">something here.
                             </p>
-                            <a href="dashboard.php" class="btn btn-primary">Manage</a>
+                            <a href="Bilings/add_drugfee.php" class="btn btn-primary">Manage</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md">
+                    <div class="card text-dark">
+                    
+                        <div class="card-body text-center">
+                            <div class="h1 mb-3">
+                                <i class="bi bi-graph-up text-primary"></i>
+                            </div>
+                            <h3 class="card-title mb-3 text-primary">Drugs</h3>
+                            <p class="card-text">add drugs and presciption price.
+                            </p>
+                            <a href="Bilings/drugsprice.php" class="btn btn-primary">Add drugs</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md">
+                    <div class="card text-dark">
+                    
+                        <div class="card-body text-center">
+                            <div class="h1 mb-3">
+                                <i class="bi bi-graph-up text-primary"></i>
+                            </div>
+                            <h3 class="card-title mb-3 text-primary">Patients</h3>
+                            <p class="card-text">something here.
+                            </p>
+                            <a href="patient_list.php" class="btn btn-primary">Patient list</a>
                         </div>
                     </div>
                 </div>

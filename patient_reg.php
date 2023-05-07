@@ -110,7 +110,7 @@ session_start();
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Age</th>
+                        <th>AGE</th>
                         <th>Name</th>
                         <th>Date of Birth</th>
                         <th>Gender</th>
@@ -149,7 +149,7 @@ session_start();
             
         </div>  
     </div>
-
+<!-- 
                     <script>
                         $(document).ready(function(){
                         $("#myInput").on("keyup", function() {
@@ -159,6 +159,6 @@ session_start();
                             });
                         });
                         });
-                        </script>
+                        </script> -->
 </body>
 </html>

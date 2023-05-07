@@ -3,6 +3,18 @@
         Patient list 
     </h3>
     <hr>
+
+    
+                      <script>
+                        $(document).ready(function(){
+                        $("#myInput").on("keyup", function() {
+                            var myInput = $(this).val().toLowerCase();
+                            $("#myTable tr").filter(function() {
+                            $(this).toggle($(this).text().toLowerCase().indexOf(myInput) > -1)
+                            });
+                        });
+                        });
+                        </script>
     <!-- search -->
     <input class="form-control me-1" id="myInput" style="width:100%; max-width:20rem" type="text" placeholder="Search" aria-label="Search">             
     <hr>
@@ -13,7 +25,7 @@
                     <th>Name</th>
                     <th>Age</th>
                     <th>Gender</th>
-                    <th>Occupation</th>
+                    <th>Date</th>
                     <th>Mobile</th>
                     <th>Address</th>
                     <th>Action</th>
@@ -40,7 +52,7 @@
                             <td><?= $row['name']; ?></td>
                             <td><?= $row['age']; ?></td>
                             <td><?= $row['gender']; ?></td>
-                            <td><?= $row['occupation']; ?></td>
+                            <td><?= $row['date']; ?></td>
                             <td><?= $row['mobile']; ?></td>
                             <td><?= $row['address']; ?></td>
                             <td class="btn-group btn-group-justified">                                       
@@ -50,10 +62,13 @@
                         </tr>
                 <?php
                     }
+                    
 
                     // close the database connection
                     $mysqli->close();
+                    
                 ?>
+                
             </tbody>
         </table>
     </div>

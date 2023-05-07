@@ -55,7 +55,6 @@ echo "<div class='table-responsive'>";
 echo "<table class='table table-bordered'>";
 echo "<tbody>";
 echo "<tr><td><strong>Name:</strong></td><td>" . $patient["name"] . "</td></tr>";
-echo "<tr><td><strong>Email:</strong></td><td>" . $patient["email"] . "</td></tr>";
 echo "<tr><td><strong>Phone number:</strong></td><td>" . $patient["phoneNumber"] . "</td></tr>";
 echo "<tr><td><strong>Age:</strong></td><td>" . $patient["age"] . "</td></tr>";
 echo "<tr><td><strong>Gender:</strong></td><td>" . $patient["gender"] . "</td></tr>";
@@ -224,7 +223,7 @@ if (isset($_SESSION['uname'])) {
   }
 }echo "<br>";
 echo "<div style='text-align:center;'>";
-echo "<button class='btn btn-primary mb-3' onclick='window.location.href=\"billing.php\"'>Send to Billing</button>";
+echo "<button class='btn btn-primary mb-3' onclick='window.location.href=\"insert_billingserver.php\"'>Send to Billing</button>";
 echo "&nbsp;&nbsp;&nbsp;&nbsp;";
 echo "<button class='btn btn-danger mb-3' onclick='window.history.back()'>Cancel</button>";
 echo "</div>";

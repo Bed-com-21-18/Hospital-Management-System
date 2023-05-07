@@ -16,14 +16,14 @@ if(isset($_POST['add'])){
     $name=$_POST['name'];
     $date=$_POST['date'];
     $gender=$_POST['gender'];
-    $nid=$_POST['nid'];
+    $nid=$_POST['id'];
     $email=$_POST['email'];
     $phoneNumber=$_POST['phoneNumber'];
     $district=$_POST['district'];
     $village=$_POST['village'];
     $residential=$_POST['residential'];
 
-    $query="INSERT INTO patient (name,date,gender,nid,email,phoneNumber,district,village,residential) 
+    $query="INSERT INTO patient (name,date,gender,id,email,phoneNumber,district,village,residential) 
     VALUES(?,?,?,?,?,?,?,?,?)";
     $stmt=$conn->prepare($query);
     $stmt-> bind_param ('sssdsssss', $name, $date, $gender, $nid,$email, $phoneNumber, $district, $village, $residential);

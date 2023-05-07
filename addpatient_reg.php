@@ -9,15 +9,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $name = $_POST['name'];
   $age = $_POST['age'];
   $gender = $_POST['gender'];
-  $occupation = $_POST['occupation'];
+  $occupation = $_POST['date'];
   $mobile = $_POST['mobile'];
   $address = $_POST['address'];
 
   // Prepare the SQL statement
-  $stmt = $pdo->prepare("INSERT INTO patients (name, age, gender, occupation, mobile, address) VALUES (?, ?, ?, ?, ?, ?)");
+  $stmt = $pdo->prepare("INSERT INTO patients (name, age, gender, date, mobile, address) VALUES (?, ?, ?, ?, ?, ?)");
 
   // Execute the statement with the form data
-  $stmt->execute([$name, $age, $gender, $occupation, $mobile, $address]);
+  $stmt->execute([$name, $age, $gender, $date, $mobile, $address]);
 
   // Redirect to the success page
   header('Location: home.php');

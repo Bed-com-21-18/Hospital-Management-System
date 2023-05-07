@@ -41,7 +41,7 @@
     $name = "";
     $age = "";
     $gender = "";
-    $occupation = "";
+    $date = "";
     $mobile = "";
     $address = "";
     
@@ -51,17 +51,17 @@
         $name = mysqli_real_escape_string($mysqli, $_POST['name']);
         $age = mysqli_real_escape_string($mysqli, $_POST['age']);
         $gender = mysqli_real_escape_string($mysqli, $_POST['gender']);
-        $occupation = mysqli_real_escape_string($mysqli, $_POST['occupation']);
+        $date = mysqli_real_escape_string($mysqli, $_POST['date']);
         $mobile = mysqli_real_escape_string($mysqli, $_POST['mobile']);
         $address = mysqli_real_escape_string($mysqli, $_POST['address']);
         
         // Insert form data into the database
-        $sql = "INSERT INTO patients (name, age, gender, occupation, mobile, address)         
-                VALUES ('$name', '$age', '$gender', '$occupation', '$mobile', '$address')";
+        $sql = "INSERT INTO patients (name, age, gender, date, mobile, address) 
+                VALUES ('$name', '$age', '$gender', '$date', '$mobile', '$address')";
         
         if ($mysqli->query($sql) === TRUE) {
             // Redirect to patient list page
-            header("Location:addpatient.php");
+            header("Location:patient_list.php");
             exit();
         } else {
             // Display error message if insertion failed
@@ -99,9 +99,19 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Occupation</label>
-                                <input type="text" name="occupation" class="form-control" required>
+                                <label>Date</label>
+                                <input type="date" id="dateInput" name="date" class="form-control" required>
                             </div>
+
+                            <script>
+                                // Generate current date
+                                var currentDate = new Date();
+                                var formattedDate = currentDate.toISOString().split('T')[0];
+                                
+                                // Set the generated date as the default value of the input field
+                                document.getElementById('dateInput').value = formattedDate;
+                            </script>
+
                             <div class="form-group">
                                 <label>Mobile</label>
                                 <input type="tel" name="mobile" class="form-control" required>
@@ -119,57 +129,6 @@
             </div>
         </div>
     </div>
-
-    
-<div class="col-md-8">  
-    <h3 class="text-center text-info p-2">
-        Patient list 
-    </h3>
-    <hr>
-    <!-- search -->
-    <input class="form-control me-1" id="myInput" style="width:100%; max-width:20rem" type="text" placeholder="Search" aria-label="Search">             
-    <hr>
-    <?php
-        $sql = "SELECT * FROM patients ORDER BY id DESC";
-        $result = $mysqli->query($sql);
-    ?>
-    <div class="container" style="overflow:auto">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Gender</th>
-                    <th>Occupation</th>
-                    <th>Mobile</th>
-                    <th>Address</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody id = "myTable">
-            <?php while($row = $result->fetch_assoc()) { ?>
-                <tr>
-                    <td><?= $row['name']; ?></td>
-                    <td><?= $row['age']; ?></td>
-                    <td><?= $row['gender']; ?></td>
-                    <td><?= $row['occupation']; ?></td>
-                    <td><?= $row['mobile']; ?></td>
-                    <td><?= $row['address']; ?></td>
-                    <td class="btn-group btn-group-justified">                                       
-                        <a href="delete.php?delete=<?php echo $row['id']; ?>" class="badge bg-danger mx-1" onclick="return confirm('This will be deleted completely?');">Delete</a>
-                        <a href="update.php?edit=<?php echo $row['id']; ?>" class="badge bg-success">Edit</a>
-                    </td> 
-                </tr>
-            <?php }?>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-
-
-    
-    
 </section>
 
     </section>

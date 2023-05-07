@@ -30,14 +30,19 @@
         <div class="container">
             <div class="row text-center g-4">
                 <div class="col-md">
+
+                <div class="card-body text-center">
+                          
+                        </div>
+
                     <div class="card text-dark">
                     
-                        <div class="card-body text-center">
+                    <div class="card-body text-center">
                             <div class="h1 mb-3">
-                                <i class="bi bi-person-fill text-primary"></i>
+                                <i class="bi bi-people-fill text-primary"></i>
                             </div>
-                            <h3 class="card-title mb-3 text-primary">Register patient</h3>
-                            <a href="patient_reg.php" class="btn btn-primary">proceed</a>
+                            <h3 class="card-title mb-3 text-primary"></h3>
+                            <a href="patient_list.php" class="btn btn-primary">Patient list</a>
                         </div>
                     </div>
                 </div>
@@ -49,7 +54,7 @@
                                 <i class="bi bi-people-fill text-primary"></i>
                             </div>
                             <h3 class="card-title mb-3 text-primary">Register patient</h3>
-                            <a href="patient_reg.php" class="btn btn-primary">proceed</a>                   
+                            <a href="addpatient.php" class="btn btn-primary">proceed</a>                   
                         </div>
                     </div>
                 </div>
