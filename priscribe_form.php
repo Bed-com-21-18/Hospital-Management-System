@@ -19,7 +19,6 @@
     <h3>Prescribe Patient</h3>
     <form method="POST" action="prescribe.php">
       <div class="form-group">
-        <label for="patient-id">Patient ID:</label>
         <input type="text" class="form-control" id="appoint_id" name="appoint_id" placeholder="Appointment Number" required><br>
       <input type="text" class="form-control" id="patient_id" name="patient_id" placeholder="Patient ID" required> 
       </div>

@@ -73,8 +73,8 @@
           echo "<div class='table-responsive'>";
           echo "<table class='table table-bordered'>";
           echo "<tbody>";
+          echo "<tr><td><strong> Patient ID:</strong></td><td>" . $patient["id"] . "</td></tr>";
           echo "<tr><td><strong> Patient Name:</strong></td><td>" . $patient["name"] . "</td></tr>";
-          echo "<tr><td><strong>Email:</strong></td><td>" . $patient["email"] . "</td></tr>";
           echo "<tr><td><strong>Phone number:</strong></td><td>" . $patient["phoneNumber"] . "</td></tr>";
           echo "<tr><td><strong>Age:</strong></td><td>" . $patient["age"] . "</td></tr>";
           echo "<tr><td><strong>Gender:</strong></td><td>" . $patient["gender"] . "</td></tr>";

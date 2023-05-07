@@ -17,6 +17,10 @@
     if (isset($_SESSION['uname'])) {
         $username = $_SESSION['uname'];
     }
+    else {
+        header("Location: doctor_login.php?error=You Logged out from session, Login again");
+        exit();
+   }
     // Connect to the database
     $host = 'localhost';
     $username = 'root';

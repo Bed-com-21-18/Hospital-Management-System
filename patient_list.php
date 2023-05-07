@@ -31,11 +31,11 @@
 		<table class="table table-bordered">
 			<thead class="thead-light">
 				<tr>
+					<th>Patient ID</th>
 					<th>Name</th>
-					<th>Age</th>
-					<th>Email</th>
 					<th>Date of Birth</th>
-					<th>Gender</th>
+					<th>Age</th>
+					<th>Sex</th>
 					<th>Phone Number</th>
 					<th>District</th>
 					<th>Village</th>
@@ -64,10 +64,10 @@
 				if ($result->num_rows > 0) {
 					while ($row = $result->fetch_assoc()) {
 						echo "<tr>";
+						echo "<td>" . $row["id"] . "</td>";
 						echo "<td>" . $row["name"] . "</td>";
-						echo "<td>" . $row["age"] . "</td>";
-						echo "<td>" . $row["email"] . "</td>";
 						echo "<td>" . $row["date"] . "</td>";
+						echo "<td>" . $row["age"] . "</td>";
 						echo "<td>" . $row["gender"] . "</td>";
 						echo "<td>" . $row["phoneNumber"] . "</td>";
 						echo "<td>" . $row["district"] . "</td>";

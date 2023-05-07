@@ -15,7 +15,6 @@ die("Connection failed: " . $conn->connect_error);
 if(isset($_POST['add'])){
     $name=$_POST['name'];
     $gender=$_POST['gender'];
-    $email=$_POST['email'];
     $phoneNumber=$_POST['phoneNumber'];
     $district=$_POST['district'];
     $village=$_POST['village'];
@@ -26,10 +25,10 @@ if(isset($_POST['add'])){
     $age = $currentYear - $birthYear;
 
 
-    $query="INSERT INTO patient (name,date,gender,age,email,phoneNumber,district,village,residential) 
-    VALUES(?,?,?,?,?,?,?,?,?)";
+    $query="INSERT INTO patient (name,date,gender,age,phoneNumber,district,village,residential) 
+    VALUES(?,?,?,?,?,?,?,?)";
     $stmt=$conn->prepare($query);
-    $stmt-> bind_param ('sssdsssss', $name, $date, $gender, $age,$email, $phoneNumber, $district, $village, $residential);
+    $stmt-> bind_param ('sssdssss', $name, $date, $gender, $age, $phoneNumber, $district, $village, $residential);
     $stmt->execute();
     header('location:patient_reg.php');
     $_SESSION['response']= "Successfully Added a Patient!!!";

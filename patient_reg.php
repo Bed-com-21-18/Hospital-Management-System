@@ -51,15 +51,13 @@
                 </div>
                 <div class="form-group">
                 <input type = "date" name="date" class="form-control" placeholder="Enter DoB" required>
+                <label for="male"><b>Gender:  </b></label>
                 <label for="female">Female</label>
-                <input type="radio" id="female" name="gender" value="female">
+                <input type="radio" id="Female" name="gender" value="Female">
 
                 <label for="male">Male</label>
-                <input type="radio" id="male" name="gender" value="male">
+                <input type="radio" id="Male" name="gender" value="Male">
 
-                </div>
-                <div class="form-group">
-                <input type = "email" name="email" class="form-control" placeholder="Enter e-mail" required>
                 </div>
                 <div class="form-group">
                 <input type ="tel" name="phoneNumber" class="form-control" placeholder="Enter Phone Number" required>
@@ -109,7 +107,6 @@
                         <th>Date of Birth</th>
                         <th>Age</th>
                         <th>Gender</th>
-                        <th>Email</th>
                         <th>Phone No.</th>
                         <th>Home  Village</th>
 
@@ -125,7 +122,6 @@
                         <td><?= $row['date']; ?></td>
                         <td><?= $row['age']; ?></td>
                         <td><?= $row['gender']; ?></td>
-                        <td><?= $row['email']; ?></td>
                         <td><?= $row['phoneNumber']; ?></td>
                         <td><?= $row['village']; ?></td>
 

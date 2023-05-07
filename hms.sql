@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2023 at 12:55 AM
+-- Generation Time: May 07, 2023 at 04:05 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -93,7 +93,8 @@ INSERT INTO `appointments` (`id`, `patient_id`, `date`, `time`, `professional`, 
 (23, 5, '2023-05-06', '21:04:00', 'Cardiologist', 'sdfjghjkl', 'Charle Cee', '21:11:11 06-05-2023 ', NULL),
 (24, 1, '1999-11-01', '11:11:00', 'Gastroenterologist', 'dsfdghjkl', 'Charle Cee', '21:11:53 06-05-2023 ', NULL),
 (25, 2, '2023-05-04', '23:46:00', 'Dermatologist', 'rtuyigf', 'Charle Cee', '23:44:32 06-05-2023 ', NULL),
-(26, 9, '2023-05-11', '12:22:00', 'Pediatric', 'Broken Thigh', 'Charle Cee', '00:48:23 07-05-2023 ', NULL);
+(26, 9, '2023-05-11', '12:22:00', 'Pediatric', 'Broken Thigh', 'Charle Cee', '00:48:23 07-05-2023 ', NULL),
+(27, 9, '2023-02-12', '12:22:00', 'Gastroenterologist', 'QHTEJRYUTIY,MNDBSVASAD X', 'Charle Cee', '16:01:43 07-05-2023 ', NULL);
 
 -- --------------------------------------------------------
 
@@ -170,7 +171,6 @@ CREATE TABLE `patient` (
   `date` date NOT NULL,
   `gender` varchar(10) NOT NULL,
   `age` int(2) NOT NULL,
-  `email` varchar(255) NOT NULL,
   `phoneNumber` int(10) NOT NULL,
   `district` varchar(100) NOT NULL,
   `village` varchar(100) NOT NULL,
@@ -186,15 +186,16 @@ CREATE TABLE `patient` (
 -- Dumping data for table `patient`
 --
 
-INSERT INTO `patient` (`id`, `name`, `date`, `gender`, `age`, `email`, `phoneNumber`, `district`, `village`, `residential`, `others`, `symptoms`, `history`, `prescribed_by`, `prescribed_on`) VALUES
-(1, 'Chiso Bwanali', '2458-09-09', 'female', 20, 'chiso@gmail.com', 888678728, 'Lilongwe', 'Kabudula', 'Chikanda', 'Malaria', 'Shortness of breath, Nausea, Vomiting, Dizziness', 'High Blood Pressure, Heart Disease, Lung Disease, Cancer, Liver Disease, Autoimmune Disease', 'Omexie Gumba', '10:24:53 05-05-2023 '),
-(2, 'Chiso Bwanali', '1100-09-02', 'female', 17, 'edsonmagombo92@0gmail.com', 996348737, 'Lilongwe', 'Kachoka', 'Matawale', 'rtkdjrsgeafken', 'Fever', 'High Blood Pressure, Heart Disease, Lung Disease, Liver Disease', 'Omexie Gumba', '10:12:39 05-05-2023 '),
-(3, 'Gomboz Tech', '2020-02-02', 'male', 54, 'bed-com-33-18@unima.ac.mw', 881955791, 'Dowa', 'Kachoka', 'Kalimbuka', NULL, NULL, NULL, 'Charle Cee', '01:59:18 05-05-2023 '),
-(4, 'Edson Magombo', '2020-08-09', 'male', 19, 'edsonmagombo920@gmail.com', 997740566, 'Dowa', 'Mponela', 'Nason', 'palibe', 'Fever, Shortness of breath, Muscle aches, Nausea, Dizziness', 'High Blood Pressure, Heart Disease, Lung Disease, Liver Disease', 'Omexie Gumba', '10:13:52 05-05-2023 '),
-(5, 'Avio', '2020-02-02', 'male', 11, 'avio@gmail.com', 2147483647, 'Phalombe', 'olala', 'Old Naisi', 'qwqertyu', 'Cough, Vomiting', 'Diabetes, Cancer', 'Charle Cee', '23:18:24 06-05-2023 '),
-(7, 'Mary Banda', '1999-04-07', 'female', 23, 'chidulecharles1@gmail.com', 882595892, 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, NULL, NULL, NULL, NULL),
-(8, 'Maureen', '1998-03-12', 'female', 12, 'chidulecharledfdfs1@gmail.com', 882595892, 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, NULL, NULL, NULL, NULL),
-(9, 'Zione Muliya', '1933-12-12', 'female', 90, 'chidulecharlhes1@gmail.com', 2147483647, 'Bangwe', 'Blantyre', 'Nyambadwe', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `patient` (`id`, `name`, `date`, `gender`, `age`, `phoneNumber`, `district`, `village`, `residential`, `others`, `symptoms`, `history`, `prescribed_by`, `prescribed_on`) VALUES
+(1, 'Chiso Bwanali', '2458-09-09', 'female', 20, 888678728, 'Lilongwe', 'Kabudula', 'Chikanda', 'Malaria', 'Shortness of breath, Nausea, Vomiting, Dizziness', 'High Blood Pressure, Heart Disease, Lung Disease, Cancer, Liver Disease, Autoimmune Disease', 'Omexie Gumba', '10:24:53 05-05-2023 '),
+(2, 'Chiso Bwanali', '1100-09-02', 'female', 17, 996348737, 'Lilongwe', 'Kachoka', 'Matawale', 'rtkdjrsgeafken', 'Fever', 'High Blood Pressure, Heart Disease, Lung Disease, Liver Disease', 'Omexie Gumba', '10:12:39 05-05-2023 '),
+(3, 'Gomboz Tech', '2020-02-02', 'male', 54, 881955791, 'Dowa', 'Kachoka', 'Kalimbuka', NULL, NULL, NULL, 'Charle Cee', '01:59:18 05-05-2023 '),
+(4, 'Edson Magombo', '2020-08-09', 'male', 19, 997740566, 'Dowa', 'Mponela', 'Nason', 'palibe', 'Fever, Shortness of breath, Muscle aches, Nausea, Dizziness', 'High Blood Pressure, Heart Disease, Lung Disease, Liver Disease', 'Omexie Gumba', '10:13:52 05-05-2023 '),
+(5, 'Avio', '2020-02-02', 'male', 11, 2147483647, 'Phalombe', 'olala', 'Old Naisi', 'qwqertyu', 'Cough, Vomiting', 'Diabetes, Cancer', 'Charle Cee', '23:18:24 06-05-2023 '),
+(7, 'Mary Banda', '1999-04-07', 'female', 23, 882595892, 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, NULL, NULL, NULL, NULL),
+(8, 'Maureen', '1998-03-12', 'female', 12, 882595892, 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, NULL, NULL, NULL, NULL),
+(9, 'Zione Muliya', '1933-12-12', 'female', 90, 2147483647, 'Bangwe', 'Blantyre', 'Nyambadwe', 'Chibayo', 'Cough, Vomiting, Allergy', 'High Blood Pressure, Cancer', 'Charle Cee', '15:47:20 07-05-2023 '),
+(11, 'Charle Cee Graphix', '1988-02-21', 'Female', 35, 882595892, 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -270,7 +271,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `doctor`
@@ -282,7 +283,7 @@ ALTER TABLE `doctor`
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `user`
