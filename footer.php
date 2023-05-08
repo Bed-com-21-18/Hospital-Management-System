@@ -7,6 +7,12 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
         <link rel="stylesheet" href="style.css"/>
         <link rel="stylesheet" href="bootstrap-5.0.0/css/bootstrap.min.css"/>
+        <style>
+    .h1.mb-3.col-sm i:hover {
+        font-size: 45px;
+      color: red;
+    }
+  </style>
     </head>
     <body>
 
