@@ -18,7 +18,7 @@
     <!--About us-->
     <section class="bg-secondary text-light p-5 text-center text-md-start">
         <div class="container">
-            <div class="d-md-flex  align-items-center justify-content-between">
+            <div class="d-md-flex align-items-center justify-content-between">
                 <div>
                     <h1 class="text-center">
                         <span class="text-warning">ABOUT US</span> 
@@ -27,23 +27,8 @@
                     <p class="lead my-4">
                     Welcome to our Hospital Management System! Our system is designed to provide a seamless experience for healthcare providers and patients alike. We believe that our commitment to excellence in healthcare delivery sets us apart from other healthcare providers.
                     </p>
-                    <p class="lead my-4">
-                    Our hospital has a long history of providing quality healthcare to the community. We started as a small clinic and have grown into a full-fledged hospital with state-of-the-art facilities and highly skilled healthcare professionals.</p>
                 </div>
                 <img class="img-fluid w-50 p-2 d-none d-md-block" src="img/about.jpg" alt="">
-            </div>
-            
-        </div>
-        <div class="d-md-flex w-70 align-items-center justify-content-between">
-                <div>
-                    <h3 class="text-center">
-                        <span class="text-warning">Mission Statement</span> 
-                    </h3>
-                    <hr>
-                    <p class="lead my-4">
-                    Our mission is to provide patient-centered care, ensuring that every patient who comes through our doors receives the highest level of care possible. We strive to make our patients feel comfortable and confident that they are in good hands.
-                    </p>
-                </div>
             </div>
             
         </div>
