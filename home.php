@@ -26,7 +26,7 @@
                         <span class="text-warning"><i>Welcome to</i></span> HOSPITAL MANAGEMENT SYSTEM</span> 
                     </h1>
                     <hr>
-                    <p class="my-4">
+                    <p class="my-4 text-light">
                         This is a system that stores patients information for easy...
 
                     </p>
