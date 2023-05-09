@@ -15,8 +15,10 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="bootstrap-5.0.0/css/bootstrap.min.css"/>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+
     
+        
 </head>
   <body>
       <!--NavBar-->
@@ -28,11 +30,9 @@
              <!--Cards-->
     <section class="p-5 bg-secondary"> 
         <div class="container">
-            <div class="row text-center g-4">
+            <div class="row text-center g-9">
            
-<<<<<<< HEAD
                 
-=======
                 <div class="col-md">
                     <div class="card text-dark">
                     
@@ -40,27 +40,11 @@
                             <div class="h1 mb-3">
                                 <i class="bi bi-graph-up text-primary"></i>
                             </div>
-                            <h3 class="card-title mb-3 text-primary"></h3>
-                            <h3 class="card-title mb-3 text-primary">Patient List</h3>
-                            <p class="card-text">see the list of all patient in the system</p>
-                             <a href="patient_list.php" class="btn btn-primary">Proceed</a>
+                            <h3 class="card-title mb-3 text-primary">Billing</h3>
+                            <p class="card-text">
+                            add drugs and presciption price.
 
-                        </div>
-                    </div>
-                </div>
-
-
->>>>>>> 64f5a9756596132f5d03e431421906d1f95d7f28
-                <div class="col-md">
-                    <div class="card text-dark">
-                    
-                        <div class="card-body text-center">
-                            <div class="h1 mb-3">
-                                <i class="bi bi-graph-up text-primary"></i>
-                            </div>
-                            <h3 class="card-title mb-3 text-primary">Manage billing</h3>
-<<<<<<< HEAD
-                            <p class="card-text">something here.
+                        
                             </p>
                             <a href="Bilings/add_drugfee.php" class="btn btn-primary">Manage</a>
                         </div>
@@ -68,7 +52,7 @@
                 </div>
 
                 <div class="col-md">
-                    <div class="card text-dark">
+                    <div class="card text-dark">`
                     
                         <div class="card-body text-center">
                             <div class="h1 mb-3">
@@ -77,7 +61,7 @@
                             <h3 class="card-title mb-3 text-primary">Drugs</h3>
                             <p class="card-text">add drugs and presciption price.
                             </p>
-                            <a href="Bilings/drugsprice.php" class="btn btn-primary">Add drugs</a>
+                            <a href="Bilings/drug_price.php" class="btn btn-primary">Add drugs</a>
                         </div>
                     </div>
                 </div>
@@ -90,14 +74,10 @@
                                 <i class="bi bi-graph-up text-primary"></i>
                             </div>
                             <h3 class="card-title mb-3 text-primary">Patients</h3>
-                            <p class="card-text">something here.
+                            <p class="card-text">Patient list
+
                             </p>
                             <a href="patient_list.php" class="btn btn-primary">Patient list</a>
-=======
-                            
-                            <p class="card-text">View or delete bills</p>
-                            <a href="dashboard.php" class="btn btn-primary">Manage</a>
->>>>>>> 64f5a9756596132f5d03e431421906d1f95d7f28
                         </div>
                     </div>
                 </div>

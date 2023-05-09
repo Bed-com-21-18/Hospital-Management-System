@@ -64,14 +64,22 @@
                            </div>
                             
                            <div class="form-group mb-3">
-                               <label>Proffessional</label>
-                               <?php if (isset($_GET['prof'])) {?>
-                               <input type="text" name="prof" class="form-control" 
-                               value="<?php echo $_GET['prof']; ?>"/>
-                               <?php }else { ?>
-                                   <input type="text" value="<?= $prof; ?>" name="prof" class="form-control"/>
-                               <?php }?>    
-                           </div>
+                                <label for="professional">Professional</label>
+                                <?php if (isset($_GET['prof'])) { ?>
+                                    <select name="prof" class="form-control">
+                                        <option value="<?php echo $_GET['prof']; ?>"><?php echo $_GET['prof']; ?></option>
+                                    </select>
+                                <?php } else { ?>
+                                    <select name="prof" class="form-control">
+                                        <option value="">Select Professional</option>
+                                        <option value="Nurse">Nurse</option>
+                                        <option value="Receptionist">Receptionist</option>
+                                        <option value="Clinician">Clinician</option>
+                                      
+                                    </select>
+                                <?php } ?>
+                            </div>
+
 
                        <div class="form-group mb-3">
                            <label>Password</label>

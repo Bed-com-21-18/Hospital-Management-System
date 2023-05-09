@@ -23,15 +23,15 @@
 
                     </p>
                 </div>     
-                <div class="h1 mb-3 col-sm"> 
+                <!-- <div class="h1 mb-3 col-sm"> 
                     <h4>Links</h4>
                     <i class="bi bi-whatsapp"></i>
                     <i class="bi bi-facebook"></i>
                     <i class="bi bi-envelope"></i>
-                </div>   
+                </div>    -->
             </div>
             <div class="bg-dark text-white text-center position-relative">
-            <p class="lead"><i>Copyright &copy; <?php echo date("Y"); ?>, Hospital Management System.</i></p>
+            <p class=""><i>Copyright &copy; <?php echo date("Y"); ?>, Hospital Management System.</i></p>
 </div>
         </section>
 

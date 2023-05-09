@@ -102,18 +102,14 @@
             <table class="table table-bordered table-striped">
                     <thead>
                     <tr>
-<<<<<<< HEAD
-                        <th>#</th>
-                        <th>AGE</th>
-=======
                         <th>Patient ID</th>
->>>>>>> 64f5a9756596132f5d03e431421906d1f95d7f28
                         <th>Name</th>
                         <th>Date of Birth</th>
                         <th>Age</th>
                         <th>Gender</th>
                         <th>Phone No.</th>
                         <th>Home  Village</th>
+                        <th>Residential</th>
 
                     </tr>
                     </thead>
@@ -129,6 +125,7 @@
                         <td><?= $row['gender']; ?></td>
                         <td><?= $row['phoneNumber']; ?></td>
                         <td><?= $row['village']; ?></td>
+                        <td><?= $row['residential']; ?></td>
 
 
                     </tr>
@@ -141,7 +138,7 @@
             
         </div>  
     </div>
-<!-- 
+
                     <script>
                         $(document).ready(function(){
                         $("#myInput").on("keyup", function() {
@@ -151,7 +148,7 @@
                             });
                         });
                         });
-                        </script> -->
+                        </script>
 </body>
 <?php 
  include 'footer.php'; ?>   

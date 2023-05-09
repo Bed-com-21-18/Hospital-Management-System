@@ -32,7 +32,7 @@
             include "anavbar.php";
         ?>
 
-        <!--Form-->
+        <!--Form to register administrator-->
 <section class="p-4 bg-white"> 
         <div class="container">
             <div class="row">
@@ -74,14 +74,26 @@
                            </div>
                             
                            <div class="form-group mb-3">
-                               <label>Proffessional</label>
-                               <?php if (isset($_GET['prof'])) {?>
-                               <input type="text" name="prof" class="form-control" 
-                               value="<?php echo $_GET['prof']; ?>"/>
-                               <?php }else { ?>
-                                   <input type="text" value="<?= $prof; ?>" name="prof" class="form-control"/>
-                               <?php }?>    
-                           </div>
+                                <label for="professional">Professional</label>
+                                <?php if (isset($_GET['prof'])) { ?>
+                                    <select name="prof" class="form-control">
+                                        <option value="<?php echo $_GET['prof']; ?>"><?php echo $_GET['prof']; ?></option>
+                                    </select>
+                                <?php } else { ?>
+                                    <select name="prof" class="form-control">
+                                        <option value="">Select Professional</option>
+                                        <option value="Cardiologist">Cardiologist</option>
+                                        <option value="Radiologist">Radiologist</option>
+                                        <option value="Dermatologist">Dermatologist</option>
+                                        <option value="Gastroenterologist">Gastroenterologist</option>
+                                        <option value="Neurologist">Neurologist</option>
+                                        <option value="Orthopedic">Orthopedic</option>
+                                        <option value="Pediatric">Pediatric</option>
+                                        <option value="Surgeon">Surgeon</option>
+                                        <option value="Physiotherapist">Physiotherapist</option>
+                                    </select>
+                                <?php } ?>
+                            </div>
 
                        <div class="form-group mb-3">
                            <label>Password</label>
