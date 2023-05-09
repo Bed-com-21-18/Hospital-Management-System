@@ -40,13 +40,13 @@
                             <div class="h1 mb-3">
                                 <i class="bi bi-graph-up text-primary"></i>
                             </div>
-                            <h3 class="card-title mb-3 text-primary">Billing</h3>
+                            <h3 class="card-title mb-3 text-primary">Bills</h3>
                             <p class="card-text">
-                            add drugs and presciption price.
+                            See the bills within the system
 
                         
                             </p>
-                            <a href="Bilings/add_drugfee.php" class="btn btn-primary">Manage</a>
+                            <a href="bills.php" class="btn btn-primary">Proceed</a>
                         </div>
                     </div>
                 </div>
@@ -59,9 +59,10 @@
                                 <i class="bi bi-graph-up text-primary"></i>
                             </div>
                             <h3 class="card-title mb-3 text-primary">Drugs</h3>
-                            <p class="card-text">add drugs and presciption price.
-                            </p>
-                            <a href="Bilings/drug_price.php" class="btn btn-primary">Add drugs</a>
+                            <a href="Bilings/add_drug.php" class="btn btn-primary">Add drug</a>
+                            <p class="card-text">Add new drug</p> 
+                             <a href="Bilings/update_drug.php" class="btn btn-primary">Update drug</a>
+                             <p class="card-text">Update drug data</p>
                         </div>
                     </div>
                 </div>

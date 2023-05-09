@@ -44,7 +44,9 @@
           $others = $_POST["others"];
           $appoint_id = $_POST["appoint_id"];
           
-
+          // Store the symptoms and patient ID in session
+          $_SESSION["symptoms"] = $symptoms;
+          $_SESSION["patient_id"] = $patient_id;
           // Prepare and execute the query
           $stmt = $conn->prepare("SELECT * FROM patient WHERE id = ?");
           $stmt->bind_param("i", $patient_id);
@@ -251,7 +253,7 @@ if (!$stmt2->execute()) {
   }
 }echo "<br>";
 echo "<div style='text-align:center;'>";
-echo "<button class='btn btn-primary mb-3' onclick='window.location.href=\"insert_billingserver.php\"'>Send to Billing</button>";
+echo "<button class='btn btn-primary mb-3' onclick='window.location.href=\"Bilings/billing.php\"'>Next</button>";
 echo "&nbsp;&nbsp;&nbsp;&nbsp;";
 echo "<button class='btn btn-danger mb-3' onclick='window.history.back()'>Cancel</button>";
 echo "</div>";
