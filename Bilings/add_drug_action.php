@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $check_result = $conn->query($check_sql);
         
         if ($check_result->num_rows > 0) {
-          echo "Drug already exists in the database!";
+            header('location: added_unsuccess.php');
         } else {
           // Insert the drug into the database
           $drug_price1 = $drug_price + 500;
@@ -36,10 +36,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           $sql = "INSERT INTO drug (drug_name, symptoms, drug_price,drug_price2, dosage, dosage2, status) VALUES ('$drug_name', '$symptoms', '$drug_price', '$drug_price1', '$dosage', '$dosage1', '$status')";
           
           if ($conn->query($sql) === TRUE) {
-            echo "Drug added successfully!";
-          } else {
+            header('location: added_success.php');
+        } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
-          }
+        }
+        
         }
     } else {
         // Check if drug already exists in the database
@@ -47,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $check_result = $conn->query($check_sql);
         
         if ($check_result->num_rows > 0) {
-          echo "Drug already exists in the database!";
+            header('location: added_unsuccess.php');
         } else {
           // Insert the drug into the database
           $drug_price1 = $drug_price- 100;
@@ -55,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           $sql = "INSERT INTO drug (drug_name, symptoms, drug_price,drug_price2, dosage, dosage2, status) VALUES ('$drug_name', '$symptoms', '$drug_price1', '$drug_price', '$dosage', '$dosage1', '$status')";
    
           if ($conn->query($sql) === TRUE) {
-            echo "Drug added successfully!";
+            header('location: added_success.php');
           } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
           }
