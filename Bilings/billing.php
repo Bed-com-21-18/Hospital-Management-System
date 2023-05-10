@@ -1,6 +1,7 @@
 <?php
   session_start();
   include "../dnavbar.php";
+  include "../comfig.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,8 +9,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dosage and Billing</title>
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.10.0/jspdf.umd.min.js"></script>
   </head>
   <body>
     <div class="container mt-5">
@@ -21,25 +25,18 @@
             header("Location: doctor_login.php");
             exit();
           }
-          // Connect to the database
-          $servername = "localhost";
-          $username = "root";
-          $password = "";
-          $dbname = "hms";
-          $conn = new mysqli($servername, $username, $password, $dbname);
-          // Check connection
-          if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-          }
+
           // retrieve the symptoms and patient ID stored in session
           $symptoms = $_SESSION["symptoms"];
           $servicefee= 1000;
           $patient_id = $_SESSION["patient_id"];
+
           // Prepare and execute the query
-          $stmt = $conn->prepare("SELECT * FROM patient WHERE id = ?");
+          $stmt = $mysqli->prepare("SELECT * FROM patient WHERE id = ?");
           $stmt->bind_param("i", $patient_id);
           $result = $stmt->execute();
           if ($result === false) {
+
             // Display an error message if the query execution failed
             echo "<div class='alert alert-danger' role='alert'>Error: " . $stmt->error . "</div>";
           } else {
@@ -68,6 +65,7 @@
                 echo "<div class='table-responsive'>";
                 echo "<table class='table table-striped'>";
                 echo "<thead>";
+
                 // Loop through the symptoms and display the corresponding drug, dosage, and drug_price
                 $age = $patient["age"];
                 $patient_id = $patient["id"] ;
@@ -80,7 +78,7 @@
                     echo "<tbody>";
     
                     foreach ($symptoms as $symptom) {
-                        $stmt = $conn->prepare("SELECT drug_name, dosage2, drug_price2 FROM drug WHERE symptoms LIKE ?");
+                        $stmt = $mysqli->prepare("SELECT drug_name, dosage2, drug_price2 FROM drug WHERE symptoms LIKE ?");
                         if ($stmt === false) {
                             // Display an error message if the query preparation failed
                             echo "<div class='alert alert-danger' role='alert'>Error: " . $conn->error . "</div>";
@@ -89,6 +87,7 @@
                             $stmt->bind_param("s", $symptom_pattern);
                             $result = $stmt->execute();
                             if ($result === false) {
+
                                 // Display an error message if the query execution failed
                                 echo "<div class='alert alert-danger' role='alert'>Error: " . $stmt->error . "</div>";
                             } else {
@@ -115,8 +114,9 @@
                     echo "<tbody>";
     
                     foreach ($symptoms as $symptom) {
-                        $stmt = $conn->prepare("SELECT drug_name, dosage, drug_price FROM drug WHERE symptoms LIKE ?");
+                        $stmt = $mysqli->prepare("SELECT drug_name, dosage, drug_price FROM drug WHERE symptoms LIKE ?");
                         if ($stmt === false) {
+
                             // Display an error message if the query preparation failed
                             echo "<div class='alert alert-danger' role='alert'>Error: " . $conn->error . "</div>";
                         } else {
@@ -124,6 +124,7 @@
                             $stmt->bind_param("s", $symptom_pattern);
                             $result = $stmt->execute();
                             if ($result === false) {
+
                                 // Display an error message if the query execution failed
                                 echo "<div class='alert alert-danger' role='alert'>Error: " . $stmt->error . "</div>";
                             } else {
@@ -137,9 +138,7 @@
                             }
                         }
                     }
-    
-                   
-                  
+
                 }
                 echo "</tbody>";
                 echo "</table>";
@@ -149,40 +148,67 @@
 
                 $total_bill = $servicefee + $total_amount;
                 echo "<p class='lead'>The Total Bill: <strong> MWK" . $total_bill . "</strong></p>";
+
                 //updating total bills
-                $stmt = $conn->prepare("UPDATE patient SET total_bills=? WHERE id=?");
+                $stmt = $mysqli->prepare("UPDATE patient SET total_bills=? WHERE id=?");
                 $stmt->bind_param("ss", $total_bill, $patient_id);
                 $stmt->execute();
             
 
                 if (isset($_SESSION['uname'])) {
                     $username = $_SESSION['uname'];
-                    $stmt = $conn->prepare("SELECT * FROM doctor WHERE uname = ?");
+                    $stmt = $mysqli->prepare("SELECT * FROM doctor WHERE uname = ?");
                     $stmt->bind_param("s", $username);
                     $result = $stmt->execute();
                   
                     if ($result === false) {
+
                       // Display an error message if the query execution failed
                       echo "<div class='alert alert-danger' role='alert'>Error: " . $stmt->error . "</div>";
+
                     } else {
+
                       // Display the doctor's username if the query execution succeeded
                       $doctor = $stmt->get_result()->fetch_assoc();
                       $prescribed_on = date("H:i:s d-m-Y ");
                       echo "<p class='list-group-item'><b style='color: green;'>Prescribed by</b><b> " . $doctor['uname'] . "</b>&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  <b style='color: green;'>Prescribed at </b><b>".$prescribed_on." </b></p>";
 
-                      echo "<a href='../doc_dashboard.php' class='btn btn-primary'>Print Prescription</a>";
-    
+                      echo "<button  id='print-button'>Print Prescription</button>.";
+                      echo"&nbsp";  echo"&nbsp";  echo"&nbsp";  echo"&nbsp"; 
+                      echo"&nbsp";  echo"&nbsp";  echo"&nbsp";  echo"&nbsp"; 
+                      echo "<a href='../doc_dashboard.php' class='btn btn-primary'>GO TO DASHBOARD</a>";
                     }
                 }
                 
                 ?>
-                        </div>
-          </div>
-          </div>
+        </div>
+      </div>
+    </div>
           <!-- jQuery -->
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
           <!-- Bootstrap JavaScript -->
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-          
-            </body>
-          </html>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.10.0/jspdf.umd.min.js"></script>
+          <!-- <script>
+          // Function to generate the PDF
+          function generatePDF() {
+            // Create a new jsPDF instance
+            const doc = new jsPDF();
+
+            // Get the prescription table element
+            const table = document.getElementById('prescription-table');
+
+            // Convert the table to a data URL
+            doc.autoTable({ html: table });
+
+            // Save the PDF file
+            doc.save('prescription.pdf');
+          }
+
+          // Add event listener to the "Print Prescription" button
+          const printButton = document.getElementById('print-button');
+          printButton.addEventListener('click', generatePDF);
+        </script>
+                           -->
+  </body>
+</html>

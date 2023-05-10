@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="style.css"/>
         <link rel="stylesheet" href="bootstrap-5.0.0/css/bootstrap.min.css"/>
     </head>
-    <body>
+    <body style="background-color:#9BA4B5;">
 
     <!-- Navbar -->
         <?php
@@ -18,15 +18,14 @@
         ?>
 
       <!-- home page -->
-          <!--ShowCase-->
-        <section class="">
+           <section class="">
             <div class="showcase">
                 <div  class="p-4 text-light text-center">
                     <h1>
-                        <span class="text-warning"><i>Welcome to</i></span> HOSPITAL MANAGEMENT SYSTEM</span> 
+                        HOSPITAL MANAGEMENT SYSTEM
                     </h1>
                     <hr>
-                    <p class="my-4 text-light">
+                    <p class="my-4 ">
                         This is a system that stores patients information for easy...
 
                     </p>
@@ -34,13 +33,13 @@
                 <div class="container pt-4">
                     <div class="row text-center g-4">
                         <div class="col-md">
-                            <a href="doctor_login.php"><button class="btn btn-primary">Doctors Login</button></a>
+                            <a href="doctor_login.php"><button class="btn "style="background-color:#EEEEEE;">Doctor Login</button></a>
                         </div>
                         <div class="col-md">
-                            <a href="user_login.php"><button class="btn btn-primary">Nurses Login</button></a>
+                            <a href="user_login.php"><button class="btn " style="background-color:#EEEEEE;">Other user Login</button></a>
                         </div>
                         <div class="col-md">
-                            <a href="admin_login.php"><button  class="btn btn-primary">Admins Login</button></a>
+                            <a href="admin_login.php"><button  class="btn " style="background-color:#EEEEEE;">Admin Login</button></a>
                         </div>
                     </div>
                 </div>

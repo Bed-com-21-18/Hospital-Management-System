@@ -28,9 +28,9 @@
     <!-- side bar -->
 
              <!--Cards-->
-    <section class="p-5 bg-secondary"> 
+    <section class="p-5"> 
         <div class="container">
-            <div class="row text-center g-9">
+            <div class="row text g-9">
            
                 
                 <div class="col-md">
@@ -124,9 +124,6 @@
             </div>
         </div>
     </section>
-
-    </div>
-  
     <!--Footer-->
     <?php 
         include 'footer.php';

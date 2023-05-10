@@ -12,9 +12,9 @@
     <body>
       
       <!--NavBar-->
-        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
+        <nav class="navbar navbar-expand-lg py-3"style="background-color:#F1F6F9;" >
             <div class="container">
-                <h5 class="navbar-brand"><i>HOSPITAL MANAGEMENT SYSTEM</i></h5>
+            <h4 class="nav-item">HMS</h4>
                 <button 
                 class="navbar-toggler" 
                 type="button" 
@@ -23,17 +23,16 @@
                 <span class="navbar-toggler-icon"></span>
                 </button>
 
+                
+
                 <div class="collapse navbar-collapse" id="navmenu">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
+                    <li class="nav-item">
                             <a href="home.php" class="nav-link bi bi-house-fill"> Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="about.php" class="nav-link bi bi-info-circle-fill"> About Us</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle bi bi-person-fill" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                login
+                                Login
                             </a>
                             <ul class="dropdown-menu text-center">
                                 <li><a class="dropdown-item" href="admin_login.php">Admin</a></li>

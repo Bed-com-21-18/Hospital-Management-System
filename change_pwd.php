@@ -16,11 +16,11 @@
 
      <!-- Navbar -->
      <?php
-            include "navbar.php";
+            include "anavbar.php";
         ?>
         
          <!--Form-->
-        <div class="row justify-content-center p-5 bg-light">
+        <div class="row justify-content-center p-5 ">
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-header">

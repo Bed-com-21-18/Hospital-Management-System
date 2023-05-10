@@ -1,5 +1,5 @@
 <?php  session_start();
-            // include "dnavbar.php";
+  // include "dnavbar.php";
         ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +15,7 @@
   }
   </script>
 <body>
+  <!-- prescription form -->
   <div class="container">
     <h3>Prescribe Patient</h3>
     <form method="POST" action="prescribe.php">

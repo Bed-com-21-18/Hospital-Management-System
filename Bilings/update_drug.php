@@ -15,6 +15,7 @@
 </head>
 <body>
 
+<!-- form updating drug data -->
 <div class="container mt-5">
   <form method="POST" action="update_drug_action.php">
     <div class="form-group">
@@ -27,37 +28,40 @@
       <label for="symptoms">Symptoms:</label>
       <input type="text" class="form-control" name="symptoms" id="symptoms">
     </div>
+
     <div class="form-group">
-  <label for="status">Dosage:</label>
-  <select class="form-control" name="dosage" id="dosage">
-  <option>Click to select</option>
-  <option value="1/2 morning, afternoon and evening">1/2 morning, afternoon and evening</option>
-    <option value="1 morning, afternoon and evening">1 morning, afternoon and evening</option>
-    <option value="2 morning, afternoon and evening">2 morning, afternoon and evening</option>
-      
-</select>
-</div>
+      <label for="status">Patient Type:</label>
+      <select class="form-control" name="patient_type" id="patient_type">
+        <option>Click to select</option>
+          <option value="Children">Children</option>
+          <option value="Adult">Adult</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+      <label for="status">Dosage:</label>
+      <select class="form-control" name="dosage" id="dosage">
+        <option>Click to select</option>
+          <option value="1/2 morning, afternoon and evening">1/2 morning, afternoon and evening</option>
+          <option value="1 morning, afternoon and evening">1 morning, afternoon and evening</option>
+          <option value="2 morning, afternoon and evening">2 morning, afternoon and evening</option>
+      </select>
+    </div>
 
     <div class="form-group">
       <label for="drug_price">Price:</label>
       <input type="number" class="form-control" name="drug_price" id="drug_price">
     </div>
+
     <div class="form-group">
-  <label for="status">Patient Type:</label>
-  <select class="form-control" name="patient_type" id="patient_type">
-  <option>Click to select</option>
-    <option value="Children">Children</option>
-    <option value="Adult">Adult</option>
-  </select>
-</div>
-    <div class="form-group">
-  <label for="status">Status:</label>
-  <select class="form-control" name="status" id="status">
-  <option>Click to select</option>
-    <option value="available">Available</option>
-    <option value="not available">Not Available</option>
-  </select>
-</div>
+      <label for="status">Status:</label>
+      <select class="form-control" name="status" id="status">
+      <option>Click to select</option>
+        <option value="available">Available</option>
+        <option value="not available">Not Available</option>
+      </select>
+    </div>  
+
 
 
 

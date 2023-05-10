@@ -12,15 +12,14 @@ include 'admin_logindb.php';
         <link rel="stylesheet" href="style.css"/>
         <link rel="stylesheet" href="bootstrap-5.0.0/css/bootstrap.min.css"/>
     </head>
-    <body>
-
+    <body style="background-color:#9BA4B5;">
      <!-- Navbar -->
      <?php
             include "navbar2.php";
         ?>
         
          <!--Form-->
-        <div class="row justify-content-center p-5 bg-light">
+        <div class="row justify-content-center p-5">
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-header">
