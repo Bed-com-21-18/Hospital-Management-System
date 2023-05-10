@@ -14,22 +14,15 @@
       <!--NavBar-->
         <nav class="navbar navbar-expand-lg py-3"style="background-color:#F1F6F9;" >
             <div class="container">
-            <h4 class="nav-item">HMS</h4>
-                <button 
-                class="navbar-toggler" 
-                type="button" 
-                data-bs-toggle="collapse" 
-                data-bs-target="#navmenu">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-
-                
+                         
 
                 <div class="collapse navbar-collapse" id="navmenu">
                     <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                             <a href="home.php" class="nav-link bi bi-house-fill"> Home</a>
                         </li>
+                    <br>
+                    
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle bi bi-person-fill" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Login

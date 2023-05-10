@@ -1,5 +1,7 @@
 <?php 
   session_start();
+  $patient_id =  $_SESSION['patient_id']; 
+  $name = $_SESSION['name'];
  include 'unavbar.php'; ?>   
  <!DOCTYPE html>
 <html lang="en">
@@ -87,6 +89,7 @@ form .error {
       <div class="col-md-6">
         <form method="post" action="process_appointment.php" class="border p-3 rounded">
           <h1 class="mb-3 text-center"><i class="fas fa-calendar-plus"></i> Booking an appointment</h1>
+          <p>The patient ID registered recently <b> <?php echo"$name"?> </b>is: <b><?php echo "$patient_id"?></b></p>
           <div class="mb-3">
             <label for="patient_id" class="form-label"><i class="fas fa-id-card"></i> Patient ID:</label>
             <input type="number" name="patient_id" id="patient_id" required class="form-control">

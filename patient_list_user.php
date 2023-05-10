@@ -40,10 +40,7 @@
 					<th>District</th>
 					<th>Village</th>
 					<th>Residential</th>
-					<th>Symptoms</th>
-					<th>Prescribed By</th>
-					<th>Prescription Time</th>
-				</tr>
+					</tr>
 			</thead>
 
 			<tbody>
@@ -55,10 +52,17 @@
 				if ($conn->connect_error) {
 					die("Connection failed: " . $conn->connect_error);
 				}
-
-				// Retrieve all patients from the patient table
-				$sql = "SELECT * FROM patient ORDER BY id DESC";
-				$result = $conn->query($sql);
+                $query = "SELECT * FROM patient ORDER BY id DESC limit 7";
+                $stmt = $conn->prepare($query);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                
+                // Get the first row from the result set
+                $first_patient = $result->fetch_assoc();
+                
+                // Store the first patient ID in a session variable
+                $_SESSION['patient_id'] = $first_patient['id'];
+                
 
 				// Display patient information in table rows
 				if ($result->num_rows > 0) {
@@ -73,9 +77,6 @@
 						echo "<td>" . $row["district"] . "</td>";
 						echo "<td>" . $row["village"] . "</td>";
 						echo "<td>" . $row["residential"] . "</td>";
-						echo "<td>" . $row["symptoms"] . "</td>";
-						echo "<td>" . $row["prescribed_by"] . "</td>";
-						echo "<td>" . $row["prescribed_on"] . "</td>";
 						echo "</tr>";
                         ;
 					}
@@ -90,14 +91,11 @@
 
 			</tbody>
 		</table>
-                        
+        <a href="book_appointment.php" class="btn btn-primary">Book an Appointment</a>  
+        <a href="user_priscribe_form.php" class="btn btn-primary">Precribe Patient</a>             
 	</div>
 </div>
-   <!-- footer -->
-   <?php
-            include "footer.php";
-        ?>
-
+   
 <!-- Bootstrap JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

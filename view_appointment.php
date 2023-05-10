@@ -10,7 +10,7 @@
   <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-  <div class="container">
+  <div class="container-fluid bg-light">
    
     <?php
  
@@ -85,7 +85,8 @@
             }
             echo '</tbody>';
             echo '</table>';
-            echo '</div>';
+
+            echo '</div> <br><br><br><br><br><br><br><br><br><br><br>';
         } else {
             echo '<div class="alert alert-info" role="alert">No appointments found.</div>';
         }
@@ -95,7 +96,10 @@
 
     // Close the database connection
     mysqli_close($conn);
+    
     ?>
+    <a href="priscribe_form.php" class="btn btn-primary">Precribe Patient</a>  
   </div>
+  <br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>

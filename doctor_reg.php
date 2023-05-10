@@ -39,7 +39,7 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="text-center text-info">Register doctor</h4>
+                            <h4 class="text-center text-secondary">Register doctor</h4>
                         </div>
                         <div class="card-body">
                         <form action="doctor_regdb.php" method="POST">
@@ -95,7 +95,7 @@
                        </div>
                        <div class="form-group mb-3 text-center">
                         <?php if($update == TRUE) {?>
-                            <button type="submit" name="update" class="btn btn-info">Update</button>
+                            <button type="submit" name="update" class="btn btn-success">Update</button>
                         <?php } else {?>
                            <button type="submit" class="btn btn-primary" name="save">Submit</button>
                            <?php } ?>
@@ -109,10 +109,10 @@
 
              <!--Update table-->
                 <div class="col-md-8"> 
-                <h3 class="text-center text-info">
+                <h3 class="text-center text-secondary">
                     Doctors list
                 </h3>
-                <hr>
+              
                   <!-- search -->
                         <input class="form-control me-1" id="myInput" style="width:100%; max-width:20rem" type="text" placeholder="Search" aria-label="Search">             
                 

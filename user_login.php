@@ -20,11 +20,11 @@ include 'user_logindb.php';
         ?>
         
          <!--Form-->
-        <div class="row justify-content-center p-5 bg-light">
+        <div class="row justify-content-center p-5">
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="text-center">USER LOGIN</h4>
+                        <h4 class="text-center text-secondary">USER LOGIN</h4>
                     </div>
                     <div class="card-body">
                         <form action="user_logindb.php" method="POST">
@@ -44,7 +44,7 @@ include 'user_logindb.php';
                             <span><a href="#" class="text-primary p-4">Forget password?</a></span>
                             
                             <div class="form-group mb-3 text-center p-2">
-                                <button type="submit" class="btn btn-primary">Login</button>
+                                <button type="submit"  class="btn btn-primary">Login</button>
                             </div>
                             
                         </form>

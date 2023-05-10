@@ -21,47 +21,46 @@
     <div class="form-group">
     <h2>Update Drug</h2>
     <label for="drug_name">Drug Name:</label>
-      <input type="text" class="form-control" name="drug_name" id="drug_name">
+      <input type="text" class="form-control" name="drug_name" id="drug_name" required>
     </div>
 
     <div class="form-group">
       <label for="symptoms">Symptoms:</label>
-      <input type="text" class="form-control" name="symptoms" id="symptoms">
+      <input type="text" class="form-control" name="symptoms" id="symptoms"required>
     </div>
 
     <div class="form-group">
-      <label for="status">Patient Type:</label>
-      <select class="form-control" name="patient_type" id="patient_type">
-        <option>Click to select</option>
-          <option value="Children">Children</option>
-          <option value="Adult">Adult</option>
-        </select>
-    </div>
-
+  <label for="status">Patient Type:</label>
+  <select class="form-control" name="patient_type" id="patient_type"required>
+  <option>Click to select</option>
+    <option value="Children">Children</option>
+    <option value="Adult">Adult</option>
+  </select>
+</div>
     <div class="form-group">
-      <label for="status">Dosage:</label>
-      <select class="form-control" name="dosage" id="dosage">
-        <option>Click to select</option>
-          <option value="1/2 morning, afternoon and evening">1/2 morning, afternoon and evening</option>
-          <option value="1 morning, afternoon and evening">1 morning, afternoon and evening</option>
-          <option value="2 morning, afternoon and evening">2 morning, afternoon and evening</option>
-      </select>
-    </div>
+  <label for="status">Dosage:</label>
+  <select class="form-control" name="dosage" id="dosage" required>
+  <option>Click to select</option>
+  <option value="1/2 morning, afternoon and evening">1/2 morning, afternoon and evening</option>
+    <option value="1 morning, afternoon and evening">1 morning, afternoon and evening</option>
+    <option value="2 morning, afternoon and evening">2 morning, afternoon and evening</option>
+      
+</select>
+</div>
 
     <div class="form-group">
       <label for="drug_price">Price:</label>
-      <input type="number" class="form-control" name="drug_price" id="drug_price">
+      <input type="number" class="form-control" name="drug_price" id="drug_price"required>
     </div>
 
     <div class="form-group">
-      <label for="status">Status:</label>
-      <select class="form-control" name="status" id="status">
-      <option>Click to select</option>
-        <option value="available">Available</option>
-        <option value="not available">Not Available</option>
-      </select>
-    </div>  
-
+  <label for="status">Status:</label>
+  <select class="form-control" name="status" id="status"required>
+  <option>Click to select</option>
+    <option value="available">Available</option>
+    <option value="not available">Not Available</option>
+  </select>
+</div>
 
 
 

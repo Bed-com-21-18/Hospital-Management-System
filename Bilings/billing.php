@@ -173,7 +173,7 @@
                       $prescribed_on = date("H:i:s d-m-Y ");
                       echo "<p class='list-group-item'><b style='color: green;'>Prescribed by</b><b> " . $doctor['uname'] . "</b>&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  <b style='color: green;'>Prescribed at </b><b>".$prescribed_on." </b></p>";
 
-                      echo "<button  id='print-button'>Print Prescription</button>.";
+                      echo "<a href='' class='btn btn-primary'>Print</a>";
                       echo"&nbsp";  echo"&nbsp";  echo"&nbsp";  echo"&nbsp"; 
                       echo"&nbsp";  echo"&nbsp";  echo"&nbsp";  echo"&nbsp"; 
                       echo "<a href='../doc_dashboard.php' class='btn btn-primary'>GO TO DASHBOARD</a>";

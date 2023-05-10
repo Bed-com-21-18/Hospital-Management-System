@@ -27,8 +27,8 @@
             include "anavbar.php";
         ?>
 	<div class="container">
-		<h3 class="my-4 text-center">Patient Bills</h3>	<div class="table-responsive">
-		<table class="table table-bordered">
+		<h3 class="my-4 text-center bg-light p-2 text-secondary">Patient Bills</h3>	<div class="table-responsive">
+		<table class="table table-bordered bg-secondary text-light">
 			<thead class="thead-light">
 				<tr>
 					<th>Patient ID</th>

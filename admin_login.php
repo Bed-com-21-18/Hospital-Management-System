@@ -23,7 +23,7 @@ include 'admin_logindb.php';
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="text-center">ADMIN LOGIN</h4>
+                        <h4 class="text-center text-secondary">ADMIN LOGIN</h4>
                     </div>
                     <div class="card-body">
                         <form action="admin_logindb.php" method="POST">

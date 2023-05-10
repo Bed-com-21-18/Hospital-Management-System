@@ -25,6 +25,9 @@
                 <div class="collapse navbar-collapse" id="navmenu">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
+                            <a href="home.php" class="nav-link"> Home</a>
+                        </li>
+                        <li class="nav-item">
                             <a href="dashboard.php" class="nav-link"> Dashboard</a>
                         </li>
                         <li class="nav-item dropdown">

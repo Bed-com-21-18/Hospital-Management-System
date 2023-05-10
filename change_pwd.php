@@ -50,7 +50,7 @@
                                 <input type="password" name="confirm_pwd" class="form-control"/>
                             </div>
                             <div class="form-group mb-3 text-center p-2">
-                                <button type="submit" class="btn btn-primary">Change</button>
+                                <button type="submit" class="btn btn-info">Change</button>
                             </div>
                         </form>
                     </div>

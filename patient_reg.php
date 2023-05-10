@@ -25,13 +25,13 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid  bg-light">
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <b><h2 class="text-center text-dark mt-2">
-                  Patient Registration 
+                  Patient Registration Records
                 </h2></b>
-                <hr>
+        
 
                 <?php if(isset($_SESSION['response'])){ ?>
                 <div class="alert alert-<?= $_SESSION['res_type']; ?> alert-dismissible text-center">
@@ -42,9 +42,8 @@
                  
             </div>
         </div>
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-md-4">
-            <h3 class="text-center text-info">Register New Patient</h3>
             <form action="patient_reg_action.php" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                 <input type = "text" name="name" class="form-control" placeholder="Enter Full Name" required>
@@ -52,11 +51,11 @@
                 <div class="form-group">
                 <input type = "date" name="date" class="form-control" placeholder="Enter DoB" required>
                 <label for="male"><b>Gender:  </b></label>
-                <label for="female">Female</label>
-                <input type="radio" id="Female" name="gender" value="Female">
+                <label for="female" >Female</label>
+                <input type="radio" id="Female" name="gender" value="Female" required>
 
                 <label for="male">Male</label>
-                <input type="radio" id="Male" name="gender" value="Male">
+                <input type="radio" id="Male" name="gender" value="Male" required>
 
                 </div>
                 <div class="form-group">
@@ -73,84 +72,24 @@
                 <input type = "text" name="residential" class="form-control" placeholder="Enter Residential Address" required>
                 </div>
                 <input type="submit" name="add" class="btn btn-primary btn-block" value="Register">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                
+               
             </form>
-            </div>
-            <div class="col-md-8">
-
-                <?php 
-              // Connect to the database
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "hms";
-                $conn = new mysqli($servername, $username, $password, $dbname);
-
-                // Check connection
-                if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-                }
-                $query= "SELECT * FROM patient ORDER by id DESC";
-                $stmt= $conn-> prepare($query);
-                $stmt->execute();
-                $result= $stmt ->get_result();
-                ?>
-            <h3 class="text-center text-info">Patients Records</h3>
-             <p>Type first names, last names or emails to search:</p>  
-                <input class="form-control" id="myInput" type="text" placeholder="Search..">
-                <br>                  
-                        
-            <table class="table table-bordered table-striped">
-                    <thead>
-                    <tr>
-                        <th>Patient ID</th>
-                        <th>Name</th>
-                        <th>Date of Birth</th>
-                        <th>Age</th>
-                        <th>Gender</th>
-                        <th>Phone No.</th>
-                        <th>Home  Village</th>
-                        <th>Residential</th>
-
-                    </tr>
-                    </thead>
-                    <tbody id = "myTable">
-                        <?php while ($row= $result->fetch_assoc()){ ?>
-
-                        
-                    <tr>
-                        <td><?= $row['id']; ?></td>
-                        <td><?= $row['name']; ?></td>
-                        <td><?= $row['date']; ?></td>
-                        <td><?= $row['age']; ?></td>
-                        <td><?= $row['gender']; ?></td>
-                        <td><?= $row['phoneNumber']; ?></td>
-                        <td><?= $row['village']; ?></td>
-                        <td><?= $row['residential']; ?></td>
-
-
-                    </tr>
-                        <?php } ?>
-                    
-                    
-                    </tbody>
-                </table>
-            </div>
             
-        </div>  
-    </div>
 
-                    <script>
-                        $(document).ready(function(){
-                        $("#myInput").on("keyup", function() {
-                            var myInput = $(this).val().toLowerCase();
-                            $("#myTable tr").filter(function() {
-                            $(this).toggle($(this).text().toLowerCase().indexOf(myInput) > -1)
-                            });
-                        });
-                        });
-                        </script>
+
+           
 </body>
-<?php 
- include 'footer.php'; ?>   
+ 
 
 </html>

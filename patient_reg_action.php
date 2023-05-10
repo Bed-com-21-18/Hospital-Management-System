@@ -30,7 +30,7 @@ if(isset($_POST['add'])){
     $stmt=$conn->prepare($query);
     $stmt-> bind_param ('sssdssss', $name, $date, $gender, $age, $phoneNumber, $district, $village, $residential);
     $stmt->execute();
-    header('location:patient_reg.php');
+    header('location:patient_list_user.php');
     $_SESSION['response']= "Successfully Added a Patient!!!";
     $_SESSION['res_type']= "success";
 }

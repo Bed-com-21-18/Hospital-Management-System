@@ -34,10 +34,10 @@
                     
                         <div class="card-body text-center">
                             <div class="h1 mb-3">
-                                <i class="bi bi-person-fill text-primary"></i>
+                                <i class="bi bi-people-fill text-primary"></i>
                             </div>
-                            <h3 class="card-title mb-3 text-primary">Prescription</h3>
-                            <a href="priscribe_form.php" class="btn btn-primary">Proceed</a>
+                            <h3 class="card-title mb-3 text-primary">Appointments</h3>
+                            <a href="view_appointment.php" class="btn btn-primary">Proceed</a>               
                         </div>
                     </div>
                 </div>
@@ -46,10 +46,10 @@
                     
                         <div class="card-body text-center">
                             <div class="h1 mb-3">
-                                <i class="bi bi-people-fill text-primary"></i>
+                                <i class="bi bi-person-fill text-primary"></i>
                             </div>
-                            <h3 class="card-title mb-3 text-primary">Appointments</h3>
-                            <a href="view_appointment.php" class="btn btn-primary">proceed</a>               
+                            <h3 class="card-title mb-3 text-primary">Prescription</h3>
+                            <a href="priscribe_form.php" class="btn btn-primary">Proceed</a>
                         </div>
                     </div>
                 </div>
@@ -68,6 +68,8 @@
                 
             </div>
         </div>
+        <br>
+        <br><br><br><br>
     </section>
 
     </div>

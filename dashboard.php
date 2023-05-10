@@ -33,91 +33,88 @@
             <div class="row text g-9">
            
                 
-                <div class="col-md">
+                <div class="col-md-4">
                     <div class="card text-dark">
                     
                         <div class="card-body text-center">
                             <div class="h1 mb-3">
-                                <i class="bi bi-graph-up text-primary"></i>
+                                <i class="bi bi-graph-up text-secondary"></i>
                             </div>
-                            <h3 class="card-title mb-3 text-primary">Bills</h3>
+                            <h3 class="card-title mb-3 text-secondary">Bills</h3>
                             <p class="card-text">
-                            See the bills within the system
-
-                        
+                            See the bills within the system                        
                             </p>
-                            <a href="bills.php" class="btn btn-primary">Proceed</a>
+                            <a href="bills.php" class="btn btn-primary">Manage Bills</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md">
+                <div class="col-md-4">
                     <div class="card text-dark">`
                     
                         <div class="card-body text-center">
                             <div class="h1 mb-3">
-                                <i class="bi bi-graph-up text-primary"></i>
+                                <i class="bi bi-graph-up text-secondary"></i>
                             </div>
-                            <h3 class="card-title mb-3 text-primary">Drugs</h3>
-                            <a href="Bilings/add_drug.php" class="btn btn-primary">Add drug</a>
-                            <p class="card-text">Add new drug</p> 
-                             <a href="Bilings/update_drug.php" class="btn btn-primary">Update drug</a>
-                             <p class="card-text">Update drug data</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md">
-                    <div class="card text-dark">
-                    
-                        <div class="card-body text-center">
-                            <div class="h1 mb-3">
-                                <i class="bi bi-graph-up text-primary"></i>
-                            </div>
-                            <h3 class="card-title mb-3 text-primary">Patients</h3>
-                            <p class="card-text">Patient list
-
+                            <h3 class="card-title mb-3 text-secondary">Drugs</h3>
+                            <p class="card-text">Add new drug   
                             </p>
-                            <a href="patient_list.php" class="btn btn-primary">Patient list</a>
+                            <a href="Bilings/add_drug.php" class="btn btn-primary">Manage Drugs</a> 
                         </div>
                     </div>
                 </div>
-                <div class="col-md">
+                <br>
+
+
+                <div class="col-md-4">
                     <div class="card text-dark">
                     
                         <div class="card-body text-center">
                             <div class="h1 mb-3">
-                                <i class="bi bi-people-fill text-primary"></i>
+                                <i class="bi bi-graph-up text-secondary"></i>
                             </div>
-                            <h3 class="card-title mb-3 text-primary">Doctors</h3>
+                            <h3 class="card-title mb-3 text-secondary">Patients</h3>
+                            <p class="card-text">Patient list</p>
+                            <a href="patient_list.php" class="btn btn-primary">Manage Patients</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-dark">
+                    
+                        <div class="card-body text-center">
+                            <div class="h1 mb-3">
+                                <i class="bi bi-people-fill text-secondary"></i>
+                            </div>
+                            <h3 class="card-title mb-3 text-secondary">Doctors</h3>
                             <p class="card-text">Register, view or delete doctor</p>
-                                <a href="doctor_reg.php" class="btn btn-primary">Manage</a>                    
+                                <a href="doctor_reg.php" class="btn btn-primary">Manage Doctors</a>                    
                         </div>
                     </div>
                 </div>
-                <div class="col-md">
+                <div class="col-md-4">
                     <div class="card text-dark">
                     
                         <div class="card-body text-center">
                             <div class="h1 mb-3">
-                                <i class="bi bi-people text-primary"></i>
+                                <i class="bi bi-people text-secondary"></i>
                             </div>
-                            <h3 class="card-title mb-3 text-primary">Admins</h3>
+                            <h3 class="card-title mb-3 text-secondary">Admins</h3>
                             <p class="card-text">Register, view or delete admin</p>
-                            <a href="admin_reg.php" class="btn btn-primary">manage</a>
+                            <a href="admin_reg.php" class="btn btn-primary">Manage Admins</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md">
+                <div class="col-md-4">
                     <div class="card text-dark">
                     
                         <div class="card-body text-center">
                             <div class="h1 mb-3">
-                                <i class="bi bi-people text-primary"></i>
+                                <i class="bi bi-people text-secondary"></i>
                             </div>
-                            <h3 class="card-title mb-3 text-primary">Other Users</h3>
+                            <h3 class="card-title mb-3 text-secondary">Other Users</h3>
                             <p class="card-text">Register, view or delete user</p>
-                            <a href="user_reg.php" class="btn btn-primary">manage</a>
+                            <a href="user_reg.php" class="btn btn-primary">Manage users</a>
                         </div>
                     </div>
                 </div>

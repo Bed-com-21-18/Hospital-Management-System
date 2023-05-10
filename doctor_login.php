@@ -20,11 +20,11 @@ include 'doctor_logindb.php';
         ?>
         
          <!--Form-->
-        <div class="row justify-content-center p-5 bg-light">
+        <div class="row justify-content-center p-5">
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="text-center">DOCTOR LOGIN</h4>
+                        <h4 class="text-center text-secondary">DOCTOR LOGIN</h4>
                     </div>
                     <div class="card-body">
                         <form action="doctor_logindb.php" method="POST">

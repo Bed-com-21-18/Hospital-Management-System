@@ -1,7 +1,7 @@
 
 <?php
  session_start();
-            include "dnavbar.php";
+            include "unavbar.php";
         ?>
         <!DOCTYPE html>
 <html lang="en">
@@ -42,8 +42,6 @@
           $medical_history = $_POST["medical-history"]; // This is an array
           $symptoms = $_POST["symptoms"]; // This is an array
           $others = $_POST["others"];
-          $appoint_id = $_POST["appoint_id"];
-          
           // Store the symptoms and patient ID in session
           $_SESSION["symptoms"] = $symptoms;
           $_SESSION["patient_id"] = $patient_id;

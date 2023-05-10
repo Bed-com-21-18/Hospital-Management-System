@@ -1,5 +1,9 @@
 <?php  session_start();
-  include "dnavbar.php";
+  $patient_id =  $_SESSION['patient_id']; 
+  $name = $_SESSION['name'];
+
+  include "unavbar.php";
+  
         ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,17 +19,19 @@
   }
   </script>
 <body>
-  <br>
+    <br>
   <!-- prescription form -->
   <div class="container bg-light">
     <h3>Prescribe Patient</h3>
-    <form method="POST" action="prescribe.php">
+    <form method="POST" action="user_prescribe.php">
+    <p>The patient ID registered recently </b>is: <b><?php echo "$patient_id"?></b></p>
+          
       <div class="form-group">
-        <input type="text" class="form-control" id="appoint_id" name="appoint_id" placeholder="Appointment Number" required><br>
       <input type="text" class="form-control" id="patient_id" name="patient_id" placeholder="Patient ID" required> 
       </div>
       <div class="form-group" method="POST" >
         <label for="medical-history"><b>Medical History:</b></label><br>
+        <p><i><b>please tick the comprehensive record of a patient's past and present medical conditions</i></b></p>
         <input type="checkbox" name="medical-history[]" value="Diabetes"> Diabetes&nbsp;
         <input type="checkbox" name="medical-history[]" value="High Blood Pressure"> High Blood Pressure&nbsp;
         <input type="checkbox" name="medical-history[]" value="Pregnancy"> Pregnancy&nbsp;
@@ -69,13 +75,12 @@
         <div class="form-group" method="POST" >
           <label for="others"><b>Others:</b></label>
           <textarea class="form-control" id="others" name="others" rows="1" ></textarea>
-        </div> 
-        <br>       
+        </div>          
         <button type="submit" class="btn btn-primary">Prescribe</button> &nbsp;&nbsp;&nbsp;&nbsp;
       <button onclick="goBack()" class="btn btn-secondary">Go Back</button>
     </form>
   </div>
-
+  
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

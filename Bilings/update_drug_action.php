@@ -37,23 +37,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
     if ($check_result->num_rows > 0) {
         // Update the drug in the database
-        $sql = "INSERT INTO drug  (drug_name = '$drug_name', symptoms = '$symptoms', drug_price = '$drug_price', drug_price2 = '$drug_price2', dosage = '$dosage', dosage2 = '$dosage2', status = '$status' WHERE drug_name = '$drug_name')";
-          
+        $sql = "UPDATE drug SET symptoms = '$symptoms', drug_price = '$drug_price', drug_price2 = '$drug_price2', dosage = '$dosage', dosage2 = '$dosage2', status = '$status' WHERE drug_name = '$drug_name'";
         if ($conn->query($sql) === TRUE) {
-            echo "Drug inserted successfully!";
-        } else {
-            echo "Error updating drug: " . $conn->error;
+            header('location: update_success.php');
+            exit; // Exit to prevent further execution
         }
-          
+        else {
+            header('location: update_unsuccess.php');
+            exit; // Exit to prevent further execution
+        }
     } else {
-        // Insert the drug into the database
-        $sql = "INSERT INTO drug (drug_name, symptoms, drug_price, drug_price2, dosage, dosage2, status) VALUES ('$drug_name', '$symptoms', '$drug_price', '$drug_price2', '$dosage', '$dosage2', '$status')";
-          
-        if ($conn->query($sql) === TRUE) {
-            echo "Drug added successfully!";
-        } else {
-            echo "Error adding drug: " . $conn->error;
-        }
+        // Drug doesn't exist in the database
+        header('location: update_unsuccess.php');
+        exit; // Exit to prevent further execution
     }
 }
 
