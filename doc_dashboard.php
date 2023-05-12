@@ -48,8 +48,8 @@
                             <div class="h1 mb-3">
                                 <i class="bi bi-person-fill text-primary"></i>
                             </div>
-                            <h3 class="card-title mb-3 text-primary">Prescription</h3>
-                            <a href="priscribe_form.php" class="btn btn-primary">Proceed</a>
+                            <h3 class="card-title mb-3 text-primary">Manage Nurses</h3>
+                            <a href="" class="btn btn-primary">Proceed</a>
                         </div>
                     </div>
                 </div>
@@ -60,8 +60,8 @@
                             <div class="h1 mb-3">
                                 <i class="bi bi-people text-primary"></i>
                             </div>
-                            <h3 class="card-title mb-3 text-primary">Register patient</h3>
-                            <a href="patient_reg.php" class="btn btn-primary">proceed</a>
+                            <h3 class="card-title mb-3 text-primary">Manage Medicine</h3>
+                            <a href="" class="btn btn-primary">proceed</a>
                         </div>
                     </div>
                 </div>

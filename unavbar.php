@@ -28,7 +28,7 @@
                             <a href="home.php" class="nav-link bi bi-house-fill"> Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="nurse_dashboard.php" class="nav-link"> Services</a>
+                            <a href="nurse_dashboard.php" class="nav-link"> Modules</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle bi bi-person-fill" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

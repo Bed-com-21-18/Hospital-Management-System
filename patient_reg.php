@@ -46,18 +46,17 @@
             <div class="col-md-4">
             <form action="patient_reg_action.php" method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                <input type = "text" name="name" class="form-control" placeholder="Enter Full Name" required>
+                    <input type = "text" name="name" class="form-control" placeholder="Enter Full Name" required>
                 </div>
                 <div class="form-group">
-                <label for="female" >Fill Date of Birth</label>
-                <input type = "date" name="date" class="form-control" placeholder="Enter DoB" required>
-                <label for="female" >Female</label>
-                <input type="radio" id="Female" name="gender" value="Female" required>
-
-                <label for="male">Male</label>
-                <input type="radio" id="Male" name="gender" value="Male" required>
-
+                    <input type = "date" name="date" class="form-control" placeholder="Enter DoB" required>
                 </div>
+                <div class="form-group">
+                    <label for="female" >Female</label>
+                    <input type="radio" id="Female" name="gender" value="Female" required>
+                    <label for="male">Male</label>
+                <input type="radio" id="Male" name="gender" value="Male" required>
+                 </div>
                 <div class="form-group">
                 <input type ="tel" name="phoneNumber" class="form-control" placeholder="Enter Phone Number" required>
                 </div>

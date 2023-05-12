@@ -4,7 +4,6 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $patient_id = $_POST['patient_id'];
-  $_SESSION['patient_id'] = $_POST['patient_id'];
   $date = $_POST['date'];
   $time = $_POST['time'];
   $professional = $_POST['professional'];
@@ -43,20 +42,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <br><button class="btn btn-danger" onclick="history.back()">Go Back</button>
     </div>';
   } else {
-    // Prepare the SQL query to insert the appointment data into the database
-    $sql = "INSERT INTO appointments (patient_id, date, time, professional, reason, booked_by, booked_at) 
-            VALUES (?, ?, ?, ?, ?, ?, ?)";
+// Prepare the SQL query to insert the appointment data into the database
+$sql = "INSERT INTO appointments (patient_id, date, time, professional, reason, booked_by, booked_at) 
+        VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-    // Bind the parameters and execute the SQL query
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssssss", $patient_id, $date, $time, $professional, $reason, $username, $booked_at);
+// Create a prepared statement
+$stmt = $conn->prepare($sql);
+
+// Bind the parameters
+$stmt->bind_param("sssssss", $patient_id, $date, $time, $professional, $reason, $username, $booked_at);
+
+// Execute the SQL query
+$stmt->execute();
 
     if ($stmt->execute()) {
       // Redirect the user to the dashboard page upon successful appointment booking
      
       header("Location: book_app_success.php");
-      $_SESSION['patient_id'] = $_POST['patient_id'];
-      $_SESSION['patient_id'] = $patient_id;
       exit;
     } else {
       // Display an error message if the appointment booking failed

@@ -1,7 +1,7 @@
 <?php  session_start();
-  $patient_id =  $_SESSION['patient_id']; 
+ 
   include "unavbar.php";
-  
+  include "comfig.php";
         ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,34 +17,57 @@
   }
   </script>
 <body>
-    <br>
+   
+            <div class="container">
+                <h3 class="text-center bg-light text-secondary">Prescription</h3>
+            </div>
+    
   <!-- prescription form -->
   <div class="container bg-light">
-    <h3>Prescribe Patient</h3>
-    <form method="POST" action="user_prescribe.php">
-    <p>The patient ID registered recently </b>is: <b><?php echo "$patient_id"?></b></p>
-          
-      <div class="form-group">
-      <input type="text" class="form-control" id="patient_id" name="patient_id" placeholder="Patient ID" required> 
-      </div>
-      <div class="form-group" method="POST" >
-        <label for="medical-history"><b>Medical History:</b></label><br>
-        <p><i><b>please tick the comprehensive record of a patient's past and present medical conditions</i></b></p>
-        <input type="checkbox" name="medical-history[]" value="Diabetes"> Diabetes&nbsp;
-        <input type="checkbox" name="medical-history[]" value="High Blood Pressure"> High Blood Pressure&nbsp;
-        <input type="checkbox" name="medical-history[]" value="Pregnancy"> Pregnancy&nbsp;
-        <input type="checkbox" name="medical-history[]" value="Asthma"> Asthma&nbsp;
-        <input type="checkbox" name="medical-history[]" value="Heart Disease"> Heart Disease<br>
-        <input type="checkbox" name="medical-history[]" value="Lung Disease"> Lung Disease&nbsp;
-        <input type="checkbox" name="medical-history[]" value="Cancer"> Cancer&nbsp;
-        <input type="checkbox" name="medical-history[]" value="Kidney Disease"> Kidney Disease&nbsp;
-        <input type="checkbox" name="medical-history[]" value="Liver Disease"> Liver Disease<br>
-        <input type="checkbox" name="medical-history[]" value="Thyroid Problems"> Thyroid Problems&nbsp;
-        <input type="checkbox" name="medical-history[]" value="Autoimmune Disease"> Autoimmune Disease&nbsp;
-    </div>
-      <div class="form-group" method="POST" >
+    
+    <form method="POST" action="user_prescribe.php"> 
+      <?php
+    if(isset($_GET['view'])){
+  $id = $_GET['view'];
+  $sql2 = "SELECT * FROM patient WHERE id='$id'";
+  $result2 = $mysqli->query($sql2);
+
+      $row = $result2->fetch_assoc();
+      $id = $row['id'];
+      $name = $row['name'];
+      $age = $row['age'];
+      $date = $row['gender'];     
+  
+} ?>
+                <hr>
+                        <table class="table table-hover" style="overflow:auto">
+                            <thead class="table table-hover">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Age</th>
+                                    <th>Gender</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id = "myTable">
+                           
+                                <tr>
+                                    <td><?php echo $row['name']; ?></td>
+                                    <td><?php echo $row['age']; ?></td> 
+                                    <td><?php echo $row['gender']; ?></td> 
+                                    <td class="btn-group btn-group-justified">                                       
+                                         <a href="book_appointment.php?book=<?php echo $row["id"]; ?>" class="badge text-light bg-primary mx-1">Book Appointment</a>
+                                        <a href="view_history.php?history=<?php echo $row["id"]; ?>" class="badge text-light bg-secondary">View History</a>
+                                    </td>
+                                </tr>
+                          
+                            </tbody>
+                        </table>
+                        
         <div class="form-group" method="POST" >
-          <label for="symptoms"><b>Symptoms:</b></label><br>
+        <input type="hidden" class="form-control" value="<?= $id; ?>" id="patient_id" name="patient_id" placeholder="Patient ID" required> 
+ 
+          <label for="symptoms"><b>Primary Diagnosis:</b></label><br>
           <p><i><b>please tick physical or mental manifestations experienced by an individual that indicate the presence of a disease</i></b></p>
           <input type="checkbox" name="symptoms[]" value="Fever"> Fever &nbsp;
           <input type="checkbox" name="symptoms[]" value="Cough"> Cough &nbsp;
@@ -74,7 +97,7 @@
           <label for="others"><b>Others:</b></label>
           <textarea class="form-control" id="others" name="others" rows="1" ></textarea>
         </div>          
-        <button type="submit" class="btn btn-primary">Prescribe</button> &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="submit" class="btn btn-primary">Proceed</button> &nbsp;&nbsp;&nbsp;&nbsp;
       <button onclick="goBack()" class="btn btn-secondary">Go Back</button>
     </form>
   </div>

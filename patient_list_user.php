@@ -11,8 +11,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<!-- Responsive meta tag -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
             $(document).ready(function(){
             $("#myInput").on("keyup", function() {
                 var value = $(this).val().toLowerCase();
@@ -22,12 +22,37 @@
             });
             });
         </script>
+</head>
 <body>
 <?php
-            include "anavbar.php";
+            include "unavbar.php";
         ?>
+   <!--NavBar-->
+   <nav class="navbar navbar-expand py-3"style="background-color:#F1F6F9;" >
+            <div class="container">
+			<h5 class="navbar-brand"> Patient List</h5>
+                <button 
+                class="navbar-toggler" 
+                type="button" 
+                data-bs-toggle="collapse" 
+                data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+                </button>     
+
+                <div class="collapse navbar-collapse" id="navmenu">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item dropdown">
+                                <!-- search -->
+                        <input class="form-control me-1" id="myInput" style="width:100%; max-width:20rem" type="text" placeholder="Search" aria-label="Search">             
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
 	<div class="container">
-		<h3 class="my-4 text-center bg-light text-secondary p-2">Patients List</h3>	<div class="table-responsive">
+		<div class="table-responsive">
+			 
 		<table class="table table-bordered  bg-secondary text-light">
 			<thead class="thead-light">
 				<tr>
@@ -40,10 +65,11 @@
 					<th>District</th>
 					<th>Village</th>
 					<th>Residential</th>
+					<th>Action</th>
 					</tr>
 			</thead>
 
-			<tbody>
+			<tbody  id = "myTable">
 				<?php
 				// Connect to the database
 				$conn = new mysqli("localhost", "root", "", "hms");
@@ -66,19 +92,22 @@
 
 				// Display patient information in table rows
 				if ($result->num_rows > 0) {
-					while ($row = $result->fetch_assoc()) {
-						echo "<tr>";
-						echo "<td>" . $row["id"] . "</td>";
-						echo "<td>" . $row["name"] . "</td>";
-						echo "<td>" . $row["date"] . "</td>";
-						echo "<td>" . $row["age"] . "</td>";
-						echo "<td>" . $row["gender"] . "</td>";
-						echo "<td>" . $row["phoneNumber"] . "</td>";
-						echo "<td>" . $row["district"] . "</td>";
-						echo "<td>" . $row["village"] . "</td>";
-						echo "<td>" . $row["residential"] . "</td>";
-						echo "</tr>";
-                        ;
+					while ($row = $result->fetch_assoc()) { ?>
+						 <tr>
+							<td><?php echo $row["id"]; ?></td>
+							<td><?php echo $row["name"]; ?></td>
+							<td><?php echo $row["date"]; ?></td>
+							<td><?php echo $row["age"]; ?></td>
+							<td><?php echo $row["gender"]; ?></td>
+							<td><?php echo $row["phoneNumber"]; ?></td>
+							<td><?php echo $row["district"]; ?></td>
+							<td><?php echo $row["village"]; ?></td>
+							<td><?php echo $row["residential"]; ?></td>
+							<td class='btn-group btn-group-justified'>                                    
+									<a href='user_priscribe_form.php?view=<?php echo $row["id"]; ?>' class='badge bg-success'>Proceed</a>
+							</td>
+						</tr>
+                      <?php  
 					}
 				} else {
 					echo "<tr><td colspan='12' class='text-center'>No patients found</td></tr>";
@@ -90,9 +119,7 @@
 				?>
 
 			</tbody>
-		</table>
-        <a href="book_appointment.php" class="btn btn-primary">Book an Appointment</a>  
-        <a href="user_priscribe_form.php" class="btn btn-primary">Precribe Patient</a>             
+		</table>             
 	</div>
 </div>
    

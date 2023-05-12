@@ -31,54 +31,6 @@
     <section class="p-5"> 
         <div class="container">
             <div class="row text g-9">
-           
-                
-                <div class="col-md-4">
-                    <div class="card text-dark">
-                    
-                        <div class="card-body text-center">
-                            <div class="h1 mb-3">
-                                <i class="bi bi-graph-up text-secondary"></i>
-                            </div>
-                            <h3 class="card-title mb-3 text-secondary">Bills</h3>
-                            <p class="card-text">
-                            See the bills within the system                        
-                            </p>
-                            <a href="bills.php" class="btn btn-primary">Manage Bills</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card text-dark">`
-                    
-                        <div class="card-body text-center">
-                            <div class="h1 mb-3">
-                                <i class="bi bi-graph-up text-secondary"></i>
-                            </div>
-                            <h3 class="card-title mb-3 text-secondary">Drugs</h3>
-                            <p class="card-text">Add new drug   
-                            </p>
-                            <a href="Bilings/add_drug.php" class="btn btn-primary">Manage Drugs</a> 
-                        </div>
-                    </div>
-                </div>
-                <br>
-
-
-                <div class="col-md-4">
-                    <div class="card text-dark">
-                    
-                        <div class="card-body text-center">
-                            <div class="h1 mb-3">
-                                <i class="bi bi-graph-up text-secondary"></i>
-                            </div>
-                            <h3 class="card-title mb-3 text-secondary">Patients</h3>
-                            <p class="card-text">Patient list</p>
-                            <a href="patient_list.php" class="btn btn-primary">Manage Patients</a>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-md-4">
                     <div class="card text-dark">
                     

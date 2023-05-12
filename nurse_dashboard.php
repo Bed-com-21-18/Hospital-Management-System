@@ -26,39 +26,96 @@
     <!-- side bar -->
 
              <!--Cards-->
-     <section class="p-5 bg-secondary"> 
-    <div class="container">
+     <section class="bg-secondary"> 
+        <h4 class="bg-light p-2 text-center text-secondary">Modules</h4>
+    <div class="container p-4">
         <div class="row text-center g-4">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card text-dark flex-fill">
                     <div class="card-body text-center">
                         <div class="h1 mb-3">
                             <i class="bi bi-people-fill text-primary"></i>
                         </div>
-                        <h3 class="card-title mb-3 text-primary">View Patient List</h3>
-                        <a href="patient_list.php" class="btn btn-primary">Patient list</a>
+                        <h4 class="card-title mb-3 text-primary">Patients registration</h4>
+                        <a href="patient_reg.php" class="btn btn-primary">proceed</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card text-dark flex-fill">
                     <div class="card-body text-center">
                         <div class="h1 mb-3">
                             <i class="bi bi-people-fill text-primary"></i>
                         </div>
-                        <h3 class="card-title mb-3 text-primary">Book Appointment</h3>
-                        <a href="book_appointment.php" class="btn btn-primary">proceed</a>                   
+                        <h3 class="card-title mb-3 text-primary">Outpatient</h3>
+                        <a href="patient_list_user.php" class="btn btn-primary">proceed</a>                   
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card text-dark flex-fill">
                     <div class="card-body text-center">
                         <div class="h1 mb-3">
                             <i class="bi bi-people text-primary"></i>
                         </div>
-                        <h3 class="card-title mb-3 text-primary">Register patient</h3>
-                        <a href="patient_reg.php" class="btn btn-primary">proceed</a>
+                        <h3 class="card-title mb-3 text-primary">Inpatients</h3>
+                        <a href="" class="btn btn-primary">proceed</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card text-dark flex-fill">
+                    <div class="card-body text-center">
+                        <div class="h1 mb-3">
+                            <i class="bi bi-people text-primary"></i>
+                        </div>
+                        <h3 class="card-title mb-3 text-primary">Laboratory</h3>
+                        <a href="" class="btn btn-primary">proceed</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-dark flex-fill">
+                    <div class="card-body text-center">
+                        <div class="h1 mb-3">
+                            <i class="bi bi-people text-primary"></i>
+                        </div>
+                        <h3 class="card-title mb-3 text-primary">Pharmacy</h3>
+                        <a href="" class="btn btn-primary">proceed</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-dark flex-fill">
+                    <div class="card-body text-center">
+                        <div class="h1 mb-3">
+                            <i class="bi bi-people text-primary"></i>
+                        </div>
+                        <h3 class="card-title mb-3 text-primary">Finance</h3>
+                        <a href="" class="btn btn-primary">proceed</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-dark flex-fill">
+                    <div class="card-body text-center">
+                        <div class="h1 mb-3">
+                            <i class="bi bi-people text-primary"></i>
+                        </div>
+                        <h3 class="card-title mb-3 text-primary">Cunsultant</h3>
+                        <a href="" class="btn btn-primary">proceed</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-dark flex-fill">
+                    <div class="card-body text-center">
+                        <div class="h1 mb-3">
+                            <i class="bi bi-people text-primary"></i>
+                        </div>
+                        <h3 class="card-title mb-3 text-primary">Radiology</h3>
+                        <a href="" class="btn btn-primary">proceed</a>
                     </div>
                 </div>
             </div>

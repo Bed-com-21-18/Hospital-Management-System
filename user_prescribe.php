@@ -39,7 +39,6 @@
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
           $patient_id = $_POST["patient_id"];
-          $medical_history = $_POST["medical-history"]; // This is an array
           $symptoms = $_POST["symptoms"]; // This is an array
           $others = $_POST["others"];
           // Store the symptoms and patient ID in session
@@ -78,46 +77,6 @@
 
           }
 
-          echo "<h4 class='mb-3'>Section B: Medical History</h4>";
-          echo "<div class='row mb-3'>";
-          echo "<div class='col-sm-12'><strong>Medical History:</strong></div>";
-          echo "<div class='col-sm-12'>";
-          echo "<table class='table table-bordered'>";
-          echo "<tbody>";
-          if (!empty($medical_history)) {
-            // Convert the array of medical history to a comma-separated string
-            $history_string = implode(", ", $medical_history);
-          
-            // Update the patient table with the new history string
-            $update_query = "UPDATE patient SET history='$history_string' WHERE id=$patient_id";
-            // Replace $patient_id with the actual patient ID
-          
-            // Execute the update query
-            if ($conn->query($update_query) === TRUE) {
-              // If the update is successful, display the medical history in a table
-              echo "<tr><td>" . $history_string . "</td></tr>";
-            } else {
-              // If the update fails, display an error message
-              echo "Error updating record: " . $conn->error;
-            }
-          } else {
-            // If no medical history is provided, display a message in the table and clear the history column in the patient table
-            $update_query = "UPDATE patient SET history='' WHERE id=$patient_id";
-            // Replace $patient_id with the actual patient ID
-          
-            // Execute the update query
-            if ($conn->query($update_query) === TRUE) {
-              // If the update is successful, display a message in the table
-              echo "<tr><td>No Medical History</td></tr>";
-            } else {
-              // If the update fails, display an error message
-              echo "Error updating record: " . $conn->error;
-            }
-          }  echo "</tbody>";
-          echo "</table>";
-          echo "</div>";
-          echo "</div>";
-          
           echo "<div class='row mb-3'>";echo "<div class='col-sm-12'><strong>Current Symptoms and its Drugs</strong></div>";
           echo "<div class='col-sm-12'>";
           if (!empty($symptoms)) {
@@ -257,6 +216,8 @@ echo "<button class='btn btn-danger mb-3' onclick='window.history.back()'>Cancel
 echo "</div>";
 
 // Close the database connection
+
+
 $conn->close();
 
 ?>

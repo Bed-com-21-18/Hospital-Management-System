@@ -43,7 +43,7 @@
         $professional = $row['prof'];
 
         // Prepare the SQL query to retrieve appointments
-        $sql = "SELECT * FROM appointments WHERE professional = ? ORDER BY id ASC";
+        $sql = "SELECT * FROM appointments WHERE professional = ? ORDER BY id DESC";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $professional);
         $stmt->execute();
@@ -58,8 +58,7 @@
             echo '<table class="table table-striped table-hover">';
             echo '<thead class="thead-light">';
             echo '<tr>';
-            echo '<th>Appoint No.</th>';
-            echo '<th>Patient ID</th>';
+            echo '<th>Patient Name</th>';
             echo '<th>Date</th>';
             echo '<th>Time</th>';
             echo '<th>Professional</th>';
@@ -67,21 +66,25 @@
             echo '<th>Time / Date Booked</th>';
             echo '<th>Status</th>';
             echo '<th>Reason</th>';
+            echo '<th>Action</th>';
             echo '</tr>';
             echo '</thead>';
             echo '<tbody>';
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo '<tr>';
-                echo '<td>' . $row['id'] . '</td>';
-                echo '<td>' . $row['patient_id'] . '</td>';
-                echo '<td>' . $row['date'] . '</td>';
-                echo '<td>' . $row['time'] . '</td>';
-                echo '<td>' . $row['professional'] . '</td>';
-                echo '<td>' . $row['booked_by'] . '</td>';
-                echo '<td>' . $row['booked_at'] . '</td>';
-                echo '<td>' . $row['status'] . '</td>';
-                echo '<td>' . $row['reason'] . '</td>';
-                echo '</tr>';
+            while ($row = mysqli_fetch_assoc($result)) { ?>
+                <tr>
+                <td><?php echo $row['patient_id'];?></td>
+                <td><?php echo $row['date']; ?> </td>
+                <td><?php echo $row['time']; ?></td>
+                <td><?php echo $row['professional']; ?></td>
+                <td><?php echo $row['booked_by']; ?></td>
+                <td><?php echo $row['booked_at']; ?></td>
+                <td><?php  echo $row['status']; ?></td>
+                <td><?php echo $row['reason']; ?></td>
+                <td class='btn-group btn-group-justfied'>                                      
+                <a href="priscribe_form.php" class='badge bg-primary text-white'>Proceed</a>
+             </td>
+                </tr>
+                <?php
             }
             echo '</tbody>';
             echo '</table>';
@@ -98,7 +101,6 @@
     mysqli_close($conn);
     
     ?>
-    <a href="priscribe_form.php" class="btn btn-primary">Precribe Patient</a>  
   </div>
   <br><br><br><br><br><br><br><br><br><br><br>
 </body>

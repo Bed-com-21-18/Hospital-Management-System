@@ -1,7 +1,9 @@
 <?php 
   session_start();
   $patient_id =  $_SESSION['patient_id']; 
- include 'unavbar.php'; ?>   
+  include "comfig.php";
+ include 'unavbar.php'; ?>  
+  
  <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,16 +84,27 @@ form .error {
   </style>
 </head>
 <body>
+<?php
+    if(isset($_GET['book'])){
+  $id = $_GET['book'];
+  $sql2 = "SELECT * FROM patient WHERE id='$id'";
+  $result2 = $mysqli->query($sql2);
+
+      $row = $result2->fetch_assoc();
+      $id = $row['id'];
+      $name = $row['name'];    
+  
+} ?>
 
   <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-6">
         <form method="post" action="process_appointment.php" class="border p-3 rounded">
           <h1 class="mb-3 text-center"><i class="fas fa-calendar-plus"></i> Booking an appointment</h1>
-          <p>The patient ID registered recently is: <b><?php echo "$patient_id"?></b></p>
           <div class="mb-3">
-            <label for="patient_id" class="form-label"><i class="fas fa-id-card"></i> Patient ID:</label>
-            <input type="number" name="patient_id" id="patient_id" required class="form-control">
+          <input type="hidden" class="form-control" value="<?= $id; ?>" id="patient_id" name="patient_id" placeholder="Patient ID" required> 
+          <h4 class=""> Name: <b><?php echo $row['name']; ?></b></h4>
+
           </div>
           <div class="mb-3">
             <label for="date" class="form-label"><i class="fas fa-calendar-day"></i> Date:</label>
