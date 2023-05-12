@@ -52,7 +52,7 @@
 				if ($conn->connect_error) {
 					die("Connection failed: " . $conn->connect_error);
 				}
-                $query = "SELECT * FROM patient ORDER BY id DESC limit 7";
+                $query = "SELECT * FROM patient ORDER BY id ASC";
                 $stmt = $conn->prepare($query);
                 $stmt->execute();
                 $result = $stmt->get_result();

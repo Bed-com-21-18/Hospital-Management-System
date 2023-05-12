@@ -40,7 +40,7 @@
                             <ul class="dropdown-menu text-center">
                                 <li><a class="dropdown-item" href="dchange_pwd.php">change password</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="logout.php">logout</a></li>
+                                <li><a class="dropdown-item" href="home.php">logout</a></li>
                             </ul>
                         </li>
                     </ul>

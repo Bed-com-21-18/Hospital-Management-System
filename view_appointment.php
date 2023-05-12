@@ -43,7 +43,7 @@
         $professional = $row['prof'];
 
         // Prepare the SQL query to retrieve appointments
-        $sql = "SELECT * FROM appointments WHERE professional = ? ORDER BY id DESC";
+        $sql = "SELECT * FROM appointments WHERE professional = ? ORDER BY id ASC";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $professional);
         $stmt->execute();

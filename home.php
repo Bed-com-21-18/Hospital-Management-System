@@ -22,6 +22,9 @@
             <div class="showcase">
                 <div  class="p-4 text-light text-center">
                     <h1>
+                        HMS
+                    </h1>
+                    <h1>
                         HOSPITAL MANAGEMENT SYSTEM
                     </h1>
                     <hr>
@@ -36,7 +39,7 @@
                             <a href="doctor_login.php"><button class="btn "style="background-color:#EEEEEE;">Doctor Login</button></a>
                         </div>
                         <div class="col-md">
-                            <a href="user_login.php"><button class="btn " style="background-color:#EEEEEE;">Other user Login</button></a>
+                            <a href="user_login.php"><button class="btn " style="background-color:#EEEEEE;"> System user Login</button></a>
                         </div>
                         <div class="col-md">
                             <a href="admin_login.php"><button  class="btn " style="background-color:#EEEEEE;">Admin Login</button></a>

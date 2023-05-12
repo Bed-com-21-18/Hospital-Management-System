@@ -26,67 +26,47 @@
     <!-- side bar -->
 
              <!--Cards-->
-    <section class="p-5 bg-secondary"> 
-        <div class="container">
-            <div class="row text-center g-4">
-                <div class="col-md">
-
-                <div class="card-body text-center">
-                          
-                        </div>
-
-                    <div class="card text-dark">
-                    
+     <section class="p-5 bg-secondary"> 
+    <div class="container">
+        <div class="row text-center g-4">
+            <div class="col-md-4">
+                <div class="card text-dark flex-fill">
                     <div class="card-body text-center">
-                            <div class="h1 mb-3">
-                                <i class="bi bi-people-fill text-primary"></i>
-                            </div>
-                            <h3 class="card-title mb-3 text-primary"></h3>
-                            <a href="patient_list.php" class="btn btn-primary">Patient list</a>
+                        <div class="h1 mb-3">
+                            <i class="bi bi-people-fill text-primary"></i>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md">
-                    <div class="card text-dark">
-                    
-                        <div class="card-body text-center">
-                            <div class="h1 mb-3">
-                                <i class="bi bi-people-fill text-primary"></i>
-                            </div>
-                            <h3 class="card-title mb-3 text-primary">Book Appointment</h3>
-                            <a href="book_appointment.php" class="btn btn-primary">proceed</a>                   
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md">
-                    <div class="card text-dark">
-                    
-                        <div class="card-body text-center">
-                            <div class="h1 mb-3">
-                                <i class="bi bi-people text-primary"></i>
-                            </div>
-                            <h3 class="card-title mb-3 text-primary">Register patient</h3>
-                            <a href="patient_reg.php" class="btn btn-primary">proceed</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md">
-                    <div class="card text-dark">
-                    
-                        <div class="card-body text-center">
-                            <div class="h1 mb-3">
-                                <i class="bi bi-people text-primary"></i>
-                            </div>
-                            <h3 class="card-title mb-3 text-primary">Register patient</h3>
-                            <a href="patient_reg.php" class="btn btn-primary">proceed</a>
-                        </div>
+                        <h3 class="card-title mb-3 text-primary">View Patient List</h3>
+                        <a href="patient_list.php" class="btn btn-primary">Patient list</a>
                     </div>
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="card text-dark flex-fill">
+                    <div class="card-body text-center">
+                        <div class="h1 mb-3">
+                            <i class="bi bi-people-fill text-primary"></i>
+                        </div>
+                        <h3 class="card-title mb-3 text-primary">Book Appointment</h3>
+                        <a href="book_appointment.php" class="btn btn-primary">proceed</a>                   
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-dark flex-fill">
+                    <div class="card-body text-center">
+                        <div class="h1 mb-3">
+                            <i class="bi bi-people text-primary"></i>
+                        </div>
+                        <h3 class="card-title mb-3 text-primary">Register patient</h3>
+                        <a href="patient_reg.php" class="btn btn-primary">proceed</a>
+                    </div>
+                </div>
+            </div>
+           
         </div>
-    </section>
-
     </div>
+</section>
+
   
     <!--Footer-->
     <?php 

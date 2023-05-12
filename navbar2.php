@@ -30,7 +30,7 @@
                             <ul class="dropdown-menu text-center">
                                 <li><a class="dropdown-item" href="admin_login.php">Admin</a></li>
                                 <li><a class="dropdown-item" href="doctor_login.php">Doctor</a></li>
-                                <li><a class="dropdown-item" href="user_login.php">Other users</a></li>
+                                <li><a class="dropdown-item" href="user_login.php">System user</a></li>
                             </ul>
                         </li>
                     </ul>

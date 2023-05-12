@@ -44,7 +44,7 @@
                    }
                   
             }else {
-                header("Location: admin_login.php?error=Incorrect sername or password");
+                header("Location: admin_login.php?error=Incorrect username or password");
                 exit();
             }
         }

@@ -1,7 +1,5 @@
 <?php  session_start();
   $patient_id =  $_SESSION['patient_id']; 
-  $name = $_SESSION['name'];
-
   include "unavbar.php";
   
         ?>

@@ -112,7 +112,7 @@
                             <div class="h1 mb-3">
                                 <i class="bi bi-people text-secondary"></i>
                             </div>
-                            <h3 class="card-title mb-3 text-secondary">Other Users</h3>
+                            <h3 class="card-title mb-3 text-secondary">System User</h3>
                             <p class="card-text">Register, view or delete user</p>
                             <a href="user_reg.php" class="btn btn-primary">Manage users</a>
                         </div>

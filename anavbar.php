@@ -28,7 +28,8 @@
                             <a href="home.php" class="nav-link"> Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="dashboard.php" class="nav-link"> Dashboard</a>
+                            <!-- <a href="dashboard.php" class="nav-link"> Dashboard</a> -->
+                            <a href="dashboard.php" class="nav-link">Dashboard </a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle bi bi-person-fill" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

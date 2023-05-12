@@ -29,7 +29,7 @@
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <b><h2 class="text-center text-dark mt-2">
-                  Patient Registration Records
+                  Patient Registration
                 </h2></b>
         
 
@@ -49,8 +49,8 @@
                 <input type = "text" name="name" class="form-control" placeholder="Enter Full Name" required>
                 </div>
                 <div class="form-group">
+                <label for="female" >Fill Date of Birth</label>
                 <input type = "date" name="date" class="form-control" placeholder="Enter DoB" required>
-                <label for="male"><b>Gender:  </b></label>
                 <label for="female" >Female</label>
                 <input type="radio" id="Female" name="gender" value="Female" required>
 
@@ -82,7 +82,7 @@
                 <br>
                 <br>
                 <br>
-                
+
                
             </form>
             
