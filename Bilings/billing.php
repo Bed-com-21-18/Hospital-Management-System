@@ -47,7 +47,6 @@
             echo "<div class='table-responsive'>";
             echo "<table class='table table-bordered'>";
             echo "<tbody>";
-            echo "<tr><td><strong>ID:</strong></td><td>" . $patient["id"] . "</td></tr>";
             echo "<tr><td><strong>Name:</strong></td><td>" . $patient["name"] . "</td></tr>";
             echo "<tr><td><strong>Phone number:</strong></td><td>" . $patient["phoneNumber"] . "</td></tr>";
             echo "<tr><td><strong>Age:</strong></td><td>" . $patient["age"] . "</td></tr>";
@@ -176,7 +175,7 @@
                       echo "<a href='' class='btn btn-primary'>Print</a>";
                       echo"&nbsp";  echo"&nbsp";  echo"&nbsp";  echo"&nbsp"; 
                       echo"&nbsp";  echo"&nbsp";  echo"&nbsp";  echo"&nbsp"; 
-                      echo "<a href='../doc_dashboard.php' class='btn btn-primary'>GO TO DASHBOARD</a>";
+                      echo "<a href='../nurse_dashboard.php' class='btn btn-primary'>Go to Dashboard</a>";
                     }
                 }
                 

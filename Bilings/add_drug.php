@@ -1,7 +1,4 @@
-<?php
- session_start();
-            include "../anavbar.php";
-        ?>
+
 <!DOCTYPE html>
 <html>
 <head>

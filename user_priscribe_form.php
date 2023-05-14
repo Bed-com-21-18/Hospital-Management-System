@@ -12,8 +12,11 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <script>
-  function goBack() {
-    window.history.back();
+  function send() {
+    <div class="form-group" action="user_prescribe.php" method="POST">
+    <textarea class="form-control" id="lab" name="lab" rows="1" ></textarea>
+          <button type="submit" class="btn btn-primary">Send</button>
+          </div>
   }
   </script>
 <body>
@@ -94,11 +97,15 @@
           <input type="checkbox" name="symptoms[]" value="Skin-rash"> Skin Rash &nbsp;
       </div>
         <div class="form-group" method="POST" >
-          <label for="others"><b>Others:</b></label>
+          <label for="others"><b>Others Symptoms:</b></label>
           <textarea class="form-control" id="others" name="others" rows="1" ></textarea>
-        </div>          
+        </div>
+        
+        <a href="send_to_lab.php?send=<?php echo $row["id"]; ?> " class=" badge text-secondary ">Send Lab Request</a> &nbsp; &nbsp;&nbsp;&nbsp;
+         <a href="View_lab_results.php?view_results=<?php echo $row["id"]; ?>" class=" badge text-secondary">View Lab Results</a>
+        <br>  <br>
         <button type="submit" class="btn btn-primary">Proceed</button> &nbsp;&nbsp;&nbsp;&nbsp;
-      <button onclick="goBack()" class="btn btn-secondary">Go Back</button>
+        <button class='btn btn-secondary' onclick='window.history.back()'> Go Back</button>
     </form>
   </div>
   

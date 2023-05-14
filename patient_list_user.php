@@ -56,7 +56,6 @@
 		<table class="table table-bordered  bg-secondary text-light">
 			<thead class="thead-light">
 				<tr>
-					<th>Patient ID</th>
 					<th>Name</th>
 					<th>Date of Birth</th>
 					<th>Age</th>
@@ -78,23 +77,15 @@
 				if ($conn->connect_error) {
 					die("Connection failed: " . $conn->connect_error);
 				}
-                $query = "SELECT * FROM patient ORDER BY id ASC";
+                $query = "SELECT * FROM patient ORDER BY name ASC";
                 $stmt = $conn->prepare($query);
                 $stmt->execute();
                 $result = $stmt->get_result();
-                
-                // Get the first row from the result set
-                $first_patient = $result->fetch_assoc();
-                
-                // Store the first patient ID in a session variable
-                $_SESSION['patient_id'] = $first_patient['id'];
-                
 
 				// Display patient information in table rows
 				if ($result->num_rows > 0) {
 					while ($row = $result->fetch_assoc()) { ?>
 						 <tr>
-							<td><?php echo $row["id"]; ?></td>
 							<td><?php echo $row["name"]; ?></td>
 							<td><?php echo $row["date"]; ?></td>
 							<td><?php echo $row["age"]; ?></td>

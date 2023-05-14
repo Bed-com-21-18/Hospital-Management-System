@@ -37,7 +37,7 @@
                             <i class="bi bi-people-fill text-primary"></i>
                         </div>
                         <h4 class="card-title mb-3 text-primary">Patients registration</h4>
-                        <a href="patient_reg.php" class="btn btn-primary">proceed</a>
+                        <a href="patient_reg.php" class="btn btn-primary">Proceed</a>
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                             <i class="bi bi-people-fill text-primary"></i>
                         </div>
                         <h3 class="card-title mb-3 text-primary">Outpatient</h3>
-                        <a href="patient_list_user.php" class="btn btn-primary">proceed</a>                   
+                        <a href="patient_list_user.php" class="btn btn-primary">Proceed</a>                   
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                             <i class="bi bi-people text-primary"></i>
                         </div>
                         <h3 class="card-title mb-3 text-primary">Inpatients</h3>
-                        <a href="" class="btn btn-primary">proceed</a>
+                        <a href="" class="btn btn-primary">Proceed</a>
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@
                             <i class="bi bi-people text-primary"></i>
                         </div>
                         <h3 class="card-title mb-3 text-primary">Laboratory</h3>
-                        <a href="" class="btn btn-primary">proceed</a>
+                        <a href="" class="btn btn-primary">Proceed</a>
                     </div>
                 </div>
             </div>
@@ -82,7 +82,7 @@
                             <i class="bi bi-people text-primary"></i>
                         </div>
                         <h3 class="card-title mb-3 text-primary">Pharmacy</h3>
-                        <a href="" class="btn btn-primary">proceed</a>
+                        <a href="pharmacy.php" class="btn btn-primary">Proceed</a>
                     </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@
                             <i class="bi bi-people text-primary"></i>
                         </div>
                         <h3 class="card-title mb-3 text-primary">Finance</h3>
-                        <a href="" class="btn btn-primary">proceed</a>
+                        <a href="" class="btn btn-primary">Proceed</a>
                     </div>
                 </div>
             </div>
@@ -104,7 +104,7 @@
                             <i class="bi bi-people text-primary"></i>
                         </div>
                         <h3 class="card-title mb-3 text-primary">Cunsultant</h3>
-                        <a href="" class="btn btn-primary">proceed</a>
+                        <a href="" class="btn btn-primary">Proceed</a>
                     </div>
                 </div>
             </div>
@@ -115,7 +115,7 @@
                             <i class="bi bi-people text-primary"></i>
                         </div>
                         <h3 class="card-title mb-3 text-primary">Radiology</h3>
-                        <a href="" class="btn btn-primary">proceed</a>
+                        <a href="" class="btn btn-primary">Proceed</a>
                     </div>
                 </div>
             </div>

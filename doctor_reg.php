@@ -70,7 +70,7 @@
                                         <option value="<?php echo $_GET['prof']; ?>"><?php echo $_GET['prof']; ?></option>
                                     </select>
                                 <?php } else { ?>
-                                    <select name="prof" class="form-control">
+                                    <select name="prof" required class="form-select">
                                         <option value="">Select Professional</option>
                                         <option value="Cardiologist">Cardiologist</option>
                                         <option value="Radiologist">Radiologist</option>
