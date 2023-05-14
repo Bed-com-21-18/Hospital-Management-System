@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2023 at 07:03 PM
+-- Generation Time: May 14, 2023 at 05:01 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -74,7 +74,7 @@ INSERT INTO `appointments` (`id`, `patient_id`, `date`, `time`, `professional`, 
 (3, 7, '2023-05-03', '18:11:00', 'Cardiologist', 'Cardiac Arrest', 'Chanco', '18:09:29 05-05-2023 ', 'Not Prescribed'),
 (4, 7, '2023-05-18', '20:37:00', 'Physiotherapist', 'Physical Intortion ', 'Charle', '18:37:38 05-05-2023 ', 'Not Prescribed'),
 (5, 1, '2023-05-04', '00:35:00', 'Physiotherapist', 'Physical Dodomental', 'Charle', '18:39:05 05-05-2023 ', 'Prescribed by Joe Viola'),
-(6, 7, '2023-05-04', '00:35:00', 'Surgeon', 'Tione Zammimba', 'Charle Cee', '19:43:28 05-05-2023 ', 'Not Prescribed'),
+(6, 7, '2023-05-04', '00:35:00', 'Surgeon', 'Tione Zammimba', 'Charle Cee', '19:43:28 05-05-2023 ', 'Prescribed by Charle Cee'),
 (7, 4, '2023-05-05', '21:56:00', 'Neurologist', 'ithjpto[kpferi', 'Charle', '19:55:34 05-05-2023 ', 'Prescribed by Omexie Gumba'),
 (9, 2, '2023-05-07', '09:08:00', 'Surgeon', 'Broken Leg', 'Omexie Gumba', '09:09:32 06-05-2023 ', 'Prescribed by Charle Cee'),
 (10, 5, '2023-05-06', '10:48:00', 'Surgeon', 'hfhfmhfmff', 'Charle', '10:49:27 06-05-2023 ', 'Prescribed by Charle Cee'),
@@ -96,7 +96,8 @@ INSERT INTO `appointments` (`id`, `patient_id`, `date`, `time`, `professional`, 
 (26, 9, '2023-05-11', '12:22:00', 'Pediatric', 'Broken Thigh', 'Charle Cee', '00:48:23 07-05-2023 ', NULL),
 (27, 9, '2023-02-12', '12:22:00', 'Gastroenterologist', 'QHTEJRYUTIY,MNDBSVASAD X', 'Charle Cee', '16:01:43 07-05-2023 ', NULL),
 (28, 12, '2023-05-07', '20:47:00', 'Gastroenterologist', 'URGENT ATTENTION', 'matilda', '20:47:30 07-05-2023 ', NULL),
-(29, 1, '2023-05-08', '12:21:00', 'Physiotherapist', 'edrftgyhujuydtfuisru', 'ida', '16:16:12 08-05-2023 ', NULL);
+(29, 1, '2023-05-08', '12:21:00', 'Physiotherapist', 'edrftgyhujuydtfuisru', 'ida', '16:16:12 08-05-2023 ', NULL),
+(30, 13, '2023-05-10', '10:46:00', 'Orthopedic', 'injection', 'Charle Cee', '10:45:29 10-05-2023 ', NULL);
 
 -- --------------------------------------------------------
 
@@ -154,8 +155,8 @@ INSERT INTO `drug` (`drug_name`, `symptoms`, `drug_price`, `drug_price2`, `dosag
 ('Dextromethorphan', 'Cough', 468, '893', '2 morning, afternoon and evening', '1/2 morning, afternoon and evening', 'available'),
 ('Diphenhydramine', 'Pink eye', 345, '623', '1 morning, afternoon and evening', '1 morning, afternoon and evening', 'available'),
 ('Doxcyclin', 'Loss of Appetite Dizziness', 220, '939', '1 morning, afternoon and evening', '1/2 morning, afternoon and evening', 'available'),
-('Guaifenesin', 'Cough', 866, '1323', '2 morning, afternoon and evening', '1/2 morning, afternoon and evening', 'available'),
-('Hedax', 'Fatigue', 868, '1298', '2 morning, afternoon and evening', '1 morning, afternoon and evening', 'available'),
+('Fragel', 'Sneezing, Yelling, Tiredness', 800, '1300', '1 morning, afternoon and evening', '2 morning, afternoon and evening', 'Click to select'),
+('Hedax', 'Sneezing, Yelling', 700, '1100', '1/2 morning, afternoon and evening', '1 morning, afternoon and evening', 'available'),
 ('Ibuprofen', 'Fever, Headache, Muscle aches', 740, '1023', '2 morning, afternoon and evening', '1 morning, afternoon and evening', 'available'),
 ('Indosine', 'Diarrhoea, Allergy', 998, '720', '1 morning, afternoon and evening', '1 morning, afternoon and evening', 'available'),
 ('Intoxcyclin', 'Fatigue, General Body aches,', 870, '1033', '2 morning, afternoon and evening', '1/2 morning, afternoon and evening', 'available'),
@@ -164,6 +165,7 @@ INSERT INTO `drug` (`drug_name`, `symptoms`, `drug_price`, `drug_price2`, `dosag
 ('Oxygen', 'Shortness of breath', 447, '582', '1 morning, afternoon and evening', '1 morning, afternoon and evening', 'available'),
 ('Paracetamol', 'Fever', 451, '656', '2 morning, afternoon and evening', '1/2 morning, afternoon and evening', 'available'),
 ('Parapain', 'Itching', 500, '1000', '1 morning, afternoon and evening', '2 morning, afternoon and evening', 'available'),
+('Parapano', 'Dozing', 600, '700', '1 morning, afternoon and evening', '1 morning, afternoon and evening', 'available'),
 ('Poaxcyclin', 'Loss of Smell, Allergy', 814, '1036', '2 morning, afternoon and evening', '1/2 morning, afternoon and evening', 'available');
 
 -- --------------------------------------------------------
@@ -214,25 +216,28 @@ CREATE TABLE `patient` (
   `prescribed_by` text DEFAULT NULL,
   `prescribed_on` text DEFAULT NULL,
   `total_bills` int(15) DEFAULT NULL,
-  `status` text NOT NULL DEFAULT 'not paid'
+  `status` text NOT NULL DEFAULT 'not paid',
+  `tests` text DEFAULT NULL,
+  `lab_results` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `patient`
 --
 
-INSERT INTO `patient` (`id`, `name`, `date`, `gender`, `age`, `phoneNumber`, `district`, `village`, `residential`, `others`, `symptoms`, `history`, `prescribed_by`, `prescribed_on`, `total_bills`, `status`) VALUES
-(1, 'Chiso Bwanali', '2458-09-09', 'female', 20, 888678728, 'Lilongwe', 'Kabudula', 'Chikanda', 'poiuytrew', 'Shortness of breath, Loss of taste, Diarrhoea', 'Kidney Disease', 'chama', '16:24:35 08-05-2023 ', NULL, 'not paid'),
-(2, 'Chiso Bwanali', '1100-09-02', 'female', 17, 996348737, 'Lilongwe', 'Kachoka', 'Matawale', 'rtkdjrsgeafken', 'Fever', 'High Blood Pressure, Heart Disease, Lung Disease, Liver Disease', 'Omexie Gumba', '10:12:39 05-05-2023 ', NULL, 'not paid'),
-(3, 'Gomboz Tech', '2020-02-02', 'male', 54, 881955791, 'Dowa', 'Kachoka', 'Kalimbuka', 'iiiwer', 'Shortness of breath, Diarrhoea, Itching, Chest Pain', 'High Blood Pressure', 'chama', '22:53:19 08-05-2023 ', NULL, 'not paid'),
-(4, 'Edson Magombo', '2020-08-09', 'male', 19, 997740566, 'Dowa', 'Mponela', 'Nason', 'palibe', 'Cough, Loss of appetite, Diarrhoea', 'Asthma, Liver Disease, Autoimmune Disease', 'Charle Cee', '17:05:26 09-05-2023 ', 4863, 'not paid'),
-(5, 'Avio', '2020-02-02', 'male', 11, 2147483647, 'Phalombe', 'olala', 'Old Naisi', 'Malungo', 'Diarrhoea, Chest Pain', 'Diabetes, Thyroid Problems', 'Charle Cee', '13:41:06 09-05-2023 ', NULL, 'not paid'),
-(7, 'Mary Banda', '1999-04-07', 'female', 10, 882595892, 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', 'Chibayo', 'Fever, Muscle aches, Nausea, Dizziness', 'Diabetes, Lung Disease', 'Charle Cee', '15:37:02 09-05-2023 ', 8825, 'not paid'),
-(8, 'Maureen', '1998-03-12', 'female', 12, 882595892, 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, NULL, NULL, NULL, NULL, NULL, 'not paid'),
-(9, 'Zione Muliya', '1933-12-12', 'female', 90, 2147483647, 'Bangwe', 'Blantyre', 'Nyambadwe', 'Chibayo', 'Cough, Vomiting, Allergy', 'High Blood Pressure, Cancer', 'Charle Cee', '15:47:20 07-05-2023 ', NULL, 'not paid'),
-(11, 'Charle Cee Graphix', '1988-02-21', 'Female', 35, 882595892, 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, NULL, NULL, NULL, NULL, NULL, 'not paid'),
-(12, 'OMEXIE CHAMA', '1999-12-09', 'Female', 24, 2147483647, 'Phalombe', 'Muwake', 'Zomba', NULL, NULL, NULL, NULL, NULL, NULL, 'not paid'),
-(13, 'mary kama', '2023-05-08', 'Female', 0, 2147483647, 'muwake', 'Muwake', 'Zomba', NULL, NULL, NULL, NULL, NULL, NULL, 'not paid');
+INSERT INTO `patient` (`id`, `name`, `date`, `gender`, `age`, `phoneNumber`, `district`, `village`, `residential`, `others`, `symptoms`, `history`, `prescribed_by`, `prescribed_on`, `total_bills`, `status`, `tests`, `lab_results`) VALUES
+(1, 'Chiso Bwanali', '2458-09-09', 'female', 20, 888678728, 'Lilongwe', 'Kabudula', 'Chikanda', 'poiuytrew', 'Shortness of breath, Loss of taste, Diarrhoea', 'Kidney Disease', 'chama', '16:24:35 08-05-2023 ', NULL, 'not paid', 'Test for TB', NULL),
+(2, 'Chiso Bwanali', '1100-09-02', 'female', 17, 996348737, 'Lilongwe', 'Kachoka', 'Matawale', 'rtkdjrsgeafken', 'Shortness of breath, Loss of appetite, Allergy', 'High Blood Pressure, Cancer', 'Charle Cee', '10:42:47 10-05-2023 ', 4436, 'not paid', 'Test for Malaria and TB', NULL),
+(3, 'Gomboz Tech', '2020-02-02', 'male', 54, 881955791, 'Dowa', 'Kachoka', 'Kalimbuka', 'iiiwer', 'Shortness of breath, Diarrhoea, Itching, Chest Pain', 'High Blood Pressure', 'chama', '22:53:19 08-05-2023 ', NULL, 'not paid', 'Tets for HIV', NULL),
+(4, 'Edson Magombo', '2020-08-09', 'male', 19, 997740566, 'Dowa', 'Mponela', 'Nason', 'palibe', '', 'Asthma, Liver Disease, Autoimmune Disease', 'Charle Cee', '12:24:31 14-05-2023 ', 4863, 'not paid', 'Test for Hiv', NULL),
+(5, 'Avio', '2020-02-02', 'male', 11, 2147483647, 'Phalombe', 'olala', 'Old Naisi', 'Malungo', 'Diarrhoea, Chest Pain', 'Diabetes, Thyroid Problems', 'Charle Cee', '13:41:06 09-05-2023 ', NULL, 'not paid', 'Test for HIV', NULL),
+(7, 'Mary Banda', '1999-04-07', 'female', 10, 882595892, 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', 'Malungo', 'Fever, Muscle aches, Nausea', 'Asthma, Heart Disease, Kidney Disease, Thyroid Problems', 'Charle Cee', '16:09:11 14-05-2023 ', 7886, 'not paid', 'Test for HIV, Malaria and Weight', 'Malaria Negative, HIV Negative, and TB Positive'),
+(8, 'Maureen', '1998-03-12', 'female', 12, 882595892, 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, NULL, NULL, NULL, NULL, NULL, 'not paid', 'Test for HIV and AIDS', NULL),
+(9, 'Zione Muliya', '1933-12-12', 'female', 90, 2147483647, 'Bangwe', 'Blantyre', 'Nyambadwe', 'Chibayo', 'Allergy', 'High Blood Pressure, Cancer', 'Charle Cee', '13:32:01 14-05-2023 ', NULL, 'not paid', 'Tets for Hiv', NULL),
+(11, 'Charle Cee Graphix', '1988-02-21', 'Female', 35, 882595892, 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, NULL, NULL, NULL, NULL, NULL, 'not paid', NULL, NULL),
+(12, 'OMEXIE CHAMA', '1999-12-09', 'Female', 24, 2147483647, 'Phalombe', 'Muwake', 'Zomba', NULL, NULL, NULL, NULL, NULL, NULL, 'not paid', 'Test for Malaria', NULL),
+(13, 'mary kama', '2023-05-08', 'Female', 12, 2147483647, 'muwake', 'Muwake', 'Zomba', NULL, '', NULL, 'Charle Cee', '11:59:57 14-05-2023 ', NULL, 'not paid', 'Test for HIv', NULL),
+(14, 'Gilson Chongo', '1990-05-14', 'Male', 33, 2147483647, 'Bangwe', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, 'Fever, Loss of taste, Pink eye', NULL, 'Charle Cee', '16:30:03 14-05-2023 ', 3923, 'not paid', 'Test for Malaria', 'Malaria results- negative');
 
 -- --------------------------------------------------------
 
@@ -265,7 +270,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `uname`, `prof`, `pwd`) VALUES
 (6, 'matilda', 'Receptionist', 'c20ad4d76fe97759aa27a0c99bff6710'),
-(7, 'ida', 'Clinician', 'c20ad4d76fe97759aa27a0c99bff6710');
+(7, 'ida', 'Clinician', 'c20ad4d76fe97759aa27a0c99bff6710'),
+(8, 'Charle Cee', 'Nurse', '70965feb0441ff7fc1982fc5c509136e');
 
 --
 -- Indexes for dumped tables
@@ -337,7 +343,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `doctor`
@@ -349,7 +355,7 @@ ALTER TABLE `doctor`
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `services`
@@ -361,7 +367,7 @@ ALTER TABLE `services`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
