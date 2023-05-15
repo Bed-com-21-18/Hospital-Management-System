@@ -32,6 +32,7 @@
       <?php
     if(isset($_GET['viewing'])){
   $id = $_GET['viewing'];
+  
   $sql2 = "SELECT * FROM patient WHERE id='$id'";
   $result2 = $mysqli->query($sql2);
 

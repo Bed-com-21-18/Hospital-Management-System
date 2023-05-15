@@ -52,7 +52,6 @@
         // Check if appointments were found
         if ($result->num_rows > 0) {
             // Display appointments in a table
-
             echo '<h1>Appointments List</h1>';
             echo '<div class="table-responsive">';
             echo '<table class="table table-striped table-hover">';
@@ -70,7 +69,10 @@
             echo '</tr>';
             echo '</thead>';
             echo '<tbody>';
-            while ($row = mysqli_fetch_assoc($result)) { ?>
+            while ($row = mysqli_fetch_assoc($result)) { 
+                $id= $row['id'];
+                $_SESSION ['appoint_id'] = $row['id'];
+                ?>
                 <tr>
                 <td><?php echo $row['name'];?></td>
                 <td><?php echo $row['date']; ?> </td>

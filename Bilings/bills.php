@@ -68,7 +68,7 @@
 							   <td><?php echo $row["gender"]; ?></td>
 							   <td><?php echo $row["phoneNumber"]; ?></td>
 							   <td><?php echo $row["prescribed_by"]; ?></td>
-							   <td><?php echo $row["total_bills"]; ?></td>
+							   <td ><?php echo $row["total_bills"]; ?></td>
 							   <td><?php echo $row["status"]; ?></td>
 								<td class='btn-group btn-group-justified'>                                    
 									   <a href='finance_status.php?add_status=<?php echo $row["id"]; ?>' class='badge bg-success'>Proceed</a>

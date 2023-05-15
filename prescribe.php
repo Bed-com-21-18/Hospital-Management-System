@@ -63,6 +63,7 @@
             $age = $patient['age'];
             $gender = $patient['gender'];
             $date = $patient['date']; 
+            $appoint_id = $_SESSION ['appoint_id'];
             echo "<h1 class='mb-4'>Prescription Summary</h1>";
               echo "<h4 class='mb-3'>Section A: Patient Details</h4>";?>
               <hr>
