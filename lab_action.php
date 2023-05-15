@@ -3,7 +3,7 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $patient_id = $_POST['patient_id'];
-  $test = $_POST['test'];
+  $results = $_POST['results'];
   $name = $_SESSION['name'];
   // Connect to the database
   $host = 'localhost';
@@ -37,27 +37,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <br><button class="btn btn-danger" onclick="history.back()">Go Back</button>
     </div>';
   } else {
-    // Prepare the SQL query to insert the tests data into the database
-    $sql = "UPDATE patient SET tests = ? WHERE id = ?";
+    // Prepare the SQL query to insert the resultss data into the database
+    $sql = "UPDATE patient SET lab_results = ? WHERE id = ?";
 
     // Create a prepared statement
     $stmt = $conn->prepare($sql);
 
     // Bind the parameters
-    $stmt->bind_param("ss", $test, $patient_id);
+    $stmt->bind_param("ss", $results, $patient_id);
 
     // Execute the SQL query
 if ($stmt->execute()) {
-    // Set a success message if the tests data was successfully updated
-    $message = 'Success: The tests request for '.$_SESSION['name']. ' has been sent to the lab.';
+    // Set a success message if the resultss data was successfully updated
+    $message = 'Success: The resultss request for '.$_SESSION['name']. ' has been sent to the lab.';
   
     // Set the session message and redirect back to send_to_lab.php
     $_SESSION['message'] = $message;
-  
-    header('Location: lab_request_success.php');
+    header('Location: lab_results_success.php');
     exit();
   } else {
-    // Display an error message if the tests data could not be updated
+    // Display an error message if the resultss data could not be updated
     $response = '<div class="alert alert-danger" role="alert">
       Error: ' . $sql . '<br>' . mysqli_error($conn) . '
       <button class="btn btn-danger" onclick="history.back()">Go Back</button>

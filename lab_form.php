@@ -8,7 +8,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Send lab test request form</title>
+  <title>Send lab results request form</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-RXdRUZ72MkRiR7Kj1MZrtI+2E5a5ntwLV5z+sWjlKgrP5N9tFVrMk14TwNNHDPMe0D1ELb/2COwleHc8z0/WTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css" integrity="sha512-57NKyaJFZhCGbzEWz8uV7IJ+g1hhn2S2jZ/j+oJFupafyksGp4KsB4+8xv1MWnX9B0SzmjKnmqlTpfT0Hupufw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
@@ -84,8 +84,8 @@ form .error {
 </head>
 <body>
 <?php
-    if(isset($_GET['send'])){
-  $id = $_GET['send'];
+    if(isset($_GET['respond'])){
+  $id = $_GET['respond'];
   $sql2 = "SELECT * FROM patient WHERE id='$id'";
   $result2 = $mysqli->query($sql2);
 
@@ -99,8 +99,8 @@ form .error {
   <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <form method="post" action="send_action.php" class="border p-3 rounded">
-          <h1 class="mb-3 text-center"><i class="fas fa-calendar-plus"></i> Lab Test Request form</h1>
+        <form method="post" action="lab_action.php" class="border p-3 rounded">
+          <h1 class="mb-3 text-center"><i class="fas fa-calendar-plus"></i> Sending lab results</h1>
           <?php if(isset($_SESSION['success_message'])) { ?>
           <div class="alert alert-success" role="alert">
             <?php echo $_SESSION['success_message']; ?>
@@ -117,8 +117,8 @@ form .error {
           <input type="text" class="form-control" value="<?= $name; ?>" name="name" readonly>
           </div>
           <div class="mb-3">
-            <label for="test" class="form-label"><i class="fas fa-comment-medical"></i> Test for:</label>
-            <textarea name="test" id="test" rows="2" required class="form-control"></textarea>
+            <label for="results" class="form-label"><i class="fas fa-comment-medical"></i> Lab Results:</label>
+            <textarea name="results" id="results" rows="2" required class="form-control"></textarea>
           </div>
           <div class="text-center">
             <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit</button>
