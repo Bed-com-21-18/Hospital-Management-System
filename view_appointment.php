@@ -59,8 +59,8 @@
             echo '<thead class="thead-light">';
             echo '<tr>';
             echo '<th>Patient Name</th>';
-            echo '<th>Date</th>';
-            echo '<th>Time</th>';
+            echo '<th>Date Booked</th>';
+            echo '<th>Time Booked</th>';
             echo '<th>Professional</th>';
             echo '<th>Booked by</th>';
             echo '<th>Time / Date Booked</th>';
@@ -72,7 +72,7 @@
             echo '<tbody>';
             while ($row = mysqli_fetch_assoc($result)) { ?>
                 <tr>
-                <td><?php echo $row['patient_id'];?></td>
+                <td><?php echo $row['name'];?></td>
                 <td><?php echo $row['date']; ?> </td>
                 <td><?php echo $row['time']; ?></td>
                 <td><?php echo $row['professional']; ?></td>
@@ -81,7 +81,7 @@
                 <td><?php  echo $row['status']; ?></td>
                 <td><?php echo $row['reason']; ?></td>
                 <td class='btn-group btn-group-justfied'>                                      
-                <a href="priscribe_form.php" class='badge bg-primary text-white'>Proceed</a>
+                <a href='prescribe_form.php?viewing=<?php echo $row["patient_id"]; ?>' class='badge bg-success'>Proceed</a>
              </td>
                 </tr>
                 <?php

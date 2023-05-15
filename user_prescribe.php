@@ -16,7 +16,7 @@
 
 <body>
   <div class="container mt-5 bg-light">
-    <div class="row">
+    <div class="pat$patient">
       <div class="col-sm-12">
         <?php
  
@@ -58,26 +58,39 @@
             
             // Display the patient details if the query execution succeeded
             $patient = $stmt->get_result()->fetch_assoc();
+            $id = $patient['id'];
+            $name = $patient['name'];
+            $age = $patient['age'];
+            $gender = $patient['gender'];
+            $date = $patient['date']; 
             echo "<h1 class='mb-4'>Prescription Summary</h1>";
-              echo "<h4 class='mb-3'>Section A: Patient Details</h4>";
-              echo "<div class='table-responsive'>";
-              echo "<table class='table table-bordered'>";
-              echo "<tbody>";
-              echo "<tr><td><strong>ID:</strong></td><td>" . $patient["id"] . "</td></tr>";
-              echo "<tr><td><strong>Name:</strong></td><td>" . $patient["name"] . "</td></tr>";
-              echo "<tr><td><strong>Phone number:</strong></td><td>" . $patient["phoneNumber"] . "</td></tr>";
-              echo "<tr><td><strong>Age:</strong></td><td>" . $patient["age"] . "</td></tr>";
-              echo "<tr><td><strong>Gender:</strong></td><td>" . $patient["gender"] . "</td></tr>";
-              echo "<tr><td><strong>District:</strong></td><td>" . $patient["district"] . "</td></tr>";
-              echo "<tr><td><strong>Village:</strong></td><td>" . $patient["village"] . "</td></tr>";
-              echo "<tr><td><strong>Residential:</strong></td><td>" . $patient["residential"] . "</td></tr>";
-              echo "</tbody>";
-              echo "</table>";
-              echo "</div>";
-
+              echo "<h4 class='mb-3'>Section A: Patient Details</h4>";?>
+              <hr>
+              <table class="table table-hover" style="overflow:auto">
+                  <thead class="table table-hover">
+                      <tr>
+                          <th>Name</th>
+                          <th>Date of Birth</th>
+                          <th>Age</th>
+                          <th>Gender</th>
+                      </tr>
+                  </thead>
+                  <tbody id = "myTable">
+                 
+                      <tr>
+                          <td><?php echo $name; ?></td>
+                          <td><?php echo $date; ?></td>
+                          <td><?php echo $age; ?></td> 
+                          <td><?php echo $gender; ?></td> 
+                          </td>
+                      </tr>
+                
+                  </tbody>
+              </table>
+              
+              <?php
           }
-
-          echo "<div class='row mb-3'>";echo "<div class='col-sm-12'><strong>Current Symptoms and its Drugs</strong></div>";
+          echo "<div class='col-sm-12'><strong>Current Symptoms</strong></div>";
           echo "<div class='col-sm-12'>";
           if (!empty($symptoms)) {
             // Convert the array of symptoms to a comma-separated string
@@ -91,7 +104,6 @@
             if ($conn->query($update_query) === TRUE) {
               // If the update is successful, display the symptoms and associated drugs in a table
               echo "<table class='table'>";
-              echo "<thead><tr><th>Symptom</th><th>Drugs</th></tr></thead>";
               echo "<tbody>";
               foreach ($symptoms as $symptom) {
                 // Query the database for drugs associated with this symptom
@@ -101,10 +113,7 @@
                 // If there are matching drugs, display them
                 if (mysqli_num_rows($result) > 0) {
                   echo "<tr><td>" . $symptom . "</td><td><ul>";
-          
-                  while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<li>" . $row['drug_name'] . "</li>";
-                  }
+        
                   echo "</ul></td></tr>";
                 } else {
                   echo "<tr><td>" . $symptom . "</td><td>No matching drugs found.</td></tr>";
@@ -136,12 +145,12 @@
             
             // If there are matching drugs, display them
             if (mysqli_num_rows($result) > 0) {
-              echo "<p><b> Other Symptoms: </b>" . $others . "\t&nbsp;\t&nbsp;\t&nbsp;" . $row['drug_name'] . "</p>";
+              echo "<p><b> Other Symptoms: </b>" . $others . "\t&nbsp;\t&nbsp;\t&nbsp;" . $patient['drug_name'] . "</p>";
           
               // Update patient table with the extra symptoms and associated drugs
               $others_with_drugs = $others;
-              while ($row = mysqli_fetch_assoc($result)) {
-                $others_with_drugs .= ", " . $row['drug_name'];
+              while ($patient = mysqli_fetch_assoc($result)) {
+                $others_with_drugs .= ", " . $patient['drug_name'];
               }
               $query = "UPDATE patient SET others='$others_with_drugs' WHERE id=$patient_id";
               $result = mysqli_query($conn, $query);

@@ -1,7 +1,7 @@
 <?php 
   session_start();
   include "comfig.php";
- include 'unavbar.php'; ?>  
+ include 'dnavbar.php'; ?>  
   
  <!DOCTYPE html>
 <html lang="en">
@@ -84,8 +84,8 @@ form .error {
 </head>
 <body>
 <?php
-    if(isset($_GET['book'])){
-  $id = $_GET['book'];
+    if(isset($_GET['doc_book'])){
+  $id = $_GET['doc_book'];
   $sql2 = "SELECT * FROM patient WHERE id='$id'";
   $result2 = $mysqli->query($sql2);
 
@@ -98,7 +98,7 @@ form .error {
   <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <form method="post" action="process_appointment.php" class="border p-3 rounded">
+        <form method="post" action="doc_process_appointment.php" class="border p-3 rounded">
           <h1 class="mb-3 text-center"><i class="fas fa-calendar-plus"></i> Booking an appointment</h1>
           <div class="mb-3">
           <input type="hidden" class="form-control" value="<?= $id; ?>" id="patient_id" name="patient_id" placeholder="Patient ID" required> 

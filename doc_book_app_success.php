@@ -1,6 +1,6 @@
 <?php 
   session_start();
- include 'unavbar.php'; ?>   
+ include 'dnavbar.php'; ?>   
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,7 +46,7 @@
           $patient_id = $_SESSION['patient_id'];
           
           // Prepare and execute the query
-          $stmt = $conn->prepare("SELECT * FROM patient WHERE id = ? ORDER BY id DESC");
+          $stmt = $conn->prepare("SELECT * FROM patient WHERE id = ?");
           $stmt->bind_param("i", $patient_id);
           $result = $stmt->execute();
           
@@ -130,7 +130,7 @@ if (isset($_SESSION['uname'])) {
 }
 echo "<br>";
 echo "<div style='text-align:center;'>";
-echo "<button class='btn btn-primary mb-3' onclick='window.location.href=\"nurse_dashboard.php\"'>Go to Dashboard</button>";
+echo "<button class='btn btn-primary mb-3' onclick='window.location.href=\"doc_dashboard.php\"'>Go to Dashboard</button>";
 echo "&nbsp;&nbsp;&nbsp;&nbsp;";
 echo "<button class='btn btn-secondary mb-3' onclick='window.history.back()'>Book Again</button>";
 echo "</div>";

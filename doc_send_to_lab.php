@@ -1,14 +1,14 @@
 <?php 
   session_start();
   include "comfig.php";
- include 'unavbar.php'; ?>  
+ include 'dnavbar.php'; ?>  
   
  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Booking an appointment</title>
+  <title>Send lab test request form</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-RXdRUZ72MkRiR7Kj1MZrtI+2E5a5ntwLV5z+sWjlKgrP5N9tFVrMk14TwNNHDPMe0D1ELb/2COwleHc8z0/WTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css" integrity="sha512-57NKyaJFZhCGbzEWz8uV7IJ+g1hhn2S2jZ/j+oJFupafyksGp4KsB4+8xv1MWnX9B0SzmjKnmqlTpfT0Hupufw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
@@ -84,54 +84,41 @@ form .error {
 </head>
 <body>
 <?php
-    if(isset($_GET['book'])){
-  $id = $_GET['book'];
+    if(isset($_GET['doc_send'])){
+  $id = $_GET['doc_send'];
   $sql2 = "SELECT * FROM patient WHERE id='$id'";
   $result2 = $mysqli->query($sql2);
 
       $row = $result2->fetch_assoc();
       $id = $row['id'];
-      $name = $row['name'];    
+      $name = $row['name'];  
+      $_SESSION['name'] = $row['name']; 
+      $_SESSION['id'] = $row['id']; 
   
 } ?>
-
   <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <form method="post" action="process_appointment.php" class="border p-3 rounded">
-          <h1 class="mb-3 text-center"><i class="fas fa-calendar-plus"></i> Booking an appointment</h1>
+        <form method="post" action="doc_send_action.php" class="border p-3 rounded">
+          <h1 class="mb-3 text-center"><i class="fas fa-calendar-plus"></i> Lab Test Request form</h1>
+          <?php if(isset($_SESSION['success_message'])) { ?>
+          <div class="alert alert-success" role="alert">
+            <?php echo $_SESSION['success_message']; ?>
+          </div>
+          <?php unset($_SESSION['success_message']); } ?>
+          <?php if(isset($_SESSION['error_message'])) { ?>
+          <div class="alert alert-danger" role="alert">
+            <?php echo $_SESSION['error_message']; ?>
+          </div>
+          <?php unset($_SESSION['error_message']); } ?>
           <div class="mb-3">
           <input type="hidden" class="form-control" value="<?= $id; ?>" id="patient_id" name="patient_id" placeholder="Patient ID" required> 
           <label for="name" class="form-label"><i class="fas fa-user"></i> Patient Name</label>
-          <input type="text" class="form-control" value="<?= $name; ?>"id="name" name="name" readonly>
-
+          <input type="text" class="form-control" value="<?= $name; ?>" name="name" readonly>
           </div>
           <div class="mb-3">
-            <label for="date" class="form-label"><i class="fas fa-calendar-day"></i> Date:</label>
-            <input type="date" name="date" id="date" required class="form-control">
-          </div>
-          <div class="mb-3">
-            <label for="time" class="form-label"><i class="fas fa-clock"></i> Time:</label>
-            <input type="time" name="time" id="time" required class="form-control">
-          </div>
-          <div class="mb-3">
-            <label for="professional" class="form-label"><i class="fas fa-hospital"></i> Proffesional</label>
-            <select name="professional" id="professional" required class="form-select">
-              <option>Select Professional</option>
-              <option value="Cardiologist">Cardiologist</option>
-              <option value="Radiologist">Radiologist</option>
-              <option value="Dermatologist">Dermatologist</option>
-              <option value="Gastroenterologist">Gastroenterologist</option>
-              <option value="Neurologist">Neurologist</option>
-              <option value="Orthopedic">Orthopedic</option>
-              <option value="Pediatric">Pediatric</option>
-              <option value="Surgeon">Surgeon</option>
-              <option value="Physiotherapist">Physiotherapist</option>
-
-              </select>
-          <div class="mb-3">
-            <label for="reason" class="form-label"><i class="fas fa-comment-medical"></i> Reason for Appointment:</label>
-            <textarea name="reason" id="reason" rows="2" required class="form-control"></textarea>
+            <label for="test" class="form-label"><i class="fas fa-comment-medical"></i> Test for:</label>
+            <textarea name="test" id="test" rows="2" required class="form-control"></textarea>
           </div>
           <div class="text-center">
             <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit</button>

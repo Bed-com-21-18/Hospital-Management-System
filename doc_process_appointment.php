@@ -60,7 +60,7 @@ $stmt->execute();
     if ($stmt->execute()) {
       // Redirect the user to the dashboard page upon successful appointment booking
      
-      header("Location: book_app_success.php");
+      header("Location: doc_book_app_success.php");
       exit;
     } else {
       // Display an error message if the appointment booking failed

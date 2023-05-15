@@ -40,24 +40,40 @@
             // Display an error message if the query execution failed
             echo "<div class='alert alert-danger' role='alert'>Error: " . $stmt->error . "</div>";
           } else {
-            // Display the patient details if the query execution succeeded
-            $patient = $stmt->get_result()->fetch_assoc();
-            echo "<h1 class='mb-4'>Dosage and Billing</h1>";
-            echo "<h4 class='mb-3'>Section A: Patient Details</h4>";
-            echo "<div class='table-responsive'>";
-            echo "<table class='table table-bordered'>";
-            echo "<tbody>";
-            echo "<tr><td><strong>Name:</strong></td><td>" . $patient["name"] . "</td></tr>";
-            echo "<tr><td><strong>Phone number:</strong></td><td>" . $patient["phoneNumber"] . "</td></tr>";
-            echo "<tr><td><strong>Age:</strong></td><td>" . $patient["age"] . "</td></tr>";
-            echo "<tr><td><strong>Gender:</strong></td><td>" . $patient["gender"] . "</td></tr>";
-            echo "<tr><td><strong>District:</strong></td><td>" . $patient["district"] . "</td></tr>";
-            echo "<tr><td><strong>Village:</strong></td><td>" . $patient["village"] . "</td></tr>";
-            echo "<tr><td><strong>Residential:</strong></td><td>" . $patient["residential"] . "</td></tr>";
-            echo "</tbody>";
-            echo "</table>";
-            echo "</div>";
-          }
+                      // Display the patient details if the query execution succeeded
+                      $patient = $stmt->get_result()->fetch_assoc();
+                      $id = $patient['id'];
+                      $name = $patient['name'];
+                      $age = $patient['age'];
+                      $gender = $patient['gender'];
+                      $date = $patient['date']; 
+                      echo "<h1 class='mb-4'>Prescription Summary</h1>";
+                        echo "<h4 class='mb-3'>Section A: Patient Details</h4>";?>
+                        <hr>
+                        <table class="table table-hover" style="overflow:auto">
+                            <thead class="table table-hover">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Date of Birth</th>
+                                    <th>Age</th>
+                                    <th>Gender</th>
+                                </tr>
+                            </thead>
+                            <tbody id = "myTable">
+                           
+                                <tr>
+                                    <td><?php echo $name; ?></td>
+                                    <td><?php echo $date; ?></td>
+                                    <td><?php echo $age; ?></td> 
+                                    <td><?php echo $gender; ?></td> 
+                                    </td>
+                                </tr>
+                          
+                            </tbody>
+                        </table>
+                        
+                        <?php
+                    }
           echo "<div class='row mb-3'>";
                         
                // Prepare the table for displaying the prescription
