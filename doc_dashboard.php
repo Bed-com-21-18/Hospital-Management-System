@@ -49,7 +49,7 @@
                                 <i class="bi bi-person-fill text-primary"></i>
                             </div>
                             <h3 class="card-title mb-3 text-primary">Manage Nurses</h3>
-                            <a href="" class="btn btn-primary">Proceed</a>
+                            <a href="doc_nurse_reg.php" class="btn btn-primary">Proceed</a>                    
                         </div>
                     </div>
                 </div>

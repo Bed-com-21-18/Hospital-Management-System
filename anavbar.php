@@ -25,9 +25,6 @@
                 <div class="collapse navbar-collapse" id="navmenu">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a href="home.php" class="nav-link"> Home</a>
-                        </li>
-                        <li class="nav-item">
                             <!-- <a href="dashboard.php" class="nav-link"> Dashboard</a> -->
                             <a href="dashboard.php" class="nav-link">Dashboard </a>
                         </li>
@@ -36,9 +33,9 @@
                             <?php echo $_SESSION['uname']; ?></a>
                             </a>
                             <ul class="dropdown-menu text-center">
-                                <li><a class="dropdown-item" href="change_pwd.php">Change password</a></li>
+                                <li><a class="dropdown-item bg-success" href="change_pwd.php">Change password</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                                <li><a class="dropdown-item bg-danger" href="logout.php">Logout</a></li>
                             </ul>
                         </li>
                     </ul>

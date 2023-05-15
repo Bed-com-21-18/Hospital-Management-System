@@ -17,38 +17,39 @@
             include "navbar2.php";
         ?>
 
-      <!-- home page -->
-           <section class="">
-            <div class="showcase">
-                <div  class="p-4 text-light text-center">
-                    <h1>
-                        HMS
-                    </h1>
-                    <h1>
-                        HOSPITAL MANAGEMENT SYSTEM
-                    </h1>
-                    <hr>
-                    <p class="my-4 ">
-                        This is a system that stores patients records, perform billing...
+<section>
+  <div class="showcase">
+    <div class="p-4 text-light text-center">
+      <h1>
+        HMS
+      </h1>
+      <h1>
+        HOSPITAL MANAGEMENT SYSTEM
+      </h1>
+      <hr>
+      <p class="my-4">
+        This is a system that stores patients' records, performs billing...
+      </p>
+    </div>
+    <div class="container pt-4">
+      <div class="row text-center g-4">
+        <div class="col-md">
+          <div class="dropdown">
+            <button class="btn dropdown-toggle bg-primary" type="button" id="loginDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#EEEEEE;">
+              Login
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="loginDropdown">
+              <li><a class="dropdown-item" href="doctor_login.php">Doctor Login</a></li>
+              <li><a class="dropdown-item" href="user_login.php">System User Login</a></li>
+              <li><a class="dropdown-item" href="admin_login.php">Admin Login</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-                    </p>
-                </div>
-                <div class="container pt-4">
-                    <div class="row text-center g-4">
-                        <div class="col-md">
-                            <a href="doctor_login.php"><button class="btn "style="background-color:#EEEEEE;">Doctor Login</button></a>
-                        </div>
-                        <div class="col-md">
-                            <a href="user_login.php"><button class="btn " style="background-color:#EEEEEE;"> System user Login</button></a>
-                        </div>
-                        <div class="col-md">
-                            <a href="admin_login.php"><button  class="btn " style="background-color:#EEEEEE;">Admin Login</button></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>
 
         <!-- footer -->
         <?php
