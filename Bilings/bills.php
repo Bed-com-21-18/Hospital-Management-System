@@ -1,7 +1,3 @@
-<?php 
-    session_start();
-
-?>
 
 <!DOCTYPE html>
 <html>
@@ -23,20 +19,29 @@
             });
         </script>
 <body>
-<?php
-            include "anavbar.php";
-        ?>
 	<div class="container">
-		<h3 class="my-4 text-center bg-light p-2 text-secondary">Patient Bills</h3>	<div class="table-responsive">
-		<table class="table table-bordered bg-secondary text-light">
+	<div class="collapse navbar-collapse" id="navmenu">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item dropdown">
+                                <!-- search -->
+                        <input class="form-control me-1" id="myInput" style="width:100%; max-width:20rem" type="text" placeholder="Search" aria-label="Search">             
+                        </li>
+                    </ul>
+                </div>
+
+		
+		<table class="table table-bordered bg-secondary text-light" id='myInput'>
 			<thead class="thead-light">
 				<tr>
-					<th>Patient ID</th>
+
 					<th>Name</th>
+					<th>Age</th>
+					<th>Sex</th>
+					<th>Phone</th>
 					<th>Prescribed By</th>
-					<th>Prescription Time</th>
                     <th>Total Bill</th>
                     <th>Status</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 
@@ -51,25 +56,29 @@
 				}
 
 				// Retrieve all patients from the patient table
-				$sql = "SELECT * FROM patient ORDER BY id DESC";
+				$sql = "SELECT * FROM patient ORDER BY id ASC";
 				$result = $conn->query($sql);
 
 				// Display patient information in table rows
 				if ($result->num_rows > 0) {
-					while ($row = $result->fetch_assoc()) {
-						echo "<tr>";
-						echo "<td>" . $row["id"] . "</td>";
-						echo "<td>" . $row["name"] . "</td>";
-						echo "<td>" . $row["prescribed_by"] . "</td>";
-						echo "<td>" . $row["prescribed_on"] . "</td>";
-                        echo "<td>" . $row["total_bills"] . "</td>";
-                        echo "<td>" . $row["status"] . "</td>";
-						echo "</tr>";
-                        ;
-					}
-				} else {
-					echo "<tr><td colspan='12' class='text-center'>No patients found</td></tr>";
-				}
+						while ($row = $result->fetch_assoc()) { ?>
+							<tr>
+							   <td><?php echo $row["name"]; ?></td>
+							   <td><?php echo $row["age"]; ?></td>
+							   <td><?php echo $row["gender"]; ?></td>
+							   <td><?php echo $row["phoneNumber"]; ?></td>
+							   <td><?php echo $row["prescribed_by"]; ?></td>
+							   <td><?php echo $row["total_bills"]; ?></td>
+							   <td><?php echo $row["status"]; ?></td>
+								<td class='btn-group btn-group-justified'>                                    
+									   <a href='finance_status.php?add_status=<?php echo $row["id"]; ?>' class='badge bg-success'>Proceed</a>
+							   </td>
+						   </tr>
+						 <?php  
+					   }
+				   } else {
+					   echo "<tr><td colspan='12' class='text-center'>No patients found</td></tr>";
+				   }
                     
 				// Close the database connection
 				$conn->close();
@@ -81,10 +90,6 @@
                         
 	</div>
 </div>
-   <!-- footer -->
-   <?php
-            include "footer.php";
-        ?>
 
 <!-- Bootstrap JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
