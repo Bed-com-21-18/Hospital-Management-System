@@ -219,7 +219,7 @@ if (!$stmt2->execute()) {
   }
 }echo "<br>";
 echo "<div style='text-align:center;'>";
-echo "<button class='btn btn-primary mb-3' onclick='window.location.href=\"Bilings/billing.php\"'>Proceed to Billing</button>";
+echo "<button class='btn btn-primary mb-3' onclick='window.location.href=\"doc_billing.php\"'>Proceed to Billing</button>";
 echo "&nbsp;&nbsp;&nbsp;&nbsp;";
 echo "<button class='btn btn-danger mb-3' onclick='window.history.back()'>Cancel</button>";
 echo "</div>";
