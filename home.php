@@ -39,9 +39,9 @@
               Login
             </button>
             <ul class="dropdown-menu" aria-labelledby="loginDropdown">
-              <li><a class="dropdown-item" href="doctor_login.php">Doctor Login</a></li>
-              <li><a class="dropdown-item" href="user_login.php">System User Login</a></li>
-              <li><a class="dropdown-item" href="admin_login.php">Admin Login</a></li>
+              <li><a class="dropdown-item" href="doctor_login.php">Doctor</a></li>
+              <li><a class="dropdown-item" href="user_login.php">System User</a></li>
+              <li><a class="dropdown-item" href="admin_login.php">Admin</a></li>
             </ul>
           </div>
         </div>
