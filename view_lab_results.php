@@ -1,4 +1,10 @@
 
+<?php
+ include 'user_regdb.php';
+ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
+   include "unavbar.php";
+   include "comfig.php";
+        ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,10 +26,7 @@
         </script>
 </head>
 <body>
-<?php session_start();
- include "comfig.php";
-            include "unavbar.php";
-        ?>
+
    <!--NavBar-->
    <nav class="navbar py-2"style="background-color:#F1F6F9;" >
             <div class="container">
@@ -98,3 +101,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+<?php 
+    }else {
+        header("Location: home.php");
+        exit();
+    }
+?> 

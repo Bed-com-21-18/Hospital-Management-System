@@ -1,6 +1,9 @@
-<?php 
-  session_start();
- include 'unavbar.php'; ?>   
+<?php
+include 'user_regdb.php';
+if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
+  include "unavbar.php";
+  include "comfig.php";
+        ?> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -110,7 +113,7 @@ if (isset($_SESSION['uname'])) {
   } else {
     // Display the doctor's username if the query execution succeeded
     $doctor = $stmt->get_result()->fetch_assoc();
-    $stmt = $conn->prepare("SELECT * FROM appointments WHERE patient_id = ? ORDER BY booked_at DESC");
+    $stmt = $conn->prepare("SELECT * FROM appointments WHERE patient_id = ? ORDER BY id DESC");
     $stmt->bind_param("s", $patient_id);
     $result = $stmt->execute();
     if ($result === true) {
@@ -155,3 +158,9 @@ $conn->close();
 
 
 
+<?php 
+    }else {
+        header("Location: home.php");
+        exit();
+    }
+?> 

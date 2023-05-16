@@ -1,8 +1,10 @@
-<?php  session_start();
- 
-  include "dnavbar.php";
-  include "comfig.php";
-        ?>
+<?php 
+    include 'doctor_regdb.php';
+    include "comfig.php";
+    include "dnavbar.php";
+    if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,3 +120,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>
+<?php 
+    }else {
+        header("Location: home.php");
+        exit();
+    }
+?> 

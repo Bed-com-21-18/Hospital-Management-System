@@ -1,8 +1,9 @@
 <?php
-  session_start();
-  include "../unavbar.php";
-  include "../comfig.php";
-?>
+include 'user_regdb.php';
+if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
+  include "unavbar.php";
+  include "comfig.php";
+        ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -191,7 +192,7 @@
                       echo "<a href='' class='btn btn-primary'>Print</a>";
                       echo"&nbsp";  echo"&nbsp";  echo"&nbsp";  echo"&nbsp"; 
                       echo"&nbsp";  echo"&nbsp";  echo"&nbsp";  echo"&nbsp"; 
-                      echo "<a href='../nurse_dashboard.php' class='btn btn-primary'>Go to Dashboard</a>";
+                      echo "<a href='nurse_dashboard.php' class='btn btn-primary'>Go to Dashboard</a>";
                     }
                 }
                 
@@ -227,3 +228,9 @@
                            -->
   </body>
 </html>
+<?php 
+    }else {
+        header("Location: home.php");
+        exit();
+    }
+?> 

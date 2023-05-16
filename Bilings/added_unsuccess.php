@@ -1,3 +1,9 @@
+<?php
+include 'user_regdb.php';
+if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
+  include "unavbar.php";
+  include "comfig.php";
+        ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,3 +33,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
+<?php 
+    }else {
+        header("Location: home.php");
+        exit();
+    }
+?> 

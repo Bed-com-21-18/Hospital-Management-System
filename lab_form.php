@@ -1,8 +1,9 @@
-<?php 
-  session_start();
+<?php
+include 'user_regdb.php';
+if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
+  include "unavbar.php";
   include "comfig.php";
- include 'unavbar.php'; ?>  
-  
+        ?>
  <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -133,4 +134,10 @@ form .error {
 
 </html> 
 
+<?php 
+    }else {
+        header("Location: home.php");
+        exit();
+    }
+?> 
 

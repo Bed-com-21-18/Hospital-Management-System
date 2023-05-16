@@ -1,8 +1,10 @@
 <?php
- session_start();
-            include "../anavbar.php";
+include 'user_regdb.php';
+if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
+  include "unavbar.php";
+  include "comfig.php";
         ?>
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html>
 <head>
     <title>Drug not found</title>
@@ -31,3 +33,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
+<?php 
+    }else {
+        header("Location: home.php");
+        exit();
+    }
+?> 

@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $patient_id = $_POST['patient_id'];
   $test = $_POST['test'];

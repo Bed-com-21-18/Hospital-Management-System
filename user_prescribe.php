@@ -1,7 +1,9 @@
 
 <?php
- session_start();
-            include "unavbar.php";
+ include 'user_regdb.php';
+ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
+   include "unavbar.php";
+   include "comfig.php";
         ?>
         <!DOCTYPE html>
 <html lang="en">
@@ -19,12 +21,6 @@
     <div class="pat$patient">
       <div class="col-sm-12">
         <?php
- 
-        if (!isset($_SESSION['uname'])) {
-          // User is not authenticated, redirect to login page
-          header("Location: doctor_login.php");
-          exit();
-        }
         // Connect to the database
         $servername = "localhost";
         $username = "root";
@@ -219,7 +215,7 @@ if (!$stmt2->execute()) {
   }
 }echo "<br>";
 echo "<div style='text-align:center;'>";
-echo "<button class='btn btn-primary mb-3' onclick='window.location.href=\"Bilings/billing.php\"'>Proceed to Billing</button>";
+echo "<button class='btn btn-primary mb-3' onclick='window.location.href=\"billing.php\"'>Proceed to Billing</button>";
 echo "&nbsp;&nbsp;&nbsp;&nbsp;";
 echo "<button class='btn btn-danger mb-3' onclick='window.history.back()'>Cancel</button>";
 echo "</div>";
@@ -245,3 +241,9 @@ $conn->close();
 
 
 
+<?php 
+    }else {
+        header("Location: home.php");
+        exit();
+    }
+?> 

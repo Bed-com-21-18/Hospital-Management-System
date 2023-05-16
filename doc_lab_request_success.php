@@ -1,7 +1,10 @@
-<?php
- session_start();
-            include "dnavbar.php";
-        ?>
+<?php 
+    include 'doctor_regdb.php';
+    include "comfig.php";
+    include "dnavbar.php";
+    if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,3 +34,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
+<?php 
+    }else {
+        header("Location: home.php");
+        exit();
+    }
+?> 

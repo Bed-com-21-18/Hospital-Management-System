@@ -1,5 +1,6 @@
-<?php  session_start();
- 
+<?php
+include 'user_regdb.php';
+if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
   include "unavbar.php";
   include "comfig.php";
         ?>
@@ -114,3 +115,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>
+<?php 
+    }else {
+        header("Location: home.php");
+        exit();
+    }
+?> 

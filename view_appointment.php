@@ -1,8 +1,10 @@
+<?php 
+    include 'doctor_regdb.php';
+    include "comfig.php";
+    include "dnavbar.php";
+    if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 
-<?php
-    session_start();
-            include "dnavbar.php";
-        ?>
+?>
         <!DOCTYPE html>
 <html>
 <head>
@@ -107,3 +109,9 @@
   <br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
+<?php 
+    }else {
+        header("Location: home.php");
+        exit();
+    }
+?> 
