@@ -177,9 +177,12 @@
           <textarea class="form-control" id="others" name="others" rows="1" ></textarea>
         </div>
         
-        <a href="doc_send_to_lab.php?doc_send=<?php echo $row["id"]; ?> " class=" badge text-secondary ">Send Lab Request</a> &nbsp; &nbsp;&nbsp;&nbsp;
-         <a href="doc_view_lab_results.php?doc_view_results=<?php echo $row["id"]; ?>" class=" badge text-secondary">View Lab Results</a>
-        <br>  <br>
+        <a href="doc_send_to_lab.php?doc_send=<?php echo $row["id"]; ?> " class=" badge btn-primary ">Send Lab Request</a> &nbsp; &nbsp;&nbsp;&nbsp;
+         <a href="doc_view_lab_results.php?doc_view_results=<?php echo $row["id"]; ?>" class=" badge btn-secondary">View Lab Results</a>&nbsp; &nbsp;&nbsp;&nbsp;
+        
+         <a href="doc_radiology_page.php?doc_page=<?php echo $row["id"]; ?> " class=" badge btn-primary ">Send Radiology Request</a> &nbsp; &nbsp;&nbsp;&nbsp;
+         <a href="doc_radiology_view.php?doc_viewing=<?php echo $row["id"]; ?>" class=" badge btn-secondary">View Radiology Results</a>
+         <br>  <br>
         <button type="submit" class="btn btn-primary">Proceed</button> &nbsp;&nbsp;&nbsp;&nbsp;
         <button class='btn btn-secondary' onclick='window.history.back()'> Go Back</button>
     </form>

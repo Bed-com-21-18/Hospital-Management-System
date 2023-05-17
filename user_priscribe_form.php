@@ -69,7 +69,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                         </table>
                         
                         <div class="form-group">
-  <input type="hidden" class="form-control" value="<?= $id; ?>" id="patient_id" name="patient_id" placeholder="Patient ID" required> 
+         <input type="hidden" class="form-control" value="<?= $id; ?>" id="patient_id" name="patient_id" placeholder="Patient ID" required> 
 
             <label for="symptoms"><strong>Primary Diagnosis:</strong></label><br>
             <p><em><strong>Please select all physical or mental manifestations experienced by an individual that indicate the presence of a disease:</strong></em></p>
@@ -170,10 +170,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
           <label for="others"><b>Others Symptoms:</b></label>
           <textarea class="form-control" id="others" name="others" rows="1" ></textarea>
         </div>
-        
-        <a href="send_to_lab.php?send=<?php echo $row["id"]; ?> " class=" badge text-secondary ">Send Lab Request</a> &nbsp; &nbsp;&nbsp;&nbsp;
-         <a href="View_lab_results.php?view_results=<?php echo $row["id"]; ?>" class=" badge text-secondary">View Lab Results</a>
-        <br>  <br>
+        <div class="container">
+        <div class="row">
+        <div class="col-md-12">
+        <a href="send_to_lab.php?send=<?php echo $row["id"]; ?> " class=" badge btn-primary ">Send Lab Request</a> &nbsp; &nbsp;&nbsp;&nbsp;
+         <a href="View_lab_results.php?view_results=<?php echo $row["id"]; ?>" class=" badge btn-secondary">View Lab Results</a> &nbsp; &nbsp;&nbsp;&nbsp;
+         <a href="radiology_page.php?page=<?php echo $row["id"]; ?> " class=" badge btn-primary ">Send Radiology request</a> &nbsp; &nbsp;&nbsp;&nbsp;
+         <a href="radiology_view.php?viewing=<?php echo $row["id"]; ?>" class=" badge btn-secondary">View Radiology Results</a>
+         </div> 
+        </div>
+        </div>
+         <br>  <br>
         <button type="submit" class="btn btn-primary">Proceed</button> &nbsp;&nbsp;&nbsp;&nbsp;
         <button class='btn btn-secondary' onclick='window.history.back()'> Go Back</button>
     </form>
