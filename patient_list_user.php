@@ -27,7 +27,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 <body>
 
    <!--NavBar-->
-   <nav class="navbar navbar-expand py-3"style="background-color:#F1F6F9;" >
+   <nav class="navbar navbar-expand py-1"style="background-color:#F1F6F9;" >
             <div class="container">
 			<h5 class="navbar-brand"> Patient List</h5>
                 <button 
@@ -63,6 +63,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 					<th>District</th>
 					<th>Village</th>
 					<th>Residential</th>
+					<th>Prescribed By</th>
 					<th>Action</th>
 					</tr>
 			</thead>
@@ -93,6 +94,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 							<td><?php echo $row["district"]; ?></td>
 							<td><?php echo $row["village"]; ?></td>
 							<td><?php echo $row["residential"]; ?></td>
+							<td><?php echo $row["prescribed_by"]; ?></td>
 							<td class='btn-group btn-group-justified'>                                    
 									<a href='user_priscribe_form.php?view=<?php echo $row["id"]; ?>' class='badge bg-success'>Proceed</a>
 							</td>

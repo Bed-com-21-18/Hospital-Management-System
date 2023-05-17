@@ -68,36 +68,105 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                             </tbody>
                         </table>
                         
-        <div class="form-group" method="POST" >
-        <input type="hidden" class="form-control" value="<?= $id; ?>" id="patient_id" name="patient_id" placeholder="Patient ID" required> 
- 
-          <label for="symptoms"><b>Primary Diagnosis:</b></label><br>
-          <p><i><b>please tick physical or mental manifestations experienced by an individual that indicate the presence of a disease</i></b></p>
-          <input type="checkbox" name="symptoms[]" value="Fever"> Fever &nbsp;
-          <input type="checkbox" name="symptoms[]" value="Cough"> Cough &nbsp;
-          <input type="checkbox" name="symptoms[]" value="Shortness of breath"> Shortness of Breath &nbsp;
-          <input type="checkbox" name="symptoms[]" value="Fatigue"> Fatigue &nbsp; 
-          <input type="checkbox" name="symptoms[]" value="Headache"> Headache &nbsp;
-          <br>
-          <input type="checkbox" name="symptoms[]" value="Muscle aches"> Muscle Aches &nbsp;
-          <input type="checkbox" name="symptoms[]" value="Loss of appetite"> Loss of Smell &nbsp;
-          <input type="checkbox" name="symptoms[]" value="Loss of taste"> Loss of Taste &nbsp;
-          <input type="checkbox" name="symptoms[]" value="Sore throat"> Sore Throat &nbsp;
-          <input type="checkbox" name="symptoms[]" value="Runny nose"> Runny Nose &nbsp;
-          <br>
-          <input type="checkbox" name="symptoms[]" value="Nausea"> Nausea &nbsp;
-          <input type="checkbox" name="symptoms[]" value="Vomiting"> Vomiting &nbsp;
-          <input type="checkbox" name="symptoms[]" value="Diarrhoea"> Diarrhoea &nbsp;
-          <input type="checkbox" name="symptoms[]" value="Itching"> Itching &nbsp;
-          <input type="checkbox" name="symptoms[]" value=" General body aches"> Body Aches &nbsp;
-          <br>
-          <input type="checkbox" name="symptoms[]" value="Dizziness"> Dizziness &nbsp;
-          <input type="checkbox" name="symptoms[]" value="Allergy"> Allergy &nbsp;
-          <input type="checkbox" name="symptoms[]" value="Chest Pain"> Chest Pain &nbsp;
-          <input type="checkbox" name="symptoms[]" value="Pink eye"> Pink Eye &nbsp;
-          <input type="checkbox" name="symptoms[]" value="Skin-rash"> Skin Rash &nbsp;
-      </div>
-        <div class="form-group" method="POST" >
+                        <div class="form-group">
+  <input type="hidden" class="form-control" value="<?= $id; ?>" id="patient_id" name="patient_id" placeholder="Patient ID" required> 
+
+            <label for="symptoms"><strong>Primary Diagnosis:</strong></label><br>
+            <p><em><strong>Please select all physical or mental manifestations experienced by an individual that indicate the presence of a disease:</strong></em></p>
+            
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="symptoms[]" value="Fever" id="fever">
+                  <label class="form-check-label" for="fever">Fever</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="symptoms[]" value="Cough" id="cough">
+                  <label class="form-check-label" for="cough">Cough</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="symptoms[]" value="Shortness of breath" id="shortness-of-breath">
+                  <label class="form-check-label" for="shortness-of-breath">Shortness of Breath</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="symptoms[]" value="Fatigue" id="fatigue">
+                  <label class="form-check-label" for="fatigue">Fatigue</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="symptoms[]" value="Headache" id="headache">
+                  <label class="form-check-label" for="headache">Headache</label>
+                </div>
+                <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="symptoms[]" value="Chest Pain" id="chest-pain">
+              <label class="form-check-label" for="chest-pain">Chest Pain</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="symptoms[]" value="Dizziness" id="dizziness">
+              <label class="form-check-label" for="dizziness">Dizziness</label>
+            </div>
+              </div>
+              
+              <div class="col-md-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="symptoms[]" value="Muscle aches" id="muscle-aches">
+                  <label class="form-check-label" for="muscle-aches">Muscle Aches</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="symptoms[]" value="Loss of appetite" id="loss-of-smell">
+                  <label class="form-check-label" for="loss-of-smell">Loss of Smell</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="symptoms[]" value="Loss of taste" id="loss-of-taste">
+                  <label class="form-check-label" for="loss-of-taste">Loss of Taste</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="symptoms[]" value="Sore throat" id="sore-throat">
+                  <label class="form-check-label" for="sore-throat">Sore Throat</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="symptoms[]" value="Runny nose" id="runny-nose">
+                  <label class="form-check-label" for="runny-nose">Runny Nose</label>
+          </div>
+          <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="symptoms[]" value="Pink eye" id="pink-eye">
+              <label class="form-check-label" for="pink-eye">Pink Eye</label>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="symptoms[]" value="Nausea" id="nausea">
+              <label class="form-check-label" for="nausea">Nausea</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="symptoms[]" value="Vomiting" id="vomiting">
+              <label class="form-check-label" for="vomiting">Vomiting</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="symptoms[]" value="Diarrhoea" id="diarrhea">
+              <label class="form-check-label" for="diarrhea">Diarrhoea</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="symptoms[]" value="Itching" id="itching">
+              <label class="form-check-label" for="itching">Itching</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="symptoms[]" value="General body aches" id="body-aches">
+              <label class="form-check-label" for="body-aches">Body Aches</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="symptoms[]" value="Skin rash" id="skin-rash">
+              <label class="form-check-label" for="skin-rash">Skin Rash</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="symptoms[]" value="Allergy" id="allergy">
+              <label class="form-check-label" for="allergy">Allergy</label>
+            </div>
+          </div>
+
+          </div>
+
+
+       <div class="form-group" method="POST" >
           <label for="others"><b>Others Symptoms:</b></label>
           <textarea class="form-control" id="others" name="others" rows="1" ></textarea>
         </div>
