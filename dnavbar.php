@@ -13,6 +13,9 @@
       <!--NavBar-->
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
             <div class="container">
+            <div class="position-absolute center-0 start-0">
+            <a href="menu.php" class="bi bi-justify  text-white fs-2"></a>
+                </div>
                 <h5 class="navbar-brand"><i>HOSPITAL MANAGEMENT SYSTEM</i></h5>
                 <button 
                 class="navbar-toggler" 
