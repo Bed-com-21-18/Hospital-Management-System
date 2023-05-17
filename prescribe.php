@@ -3,6 +3,7 @@
     include "comfig.php";
     include "dnavbar.php";
     if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
+      
 
 ?>
         <!DOCTYPE html>
@@ -98,6 +99,7 @@
           if (!empty($symptoms)) {
             // Convert the array of symptoms to a comma-separated string
             $symptoms_string = implode(", ", $symptoms);
+            $_SESSION["symptoms_string"]=$symptoms_string;
           
             // Update the patient table with the new symptoms string
             $update_query = "UPDATE patient SET symptoms='$symptoms_string' WHERE id=$patient_id";
@@ -105,6 +107,7 @@
           
             // Execute the update query
             if ($conn->query($update_query) === TRUE) {
+             
               // If the update is successful, display the symptoms and associated drugs in a table
               echo "<table class='table'>";
               echo "<tbody>";
@@ -200,26 +203,13 @@ if (isset($_SESSION['uname'])) {
   $stmt = $conn->prepare("UPDATE patient SET prescribed_by=?, prescribed_on=? WHERE id=?");
   $stmt->bind_param("ssi", $prescribed_by, $prescribed_on, $patient_id);
   $stmt->execute();
+  
+
+if ($appoint_status === 'Prescribed by ' . $doctor['uname']) {
+  $appoint_id = $_SESSION ['appoint_id'];
   $stmt2 = $conn->prepare("UPDATE appointments SET status=? WHERE id=?");
-
-if (!$stmt2) {
-  echo '<div class="alert alert-danger" role="alert">
-    Error: ' . mysqli_error($conn) . '
-  </div>';
-  exit;
+  $stmt2->bind_param("ss", $appoint_status, $appoint_id);
 }
-
-$stmt2->bind_param("ss", $appoint_status, $appoint_id);
-
-if (!$stmt2->execute()) {
-  echo '<div class="alert alert-danger" role="alert">
-    Error: ' . $stmt2->error . '
-  </div>';
-  exit;
-}
-
-
-
   }
 }echo "<br>";
 echo "<div style='text-align:center;'>";
@@ -229,8 +219,6 @@ echo "<button class='btn btn-danger mb-3' onclick='window.history.back()'>Cancel
 echo "</div>";
 
 // Close the database connection
-
-
 $conn->close();
 
 ?>

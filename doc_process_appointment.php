@@ -1,9 +1,11 @@
 <?php
-
-session_start();
+include 'doctor_regdb.php';
+include 'comfig.php';
+if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $patient_id = $_POST['patient_id'];
+  $_SESSION['patient_id'] = $patient_id;
   $name = $_POST['name'];
   $date = $_POST['date'];
   $time = $_POST['time'];
@@ -13,10 +15,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   // Connect to the database
   $host = 'localhost';
-  $username = 'root';
+  $usernam = 'root';
   $password = '';
   $database = 'hms';
-  $conn = mysqli_connect($host, $username, $password, $database);
+  $conn = mysqli_connect($host, $usernam, $password, $database);
 
   // Check if the connection was successful
   if (!$conn) {
@@ -24,9 +26,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   // Check if the user is logged in
-  if (isset($_SESSION['uname'])) {
     $username = $_SESSION['uname'];
-  }
+  
 
   // Check if the patient ID exists in the patient table
   $sql = "SELECT * FROM patient WHERE id = ?";
@@ -55,9 +56,9 @@ $stmt->bind_param("ssssssss", $patient_id, $name, $date, $time, $professional, $
 
 
 // Execute the SQL query
-$stmt->execute();
+$result = $stmt->execute();
 
-    if ($stmt->execute()) {
+    if ($result === TRUE) {
       // Redirect the user to the dashboard page upon successful appointment booking
      
       header("Location: doc_book_app_success.php");
@@ -74,3 +75,8 @@ $stmt->execute();
   // Close the database connection
   mysqli_close($conn);
 }
+}else {
+  header("Location: home.php");
+  exit();
+}
+?> 

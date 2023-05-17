@@ -71,7 +71,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 					<th>Age</th>
                     <th>Sex</th>
 					<th>Medical istory</th>
-                    <th>Prescribed BY</th>
+                    <th>Prescribed By</th>
                     <th>Prescription Date</th>
 					</tr>
 			        </thead>

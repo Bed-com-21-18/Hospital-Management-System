@@ -3,6 +3,12 @@ include 'user_regdb.php';
 if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
   include "unavbar.php";
   include "comfig.php";
+            // retrieve the symptoms and patient ID stored in session
+        $symptoms = $_SESSION["symptoms"];
+        $symptoms_string =  $_SESSION["symptoms_string"];
+        $servicefee= 1000;
+        $patient_id = $_SESSION["patient_id"];
+
         ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,16 +27,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
       <div class="row">
         <div class="col-sm-12">
           <?php
-          if (!isset($_SESSION['uname'])) {
-            // User is not authenticated, redirect to login page
-            header("Location: doctor_login.php");
-            exit();
-          }
-
-          // retrieve the symptoms and patient ID stored in session
-          $symptoms = $_SESSION["symptoms"];
-          $servicefee= 1000;
-          $patient_id = $_SESSION["patient_id"];
+          if (isset($_SESSION['uname'])) {
+            //updating total bills
+            $stmt = $mysqli->prepare("UPDATE patient SET history=? WHERE id=?");
+            $stmt->bind_param("ss", $symptoms_string, $patient_id);
+            $stmt->execute();
+            }
 
           // Prepare and execute the query
           $stmt = $mysqli->prepare("SELECT * FROM patient WHERE id = ?");
@@ -173,7 +175,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 
                 if (isset($_SESSION['uname'])) {
                     $username = $_SESSION['uname'];
-                    $stmt = $mysqli->prepare("SELECT * FROM doctor WHERE uname = ?");
+                    $stmt = $mysqli->prepare("SELECT * FROM user WHERE uname = ?");
                     $stmt->bind_param("s", $username);
                     $result = $stmt->execute();
                   
@@ -184,10 +186,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 
                     } else {
 
-                      // Display the doctor's username if the query execution succeeded
-                      $doctor = $stmt->get_result()->fetch_assoc();
+                      // Display the user's username if the query execution succeeded
+                      $user = $stmt->get_result()->fetch_assoc();
                       $prescribed_on = date("H:i:s d-m-Y ");
-                      echo "<p class='list-group-item'><b style='color: green;'>Prescribed by</b><b> " . $doctor['uname'] . "</b>&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  <b style='color: green;'>Prescribed at </b><b>".$prescribed_on." </b></p>";
+                      echo "<p class='list-group-item'><b style='color: green;'>Prescribed by</b><b> " . $user['uname'] . "</b>&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  <b style='color: green;'>Prescribed at </b><b>".$prescribed_on." </b></p>";
 
                       echo "<a href='download_pdf.php' class='btn btn-primary'>Print</a>";
                       echo"&nbsp";  echo"&nbsp";  echo"&nbsp";  echo"&nbsp"; 

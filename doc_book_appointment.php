@@ -1,10 +1,9 @@
-<?php 
-    include 'doctor_regdb.php';
-    include "comfig.php";
-    include "dnavbar.php";
-    if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
-
-?>
+<?php
+include 'doctor_regdb.php';
+if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
+  include "dnavbar.php";
+  include "comfig.php";
+        ?> 
  <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +56,7 @@ form textarea:focus {
 
 /* Style for the form submit button */
 form button[type="submit"] {
-  background-color: #4CAF50;
+  background-color: primary;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -93,7 +92,8 @@ form .error {
 
       $row = $result2->fetch_assoc();
       $id = $row['id'];
-      $name = $row['name'];    
+      $name = $row['name'];   
+      $_SESSION['patient_id'] = $id; 
   
 } ?>
 
@@ -103,6 +103,14 @@ form .error {
         <form method="post" action="doc_process_appointment.php" class="border p-3 rounded">
           <h1 class="mb-3 text-center"><i class="fas fa-calendar-plus"></i> Booking an appointment</h1>
           <div class="mb-3">
+            
+          <?php if (isset($_GET['error'])) {?>
+                           <p class="error"><?php echo $_GET['error']; ?></p>
+                           <?php } ?>
+                           
+                       <?php if (isset($_GET['success'])) {?>
+                           <p class="success"><?php echo $_GET['success']; ?></p>
+                           <?php } ?>
           <input type="hidden" class="form-control" value="<?= $id; ?>" id="patient_id" name="patient_id" placeholder="Patient ID" required> 
           <label for="name" class="form-label"><i class="fas fa-user"></i> Patient Name</label>
           <input type="text" class="form-control" value="<?= $name; ?>"id="name" name="name" readonly>

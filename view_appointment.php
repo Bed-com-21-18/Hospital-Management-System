@@ -86,7 +86,8 @@
                 <td><?php echo $row['reason']; ?></td>
                 <td class='btn-group btn-group-justfied'>                                      
                 <a href='prescribe_form.php?viewing=<?php echo $row["patient_id"]; ?>' class='badge bg-success'>Proceed</a>
-             </td>
+             
+            </td>
                 </tr>
                 <?php
             }

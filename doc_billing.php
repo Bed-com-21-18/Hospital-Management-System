@@ -3,6 +3,11 @@
     include "comfig.php";
     include "dnavbar.php";
     if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
+    // retrieve the symptoms and patient ID stored in session
+        $symptoms = $_SESSION["symptoms"];
+        $symptoms_string =  $_SESSION["symptoms_string"];
+        $servicefee= 1000;
+        $patient_id = $_SESSION["patient_id"];
 
 ?>
 <!DOCTYPE html>
@@ -22,16 +27,12 @@
       <div class="row">
         <div class="col-sm-12">
           <?php
-          if (!isset($_SESSION['uname'])) {
-            // User is not authenticated, redirect to login page
-            header("Location: doctor_login.php");
-            exit();
+          if (isset($_SESSION['uname'])) {
+                //updating total bills
+                $stmt = $mysqli->prepare("UPDATE patient SET history=? WHERE id=?");
+                $stmt->bind_param("ss", $symptoms_string, $patient_id);
+                $stmt->execute();
           }
-
-          // retrieve the symptoms and patient ID stored in session
-          $symptoms = $_SESSION["symptoms"];
-          $servicefee= 1000;
-          $patient_id = $_SESSION["patient_id"];
 
           // Prepare and execute the query
           $stmt = $mysqli->prepare("SELECT * FROM patient WHERE id = ?");
@@ -190,7 +191,7 @@
                       $prescribed_on = date("H:i:s d-m-Y ");
                       echo "<p class='list-group-item'><b style='color: green;'>Prescribed by</b><b> " . $doctor['uname'] . "</b>&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  <b style='color: green;'>Prescribed at </b><b>".$prescribed_on." </b></p>";
 
-                      echo "<a href='' class='btn btn-primary'>Print</a>";
+                      echo "<a href='download_pdf.php' class='btn btn-primary'>Print</a>";
                       echo"&nbsp";  echo"&nbsp";  echo"&nbsp";  echo"&nbsp"; 
                       echo"&nbsp";  echo"&nbsp";  echo"&nbsp";  echo"&nbsp"; 
                       echo "<a href='doc_dashboard.php' class='btn btn-primary'>Go to Dashboard</a>";

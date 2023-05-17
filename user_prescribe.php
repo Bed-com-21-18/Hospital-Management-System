@@ -91,7 +91,7 @@
           if (!empty($symptoms)) {
             // Convert the array of symptoms to a comma-separated string
             $symptoms_string = implode(", ", $symptoms);
-          
+            $_SESSION["symptoms_string"]=$symptoms_string;
             // Update the patient table with the new symptoms string
             $update_query = "UPDATE patient SET symptoms='$symptoms_string' WHERE id=$patient_id";
             // Replace $patient_id with the actual patient ID
@@ -172,7 +172,7 @@ echo "</div>";
 
 if (isset($_SESSION['uname'])) {
   $username = $_SESSION['uname'];
-  $stmt = $conn->prepare("SELECT * FROM doctor WHERE uname = ?");
+  $stmt = $conn->prepare("SELECT * FROM user WHERE uname = ?");
   $stmt->bind_param("s", $username);
   $result = $stmt->execute();
 
@@ -180,16 +180,16 @@ if (isset($_SESSION['uname'])) {
     // Display an error message if the query execution failed
     echo "<div class='alert alert-danger' role='alert'>Error: " . $stmt->error . "</div>";
   } else {
-    // Display the doctor's username if the query execution succeeded
-    $doctor = $stmt->get_result()->fetch_assoc();
+    // Display the user's username if the query execution succeeded
+    $user = $stmt->get_result()->fetch_assoc();
     $prescribed_on = date("H:i:s d-m-Y ");
     echo "<div class='col-sm-12'>";
     echo "</div>";
-    echo "<p class='list-group-item'><b style='color: green;'>Prescribed by</b><b> " . $doctor['uname'] . "</b>&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  <b style='color: green;'>Prescribed at </b><b>".$prescribed_on." </b></p>";
+    echo "<p class='list-group-item'><b style='color: green;'>Prescribed by</b><b> " . $user['uname'] . "</b>&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  <b style='color: green;'>Prescribed at </b><b>".$prescribed_on." </b></p>";
  echo "</div>";
     // Update patient table with prescription details
-  $prescribed_by = $doctor['uname'];
-  $appoint_status = 'Prescribed by ' . $doctor['uname'];
+  $prescribed_by = $user['uname'];
+  $appoint_status = 'Prescribed by ' . $user['uname'];
   $stmt = $conn->prepare("UPDATE patient SET prescribed_by=?, prescribed_on=? WHERE id=?");
   $stmt->bind_param("ssi", $prescribed_by, $prescribed_on, $patient_id);
   $stmt->execute();
