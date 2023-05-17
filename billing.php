@@ -189,7 +189,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                       $prescribed_on = date("H:i:s d-m-Y ");
                       echo "<p class='list-group-item'><b style='color: green;'>Prescribed by</b><b> " . $doctor['uname'] . "</b>&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  <b style='color: green;'>Prescribed at </b><b>".$prescribed_on." </b></p>";
 
-                      echo "<a href='' class='btn btn-primary'>Print</a>";
+                      echo "<a href='download_pdf.php' class='btn btn-primary'>Print</a>";
                       echo"&nbsp";  echo"&nbsp";  echo"&nbsp";  echo"&nbsp"; 
                       echo"&nbsp";  echo"&nbsp";  echo"&nbsp";  echo"&nbsp"; 
                       echo "<a href='nurse_dashboard.php' class='btn btn-primary'>Go to Dashboard</a>";
@@ -205,27 +205,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
           <!-- Bootstrap JavaScript -->
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.10.0/jspdf.umd.min.js"></script>
-          <!-- <script>
-          // Function to generate the PDF
-          function generatePDF() {
-            // Create a new jsPDF instance
-            const doc = new jsPDF();
-
-            // Get the prescription table element
-            const table = document.getElementById('prescription-table');
-
-            // Convert the table to a data URL
-            doc.autoTable({ html: table });
-
-            // Save the PDF file
-            doc.save('prescription.pdf');
-          }
-
-          // Add event listener to the "Print Prescription" button
-          const printButton = document.getElementById('print-button');
-          printButton.addEventListener('click', generatePDF);
-        </script>
-                           -->
+         
   </body>
 </html>
 <?php 
