@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2023 at 10:30 AM
+-- Generation Time: May 18, 2023 at 07:13 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -97,12 +97,10 @@ CREATE TABLE `appointments` (
 --
 
 INSERT INTO `appointments` (`id`, `patient_id`, `name`, `date`, `time`, `professional`, `reason`, `booked_by`, `booked_at`, `status`) VALUES
-(1, 4, 'Edson Magombo', '2023-05-17', '18:57:00', 'Dermatologist', 'Need', 'Mary Juma', '19:08:34 17-05-2023 ', NULL),
-(2, 16, 'Ruben Dias', '2023-05-17', '19:19:00', 'Physiotherapist', 'Need Physical checkup', 'Mary Juma', '19:20:18 17-05-2023 ', NULL),
-(3, 16, 'Ruben Dias', '2023-05-17', '19:22:00', 'Orthopedic', 'wathyoka Mwendo', 'Mary Juma', '19:22:50 17-05-2023 ', NULL),
-(4, 11, 'Charle Cee Graphix', '2023-05-17', '19:26:00', 'Surgeon', 'Broken Leg', 'Charle Cee', '19:27:04 17-05-2023 ', 'Prescribed by Charle Cee'),
-(8, 11, 'Charle Cee Graphix', '2023-05-17', '19:41:00', 'Gastroenterologist', 'Need another Doctor', 'Charle Cee', '19:42:08 17-05-2023 ', NULL),
-(9, 17, 'Jenifer Lopez', '2023-05-17', '19:50:00', 'Surgeon', 'Needs Plastic Surgery', 'ida', '19:50:51 17-05-2023 ', NULL);
+(1, 3, 'Gomboz Tech', '2023-05-18', '10:59:00', 'Surgeon', 'Need Heartbreak surgery', 'Mary Juma', '11:00:16 18-05-2023 ', 'Prescribed by Charle Cee'),
+(2, 12, 'OMEXIE CHAMA', '2023-05-18', '11:00:00', 'Surgeon', 'Nedds Head surgery', 'Mary Juma', '11:00:57 18-05-2023 ', 'Prescribed by Charle Cee'),
+(3, 17, 'Jenifer Lopez', '2023-05-18', '17:50:00', 'Physiotherapist', 'gffffffffffffffffffffffffffffffffff', 'ida', '15:50:31 18-05-2023 ', 'Prescribed by Charle Cee'),
+(4, 4, 'Edson Magombo', '2023-05-18', '15:50:00', 'Physiotherapist', 'kkkkkkkkkkkkkkkkkkkkkkkkk', 'ida', '15:51:01 18-05-2023 ', 'Prescribed by Charle Cee');
 
 -- --------------------------------------------------------
 
@@ -124,7 +122,7 @@ CREATE TABLE `doctor` (
 INSERT INTO `doctor` (`id`, `uname`, `prof`, `pwd`) VALUES
 (4, 'joe viola', 'Radiologist', 'c20ad4d76fe97759aa27a0c99bff6710'),
 (5, 'omexie', 'Physiotherapist', '81dc9bdb52d04dc20036dbd8313ed055'),
-(6, 'Charle Cee', 'Surgeon', '70965feb0441ff7fc1982fc5c509136e'),
+(6, 'Charle Cee', 'Physiotherapist', '70965feb0441ff7fc1982fc5c509136e'),
 (7, 'chama', 'Surgeon', 'c20ad4d76fe97759aa27a0c99bff6710');
 
 -- --------------------------------------------------------
@@ -217,6 +215,9 @@ CREATE TABLE `patient` (
   `others` text DEFAULT NULL,
   `symptoms` text DEFAULT NULL,
   `history` text DEFAULT NULL,
+  `drug` text NOT NULL,
+  `dosage` text NOT NULL,
+  `drug_status` text NOT NULL,
   `prescribed_by` text DEFAULT NULL,
   `prescribed_on` text DEFAULT NULL,
   `total_bills` int(15) DEFAULT NULL,
@@ -229,22 +230,22 @@ CREATE TABLE `patient` (
 -- Dumping data for table `patient`
 --
 
-INSERT INTO `patient` (`id`, `name`, `date`, `gender`, `age`, `phoneNumber`, `district`, `village`, `residential`, `others`, `symptoms`, `history`, `prescribed_by`, `prescribed_on`, `total_bills`, `status`, `tests`, `lab_results`) VALUES
-(1, 'Chiso Bwanali', '2458-09-09', 'female', 20, 888678728, 'Lilongwe', 'Kabudula', 'Chikanda', 'poiuytrew', 'Shortness of breath, Loss of taste, Diarrhoea', 'Kidney Disease', 'chama', '16:24:35 08-05-2023 ', NULL, 'not paid', 'Test for TB', NULL),
-(2, 'Chiso Bwanali', '1100-09-02', 'female', 17, 996348737, 'Lilongwe', 'Kachoka', 'Matawale', 'rtkdjrsgeafken', 'Shortness of breath, Loss of appetite, Allergy', 'High Blood Pressure, Cancer', 'Charle Cee', '10:42:47 10-05-2023 ', 4436, 'Paid Fully', 'Test for Malaria and TB', NULL),
-(3, 'Gomboz Tech', '2020-02-02', 'male', 54, 881955791, 'Dowa', 'Kachoka', 'Kalimbuka', 'lskdfj', 'Cough, Loss of appetite', 'High Blood Pressure', 'Charle Cee', '00:49:59 16-05-2023 ', 2645, 'not paid', 'Tets for HIV', NULL),
-(4, 'Edson Magombo', '2020-08-09', 'male', 19, 997740566, 'Dowa', 'Mponela', 'Nason', 'palibe', 'Shortness of breath, Headache, Muscle aches, Sore throat, Runny nose, Vomiting, Diarrhoea, Skin rash, Allergy', 'Asthma, Liver Disease, Autoimmune Disease', 'Charle Cee', '14:57:07 17-05-2023 ', 1801, 'Paid Fully', 'Test for Hiv', NULL),
-(5, 'Avio', '2020-02-02', 'male', 11, 2147483647, 'Phalombe', 'olala', 'Old Naisi', 'Malungo', 'Cough, Shortness of breath, Fatigue, Headache, Loss of taste, Sore throat, Runny nose, Itching, Skin rash', 'Diabetes, Thyroid Problems', 'Mary Juma', '15:14:27 17-05-2023 ', 11395, 'Paid Fully', 'Test for HIV', NULL),
-(7, 'Mary Banda', '1999-04-07', 'female', 10, 882595892, 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', 'Malungo', 'Shortness of breath, Loss of appetite', 'Asthma, Heart Disease, Kidney Disease, Thyroid Problems', 'Charle Cee', '00:48:42 16-05-2023 ', 3613, 'Paid Fully', 'Test for AIDS', 'Malaria Negative, HIV Negative, and TB Positive'),
-(8, 'Maureen', '1998-03-12', 'female', 12, 882595892, 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, 'Chest Pain, Pink eye, Nausea', NULL, 'Charle Cee', '11:23:51 17-05-2023 ', 2541, 'not paid', 'Test for HIV and AIDS', NULL),
-(9, 'Zione Muliya', '1933-12-12', 'female', 90, 2147483647, 'Bangwe', 'Blantyre', 'Nyambadwe', 'Chibayo', 'Shortness of breath, Loss of appetite, Sore throat', 'Shortness of breath, Loss of appetite, Sore throat', 'Mary Juma', '10:26:34 18-05-2023 ', 3489, 'not paid', 'Tets for Hiv', NULL),
-(11, 'Charle Cee Graphix', '1988-02-21', 'Female', 35, 882595892, 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, 'Fever, Cough, Shortness of breath, Headache', NULL, 'Charle Cee', '19:43:06 17-05-2023 ', 7147, 'not paid', 'HIV', NULL),
-(12, 'OMEXIE CHAMA', '1999-12-09', 'Female', 24, 2147483647, 'Phalombe', 'Muwake', 'Zomba', NULL, 'Cough, Shortness of breath, Fatigue', NULL, 'Charle Cee', '15:18:23 17-05-2023 ', 4699, 'not paid', 'Test for Malaria', 'Malaria negative results'),
-(13, 'mary kama', '2023-05-08', 'Female', 12, 2147483647, 'muwake', 'Muwake', 'Zomba', NULL, 'Sore throat, Runny nose, Nausea, Vomiting', 'Sore throat, Runny nose, Nausea, Vomiting', 'Mary Juma', '10:27:32 18-05-2023 ', 4676, 'not paid', 'Test for HIv', 'HIV negative results'),
-(14, 'Gilson Chongo', '1990-05-14', 'Male', 33, 2147483647, 'Bangwe', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, 'Cough, Fatigue, Sore throat, Runny nose, Vomiting, Diarrhoea', NULL, 'Mary Juma', '15:13:34 17-05-2023 ', 7007, 'Paid Fully', 'Test for Malaria', 'Malaria results- negative'),
-(15, 'Precious Mlimbika', '1998-05-16', 'Male', 25, 996842414, 'Lilongwe', 'Govala', 'Kufumbi', 'b, Azithromycin, Intoxcyclin, Oxygen', 'Sore throat, Runny nose, Pink eye', NULL, 'Charle Cee', '18:03:46 16-05-2023 ', 5202, 'Paid Fully', 'Test for AIds', 'AIDS NEGATIVE'),
-(16, 'Ruben Dias', '2000-05-16', 'Male', 23, 435678, 'sfdghj', 'sdfgfhj', 'fdgfhyu', NULL, 'Loss of taste, Sore throat, Nausea, Vomiting, Diarrhoea, Itching', 'Loss of taste, Sore throat, Nausea, Vomiting, Diarrhoea, Itching', 'Mary Juma', '20:49:19 17-05-2023 ', 6074, 'Paid Fully', 'Test for AIDS', 'AIDS negative'),
-(17, 'Jenifer Lopez', '1978-05-17', 'Female', 45, 34567890, 'Zambia', 'Zingwangwa', 'Zimbabwe', NULL, 'Fatigue, Headache, Dizziness', 'Fatigue, Headache, Dizziness', 'Charle Cee', '21:03:40 17-05-2023 ', 2830, 'not paid', 'Test for AIDS', 'HIV and AIDS negative results');
+INSERT INTO `patient` (`id`, `name`, `date`, `gender`, `age`, `phoneNumber`, `district`, `village`, `residential`, `others`, `symptoms`, `history`, `drug`, `dosage`, `drug_status`, `prescribed_by`, `prescribed_on`, `total_bills`, `status`, `tests`, `lab_results`) VALUES
+(1, 'Chiso Bwanali', '2458-09-09', 'female', 20, 888678728, 'Lilongwe', 'Kabudula', 'Chikanda', 'poiuytrew', 'Shortness of breath, Loss of taste, Diarrhoea', 'Kidney Disease', '', '', '', 'chama', '16:24:35 08-05-2023 ', NULL, 'not paid', 'Test for TB', NULL),
+(2, 'Chiso Bwanali', '1100-09-02', 'female', 17, 996348737, 'Lilongwe', 'Kachoka', 'Matawale', 'rtkdjrsgeafken', 'Fatigue, Headache', 'Fatigue, Headache', ', Asprin, Parapain, Doxycyclin, Fragel', '1 morn afternoon and evening\r\n2 jfdkslfgh', '', 'Mary Juma', '19:00:32 18-05-2023 ', 24447, 'Paid Fully', 'Test for Malaria and TB', NULL),
+(3, 'Gomboz Tech', '2020-02-02', 'male', 54, 881955791, 'Dowa', 'Kachoka', 'Kalimbuka', 'lskdfj', 'Dizziness', 'Fever, Cough, Shortness of breath', '', 'Array', '', 'Charle Cee', '15:12:00 18-05-2023 ', 6407, 'not paid', 'Tets for HIV', NULL),
+(4, 'Edson Magombo', '2020-08-09', 'male', 19, 997740566, 'Dowa', 'Mponela', 'Nason', 'palibe', 'Loss of taste, Sore throat', 'Loss of taste, Sore throat', 'Aspirin, Hedax, Bruffen, Doxycyclin', ' 1 in morn, afternoon and evening', '', 'Mary Juma', '19:12:02 18-05-2023 ', 4247, 'Paid Fully', 'Test for Hiv', NULL),
+(5, 'Avio', '2020-02-02', 'male', 11, 2147483647, 'Phalombe', 'olala', 'Old Naisi', 'Malungo', 'Loss of appetite, Pink eye, Vomiting', 'Loss of appetite, Pink eye, Vomiting', '', '', '', 'Mary Juma', '12:49:47 18-05-2023 ', 3480, 'Paid Fully', 'Test for HIV', NULL),
+(7, 'Mary Banda', '1999-04-07', 'female', 10, 882595892, 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', 'Malungo', 'Shortness of breath, Loss of appetite', 'Asthma, Heart Disease, Kidney Disease, Thyroid Problems', '', '', '', 'Charle Cee', '00:48:42 16-05-2023 ', 3613, 'Paid Fully', 'Test for AIDS', 'Malaria Negative, HIV Negative, and TB Positive'),
+(8, 'Maureen', '1998-03-12', 'female', 12, 882595892, 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, 'Chest Pain, Pink eye, Nausea', NULL, '', '', '', 'Charle Cee', '11:23:51 17-05-2023 ', 2541, 'not paid', 'Test for HIV and AIDS', NULL),
+(9, 'Zione Muliya', '1933-12-12', 'female', 90, 2147483647, 'Bangwe', 'Blantyre', 'Nyambadwe', 'Chibayo', 'Shortness of breath, Loss of appetite, Sore throat', 'Shortness of breath, Loss of appetite, Sore throat', '', '', '', 'Mary Juma', '10:26:34 18-05-2023 ', 3489, 'not paid', 'Tets for Hiv', NULL),
+(11, 'Charle Cee Graphix', '1988-02-21', 'Female', 35, 882595892, 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, 'Fever, Cough, Shortness of breath, Headache', NULL, '', '', '', 'Charle Cee', '19:43:06 17-05-2023 ', 7147, 'not paid', 'HIV', NULL),
+(12, 'OMEXIE CHAMA', '1999-12-09', 'Female', 24, 2147483647, 'Phalombe', 'Muwake', 'Zomba', 'MaLungo', 'Loss of taste', 'Loss of taste', '', 'Malawianananana', '', 'Charle Cee', '15:45:20 18-05-2023 ', 1000, 'not paid', 'Test for Malaria', 'Malaria negative results'),
+(13, 'mary kama', '2023-05-08', 'Female', 12, 2147483647, 'muwake', 'Muwake', 'Zomba', NULL, 'Sore throat, Runny nose, Nausea, Vomiting', 'Sore throat, Runny nose, Nausea, Vomiting', '', '', '', 'Mary Juma', '10:27:32 18-05-2023 ', 4676, 'not paid', 'Test for HIv', 'HIV negative results'),
+(14, 'Gilson Chongo', '1990-05-14', 'Male', 33, 2147483647, 'Bangwe', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, 'Cough, Fatigue, Sore throat, Runny nose, Vomiting, Diarrhoea', NULL, '', '', '', 'Mary Juma', '15:13:34 17-05-2023 ', 7007, 'Paid Fully', 'Test for Malaria', 'Malaria results- negative'),
+(15, 'Precious Mlimbika', '1998-05-16', 'Male', 25, 996842414, 'Lilongwe', 'Govala', 'Kufumbi', 'b, Azithromycin, Intoxcyclin, Oxygen', 'Sore throat, Runny nose, Pink eye', NULL, '', '', '', 'Charle Cee', '18:03:46 16-05-2023 ', 5202, 'Paid Fully', 'Test for AIds', 'AIDS NEGATIVE'),
+(16, 'Ruben Dias', '2000-05-16', 'Male', 23, 435678, 'sfdghj', 'sdfgfhj', 'fdgfhyu', NULL, 'Loss of taste, Sore throat, Nausea, Vomiting, Diarrhoea, Itching', 'Loss of taste, Sore throat, Nausea, Vomiting, Diarrhoea, Itching', '', '', '', 'Mary Juma', '20:49:19 17-05-2023 ', 6074, 'Paid Fully', 'Test for AIDS', 'AIDS negative'),
+(17, 'Jenifer Lopez', '1978-05-17', 'Female', 45, 34567890, 'Zambia', 'Zingwangwa', 'Zimbabwe', NULL, 'Muscle aches, Loss of appetite', 'Muscle aches, Loss of appetite', 'Aspirin', '5 per day', '', 'Charle Cee', '17:25:23 18-05-2023 ', 1000, 'not paid', 'Test for AIDS', 'HIV and AIDS negative results');
 
 -- --------------------------------------------------------
 
@@ -395,7 +396,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `doctor`

@@ -3,7 +3,7 @@ include 'user_regdb.php';
 if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
   include "unavbar.php";
   include "comfig.php";
-        ?>
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,15 +27,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
          <div class="collapse navbar-collapse" id="navmenu">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown">
-                  <a href="#add-drug" class="nav-link p-2" data-toggle="tab">Add New Drug</a>
+                  <a href="#view" class="nav-link p-2 active" data-toggle="tab" id="viewPatientListBtn">View Patient List</a>
                </li>
                
                <li class="nav-item dropdown">
-                  <a href="#add-drug" class="nav-link p-2" data-toggle="tab">Add New Drug</a>
+                  <a href="#add-drug" class="nav-link p-2" data-toggle="tab" id="addDrugBtn">Add New Drug</a>
                </li>
                
                <li class="nav-item dropdown">
-                  <a href="#update-drug" class="nav-link p-2" data-toggle="tab">Update Drug</a>
+                  <a href="#update-drug" class="nav-link p-2" data-toggle="tab" id="updateDrugBtn">Update Drug</a>
                </li>
             </ul>
          </div>
@@ -45,6 +45,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
    <!-- Tab Content -->
    <div class="container mt-4">
       <div class="tab-content">
+         
+      <div class="tab-pane fade show active" id="view">
+            <?php include "dosage.php"; ?>
+         </div>
          <div class="tab-pane fade" id="add-drug">
             <?php include "Bilings/add_drug.php"; ?>
          </div>
@@ -58,12 +62,22 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+$(document).ready(function() {
+   $("#addDrugBtn, #updateDrugBtn").on("click", function() {
+      $("#viewPatientListBtn").removeClass("active");
+      $("#view").removeClass("show active");
+   });
+});
+</script>
+
 </body>
 </html>
 
 <?php 
-    }else {
+    } else {
         header("Location: home.php");
         exit();
     }
-?> 
+?>  

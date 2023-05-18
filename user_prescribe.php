@@ -1,10 +1,12 @@
+<?php 
 
-<?php
- include 'user_regdb.php';
- if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
-   include "unavbar.php";
-   include "comfig.php";
-        ?>
+    include 'user_regdb.php';
+    include "comfig.php";
+    include "dnavbar.php";
+    if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
+      
+
+?>
         <!DOCTYPE html>
 <html lang="en">
 
@@ -21,6 +23,12 @@
     <div class="pat$patient">
       <div class="col-sm-12">
         <?php
+ 
+        if (!isset($_SESSION['uname'])) {
+          // User is not authenticated, redirect to login page
+          header("Location: user_login.php");
+          exit();
+        }
         // Connect to the database
         $servername = "localhost";
         $username = "root";
@@ -59,6 +67,7 @@
             $age = $patient['age'];
             $gender = $patient['gender'];
             $date = $patient['date']; 
+            $appoint_id = $_SESSION ['appoint_id'];
             echo "<h1 class='mb-4'>Prescription Summary</h1>";
               echo "<h4 class='mb-3'>Section A: Patient Details</h4>";?>
               <hr>
@@ -92,141 +101,132 @@
             // Convert the array of symptoms to a comma-separated string
             $symptoms_string = implode(", ", $symptoms);
             $_SESSION["symptoms_string"]=$symptoms_string;
+          
             // Update the patient table with the new symptoms string
             $update_query = "UPDATE patient SET symptoms='$symptoms_string' WHERE id=$patient_id";
             // Replace $patient_id with the actual patient ID
           
-            // Execute the update query
-            if ($conn->query($update_query) === TRUE) {
-              // If the update is successful, display the symptoms and associated drugs in a table
-              echo "<table class='table'>";
-              echo "<tbody>";
-              foreach ($symptoms as $symptom) {
-                // Query the database for drugs associated with this symptom
-                $sql = "SELECT drug_name FROM drug WHERE symptoms LIKE '%" . $symptom . "%'";
-                $result = mysqli_query($conn, $sql);
-          
-                // If there are matching drugs, display them
-                if (mysqli_num_rows($result) > 0) {
-                  echo "<tr><td>" . $symptom . "</td><td><ul>";
-        
-                  echo "</ul></td></tr>";
-                } else {
-                  echo "<tr><td>" . $symptom . "</td><td>No matching drugs found.</td></tr>";
-                }
-              }
-              echo "</tbody></table>";
-            } else {
-              // If the update fails, display an error message
-              echo "Error updating record: " . $conn->error;
-            }
-          } else {
-            // If no symptoms are provided, display a message in the table and clear the symptoms column in the patient table
-            $update_query = "UPDATE patient SET symptoms='' WHERE id=$patient_id";
-            // Replace $patient_id with the actual patient ID
-          
-            // Execute the update query
-            if ($conn->query($update_query) === TRUE) {
-              // If the update is successful, display a message in the table
-              echo "None";
-            } else {
-              // If the update fails, display an error message
-              echo "Error updating record: " . $conn->error;
-            }
-          } 
-          if (!empty($others)) {
-            // Query the database for drugs associated with this symptom
-            $sql = "SELECT drug_name FROM drug WHERE symptoms LIKE '%" . $others . "%'";
-            $result = mysqli_query($conn, $sql);
-            
-            // If there are matching drugs, display them
-            if (mysqli_num_rows($result) > 0) {
-              echo "<p><b> Other Symptoms: </b>" . $others . "\t&nbsp;\t&nbsp;\t&nbsp;" . $patient['drug_name'] . "</p>";
-          
-              // Update patient table with the extra symptoms and associated drugs
-              $others_with_drugs = $others;
-              while ($patient = mysqli_fetch_assoc($result)) {
-                $others_with_drugs .= ", " . $patient['drug_name'];
-              }
-              $query = "UPDATE patient SET others='$others_with_drugs' WHERE id=$patient_id";
-              $result = mysqli_query($conn, $query);
-              
-            } else {
-              // If no matching drugs are found, display a message to the user
-              echo "<p><b> Other Symptoms: </b>" . $others . " (No matching drugs found)</p>";
-          
-              // Update patient table with the extra symptoms
-              $query = "UPDATE patient SET others='$others' WHERE id=$patient_id";
-              $result = mysqli_query($conn, $query);
-            }
-          }
-          
-          echo "</div>";
-          
-          
-echo "</div>";
-echo "</div>";
-
-
-}
-
-if (isset($_SESSION['uname'])) {
-  $username = $_SESSION['uname'];
-  $stmt = $conn->prepare("SELECT * FROM user WHERE uname = ?");
-  $stmt->bind_param("s", $username);
-  $result = $stmt->execute();
-
-  if ($result === false) {
-    // Display an error message if the query execution failed
-    echo "<div class='alert alert-danger' role='alert'>Error: " . $stmt->error . "</div>";
-  } else {
-    // Display the user's username if the query execution succeeded
-    $user = $stmt->get_result()->fetch_assoc();
-    $prescribed_on = date("H:i:s d-m-Y ");
-    echo "<div class='col-sm-12'>";
-    echo "</div>";
-    echo "<p class='list-group-item'><b style='color: green;'>Prescribed by</b><b> " . $user['uname'] . "</b>&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  <b style='color: green;'>Prescribed at </b><b>".$prescribed_on." </b></p>";
- echo "</div>";
-    // Update patient table with prescription details
-  $prescribed_by = $user['uname'];
-  $appoint_status = 'Prescribed by ' . $user['uname'];
-  $stmt = $conn->prepare("UPDATE patient SET prescribed_by=?, prescribed_on=? WHERE id=?");
-  $stmt->bind_param("ssi", $prescribed_by, $prescribed_on, $patient_id);
-  $stmt->execute();
-  $stmt2 = $conn->prepare("UPDATE appointments SET status=? WHERE id=?");
-
-if (!$stmt2) {
-  echo '<div class="alert alert-danger" role="alert">
-    Error: ' . mysqli_error($conn) . '
-  </div>';
-  exit;
-}
-
-$stmt2->bind_param("ss", $appoint_status, $appoint_id);
-
-if (!$stmt2->execute()) {
-  echo '<div class="alert alert-danger" role="alert">
-    Error: ' . $stmt2->error . '
-  </div>';
-  exit;
-}
-
-
+// Execute the update query
+if ($conn->query($update_query) === TRUE) {
+  // If the update is successful, display the symptoms in a table
+  echo "<table class='table'>";
+  echo "<thead><tr><th>Symptom</th></tr></thead>";
+  echo "<tbody>";
+  foreach ($symptoms as $symptom) {
+      echo "<tr>";
+      echo "<td>" . $symptom . "</td>";
+      echo "</tr>";
   }
-}echo "<br>";
-echo "<div style='text-align:center;'>";
-echo "<button class='btn btn-primary mb-3' onclick='window.location.href=\"billing.php\"'>Proceed to Billing</button>";
-echo "&nbsp;&nbsp;&nbsp;&nbsp;";
-echo "<button class='btn btn-danger mb-3' onclick='window.history.back()'>Cancel</button>";
+  echo "</div>";
+
+  echo "</tbody></table>";
+  if (!empty($others)) {
+    // Query the database for drugs associated with this symptom
+    $sql = "SELECT drug_name FROM drug WHERE symptoms LIKE '%" . $others . "%'";
+    $result = mysqli_query($conn, $sql);
+    
+    // If there are matching drugs, display them
+    if (mysqli_num_rows($result) > 0) {
+      echo "<p><b> Other Symptoms: </b>" . $others . "\t&nbsp;\t&nbsp;\t&nbsp;" . $patient['drug_name'] . "</p>";
+  
+      // Update patient table with the extra symptoms and associated drugs
+      $others_with_drugs = $others;
+      while ($patient = mysqli_fetch_assoc($result)) {
+        $others_with_drugs .= ", " . $patient['drug_name'];
+      }
+      $query = "UPDATE patient SET others='$others_with_drugs' WHERE id=$patient_id";
+      $result = mysqli_query($conn, $query);
+      
+    } else {
+      // If no matching drugs are found, display a message to the user
+      echo "<p><b> Other Symptoms: </b>" . $others . " </p>";
+  
+      // Update patient table with the extra symptoms
+      $query = "UPDATE patient SET others='$others' WHERE id=$patient_id";
+      $result = mysqli_query($conn, $query);
+    }
+  }
+  
+  // Display the drugs and dosages
+  echo "<form method='post' action='user_process_prescription.php'>";
+  echo "<table class='table'>";
+  echo "<thead><tr><th>Drugs Available</th><th>Type the Name(s) Drug</th> <th>Dosage</th></tr></thead>";
+  echo "<tbody>";
+  echo "<tr>";
+  echo "<td>";
+  echo "<input type='hidden' class='form-control' value='" . $patient_id . "' id='patient_id' name='patient_id' required>";
+ 
+ 
+  echo "<select name='drugs[]' multiple>";
+  // Query the database for drugs
+  $sql = "SELECT * FROM drug ORDER BY drug_name ASC";
+  $result = mysqli_query($conn, $sql);
+  while ($row = mysqli_fetch_assoc($result)) {
+      echo "<option value='" . $row['drug_name'] . "'>" . $row['drug_name'] . "</option>";
+  }
+  echo "</select>";
+  echo "</td>";
+  echo "<td>";
+  echo "<textarea name='drugs' rows='3' cols='30' placeholder='Enter name of drugs separated by comma followed by space'></textarea>";
+
+  echo "</td>";
+  echo "<td>";
+  echo "<textarea name='dosages' rows='3' cols='30' placeholder='Type how each drug  should be taken by patient'></textarea>";
+  echo "</td>";
+  echo "</tr>";
+  echo "</tbody></table>";
+  if (isset($_SESSION['uname'])) {
+    $username = $_SESSION['uname'];
+    $stmt = $conn->prepare("SELECT * FROM user WHERE uname = ?");
+    $stmt->bind_param("s", $username);
+    $result = $stmt->execute();
+  
+    if ($result === false) {
+      // Display an error message if the query execution failed
+      echo "<div class='alert alert-danger' role='alert'>Error: " . $stmt->error . "</div>";
+    } else {
+      // Display the user's username if the query execution succeeded
+      $user = $stmt->get_result()->fetch_assoc();
+      $prescribed_on = date("H:i:s d-m-Y ");
+      echo "<div class='col-sm-12'>";
+      echo "</div>";
+      echo "<p class='list-group-item'><b style='color: green;'>Prescribed by</b><b> " . $user['uname'] . "</b>&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  <b style='color: green;'>Prescribed at </b><b>".$prescribed_on." </b></p>";
+      echo "</div>";
+      // Update patient table with prescription details
+      $prescribed_by = $user['uname'];
+      $appoint_status = 'Prescribed by ' . $user['uname'];
+      $stmt = $conn->prepare("UPDATE patient SET prescribed_by=?, prescribed_on=? WHERE id=?");
+      $stmt->bind_param("ssi", $prescribed_by, $prescribed_on, $patient_id);
+      $stmt->execute();
+        }
+  }
+  
+  echo "<br>";
+  echo "<div style='text-align:center;'>";
+  echo "<button type='submit' class='btn btn-primary mb-3'>Proceed to Billing</button>";
+  echo "&nbsp;&nbsp;&nbsp;&nbsp;";
+  echo "<button class='btn btn-danger mb-3' onclick='window.history.back()'>Cancel</button>";
+  echo "</div>";
+  
+  echo "</form>";
+} else {
+  // If the update fails, display an error message
+  echo "Error updating record: " . $conn->error;
+}
+
+          
+          
 echo "</div>";
+echo "</div>";
+
+
+}
+
 
 // Close the database connection
-
-
 $conn->close();
-
+        }
 ?>
-</div>
 </div>
 </div>
 <?php 
@@ -238,7 +238,6 @@ $conn->close();
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
-
 
 
 <?php 
