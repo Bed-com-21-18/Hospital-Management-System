@@ -1,4 +1,5 @@
 <?php 
+
     include 'doctor_regdb.php';
     include "comfig.php";
     include "dnavbar.php";
@@ -163,7 +164,7 @@
               
             } else {
               // If no matching drugs are found, display a message to the user
-              echo "<p><b> Other Symptoms: </b>" . $others . " (No matching drugs found)</p>";
+              echo "<p><b> Other Symptoms: </b>" . $others . " </p>";
           
               // Update patient table with the extra symptoms
               $query = "UPDATE patient SET others='$others' WHERE id=$patient_id";
@@ -196,22 +197,21 @@ if (isset($_SESSION['uname'])) {
     echo "<div class='col-sm-12'>";
     echo "</div>";
     echo "<p class='list-group-item'><b style='color: green;'>Prescribed by</b><b> " . $doctor['uname'] . "</b>&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  <b style='color: green;'>Prescribed at </b><b>".$prescribed_on." </b></p>";
- echo "</div>";
+    echo "</div>";
     // Update patient table with prescription details
-  $prescribed_by = $doctor['uname'];
-  $appoint_status = 'Prescribed by ' . $doctor['uname'];
-  $stmt = $conn->prepare("UPDATE patient SET prescribed_by=?, prescribed_on=? WHERE id=?");
-  $stmt->bind_param("ssi", $prescribed_by, $prescribed_on, $patient_id);
-  $stmt->execute();
-  
-
-if ($appoint_status === 'Prescribed by ' . $doctor['uname']) {
-  $appoint_id = $_SESSION ['appoint_id'];
-  $stmt2 = $conn->prepare("UPDATE appointments SET status=? WHERE id=?");
-  $stmt2->bind_param("ss", $appoint_status, $appoint_id);
-}
+    $prescribed_by = $doctor['uname'];
+    $appoint_status = 'Prescribed by ' . $doctor['uname'];
+    $stmt = $conn->prepare("UPDATE patient SET prescribed_by=?, prescribed_on=? WHERE id=?");
+    $stmt->bind_param("ssi", $prescribed_by, $prescribed_on, $patient_id);
+    $stmt->execute();
+    $appoint_id = $_SESSION['appoint_id'];
+    $stmt2 = $conn->prepare("UPDATE appointments SET status=? WHERE id=?");
+    $stmt2->bind_param("si", $appoint_status, $appoint_id);
+    $stmt2->execute(); // Execute the query to update the appointment status
   }
-}echo "<br>";
+}
+
+echo "<br>";
 echo "<div style='text-align:center;'>";
 echo "<button class='btn btn-primary mb-3' onclick='window.location.href=\"doc_billing.php\"'>Proceed to Billing</button>";
 echo "&nbsp;&nbsp;&nbsp;&nbsp;";
@@ -220,9 +220,7 @@ echo "</div>";
 
 // Close the database connection
 $conn->close();
-
 ?>
-</div>
 </div>
 </div>
 <?php 

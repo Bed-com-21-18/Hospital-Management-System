@@ -93,7 +93,6 @@ form .error {
       $row = $result2->fetch_assoc();
       $id = $row['id'];
       $name = $row['name'];   
-      $_SESSION['patient_id'] = $id; 
   
 } ?>
 

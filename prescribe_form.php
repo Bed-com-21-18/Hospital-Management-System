@@ -34,7 +34,8 @@
       <?php
     if(isset($_GET['viewing'])){
   $id = $_GET['viewing'];
-  
+  $appointment = $_GET['id'];
+  $_SESSION['appoint_id']= $appointment;
   $sql2 = "SELECT * FROM patient WHERE id='$id'";
   $result2 = $mysqli->query($sql2);
 

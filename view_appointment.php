@@ -71,27 +71,25 @@
             echo '</tr>';
             echo '</thead>';
             echo '<tbody>';
-            while ($row = mysqli_fetch_assoc($result)) { 
-                $id= $row['id'];
-                $_SESSION ['appoint_id'] = $row['id'];
-                ?>
+            while ($row = mysqli_fetch_assoc($result)) {
+                $id = $row['id'];
+            ?>
                 <tr>
-                <td><?php echo $row['name'];?></td>
-                <td><?php echo $row['date']; ?> </td>
-                <td><?php echo $row['time']; ?></td>
-                <td><?php echo $row['professional']; ?></td>
-                <td><?php echo $row['booked_by']; ?></td>
-                <td><?php echo $row['booked_at']; ?></td>
-                <td><?php  echo $row['status']; ?></td>
-                <td><?php echo $row['reason']; ?></td>
-                <td class='btn-group btn-group-justfied'>                                      
-                <a href='prescribe_form.php?viewing=<?php echo $row["patient_id"]; ?>' class='badge bg-success'>Proceed</a>
-             
-            </td>
+                    <td><?php echo $row['name']; ?></td>
+                    <td><?php echo $row['date']; ?></td>
+                    <td><?php echo $row['time']; ?></td>
+                    <td><?php echo $row['professional']; ?></td>
+                    <td><?php echo $row['booked_by']; ?></td>
+                    <td><?php echo $row['booked_at']; ?></td>
+                    <td><?php echo $row['status']; ?></td>
+                    <td><?php echo $row['reason']; ?></td>
+                    <td class='btn-group btn-group-justfied'>
+                        <a href='prescribe_form.php?viewing=<?php echo $row["patient_id"]; ?>&id=<?php echo $row["id"]; ?>' class='badge bg-success'>Proceed</a>
+                    </td>
                 </tr>
-                <?php
+            <?php
             }
-            echo '</tbody>';
+             echo '</tbody>';
             echo '</table>';
 
             echo '</div> <br><br><br><br><br><br><br><br><br><br><br>';
