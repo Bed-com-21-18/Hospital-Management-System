@@ -1,7 +1,7 @@
 <?php 
-    session_start();
-
+    include 'user_regdb.php';
     if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
+      include "comfig.php";
 
 ?>
 
@@ -67,6 +67,20 @@
         <h4 class="bg-light p-2 text-center text-secondary"> In Consultation</h4>
         </section>
     <form class="p-4 row form-control">
+    <?php
+    if(isset($_GET['consult'])){
+  $id = $_GET['consult'];
+  $sql2 = "SELECT * FROM patient WHERE id='$id'";
+  $result2 = $mysqli->query($sql2);
+
+      $row = $result2->fetch_assoc();
+      $id = $row['id'];
+      $name = $row['name'];
+      $age = $row['age'];
+      $date = $row['gender'];     
+  
+} ?>
+    
         <div class="row ">
             <ul>
            <p><a class="link-offset-2 link-underline link-underline-opacity-0" href="view_appointment.php">Appointment</a>
@@ -76,10 +90,10 @@
         </div>
         <div class="row g-3 align-items-center">
   <div class="col-auto">
-    <label for="inputPassword6" class="col-form-label">Patient</label>
+    <label for="name" class="col-form-label">Patient Name</label>
   </div>
   <div class="col-auto">
-    <input type="password" id="inputPassword6" class="form-control" aria-labelledby="passwordHelpInline">
+    <input type="text" class="form-control" value="<?= $name; ?>" readonly>
   </div>
   <div class="col-auto">
     <label id="passwordHelpInline" class="form-text">
@@ -96,7 +110,7 @@
     <label for="inputPassword6" class="col-form-label">Date</label>
   </div>
   <div class="col-auto">
-    <input type="password" id="inputPassword6" class="form-control" aria-labelledby="passwordHelpInline">
+    <input type="date" id="inputPassword6" class="form-control" aria-labelledby="passwordHelpInline">
   </div>
   <div class="col-auto">
     <span id="passwordHelpInline" class="form-text">
@@ -130,7 +144,7 @@
     <label for="inputPassword6" class="col-form-label">Doctor</label>
   </div>
   <div class="col-auto">
-    <input type="password" id="inputPassword6" class="form-control" aria-labelledby="passwordHelpInline">
+    <input type="text" value="<?= $_SESSION['uname']; ?>" readonly>
   </div>
   
   <div class="col-auto">
