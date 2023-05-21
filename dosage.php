@@ -22,7 +22,7 @@ $(document).ready(function(){
 });
 </script>
 <body>
-    <div class="container">
+    <div class="">
         <div class="collapse navbar-collapse" id="navmenu">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown">
@@ -41,6 +41,7 @@ $(document).ready(function(){
                     <th>Drug Assigned</th>
                     <th>Dosage</th>
                     <th>Prescribed By</th>
+                    <th>Drug Given By</th>
                     <th>Drug Status</th>
                     <th>Action</th>
                 </tr>
@@ -71,9 +72,10 @@ $(document).ready(function(){
                             <td><?php echo $row["drug"]; ?></td>
                             <td><?php echo $row["dosage"]; ?></td>
                             <td><?php echo $row["prescribed_by"]; ?></td>
+                            <td><?php echo $row["drug_given_by"]; ?></td>
                             <td><?php echo $row["drug_status"]; ?></td>
                             <td class='btn-group btn-group-justified'>                                    
-                                <a href='finance_status.php?add_status=<?php echo $row["id"]; ?>' class='badge bg-success'>Proceed</a>
+                                <a href='drug_given.php?add_medication=<?php echo $row["id"]; ?>' class='badge bg-success'>Proceed</a>
                             </td>
                         </tr>
                         <?php  
