@@ -59,7 +59,7 @@
                             <i class="bi bi-people text-primary"></i>
                         </div>
                         <h3 class="card-title mb-3 text-primary">Inpatients</h3>
-                        <a href="" class="btn btn-primary">Proceed</a>
+                        <a href="inpatient.php" class="btn btn-primary">Proceed</a>
                     </div>
                 </div>
             </div>
