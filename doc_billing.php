@@ -89,8 +89,7 @@
                 $total_amount = 0;
                 $total_amount = 0;
                 echo "<table class='table'>";
-                echo "<p class='lead'><b>Below is the billing, dosage, and prescription summary for <b>$name</b>, who is <strong>$age years old.</strong></b></p>";
-                echo "<thead><tr><th>Drug Name</th><th>Drug Price</th></tr></thead>";
+                echo "<thead><tr><th>Drug Name</th><th>Price(MWK)</th></tr></thead>";
                 echo "<tbody>";
                 
                 // Fetch the drug and dosage from the patient table using patient_id

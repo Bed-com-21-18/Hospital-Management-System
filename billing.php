@@ -50,9 +50,8 @@
                       $age = $patient['age'];
                       $gender = $patient['gender'];
                       $date = $patient['date']; 
-                      echo "<h1 class='mb-4'>Prescription Summary</h1>";
-                        echo "<h4 class='mb-3'>Section A: Patient Details</h4>";?>
-                        <hr>
+                      echo "<h1 class='mb-4'>Prescription, Dosage and Billing Summary</h1>";
+                      ?>
                         <table class="table table-hover" style="overflow:auto">
                             <thead class="table table-hover">
                                 <tr>
@@ -89,8 +88,7 @@
                 $total_amount = 0;
                 $total_amount = 0;
                 echo "<table class='table'>";
-                echo "<p class='lead'><b>Below is the billing, dosage, and prescription summary for <b>$name</b>, who is <strong>$age years old.</strong></b></p>";
-                echo "<thead><tr><th>Drug Name</th><th>Drug Price</th></tr></thead>";
+                echo "<thead><tr><th>Drug Name</th><th>Price (MWK)</th></tr></thead>";
                 echo "<tbody>";
                 
                 // Fetch the drug and dosage from the patient table using patient_id
@@ -121,7 +119,7 @@
                 echo "</table>";
                 echo "<p class='lead'>Dosage : <strong>" . $dosage . "</strong></p>";
                 echo "<p class='lead'>The service fee: <strong> MWK" . $servicefee . "</strong></p>";
-                echo "<p class='lead'>Total Bill: MWK" . $total_bill . "</p>";
+                echo "<p class='lead'>Total Bill:  <strong>MWK" . $total_bill . " <strong></p>";
                 
                 //updating total bills
                 $stmt = $mysqli->prepare("UPDATE patient SET total_bills=? WHERE id=?");
@@ -150,7 +148,7 @@
                       echo "<a href='download_pdf.php' class='btn btn-primary'>Print</a>";
                       echo"&nbsp";  echo"&nbsp";  echo"&nbsp";  echo"&nbsp"; 
                       echo"&nbsp";  echo"&nbsp";  echo"&nbsp";  echo"&nbsp"; 
-                      echo "<a href='doc_dashboard.php' class='btn btn-primary'>Go to Dashboard</a>";
+                      echo "<a href='nurse_dashboard.php' class='btn btn-primary'>Go to Dashboard</a>";
                     }
                 }
                 
@@ -163,29 +161,6 @@
           <!-- Bootstrap JavaScript -->
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.10.0/jspdf.umd.min.js"></script>
-          <!-- <script>
-          // Function to generate the PDF
-          function generatePDF() {
-            // Create a new jsPDF instance
-            const doc = new jsPDF();
-
-            // Get the prescription table element
-            const table = document.getElementById('prescription-table');
-
-            // Convert the table to a data URL
-            doc.autoTable({ html: table });
-
-            // Save the PDF file
-            doc.save('prescription.pdf');
-          }
-
-          // Add event listener to the "Print Prescription" button
-          const printButton = document.getElementById('print-button');
-          printButton.addEventListener('click', generatePDF);
-        </script>
-                           -->
-  </body>
-</html>
 <?php 
     }else {
         header("Location: home.php");

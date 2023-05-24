@@ -1,13 +1,11 @@
 <?php
-include 'user_regdb.php';
 if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
-  include "unavbar.php";
   include "comfig.php";
         ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Patients List</title>
+	<title>Drugs List</title>
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<!-- Responsive meta tag -->
@@ -30,7 +28,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
    <!--NavBar-->
    <nav class="navbar navbar-expand py-1"style="background-color:#F1F6F9;" >
             <div class="container">
-			<h5 class="navbar-brand"> Patient List</h5>
+			<h5 class="navbar-brand"> Drug List</h5>
                 <button 
                 class="navbar-toggler" 
                 type="button" 
@@ -57,14 +55,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                  <thead class="table table-hover">
 				<tr>
 					<th>Name</th>
-					<th>Date of Birth</th>
-					<th>Age</th>
-					<th>Sex</th>
-					<th>Phone Number</th>
-					<th>District</th>
-					<th>Village</th>
-					<th>Residential</th>
-					<th>Prescribed By</th>
+					<th>Price (MWK)</th>
+					<th>Status</th>
 					<th>Action</th>
 					</tr>
 			</thead>
@@ -78,7 +70,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 				if ($conn->connect_error) {
 					die("Connection failed: " . $conn->connect_error);
 				}
-                $query = "SELECT * FROM patient ORDER BY id DESC";
+                $query = "SELECT * FROM drug ORDER BY drug_name ASC";
                 $stmt = $conn->prepare($query);
                 $stmt->execute();
                 $result = $stmt->get_result();
@@ -87,18 +79,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 				if ($result->num_rows > 0) {
 					while ($row = $result->fetch_assoc()) { ?>
 						 <tr>
-							<td><?php echo $row["name"]; ?></td>
-							<td><?php echo $row["date"]; ?></td>
-							<td><?php echo $row["age"]; ?></td>
-							<td><?php echo $row["gender"]; ?></td>
-							<td><?php echo $row["phoneNumber"]; ?></td>
-							<td><?php echo $row["district"]; ?></td>
-							<td><?php echo $row["village"]; ?></td>
-							<td><?php echo $row["residential"]; ?></td>
-							<td><?php echo $row["prescribed_by"]; ?></td>
+							<td><?php echo $row["drug_name"]; ?></td>
+							<td><?php echo $row["drug_price2"]; ?></td>
+							<td><?php echo $row["status"]; ?></td>
 							<td class='btn-group btn-group-justified'>                                    
-									<a href='user_priscribe_form.php?view=<?php echo $row["id"]; ?>' class='badge bg-primary'>Prescribe</a>
-							</td>
+									<a href='doc_update_drug.php?view=<?php echo $row["id"]; ?>' class='badge bg-success'>Update</a> &nbsp;
+									<a href='doc_delete_drug.php?delete=<?php echo $row["id"]; ?>' class='badge bg-danger'>Delete</a>
+								</td>
 						</tr>
                       <?php  
 					}

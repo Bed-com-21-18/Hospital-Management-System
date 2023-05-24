@@ -3,7 +3,7 @@ include 'user_regdb.php';
 if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
   include "unavbar.php";
   include "comfig.php";
-        ?>
+?>
 
 <!DOCTYPE html>
 <html>
@@ -27,8 +27,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
          </button>
          <div class="collapse navbar-collapse" id="navmenu">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item dropdown">
-                  <a href="#view-bill" class="nav-link p-2" data-toggle="tab">View Bills</a>
+               <li class="nav-item dropdown">
+                  <a href="#view-bill" class="nav-link p-2 active" data-toggle="tab">View Bills</a>
                </li>
                
                <li class="nav-item dropdown">
@@ -43,11 +43,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
    <!-- Tab Content -->
    <div class="container mt-4">
       <div class="tab-content">
-         <div class="tab-pane fade" id="view-bill">
-            <?php include "Bilings/bills.php"; ?>
+         <div class="tab-pane fade show active" id="view-bill">
+            <?php include "bills.php"; ?>
          </div>
-         <div class="tab-pane fade" id="bill-bill">
-            <?php include "Bilings/add_new_bill.php"; ?>
+         <div class="tab-pane fade" id="add-bill">
+            <?php include "add_new_bill.php"; ?>
          </div>
       </div>
    </div>
@@ -60,7 +60,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 </html>
 
 <?php 
-    }else {
+    } else {
         header("Location: home.php");
         exit();
     }

@@ -1,13 +1,10 @@
 <?php
-include 'user_regdb.php';
-if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
-  include "unavbar.php";
-  include "comfig.php";
+  include "dnavbar.php";
         ?>
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html>
 <head>
-    <title>Drug already exists in database!</title>
+    <title>Drug not found</title>
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
@@ -17,12 +14,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
             <div class="col-md-6 offset-md-3">
                 <!-- Display success message -->
                 <div class="alert alert-success" role="alert">
-                    Drug already exists in database!, Consider adding new Drug.
+                    Drug data not found!
                 </div>
                 <!-- Create buttons to go back and go to dashboard -->
                 <div class="text-center">
-                    <a href="dashboard.php" class="btn btn-primary">Go to Dashboard</a>
-                    <a href="add_drug.php" class="btn btn-secondary">Go Back</a>
+                    <a href="doc_dashboard.php" class="btn btn-primary">Go to Dashboard</a>
+               
                 </div>
             </div>
         </div>
@@ -33,9 +30,3 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
-<?php 
-    }else {
-        header("Location: home.php");
-        exit();
-    }
-?> 

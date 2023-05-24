@@ -2,7 +2,7 @@
 
     include 'user_regdb.php';
     include "comfig.php";
-    include "dnavbar.php";
+    include "unavbar.php";
     if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
       
 
@@ -67,7 +67,6 @@
             $age = $patient['age'];
             $gender = $patient['gender'];
             $date = $patient['date']; 
-            $appoint_id = $_SESSION ['appoint_id'];
             echo "<h1 class='mb-4'>Prescription Summary</h1>";
               echo "<h4 class='mb-3'>Section A: Patient Details</h4>";?>
               <hr>
@@ -203,9 +202,7 @@ if ($conn->query($update_query) === TRUE) {
   
   echo "<br>";
   echo "<div style='text-align:center;'>";
-  echo "<button type='submit' class='btn btn-primary mb-3'>Proceed to Billing</button>";
-  echo "&nbsp;&nbsp;&nbsp;&nbsp;";
-  echo "<button class='btn btn-danger mb-3' onclick='window.history.back()'>Cancel</button>";
+  echo "<button type='submit' class='btn btn-primary mb-3'>Proceed to Billing</button>"; 
   echo "</div>";
   
   echo "</form>";

@@ -167,8 +167,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 
 
        <div class="form-group" method="POST" >
-          <label for="others"><b>Others Symptoms:</b></label>
-          <textarea class="form-control" id="others" name="others" rows="1" ></textarea>
+      
+          <input type="hidden" class="form-control" id="others" name="others" >
         </div>
         <div class="container">
         <div class="row">
@@ -182,7 +182,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
         </div>
          <br>  <br>
         <button type="submit" class="btn btn-primary">Proceed</button> &nbsp;&nbsp;&nbsp;&nbsp;
-        <button class='btn btn-secondary' onclick='window.history.back()'> Go Back</button>
+        <a class="btn btn-secondary" href="patient_list_user.php">Cancel</a>
     </form>
   </div>
   
