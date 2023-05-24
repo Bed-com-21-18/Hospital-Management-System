@@ -1,13 +1,13 @@
 <?php
-include 'user_regdb.php';
-if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
-  include "unavbar.php";
-  include "comfig.php";
-        ?>
-        <!DOCTYPE html>
+include 'doctor_regdb.php';
+if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
+    include "dnavbar.php";
+    include "comfig.php";
+?>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Drug not found</title>
+    <title>Drug Added Successfully</title>
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
@@ -15,14 +15,16 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
     <div class="container">
         <div class="row mt-5">
             <div class="col-md-6 offset-md-3">
+
+            <br> <br>
                 <!-- Display success message -->
                 <div class="alert alert-success" role="alert">
-                    Drug data not found!
+                    New drug has been added successfully!
                 </div>
                 <!-- Create buttons to go back and go to dashboard -->
                 <div class="text-center">
-                    <a href="../dashboard.php" class="btn btn-primary">Go to Dashboard</a>
-                    <a href="update_drug.php" class="btn btn-secondary">Go Back</a>
+                    <a href="doc_dashboard.php" class="btn btn-primary">Go to Dashboard</a>
+                    <a href="doc_manage_drug.php" class="btn btn-secondary">Add Another Drug</a>
                 </div>
             </div>
         </div>
@@ -34,8 +36,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 </body>
 </html>
 <?php 
-    }else {
+    } else {
         header("Location: home.php");
         exit();
     }
-?> 
+?>  

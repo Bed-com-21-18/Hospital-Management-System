@@ -1,9 +1,9 @@
 <?php
-include 'user_regdb.php';
+session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
-  include "unavbar.php";
+  include "dnavbar.php";
   include "comfig.php";
-        ?>
+  ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,8 +21,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                 </div>
                 <!-- Create buttons to go back and go to dashboard -->
                 <div class="text-center">
-                    <a href="../dashboard.php" class="btn btn-primary">Go to Dashboard</a>
-                    <a href="update_drug.php" class="btn btn-secondary">Go Back</a>
+                    <a href="doc_dashboard.php" class="btn btn-primary">Go to Dashboard</a>
                 </div>
             </div>
         </div>
@@ -34,9 +33,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 </body>
 </html>
 <?php 
-    }else {
+    } else {
         header("Location: home.php");
         exit();
     }
 ?> 
-

@@ -1,6 +1,6 @@
 <?php 
-    session_start();
-
+       include "doctor_regdb.php";
+       include "comfig.php";
     if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 
 ?>
@@ -33,9 +33,9 @@
                     <div class="card text-dark">
                     
                         <div class="card-body text-center">
-                            <div class="h1 mb-3">
-                                <i class="bi bi-people-fill text-primary"></i>
-                            </div>
+                        <div class="h1 mb-3">
+                            <i class="bi bi-people-fill text-primary"></i>
+                        </div>
                             <h3 class="card-title mb-3 text-primary">Appointments</h3>
                             <a href="view_appointment.php" class="btn btn-primary">Proceed</a>               
                         </div>
@@ -61,7 +61,7 @@
                                 <i class="bi bi-people text-primary"></i>
                             </div>
                             <h3 class="card-title mb-3 text-primary">Manage Medicine</h3>
-                            <a href="" class="btn btn-primary">proceed</a>
+                            <a href="doc_manage_drug.php" class="btn btn-primary">Proceed</a>
                         </div>
                     </div>
                 </div>

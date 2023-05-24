@@ -81,7 +81,7 @@
           <label for="symptoms"><strong>Primary Diagnosis:</strong></label><br>
             <p><em><strong>Please select all physical or mental manifestations experienced by an individual that indicate the presence of a disease:</strong></em></p>
             
-            <div class="row">
+            <div class="row" required>
               <div class="col-md-4">
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" name="symptoms[]" value="Fever" id="fever">

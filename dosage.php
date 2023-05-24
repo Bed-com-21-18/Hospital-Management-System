@@ -11,6 +11,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
     <!-- Responsive meta tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <script>
 $(document).ready(function(){
     $("#myInput").on("keyup", function() {
@@ -22,16 +23,14 @@ $(document).ready(function(){
 });
 </script>
 <body>
-    <div class="">
-        <div class="collapse navbar-collapse" id="navmenu">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item dropdown">
+    <div class="container p-2">
                     <!-- search -->
                     <input class="form-control me-1" id="myInput" style="width:100%; max-width:20rem" type="text" placeholder="Search" aria-label="Search">             
-                </li>
-            </ul>
+              
         </div>
-
+        <div class="p-2">
+        <div class="row">
+		<div class="col-md-12"> 
         <table class="table table-bordered bg-light" id='myInput'>
             <thead class="thead-light">
                 <tr>
@@ -89,6 +88,9 @@ $(document).ready(function(){
                 ?>
             </tbody>
         </table>
+        </div>
+        </div>
+        </div>
     </div>
 </div>
 

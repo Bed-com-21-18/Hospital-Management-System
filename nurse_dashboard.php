@@ -104,7 +104,7 @@
                             <i class="bi bi-people text-primary"></i>
                         </div>
                         <h3 class="card-title mb-3 text-primary">Consultant</h3>
-                        <a href="" class="btn btn-primary">Proceed</a>
+                        <a href="consultant_list.php" class="btn btn-primary">Proceed</a>
                     </div>
                 </div>
             </div>
