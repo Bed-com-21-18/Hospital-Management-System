@@ -47,7 +47,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
             <?php include "bills.php"; ?>
          </div>
          <div class="tab-pane fade" id="add-bill">
-            <?php include "add_new_bill.php"; ?>
+            <?php include " "; ?>
          </div>
       </div>
    </div>

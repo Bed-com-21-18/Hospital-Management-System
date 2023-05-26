@@ -189,6 +189,7 @@ CREATE TABLE `patient` (
   `total_bills` int(15) DEFAULT NULL,
   `status` text NOT NULL DEFAULT 'not paid',
   `tests` text DEFAULT NULL,
+  `ward_bed` text DEFAULT NULL,
   `lab_results` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

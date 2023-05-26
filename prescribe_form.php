@@ -76,8 +76,6 @@
                         
         <div class="form-group" method="POST" >
         <input type="hidden" class="form-control" value="<?= $id; ?>" id="patient_id" name="patient_id" placeholder="Patient ID" required> 
- 
-          <label for="symptoms"><b>Primary Diagnosis:</b></label><br>
           <label for="symptoms"><strong>Primary Diagnosis:</strong></label><br>
             <p><em><strong>Please select all physical or mental manifestations experienced by an individual that indicate the presence of a disease:</strong></em></p>
             
@@ -174,8 +172,7 @@
 
 
         <div class="form-group" method="POST" >
-          <label for="others"><b>Others Symptoms:</b></label>
-          <textarea class="form-control" id="others" name="others" rows="1" ></textarea>
+          <input type="hidden" class="form-control" id="others" name="others">
         </div>
         
         <a href="doc_send_to_lab.php?doc_send=<?php echo $row["id"]; ?> " class=" badge btn-primary ">Send Lab Request</a> &nbsp; &nbsp;&nbsp;&nbsp;

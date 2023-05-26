@@ -21,7 +21,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
   </div>
 
   <div class="container bg-light">
-    <form method="POST" action="inpatient_list.php">
+    <form method="POST" action="inpatient_form_action.php">
       <?php
       if(isset($_GET['view'])){
         $id = $_GET['view'];
@@ -51,15 +51,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
           </tr>
         </tbody>
       </table>
-
       <div class="mb-3">
-        <label for="bed" class="form-label"><i class="fas fa-comment-medical"></i> Assign Bed:</label>
-        <select name="bed" id="bed" required class="form-control">
+      <input type="hidden" class="form-control" value="<?= $id; ?>" id="patient_id" name="patient_id" placeholder="Patient ID" required> 
+      </div>
+      <div class="mb-3">
+        <label for="ward_bed" class="form-label"><i class="fas fa-comment-medical"></i> Assign ward Bed:</label>
+        <select name="ward_bed" id="ward_bed" required class="form-control">
           <option value="">Select a bed</option>
           <optgroup label="Ward A">
             <?php
             for ($i = 1; $i <= 6; $i++) {
-              echo "<option value='A$i'>A$i</option>";
+              echo "<option value='Ward A, Bed $i'>Ward A, Bed $i</option>";
             }
             ?>
           </optgroup>

@@ -112,7 +112,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 							<td><?php echo $row["residential"]; ?></td>
 							<td><?php echo $row["prescribed_by"]; ?></td>
 							<td class='btn-group btn-group-justified'>                                    
-									<a href='inpatient_form.php?view=<?php echo $row["id"]; ?>' class='badge bg-success'>Assign Bed</a>
+									<a href='inpatient_form.php?view=<?php echo $row["id"]; ?>' class='badge bg-primary'>Assign Bed</a>
 							</td>
 						</tr>
                       <?php  

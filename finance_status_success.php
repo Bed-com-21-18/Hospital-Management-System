@@ -19,7 +19,7 @@
                 </div>
                 <!-- Create buttons to go back and go to dashboard -->
                 <div class="text-center">
-                    <a href="nurse_dashboard.php" class="btn btn-primary">Go to Dashboard</a>
+                    <a href="finance.php" class="btn btn-primary">Go to Finance</a>
                     <button class="btn btn-primary" onclick="history.back()">Go Back</button>
                 </div>
             </div>
