@@ -51,21 +51,89 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                 <div class="collapse navbar-collapse" id="navmenu">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown">
-                  <a href="#" class="nav-link p-2 active" data-toggle="tab" id="viewPatientListBtn">View inPatient List</a>
+                  <a href="#inpatient_list" class="nav-link p-2 active" data-toggle="tab" id="inpatient_list">View inPatient List</a>
                </li>
                
               
                
                <li class="nav-item dropdown">
-                  <a href="" class="nav-link p-2" data-toggle="tab" id="updateDrugBtn">Rounding Off Patients</a>
+                  <a href="#list_patient" class="nav-link p-2" data-toggle="tab" id="list_patient">All Registered Patients</a>
                </li>
             </ul>
          </div>
-
-            </div>
+		 </div>
         </nav>
 
-	<div class="p-2">
+		  <!-- Tab Content -->
+		  <div class="container mt-4">
+            <div class="tab-content">
+         <div class="tab-pane fade show active" id="inpatient_list">
+		 <h3 class="text-center text-black">
+                    <b>Admitted Patient List</b>
+                </h3>
+
+		 <?php
+$sql2 = "SELECT * FROM patient WHERE ward_bed IS NOT NULL ORDER BY id DESC";
+$result2 = $mysqli->query($sql2);
+
+// Display patient information in table rows
+if ($result2->num_rows > 0) {
+    ?>
+    <div class="container">
+    <div class="table-responsive">
+        <table class="table table-bordered  bg-light">
+            <thead class="thead-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Sex</th>
+                    <th>Symptoms</th>
+                    <th>Ward Bed</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id = "myTable">
+                <?php
+                while ($row = $result2->fetch_assoc()) {
+                    ?>
+                    <tr>
+                        <td><?php echo $row["name"]; ?></td>
+                        <td><?php echo $row["age"]; ?></td>
+                        <td><?php echo $row["gender"]; ?></td>
+                        <td><?php echo $row["symptoms"]; ?></td>
+                        <td><?php echo $row["ward_bed"]; ?></td>
+                        <td class='btn-group btn-group-justified'>                                    
+									<a href='?respond=<?php echo $row["id"]; ?>' class='badge bg-primary'>Discharge</a>
+							</td>
+                    </tr>
+                    <?php
+                }
+                ?>
+            </tbody>
+        </table>
+        <br>             
+        <button class='btn btn-primary mb-3' onclick='window.history.back()'> Go Back</button>
+    </div>
+</div>
+<?php
+
+} else {
+    echo "<div class='container'><div class='table-responsive'><table class='table table-bordered bg-secondary text-light'>";
+    echo "<thead class='thead-light'><tr><th colspan='15' class='text-center'>No test request found!</th></tr></thead>";
+    echo "</table></div></div>";
+    }
+    ?>
+		
+
+
+         </div>
+         
+         <div class="tab-pane fade show" id="list_patient">
+            <!-- patient list -->
+			<h3 class="text-center text-black">
+                    <b>Patients List</b> 
+                </h3>
+			<div class="p-2">
 		<div class="row">
 		<div class="col-md-12"> 
 		<table class="table table-hover bg-light" style="overflow:auto">
@@ -131,7 +199,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 	</div>
 	</div>
 </div>
+
+         </div>
+    
    
+   ///
+
+           
+	
 <!-- Bootstrap JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

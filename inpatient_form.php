@@ -68,21 +68,21 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
           <optgroup label="Ward B">
             <?php
             for ($i = 1; $i <= 6; $i++) {
-              echo "<option value='B$i'>B$i</option>";
+              echo "<option value='Ward B, Bed $i'>Ward B, Bed $i</option>";
             }
             ?>
           </optgroup>
           <optgroup label="Ward C">
             <?php
             for ($i = 1; $i <= 6; $i++) {
-              echo "<option value='C$i'>C$i</option>";
+              echo "<option value='Ward C, Bed $i'>Ward C, Bed $i</option>";
             }
             ?>
           </optgroup>
           <optgroup label="Ward D">
             <?php
             for ($i = 1; $i <= 6; $i++) {
-              echo "<option value='D$i'>D$i</option>";
+              echo "<option value='Ward D, Bed $i'>Ward D, Bed $i</option>";
             }
             ?>
           </optgroup>
