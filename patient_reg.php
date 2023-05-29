@@ -21,7 +21,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 </head>
 
 <body>
-    <div class="container-fluid  p-4">
+    <div class="container-fluid  p-2">
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <div class="card">
@@ -39,7 +39,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                         
                     </div>
             
-                    <form action="patient_reg_action.php" class="p-2" method="post" enctype="multipart/form-data">
+                    <form action="patient_reg_action.php" class="" method="post" enctype="multipart/form-data">
 
                     <?php if (isset($_GET['error'])) {?>
                            <p class="error"><?php echo $_GET['error']; ?></p>
@@ -48,33 +48,33 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                        <?php if (isset($_GET['success'])) {?>
                            <p class="success"><?php echo $_GET['success']; ?></p>
                            <?php } ?>
-                        <div class="form-group p-2">
+                        <div class="form-group p-1">
                             <input type = "text" name="name" class="form-control" placeholder="Enter Full Name" required>
                         </div>
-                        <div class="form-group p-2">
+                        <div class="form-group p-1">
                             <label>Date of birth</label>
                             <input type = "date" name="date" class="form-control" placeholder="Enter DoB" required>
                         </div>
-                        <div class="form-group p-2">
+                        <div class="form-group p-1">
                             <label for="female" >Female</label>
                             <input type="radio" id="Female" name="gender" value="Female" required>
                             <label for="male">Male</label>
                         <input type="radio" id="Male" name="gender" value="Male" required>
                         </div>
-                        <div class="form-group p-2">
+                        <div class="form-group p-1">
                         <input type ="tel" name="phoneNumber" class="form-control" placeholder="Enter Phone Number" required>
                         </div>
-                        <div class="form-group p-2">
+                        <div class="form-group p-1">
                         <input type = "text" name="district" class="form-control" placeholder="Enter Current Home" required>
                         </div>
-                        <div class="form-group p-2">
+                        <div class="form-group p-1">
                         <input type = "text" name="village" class="form-control" placeholder="Enter Home Village" required>
                         </div>
 
-                        <div class="form-group p-2">
+                        <div class="form-group p-1">
                         <input type = "text" name="residential" class="form-control" placeholder="Enter Residential Address" required>
                         </div>
-                        <div class="form-group p-2 text-center">
+                        <div class="form-group p-1 text-center">
                         <input type="submit" name="add" class="btn btn-primary btn-block" value="Register">
                        </div>
                
