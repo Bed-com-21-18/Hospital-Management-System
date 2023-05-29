@@ -11,13 +11,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Clearance of Drug status</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-RXdRUZ72MkRiR7Kj1MZrtI+2E5a5ntwLV5z+sWjlKgrP5N9tFVrMk14TwNNHDPMe0D1ELb/2COwleHc8z0/WTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="home.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css" integrity="sha512-57NKyaJFZhCGbzEWz8uV7IJ+g1hhn2S2jZ/j+oJFupafyksGp4KsB4+8xv1MWnX9B0SzmjKnmqlTpfT0Hupufw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     /* Style for the body */
-body {
+/* body {
   background-color: #f2f2f2;
   font-family: Arial, sans-serif;
-}
+} */
 
 /* Style for the form */
 form {
@@ -56,8 +57,8 @@ form textarea:focus {
 
 /* Style for the form submit button */
 form button[type="submit"] {
-  background-color: #4CAF50;
-  color: #fff;
+  /* background-color: #4CAF50; */
+  /* color: #fff; */
   border: none;
   padding: 10px 20px;
   border-radius: 4px;
@@ -66,9 +67,9 @@ form button[type="submit"] {
 }
 
 /* Style for the form submit button on hover */
-form button[type="submit"]:hover {
+/* form button[type="submit"]:hover {
   background-color: #45a049;
-}
+} */
 
 /* Style for the form error message */
 form .error {
@@ -99,9 +100,13 @@ form .error {
 } ?>
   <div class="container mt-5">
     <div class="row justify-content-center">
-      <div class="col-md-6">
-        <form method="post" action="medication_status_action.php" class="border p-3 rounded">
-          <h1 class="mb-3 text-center"><i class="fas fa-calendar-plus"></i> Medication Assignment and Tracking</h1>
+      <div class="col-md-5">
+        <div class="card">
+          <div class="card-header">
+              <h4 class="text-center text-secondary p-1">Medication Assignment and Tracking</h4>
+          </div>
+          <div class="card-body">
+        <form method="post" action="medication_status_action.php" class="border rounded">
           <?php if(isset($_SESSION['success_message'])) { ?>
           <div class="alert alert-success" role="alert">
             <?php echo $_SESSION['success_message']; ?>
@@ -121,8 +126,8 @@ form .error {
             <label for="results" class="form-label"><i class="fas fa-comment-medical"></i> Assignment Status:</label>
             <select id="status" name="status" required class="form-select">
     <option>Select Medication Status</option>
-    <option value="Medication Given">Medication Given</option>
-    <option value="Medication Not Given">Medication Not Given</option>
+    <option value="Medication Given">Treated</option>
+    <option value="Medication Not Given">Not treated</option>
 </select>
           </div>
           <div class="text-center">
@@ -131,6 +136,8 @@ form .error {
         </form>
       </div>
     </div>
+  </div>
+  </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" integrity="sha512-2m8WY5ch5vHVp5CmI/CIZM8hBE+1cuaJ/+fVZdHEkQ2jDlmzOJLv1x0xZWxxTy2C31Nfk9UZKO6UZT6wq3JgWw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js" integrity="sha512-FgvcWWtB4ax+j4eJ7V10zykOuPG5b5TX00S/PrCUYX9v+q3qlJZmMYhF+RbL15Hz2+e7VJz1mcuVTYR8J0QcmQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

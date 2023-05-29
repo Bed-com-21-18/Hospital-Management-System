@@ -1,6 +1,6 @@
 <?php 
     include 'user_regdb.php';
-    include 'radiologydb.php';
+    include 'hiv_testdb.php';
     include 'comfig.php';
     if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 
@@ -34,8 +34,8 @@
      <?php
             include "unavbar.php";
 
-            if(isset($_GET['proceed'])){
-                $id = $_GET['proceed'];
+            if(isset($_GET['test'])){
+                $id = $_GET['test'];
             $sql2 = "SELECT * FROM patient WHERE id='$id'";
             $result2 = $mysqli->query($sql2);
 
@@ -58,7 +58,7 @@
                                 <h4 class="text-center text-secondary">Add results</h4>
                             </div>
                              <div class="card-body">
-                                <form action="radiologydb.php" method="POST" enctype="multipart/form-data">
+                                <form action="hiv_testdb.php" method="POST" enctype="multipart/form-data">
                             
                                     <?php if (isset($_GET['error'])) {?>
                                         <p class="error"><?php echo $_GET['error']; ?></p>
@@ -67,28 +67,24 @@
                                     <?php if (isset($_GET['success'])) {?>
                                         <p class="success"><?php echo $_GET['success']; ?></p>
                                         <?php } ?>
-                                        <div class="form-group mb-3">
-                                        <input type="hidden" class="form-control" value="<?= $id; ?>" id="patient_id" name="patient_id" required> 
-                                        <input type="text" class="form-control" value="<?= $name; ?>" id="patient_name" name="patient_name" readonly> 
-                                            <br>
-                                                <label>Image</label>
-                                                <input type="file" value="" name="photo" class="custom-file"/>
-                                            </div>
-                                            <div class="form-group">
-                                                <label></label>
-                                                    <input type="hidden" value="Scanned" name="statu" placeholder="Comment if any "class="form-control"/>
-                                            </div>
-                                            <div class="form-group">
-                                                <label></label>
-                                                    <input type="text" value="" name="comments" placeholder="Comment if any "class="form-control"/>
-                                            </div>
-                                            <div class="form-group">
-                                                <label></label>
-                                                    <input type="date" value="" name="dates" class="form-control"/>
-                                            </div>
-                                            <div class="form-group mb-3 text-center p-4">
-                                                <button type="submit" class="btn btn-primary" name="add_rad">Submit</button>
-                                            </div>
+                                        <div class="form-group p-2">
+                                            <input type="hidden" class="form-control" value="<?= $id; ?>" id="patient_id" name="patient_id" required> 
+                                            <input type="text" class="form-control" value="<?= $name; ?>" id="patient_name" name="patient_name" readonly> 
+                                        </div>
+                                        <div class="form-group p-2">
+                                            <label>Select Status</label>
+                                            <select name="statu" class="form-select">
+                                                <option value="Negative">Negative</option>
+                                                <option value="Positive">Positive</option> 
+                                            </select>
+                                        </div>
+                                        <div class="form-group p-2">
+                                            <label>Enter Date</label>
+                                            <input type="date" value="" name="dates" class="form-control" required/>
+                                        </div>
+                                        <div class="form-group text-center p-4">
+                                            <button type="submit" class="btn btn-primary" name="hiv_testing">Submit</button>
+                                        </div>
                                     </form>
                             </div>
                             
@@ -97,7 +93,6 @@
                 </div>
             </div>
     </section>
-
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
