@@ -36,15 +36,16 @@
 
             if(isset($_GET['test'])){
                 $id = $_GET['test'];
-            $sql2 = "SELECT * FROM patient WHERE id='$id'";
+            $sql2 = "SELECT * FROM hiv_test WHERE id='$id'";
             $result2 = $mysqli->query($sql2);
 
            while($row = $result2->fetch_assoc()){ 
     
-                $name = $row['name'];
+                $name = $row['patient_name'];
                 $id = $row['id'];
 
             }}
+            
            
  ?>
 
@@ -68,7 +69,7 @@
                                         <p class="success"><?php echo $_GET['success']; ?></p>
                                         <?php } ?>
                                         <div class="form-group p-2">
-                                            <input type="hidden" class="form-control" value="<?= $id; ?>" id="patient_id" name="patient_id" required> 
+                                            <input type="hidden" class="form-control" value="<?= $id; ?>" id="id" name="id" required> 
                                             <input type="text" class="form-control" value="<?= $name; ?>" id="patient_name" name="patient_name" readonly> 
                                         </div>
                                         <div class="form-group p-2">
@@ -79,7 +80,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group p-2">
-                                            <label>Enter Date</label>
+                                            <label>Date tested</label>
                                             <input type="date" value="" name="dates" class="form-control" required/>
                                         </div>
                                         <div class="form-group text-center p-4">

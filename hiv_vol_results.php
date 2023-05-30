@@ -38,7 +38,7 @@
               <!--NavBar-->
               <nav class="navbar navbar-expand-lg bg-light navbar-light py-3">
             <div class="container">
-                <h5 class="navbar-brand"><i>HIV/AIDS TEST</i></h5>
+                <h5 class="navbar-brand"><i>HIV/AIDS Voluntary testing Results</i></h5>
                 <button 
                 class="navbar-toggler" 
                 type="button" 
@@ -50,10 +50,7 @@
                 <div class="collapse navbar-collapse" id="navmenu">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a href="hiv_patients.php" class="btn btn-secondary text-light mx-1 p-2">HIV/AIDS Patients</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="hiv_vol_testing.php" class="btn btn-secondary text-light mx-1 p-2">Voluntary testing</a>
+                            <a href="hiv_patients.php" class="btn btn-secondary text-light mx-1 p-2">HIV/AIDS Positive results</a>
                         </li>
                     </ul>
                 </div>
@@ -71,7 +68,7 @@
                     </div> 
                 </div> 
                 <?php
-                    $sql = "SELECT * FROM hiv_test ORDER BY id DESC";
+                    $sql = "SELECT name, location, phone, date, descriptions, status FROM hiv_test_results ORDER BY id DESC";
                     $result = $mysqli->query($sql);
                     
                 ?>
@@ -81,28 +78,23 @@
                                 <tr>
                                
                                     <th>Name</th>
-                                    <th>Gender</th>
                                     <th>Location</th>
+                                    <th>Phone</th>
                                     <th>Description</th>
-                                    <th>Deate tested</th>
+                                    <th>Date tested</th>
                                     <th>Status</th>
-                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody id = "myTable">
                             <?php while($row = $result->fetch_assoc()) { 
                                 ?>
                                 <tr>
-                                    <td><?php echo $row['patient_name']; ?></td>
-                                    <td><?php echo $row['gender']; ?></td>
+                                    <td><?php echo $row['name']; ?></td>
                                     <td><?php echo $row['location']; ?></td>
+                                    <td><?php echo $row['phone']; ?></td>
                                     <td><?php echo $row['descriptions']; ?></td>
                                     <td><?php echo $row['date']; ?></td>
-                                    <td><?php echo $row['statu']; ?></td>
-                                    <td class="btn-group btn-group-justified">                                       
-                                         <a href="hiv_testing.php?test=<?php echo $row["id"]; ?>" class="badge bg-primary text-light p-2 mx-1">Add results</a>
-                                    </td> 
-                                </tr>
+                                    <td><?php echo $row['status']; ?></td>
                             <?php }?>
                             </tbody>
                         </table>

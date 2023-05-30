@@ -32,19 +32,6 @@
      <!-- Navbar -->
      <?php
             include "unavbar.php";
-
-            if(isset($_GET['treat'])){
-                $id = $_GET['treat'];
-            $sql2 = "SELECT * FROM hiv_test_results WHERE id='$id'";
-            $result2 = $mysqli->query($sql2);
-
-           while($row = $result2->fetch_assoc()){ 
-    
-                $name = $row['patient_name'];
-                $id = $row['id'];
-
-            }}
-
         ?>
 
         <!--Form-->
@@ -54,7 +41,7 @@
                 <div class="col-md-5">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="text-center text-secondary">Add treatment</h4>
+                            <h4 class="text-center text-secondary">Client Registration</h4>
                         </div>
                         <div class="card-body">
                             <form action="hiv_testdb.php" method="POST">
@@ -66,35 +53,33 @@
                             <?php if (isset($_GET['success'])) {?>
                                 <p class="success"><?php echo $_GET['success']; ?></p>
                                 <?php } ?>
-                                <div class="form-group p-2">
-                                    <input type="hidden" class="form-control" value="<?= $id; ?>" id="patient_id" name="id" required> 
-                                    <input type="text" class="form-control" value="<?= $name; ?>" id="patient_name" name="patient_name" readonly> 
-                                    <input type="hidden" class="form-control" value="<?= 'On treatment'; ?>" name="treatment" required> 
+                                <div class="form-group p-1">
+                                    <label>Name</label>
+                                    <input type="text" value="" class="form-control" name="patient_name"> 
                                 </div>
-                                <div class="form-group p-2">
-                                    <label>Weight in kgs</label>
-                                    <input type="text" value="" name="weight" class="form-control"/>
+                                <div class="form-group p-1">
+                                    <label>Location</label>
+                                    <input type="text" value="" name="location" class="form-control"/>
                                 </div>
-                                <div class="form-group p-2">
-                                    <label>Medication</label>
-                                    <input type="text" value="" name="drug" class="form-control"/>
+                                <div class="form-group p-1">
+                                    <label>Gender</label>
+                                    <select name="gender" class="form-select">
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option> 
+                                    </select>
                                 </div>
-                                <div class="form-group p-2">
-                                    <label>Date treated</label>
-                                    <input type="date" value="" name="dates" class="form-control"/>
-                                </div>
-                                <div class="form-group p-2">
-                                    <label>Next treated</label>
-                                    <input type="date" value="" name="next_treat" class="form-control"/>
-                                </div>
+                                <div class="form-group p-1">
+                                    <label>Description</label>
+                                    <textarea class="form-control" name="descriptions" placeholder="Reasons for testing if any"></textarea>
+                                </div> 
                                 <div class="form-group text-center p-4">
-                                    <button type="submit" class="btn btn-primary" name="hiv_treat">Submit</button>
+                                    <button type="submit" class="btn btn-primary" name="volu_testing">Submit</button>
                                 </div>
                             </form>            
-                        </div>
+                            </div>
                     </div>
                 </div>
-         </div>
+             </div>
     </section>
 
     <!-- footer -->

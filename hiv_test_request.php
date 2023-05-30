@@ -44,6 +44,8 @@
     
                 $name = $row['name'];
                 $id = $row['id'];
+                $gender = $row['gender'];
+                $residential = $row['residential'];
 
            }}
  ?>
@@ -67,10 +69,12 @@
                                 <?php } ?>
                                 <form class="form-group p-4" method="POST" action="hiv_testdb.php">
                                     <input type="hidden" class="form-control" value="<?= $id; ?>" id="patient_id" name="patient_id" required> 
+                                    <input type="hidden" class="form-control" value="<?= $residential; ?>" name="residential" required> 
+                                    <input type="hidden" class="form-control" value="<?= $gender; ?>" name="gender"> <br>
                                     <input type="text" class="form-control" value="<?= $name; ?>" id="patient_name" name="patient_name" readonly> <br>
                                     <div class="form-group">
                                         <label><b>Add Text</b></label>
-                                        <textarea class="form-control" name="description" placeholder="Short description of a problem"></textarea>
+                                        <textarea class="form-control" name="descriptions" placeholder="Short description of a problem"></textarea>
                                     </div> 
                                     <div class="form-group p-2">         
                                         <button type="submit" name="hiv_test" class="btn btn-primary">Send for testing</button>

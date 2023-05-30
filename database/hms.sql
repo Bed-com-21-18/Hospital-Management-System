@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2023 at 04:40 PM
+-- Generation Time: May 30, 2023 at 05:59 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -172,18 +172,23 @@ CREATE TABLE `hiv_test` (
   `id` int(11) NOT NULL,
   `patient_id` varchar(30) NOT NULL,
   `patient_name` varchar(30) NOT NULL,
-  `description` text NOT NULL,
-  `statu` varchar(11) NOT NULL
+  `statu` varchar(11) NOT NULL,
+  `location` varchar(30) NOT NULL,
+  `gender` varchar(11) NOT NULL,
+  `descriptions` text NOT NULL,
+  `date` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `hiv_test`
 --
 
-INSERT INTO `hiv_test` (`id`, `patient_id`, `patient_name`, `description`, `statu`) VALUES
-(1, '17', 'Jenifer Lopez', 'loss of weight', 'Neg'),
-(2, '16', 'Ruben Dias', 'Loss of appetite', 'Negative'),
-(3, '14', 'Gilson Chongo', 'loss of weight', 'Positive');
+INSERT INTO `hiv_test` (`id`, `patient_id`, `patient_name`, `statu`, `location`, `gender`, `descriptions`, `date`) VALUES
+(18, '', 'joe', 'Positive', 'Mpomba', 'Male', 'jvjh', '2023-05-23'),
+(19, '', 'joe', 'Negative', 'zomba', 'Male', 'k;jil;', '2023-05-03'),
+(21, '16', 'Ruben Dias', 'Positive', 'fdgfhyu', 'Male', 'body pains', '2023-05-26'),
+(22, '15', 'Precious Mlimbika', 'Positive', 'Kufumbi', 'Male', 'loss of appetite', '2023-05-24'),
+(23, '', 'Peter', 'Positive', 'zomba', 'Male', 'any', '2023-06-01');
 
 -- --------------------------------------------------------
 
@@ -196,17 +201,20 @@ CREATE TABLE `hiv_test_results` (
   `patient_id` varchar(30) NOT NULL,
   `patient_name` varchar(30) NOT NULL,
   `statu` text NOT NULL,
-  `dates` date NOT NULL
+  `dates` date NOT NULL,
+  `treatment` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `hiv_test_results`
 --
 
-INSERT INTO `hiv_test_results` (`id`, `patient_id`, `patient_name`, `statu`, `dates`) VALUES
-(4, '17', 'Jenifer Lopez', 'Neg', '2023-05-29'),
-(5, '16', 'Ruben Dias', 'Negative', '0000-00-00'),
-(6, '14', 'Gilson Chongo', 'Positive', '2023-05-29');
+INSERT INTO `hiv_test_results` (`id`, `patient_id`, `patient_name`, `statu`, `dates`, `treatment`) VALUES
+(47, '', 'joe', 'Positive', '2023-05-23', ''),
+(48, '', 'joe', 'Negative', '2023-05-03', ''),
+(49, '', 'Precious Mlimbika', 'Positive', '2023-05-24', 'On treatment'),
+(50, '', 'Ruben Dias', 'Positive', '2023-05-26', 'On treatment'),
+(51, '', 'Peter', 'Positive', '2023-06-01', 'On treatment');
 
 -- --------------------------------------------------------
 
@@ -229,7 +237,13 @@ CREATE TABLE `hiv_treatment` (
 --
 
 INSERT INTO `hiv_treatment` (`id`, `patient_id`, `patient_name`, `weight`, `drug`, `dates`, `next_treat`) VALUES
-(6, 14, 'Gilson Chongo', '55', '100 ARVs', '2023-05-29', '2023-12-02');
+(6, 14, 'Gilson Chongo', '55', '100 ARVs', '2023-05-29', '2023-12-02'),
+(7, 0, 'Ruben Dias', '40', '100 ARVs', '2023-05-30', '2023-09-08'),
+(8, 0, 'Precious Mlimbika', '40', '100 ARVs', '2023-05-30', '2023-08-25'),
+(9, 0, 'joe', '60', '100 ARVs', '2023-05-24', '2023-06-30'),
+(10, 0, 'Peter', '55', '100 ARVs', '2023-06-01', '2023-06-09'),
+(11, 0, 'Peter', '40', '100 ARVs', '2023-06-09', '2023-06-10'),
+(12, 0, 'Precious Mlimbika', '40', '100 ARVs', '2023-05-25', '2023-06-10');
 
 -- --------------------------------------------------------
 
@@ -446,19 +460,19 @@ ALTER TABLE `drug`
 -- AUTO_INCREMENT for table `hiv_test`
 --
 ALTER TABLE `hiv_test`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `hiv_test_results`
 --
 ALTER TABLE `hiv_test_results`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `hiv_treatment`
 --
 ALTER TABLE `hiv_treatment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `patient`
