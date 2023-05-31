@@ -69,7 +69,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 		 
 
 		 <?php
-$sql2 = "SELECT * FROM patient WHERE ward_bed IS NOT NULL ORDER BY id DESC";
+$sql2 = "SELECT * FROM patient ORDER BY id DESC";
 $result2 = $mysqli->query($sql2);
 
 // Display patient information in table rows
