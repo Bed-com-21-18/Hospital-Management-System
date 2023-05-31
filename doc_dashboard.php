@@ -34,8 +34,8 @@
                     
                         <div class="card-body text-center">
                         <div class="h1 mb-3">
-                            <i class="bi bi-people-fill text-primary"></i>
-                        </div>
+                                <img src="img/doctor.png" alt="Outpatient" class="icon-image">
+                            </div>
                             <h3 class="card-title mb-3 text-primary">Appointments</h3>
                             <a href="view_appointment.php" class="btn btn-primary">Proceed</a>               
                         </div>
@@ -46,7 +46,7 @@
                     
                         <div class="card-body text-center">
                             <div class="h1 mb-3">
-                                <i class="bi bi-person-fill text-primary"></i>
+                                <img src="img/medica1l.png" alt="Outpatient" class="icon-image">
                             </div>
                             <h3 class="card-title mb-3 text-primary">Manage Nurses</h3>
                             <a href="doc_nurse_reg.php" class="btn btn-primary">Proceed</a>                    
@@ -58,7 +58,7 @@
                     
                         <div class="card-body text-center">
                             <div class="h1 mb-3">
-                                <i class="bi bi-people text-primary"></i>
+                                <img src="img/medica1l.png" alt="Outpatient" class="icon-image">
                             </div>
                             <h3 class="card-title mb-3 text-primary">Manage Medicine</h3>
                             <a href="doc_manage_drug.php" class="btn btn-primary">Proceed</a>
@@ -81,6 +81,13 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <style>
+            .icon-image {
+                width: 60px;
+                height: 60px;
+                object-fit: contain;
+            }
+        </style>
   </body>
 </html>
 

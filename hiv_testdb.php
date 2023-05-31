@@ -8,6 +8,7 @@
 // treatment
     if (isset($_POST['hiv_treat'])){
         $weight = $_POST['weight'];
+        $height = $_POST['height'];
         $drug = $_POST['drug'];
         $dates = $_POST['dates'];
         $next_treat = $_POST['next_treat'];
@@ -23,14 +24,19 @@
             return $data;
         }
         $weight = validate($_POST['weight']);
+        $height = validate($_POST['height']);
         $drug = validate($_POST['drug']);
         $dates = validate($_POST['dates']);
         $next_treat = validate($_POST['next_treat']);
 
-        $user_data = 'weight='. $weight .'&id=' .$id .'&patient_name=' .$patient_name .'&treatment=' .$treatment; 
+        $user_data = 'weight='. $weight .'&height=' .$height. '&id=' .$id .'&patient_name=' .$patient_name .'&treatment=' .$treatment; 
 
         if (empty($weight)) {
             header ("Location: hiv_treatment.php?error=Weight is required&$user_data");
+            exit();
+        }
+        elseif (empty($height)) {
+            header ("Location: hiv_treatment.php?error=Height is required&$user_data");
             exit();
         }
         elseif (empty($drug)) {
@@ -50,8 +56,8 @@
                  $sql6 = "UPDATE hiv_test_results SET treatment='$treatment' WHERE id='$id'";
                  $result6 = $mysqli->query($sql6);
 
-                $sql3 = "INSERT INTO hiv_treatment(weight, drug, dates, next_treat, patient_name) 
-                VALUES('$weight', '$drug', '$dates', '$next_treat', '$patient_name')";
+                $sql3 = "INSERT INTO hiv_treatment(weight, height, drug, dates, next_treat, patient_name) 
+                VALUES('$weight', '$height', '$drug', '$dates', '$next_treat', '$patient_name')";
                  if ($mysqli->query($sql3) === TRUE){
                     echo "<script>alert('Successfully Submitted');
                     window.location.href = 'hiv_patients.php';

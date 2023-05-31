@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2023 at 05:59 PM
+-- Generation Time: May 31, 2023 at 02:50 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -47,7 +47,8 @@ INSERT INTO `add_radiology` (`id`, `patient_id`, `patient_name`, `photo`, `comme
 (10, 11, 'Charle Cee Graphix', 'uploads/logo.jpg', 'piwoureiwe', '2023-05-17'),
 (11, 15, 'Precious Mlimbika', 'uploads/2023y3.png', 'No comment', '2023-05-17'),
 (12, 3, 'Gomboz Tech', 'uploads/Minica.png', 'Scanned and there results ', '2023-05-17'),
-(13, 17, 'Jenifer Lopez', 'uploads/1665526186798.PNG', 'Her skin is good', '2023-05-17');
+(13, 17, 'Jenifer Lopez', 'uploads/1665526186798.PNG', 'Her skin is good', '2023-05-17'),
+(14, 17, 'Jenifer Lopez', 'uploads/usecase.PNG', 'hgvgf', '2023-05-30');
 
 -- --------------------------------------------------------
 
@@ -184,11 +185,18 @@ CREATE TABLE `hiv_test` (
 --
 
 INSERT INTO `hiv_test` (`id`, `patient_id`, `patient_name`, `statu`, `location`, `gender`, `descriptions`, `date`) VALUES
-(18, '', 'joe', 'Positive', 'Mpomba', 'Male', 'jvjh', '2023-05-23'),
+(18, '', 'joe', 'Negative', 'Mpomba', 'Male', 'jvjh', '2023-05-30'),
 (19, '', 'joe', 'Negative', 'zomba', 'Male', 'k;jil;', '2023-05-03'),
 (21, '16', 'Ruben Dias', 'Positive', 'fdgfhyu', 'Male', 'body pains', '2023-05-26'),
 (22, '15', 'Precious Mlimbika', 'Positive', 'Kufumbi', 'Male', 'loss of appetite', '2023-05-24'),
-(23, '', 'Peter', 'Positive', 'zomba', 'Male', 'any', '2023-06-01');
+(23, '', 'Peter', 'Positive', 'zomba', 'Male', 'any', '2023-06-01'),
+(24, '13', 'mary kama', 'Positive', 'Zomba', 'Female', 'Loss of appetite', '2023-05-30'),
+(25, '', 'James Bond', 'Negative', 'Mponda', 'Male', 'yto know', '2023-05-31'),
+(26, '', 'Matilda', 'Negative', 'Mponda', 'Female', 'just want to know', '2023-05-30'),
+(27, '17', 'Jenifer Lopez', 'Positive', 'Zimbabwe', 'Female', 'loss of weight', '2023-05-30'),
+(28, '', 'Doro', 'Negative', 'LL', 'Female', 'just trying', '2023-05-30'),
+(29, '', 'James Bond', 'Positive', 'Mpomba', 'Male', 'kjhkjg', '2023-05-30'),
+(30, '', 'James Bond', 'Positive', 'Mpomba', 'Male', 'fdgzr', '2023-05-31');
 
 -- --------------------------------------------------------
 
@@ -210,11 +218,19 @@ CREATE TABLE `hiv_test_results` (
 --
 
 INSERT INTO `hiv_test_results` (`id`, `patient_id`, `patient_name`, `statu`, `dates`, `treatment`) VALUES
-(47, '', 'joe', 'Positive', '2023-05-23', ''),
+(47, '', 'joe', 'Positive', '2023-05-23', 'On treatment'),
 (48, '', 'joe', 'Negative', '2023-05-03', ''),
 (49, '', 'Precious Mlimbika', 'Positive', '2023-05-24', 'On treatment'),
 (50, '', 'Ruben Dias', 'Positive', '2023-05-26', 'On treatment'),
-(51, '', 'Peter', 'Positive', '2023-06-01', 'On treatment');
+(51, '', 'Peter', 'Positive', '2023-06-01', 'On treatment'),
+(52, '', 'mary kama', 'Positive', '2023-05-30', 'On treatment'),
+(53, '', 'James Bond', 'Negative', '2023-05-31', ''),
+(54, '', 'Matilda', 'Negative', '2023-05-30', ''),
+(55, '', 'Jenifer Lopez', 'Positive', '2023-05-30', 'On treatment'),
+(56, '', 'joe', 'Negative', '2023-05-30', ''),
+(57, '', 'Doro', 'Negative', '2023-05-30', ''),
+(58, '', 'James Bond', 'Positive', '2023-05-30', 'On treatment'),
+(59, '', 'James Bond', 'Positive', '2023-05-31', 'On treatment');
 
 -- --------------------------------------------------------
 
@@ -229,21 +245,16 @@ CREATE TABLE `hiv_treatment` (
   `weight` varchar(100) NOT NULL,
   `drug` text NOT NULL,
   `dates` date NOT NULL,
-  `next_treat` date NOT NULL
+  `next_treat` date NOT NULL,
+  `height` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `hiv_treatment`
 --
 
-INSERT INTO `hiv_treatment` (`id`, `patient_id`, `patient_name`, `weight`, `drug`, `dates`, `next_treat`) VALUES
-(6, 14, 'Gilson Chongo', '55', '100 ARVs', '2023-05-29', '2023-12-02'),
-(7, 0, 'Ruben Dias', '40', '100 ARVs', '2023-05-30', '2023-09-08'),
-(8, 0, 'Precious Mlimbika', '40', '100 ARVs', '2023-05-30', '2023-08-25'),
-(9, 0, 'joe', '60', '100 ARVs', '2023-05-24', '2023-06-30'),
-(10, 0, 'Peter', '55', '100 ARVs', '2023-06-01', '2023-06-09'),
-(11, 0, 'Peter', '40', '100 ARVs', '2023-06-09', '2023-06-10'),
-(12, 0, 'Precious Mlimbika', '40', '100 ARVs', '2023-05-25', '2023-06-10');
+INSERT INTO `hiv_treatment` (`id`, `patient_id`, `patient_name`, `weight`, `drug`, `dates`, `next_treat`, `height`) VALUES
+(1, 0, 'James Bond', '40', '15PA', '2023-05-31', '2023-06-10', 2);
 
 -- --------------------------------------------------------
 
@@ -259,6 +270,7 @@ CREATE TABLE `patient` (
   `gender` varchar(10) NOT NULL,
   `age` int(2) NOT NULL,
   `phoneNumber` int(10) NOT NULL,
+   `contact_address` text NOT NULL,
   `district` varchar(100) NOT NULL,
   `village` varchar(100) NOT NULL,
   `residential` varchar(100) NOT NULL,
@@ -266,6 +278,10 @@ CREATE TABLE `patient` (
   `symptoms` text DEFAULT NULL,
   `history` text DEFAULT NULL,
   `drug` text NOT NULL,
+  `address` text NOT NULL,
+  `next_of_kin` text NOT NULL,
+  `religion` text NOT NULL,
+  `occupation` text NOT NULL,
   `dosage` text NOT NULL,
   `drug_given_by` text NOT NULL,
     `discharge_status` text NOT NULL,
@@ -298,7 +314,7 @@ INSERT INTO `patient` (`id`, `name`, `date`, `gender`, `age`, `phoneNumber`, `di
 (14, 'Gilson Chongo', '1990-05-14', 'Male', 33, 2147483647, 'Bangwe', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, 'Cough, Fatigue, Sore throat, Runny nose, Vomiting, Diarrhoea', NULL, '', '', '', '', 'Mary Juma', '15:13:34 17-05-2023 ', 7007, 'Paid Fully', 'Test for Malaria', NULL, 'Malaria results- negative'),
 (15, 'Precious Mlimbika', '1998-05-16', 'Male', 25, 996842414, 'Lilongwe', 'Govala', 'Kufumbi', 'b, Azithromycin, Intoxcyclin, Oxygen', 'Sore throat, Runny nose, Pink eye', NULL, '', '', '', '', 'Charle Cee', '18:03:46 16-05-2023 ', 5202, 'Paid Fully', 'Test for AIds', NULL, 'AIDS NEGATIVE'),
 (16, 'Ruben Dias', '2000-05-16', 'Male', 23, 435678, 'sfdghj', 'sdfgfhj', 'fdgfhyu', NULL, 'Muscle aches, Loss of appetite, Loss of taste, Nausea, Vomiting, Diarrhoea, Itching', 'Muscle aches, Loss of appetite, Loss of taste, Nausea, Vomiting, Diarrhoea, Itching', 'acetaminophen, aspirin, bruffen, hedax, carbamazepine, doxycylin', '@ tablets per day', '', '', 'Mary Juma', '12:48:01 20-05-2023 ', 5853, 'Paid Fully', 'Test for AIDS', NULL, 'AIDS negative'),
-(17, 'Jenifer Lopez', '1978-05-17', 'Female', 45, 34567890, 'Zambia', 'Zingwangwa', 'Zimbabwe', NULL, 'Cough', 'Muscle aches, Loss of appetite', 'Aspirin, Panadol', 'dsdfghjk\r\nfdghjkl', '', '', 'jo viola', '14:02:55 29-05-2023 ', 3300, 'not paid', 'Test for AIDS', NULL, 'HIV and AIDS negative results');
+(17, 'Jenifer Lopez', '1978-05-17', 'Female', 45, 34567890, 'Zambia', 'Zingwangwa', 'Zimbabwe', NULL, 'Cough', 'Muscle aches, Loss of appetite', 'Aspirin, Panadol', 'dsdfghjk\r\nfdghjkl', '', '', 'jo viola', '12:06:33 31-05-2023 ', 3300, 'not paid', 'Test for AIDS', NULL, 'HIV and AIDS negative results');
 
 -- --------------------------------------------------------
 
@@ -324,7 +340,7 @@ INSERT INTO `radiology` (`id`, `patient_id`, `patient_name`, `scan`, `messages`,
 (12, 8, 'Maureen', 'Stomach', 'sfghjfkl', ''),
 (13, 3, 'Gomboz Tech', 'leg bone fracture', 'Has broken his leg', 'Scanned'),
 (14, 17, 'Jenifer Lopez', 'Skin Breachableness', 'Test her skin', 'Scanned'),
-(15, 17, 'Jenifer Lopez', 'Stomach', 'kjohigu', '');
+(15, 17, 'Jenifer Lopez', 'Stomach', 'kjohigu', 'Scanned');
 
 -- --------------------------------------------------------
 
@@ -348,7 +364,8 @@ INSERT INTO `user` (`id`, `uname`, `prof`, `pwd`) VALUES
 (8, 'Charle Cee', 'Nurse', '70965feb0441ff7fc1982fc5c509136e'),
 (11, 'Charle', 'Receptionist', 'c20ad4d76fe97759aa27a0c99bff6710'),
 (12, 'Mary Juma', 'Nurse', 'c20ad4d76fe97759aa27a0c99bff6710'),
-(13, 'jo viola', 'Clinician', 'c20ad4d76fe97759aa27a0c99bff6710');
+(13, 'jo viola', 'Clinician', 'c20ad4d76fe97759aa27a0c99bff6710'),
+(14, 'Cosmas Baserah', 'Clinician', 'c20ad4d76fe97759aa27a0c99bff6710');
 
 --
 -- Indexes for dumped tables
@@ -432,7 +449,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `add_radiology`
 --
 ALTER TABLE `add_radiology`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `admins`
@@ -462,19 +479,19 @@ ALTER TABLE `drug`
 -- AUTO_INCREMENT for table `hiv_test`
 --
 ALTER TABLE `hiv_test`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `hiv_test_results`
 --
 ALTER TABLE `hiv_test_results`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `hiv_treatment`
 --
 ALTER TABLE `hiv_treatment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `patient`
@@ -492,7 +509,7 @@ ALTER TABLE `radiology`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables

@@ -43,7 +43,7 @@
                             <input class="form-control me-1" id="myInput" style="width:100%; max-width:20rem" type="text" placeholder="Search" aria-label="Search">             
                         </div>
                         <div class="col-md-6 text-end">
-                            <a href="hiv_treated_patients.php" class="btn btn-secondary text-light mx-1 p-2">Patients on treatment</a>
+                            <a href="hiv_treated_patients.php" class="btn btn-secondary text-light mx-1 p-2">Patients treatment report</a>
                         </div>
                     </div> 
                 <?php

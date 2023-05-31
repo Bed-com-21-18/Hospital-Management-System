@@ -60,11 +60,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 					<th>Date of Birth</th>
 					<th>Age</th>
 					<th>Sex</th>
-					<th>Phone Number</th>
-					<th>District</th>
-					<th>Village</th>
-					<th>Residential</th>
-					<th>Prescribed By</th>
+					<th>Contact address</th>
+					<th>Next of kin</th>
+					<th>Religion</th>
+					<th>Occupation</th>
 					<th>Action</th>
 					</tr>
 			</thead>
@@ -95,7 +94,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 							<td><?php echo $row["district"]; ?></td>
 							<td><?php echo $row["village"]; ?></td>
 							<td><?php echo $row["residential"]; ?></td>
-							<td><?php echo $row["prescribed_by"]; ?></td>
 							<td class='btn-group btn-group-justified'>                                    
 									<a href='user_priscribe_form.php?view=<?php echo $row["id"]; ?>' class='badge bg-primary'>Prescribe</a>
 							</td>

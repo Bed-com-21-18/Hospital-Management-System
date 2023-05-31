@@ -56,16 +56,22 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Weight</th>
+                                    <th>Height</th>
+                                    <th>BMI</th>
                                     <th>Drug</th>
-                                    <th>Date treated</th>
-                                    <th>Next treatment</th>
+                                    <th>Initial date</th>
+                                    <th>Next appointment</th>
                                 </tr>
                             </thead>
                             <tbody id = "myTable">
-                            <?php while($row = $result->fetch_assoc()) { ?>
+                            <?php while($row = $result->fetch_assoc()) 
+                            
+                            { ?>
                                 <tr>
                                     <td><?php echo $row['patient_name']; ?></td>
                                     <td><?php echo $row['weight']; ?></td>
+                                    <td><?php echo $row['height']; ?></td>
+                                    <td><?php echo $row['weight']/ $row['height']; ?></td>
                                     <td><?php echo $row['drug']; ?></td>
                                     <td><?php echo $row['dates']; ?></td>
                                     <td><?php echo $row['next_treat']; ?></td>
@@ -77,10 +83,7 @@
          </div>
     </section>
 
-    <!-- footer -->
-        <?php
-            include "footer.php";
-        ?>
+  
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     </body>

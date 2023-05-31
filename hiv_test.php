@@ -50,7 +50,7 @@
                 <div class="collapse navbar-collapse" id="navmenu">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a href="hiv_patients.php" class="btn btn-secondary text-light mx-1 p-2">HIV/AIDS Patients</a>
+                            <a href="hiv_patients.php" class="btn btn-secondary text-light mx-1 p-2">HIV Positive Patients</a>
                         </li>
                         <li class="nav-item">
                             <a href="hiv_vol_testing.php" class="btn btn-secondary text-light mx-1 p-2">Voluntary testing</a>
@@ -84,7 +84,7 @@
                                     <th>Gender</th>
                                     <th>Location</th>
                                     <th>Description</th>
-                                    <th>Deate tested</th>
+                                    <th>Date tested</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>

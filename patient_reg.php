@@ -49,11 +49,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                            <p class="success"><?php echo $_GET['success']; ?></p>
                            <?php } ?>
                         <div class="form-group p-1">
-                            <input type = "text" name="name" class="form-control" placeholder="Enter Full Name" required>
+                            <input type = "text" name="name" class="form-control" placeholder="    Full Name" required>
                         </div>
                         <div class="form-group p-1">
                             <label>Date of birth</label>
-                            <input type = "date" name="date" class="form-control" placeholder="Enter DoB" required>
+                            <input type = "date" name="date" class="form-control" placeholder=" Date of Birth" required>
                         </div>
                         <div class="form-group p-1">
                             <label for="female" >Female</label>
@@ -62,18 +62,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                         <input type="radio" id="Male" name="gender" value="Male" required>
                         </div>
                         <div class="form-group p-1">
-                        <input type ="tel" name="phoneNumber" class="form-control" placeholder="Enter Phone Number" required>
+                        <input type ="text" name="address" class="form-control" placeholder="Contact Address " required>
                         </div>
                         <div class="form-group p-1">
-                        <input type = "text" name="district" class="form-control" placeholder="Enter Current Home" required>
+                        <input type = "text" name="next_of_kin" class="form-control" placeholder=" Next of Kin" required>
                         </div>
                         <div class="form-group p-1">
-                        <input type = "text" name="village" class="form-control" placeholder="Enter Home Village" required>
+                        <input type = "text" name="religion" class="form-control" placeholder="Religion" required>
                         </div>
-
                         <div class="form-group p-1">
-                        <input type = "text" name="residential" class="form-control" placeholder="Enter Residential Address" required>
-                        </div>
+                        <input type = "text" name="occupation" class="form-control" placeholder="Occupation" required>
+                        
                         <div class="form-group p-1 text-center">
                         <input type="submit" name="add" class="btn btn-primary btn-block" value="Register">
                        </div>

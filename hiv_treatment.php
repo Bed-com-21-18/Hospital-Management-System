@@ -54,7 +54,7 @@
                 <div class="col-md-5">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="text-center text-secondary">Add treatment</h4>
+                            <h4 class="text-center text-secondary">HIV treatment</h4>
                         </div>
                         <div class="card-body">
                             <form action="hiv_testdb.php" method="POST">
@@ -76,15 +76,27 @@
                                     <input type="text" value="" name="weight" class="form-control"/>
                                 </div>
                                 <div class="form-group p-2">
-                                    <label>Medication</label>
-                                    <input type="text" value="" name="drug" class="form-control"/>
+                                    <label>Height in meters</label>
+                                    <input type="text" value="" name="height" class="form-control"/>
                                 </div>
                                 <div class="form-group p-2">
-                                    <label>Date treated</label>
+                                    <label>HAART Regimen</label>
+                                    <select class="form-select" id="test_name" name="drug" required>
+                                            <option value="">Select drug</option>
+                                            <option value="15PA">15PA</option>
+                                            <option value="15PP">15PP</option>
+                                            <option value="14A">14A</option>    
+                                            <option value="13A">13A</option> 
+                                            <option value="6A">6A</option> 
+                                            <option value="5A">5A</option> 
+                                        </select>
+                                </div>
+                                <div class="form-group p-2">
+                                    <label>Initial date</label>
                                     <input type="date" value="" name="dates" class="form-control"/>
                                 </div>
                                 <div class="form-group p-2">
-                                    <label>Next treated</label>
+                                    <label>Next appointment</label>
                                     <input type="date" value="" name="next_treat" class="form-control"/>
                                 </div>
                                 <div class="form-group text-center p-4">

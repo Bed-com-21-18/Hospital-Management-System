@@ -52,7 +52,7 @@
             <section class="p-4 bg-white"> 
                 <div class="container">
                 <div class="row justify-content-center">
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <div class="card">
                         <div class="card-header">
                             <h4 class="text-center text-secondary">Radiology</h4>
@@ -68,16 +68,19 @@
                                 <form class="form-group p-4" method="POST" action="radiologydb.php">
                                     <input type="hidden" class="form-control" value="<?= $id; ?>" id="patient_id" name="patient_id" required> 
                                     <input type="text" class="form-control" value="<?= $name; ?>" id="patient_name" name="patient_name" readonly> <br>
+                                   
                                     <div class="form-group">
-                                        <label><b>Symptom</b></label>
-                                        <input name="scan" class="form-control" type="text" value="" placeholder="indicate a symptom">
-                                    </div><br>
-                                    <div class="form-group">
-                                        <label><b>Add Text</b></label>
-                                        <textarea class="form-control" name="messages" placeholder="Short description of a problem"></textarea>
+                                        <select class="form-select" id="test_name" name="scan" required>
+                                            <option value="">Select scanning options</option>
+                                            <option value="X-ray">X-ray</option>
+                                            <option value="UltraSound Scanning">UltraSound Scanning</option>
+                                            <option value="Magnetic resonance imaging">Magnetic resonance imaging</option>
+                                            
+                                        </select>
                                     </div> 
-                                    <div class="form-group p-2">         
-                                        <button type="submit" name="rad_button" class="btn btn-primary">Send for scanning</button>
+                                    <br> 
+                                    <div class="form-group p-2 text-center">         
+                                        <button type="submit" name="rad_button" class="btn btn-primary">Send</button>
                                     </div>
                                 </form>
                                 </div>

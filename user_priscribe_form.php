@@ -22,14 +22,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
   </script>
 <body>
    
-            <div class="container">
-                <h3 class="text-center bg-light text-secondary">Prescription</h3>
+            <div class="P-2">
+                <h4 class="text-center bg-light text-secondary p-2">HISTORY TAKING</h4>
             </div>
-    
-  <!-- prescription form -->
-  <div class="container bg-light">
-    
-    <form method="POST" action="user_prescribe.php"> 
+
       <?php
     if(isset($_GET['view'])){
   $id = $_GET['view'];
@@ -43,13 +39,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
       $date = $row['gender'];     
   
 } ?>
-                <hr>
+                <div class="container">
                         <table class="table table-hover" style="overflow:auto">
                             <thead class="table table-hover">
                                 <tr>
                                     <th>Name</th>
                                     <th>Age</th>
-                                    <th>Gender</th>
+                                    <th>Sex</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -60,131 +56,159 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                                     <td><?php echo $row['age']; ?></td> 
                                     <td><?php echo $row['gender']; ?></td> 
                                     <td class="btn-group btn-group-justified">                                       
-                                         <a href="book_appointment.php?book=<?php echo $row["id"]; ?>" class="badge text-light bg-primary mx-1">Book Appointment</a>
-                                        <a href="view_history.php?history=<?php echo $row["id"]; ?>" class="badge text-light bg-secondary">View History</a>
+                                         <!-- <a href="book_appointment.php?book=" class="badge text-light bg-primary mx-1">Book Appointment</a> -->
+                                        <a href="view_history.php?history=<?php echo $row["id"]; ?>" class="badge text-light bg-secondary">Previous History</a>
                                     </td>
                                 </tr>
                           
                             </tbody>
                         </table>
-                        
-                        <div class="form-group">
+                  </div> 
+
+    
+      <form method="POST" action="user_prescribe.php"> 
+          
          <input type="hidden" class="form-control" value="<?= $id; ?>" id="patient_id" name="patient_id" placeholder="Patient ID" required> 
-
-            <label for="symptoms"><strong>Primary Diagnosis:</strong></label><br>
-            <p><em><strong>Please select all physical or mental manifestations experienced by an individual that indicate the presence of a disease:</strong></em></p>
-            
-            <div class="row">
-              <div class="col-md-4">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="symptoms[]" value="Fever" id="fever">
-                  <label class="form-check-label" for="fever">Fever</label>
+         <div class="container py-2"> 
+         <div class="card p-1">
+            <div class="row px-4"> 
+              <h5 class="text-center">Signs and symptoms</h5> 
+                
+              <div class="col-md-6">
+                  <div class="form-group">
+                    <select name="symptoms[]" class="form-select">
+                        <option value="" class="text-center">Select signs & symptoms</option>
+                        <option value="Fever">Fever</option>
+                        <option value="Cough">Cough</option> 
+                        <option value="Shortness of breath">Shortness of breath</option> 
+                        <option value="Fatigue">Fatigue</option> 
+                        <option value="Headache">Headache</option> 
+                        <option value="Chest Pain">Chest Pain</option> 
+                        <option value="Dizziness">Dizziness</option>
+                        <option value="Muscle aches">Muscle aches</option>
+                        <option value="Loss of appetite">Loss of appetite</option>
+                        <option value="Loss of taste">Loss of taste</option>
+                        <option value="Sore throat">Sore throat</option>
+                        <option value="Runny nose">Runny nose</option>
+                        <option value="Loss of appetite">Nausea</option>
+                        <option value="Vomiting">Vomiting</option>
+                        <option value="Passing out losss stools">Passing out losss stools</option>
+                        <option value="Itching">Itching</option>
+                        <option value="General body aches">General body aches</option>
+                        <option value="Skin rash">Skin rash</option>
+                        <option value="Vomiting">Vomiting</option>
+                        <option value="Vomiting">Vomiting</option>
+                    </select>
                 </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="symptoms[]" value="Cough" id="cough">
-                  <label class="form-check-label" for="cough">Cough</label>
                 </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="symptoms[]" value="Shortness of breath" id="shortness-of-breath">
-                  <label class="form-check-label" for="shortness-of-breath">Shortness of Breath</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="symptoms[]" value="Fatigue" id="fatigue">
-                  <label class="form-check-label" for="fatigue">Fatigue</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="symptoms[]" value="Headache" id="headache">
-                  <label class="form-check-label" for="headache">Headache</label>
-                </div>
-                <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="symptoms[]" value="Chest Pain" id="chest-pain">
-              <label class="form-check-label" for="chest-pain">Chest Pain</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="symptoms[]" value="Dizziness" id="dizziness">
-              <label class="form-check-label" for="dizziness">Dizziness</label>
-            </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="duration" placeholder="Enter duration of sign & symptom">
+                    </div>
+                  </div> 
               </div>
-              
-              <div class="col-md-4">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="symptoms[]" value="Muscle aches" id="muscle-aches">
-                  <label class="form-check-label" for="muscle-aches">Muscle Aches</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="symptoms[]" value="Loss of appetite" id="loss-of-smell">
-                  <label class="form-check-label" for="loss-of-smell">Loss of Smell</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="symptoms[]" value="Loss of taste" id="loss-of-taste">
-                  <label class="form-check-label" for="loss-of-taste">Loss of Taste</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="symptoms[]" value="Sore throat" id="sore-throat">
-                  <label class="form-check-label" for="sore-throat">Sore Throat</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="symptoms[]" value="Runny nose" id="runny-nose">
-                  <label class="form-check-label" for="runny-nose">Runny Nose</label>
+            </div>  
           </div>
-          <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="symptoms[]" value="Pink eye" id="pink-eye">
-              <label class="form-check-label" for="pink-eye">Pink Eye</label>
+     
+          <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card p-1">
+                    <form action="" class="" method="post">
+                       <div class="row">
+                       <h5 class="text-center">Vital sign</h5>
+                          <div class="col-md-3">
+                            <div class="form-group mb-1 text-center">
+                                <label><b>General Examination</b></label>
+                                <select name="vital_sign" class="form-select">
+                                    <option value="">Select general examination</option>
+                                    <option value="pale">Pale conjuctives</option>
+                                    <option value="unconscious">Unconscious</option> 
+                                    <option value="alert">Alert</option> 
+                                </select>
+                            </div>
+                          </div>
+                           <div class="col-md-3">
+                            <div class="form-group mb-1 text-center">
+                                <label><b>Tempereture</b></label>
+                                <input type ="text" name="" class="form-control" placeholder="enter temperature">
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="form-group mb-1 text-center">
+                                <label><b>Pulse rate</b></label>
+                                <input type ="text" name="" class="form-control" placeholder="enter pulse rate">
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="form-group mb-1 text-center">
+                                <label><b>Respiratory rate</b></label>
+                                <input type ="text" name="" class="form-control" placeholder="enter respiratory rate">
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="form-group mb-1 text-center">
+                                <label><b>Blood pressure</b></label>
+                                <input type ="text" name="" class="form-control" placeholder="enter blood pressure">
+                            </div>
+                          </div>
+                     </form>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-md-4">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="symptoms[]" value="Nausea" id="nausea">
-              <label class="form-check-label" for="nausea">Nausea</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="symptoms[]" value="Vomiting" id="vomiting">
-              <label class="form-check-label" for="vomiting">Vomiting</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="symptoms[]" value="Diarrhoea" id="diarrhea">
-              <label class="form-check-label" for="diarrhea">Diarrhoea</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="symptoms[]" value="Itching" id="itching">
-              <label class="form-check-label" for="itching">Itching</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="symptoms[]" value="General body aches" id="body-aches">
-              <label class="form-check-label" for="body-aches">Body Aches</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="symptoms[]" value="Skin rash" id="skin-rash">
-              <label class="form-check-label" for="skin-rash">Skin Rash</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="symptoms[]" value="Allergy" id="allergy">
-              <label class="form-check-label" for="allergy">Allergy</label>
-            </div>
-          </div>
 
-          </div>
+          
+         <div class="container">
+         <div class="card p-1">
+            <div class="row text-center">
+              <div class="col-md-3">
+                  <div class="">
+                      <label><b>History of complaints</b></label>
+                      <textarea class="p-3" name="history" placeholder="Patients Description of what happened"></textarea>
+                  </div> 
+              </div>
+              <div class="col-md-3">
+                  <div class="">
+                      <label><b>Drug history</b></label>
+                      <textarea class="p-3" name="history" placeholder="Over the counter drug"></textarea>
+                  </div> 
+              </div>
+              <div class="col-md-3">
+                  <div class="">
+                      <label><b>Medical/Surgical history</b></label>
+                      <textarea class="p-3" name="history" placeholder="Chronic problem"></textarea>
+                  </div> 
+              </div>
+              <div class="col-md-3">
+                  <div class="">
+                      <label><b>Social history</b></label>
+                      <textarea class="p-3" name="history" placeholder="What a petient does socially"></textarea>
+                  </div> 
+              </div>
+              <div class="col-md-3">
+                  <div class="">
+                      <label><b>Family history</b></label>
+                      <textarea class="p-3" name="history" placeholder="petient's family history"></textarea>
+                  </div> 
+              </div>
+              <div class="col-md-3">
+                  <div class="">
+                      <label><b>Review of other system</b></label>
+                      <textarea class="p-3" name="history" placeholder="Checking possible systems"></textarea>
+                  </div> 
+              </div>
+              <div class="col-md-3">
+                  <div class="">
+                      <label><b>Physical examination</b></label>
+                      <textarea class="p-3" name="history" placeholder="Physical examination"></textarea>
+                  </div> 
+              </div>
+            </div>
+         </div>
+         </div>
+        
 
-
-       <div class="form-group" method="POST" >
-      
-          <input type="hidden" class="form-control" id="others" name="others" >
-        </div>
-        <div class="container">
-        <div class="row">
-        <div class="col-md-12 p-2">
-        <a href="send_to_lab.php?send=<?php echo $row["id"]; ?> " class=" badge btn-primary ">Send Lab Request</a> &nbsp; &nbsp;&nbsp;&nbsp;
-         <a href="View_lab_results.php?view_results=<?php echo $row["id"]; ?>" class=" badge btn-secondary">View Lab Results</a> &nbsp; &nbsp;&nbsp;&nbsp;
-         <a href="radiology_page.php?page=<?php echo $row["id"]; ?> " class=" badge btn-primary ">Send Radiology request</a> &nbsp; &nbsp;&nbsp;&nbsp;
-         <a href="radiology_view.php?viewing=<?php echo $row["id"]; ?>" class=" badge btn-secondary">View Radiology Results</a> &nbsp; &nbsp;&nbsp;&nbsp;
-         <a href="hiv_test_request.php?hiv_test=<?php echo $row["id"]; ?> " class=" badge btn-primary ">Send HIV test</a> &nbsp; &nbsp;&nbsp;&nbsp;
-         <a href="hiv_test_results.php?hiv_results=<?php echo $row["id"]; ?>" class=" badge btn-secondary">View HIV Results</a>&nbsp; &nbsp;&nbsp;&nbsp;
-         <a href="inpatient_form.php?view=<?php echo $row["id"]; ?> " class=" badge btn-primary ">Addmit Patient</a>
-        </div> 
-        </div>
-        </div>
-         <br>  <br>
-        <button type="submit" class="btn btn-primary">Proceed</button> &nbsp;&nbsp;&nbsp;&nbsp;
+        <a type="submit" href="user_prescribe.php?diagnose=<?php echo $row["id"]; ?> " class="btn btn-primary">Diagnise</a>
         <a class="btn btn-secondary" href="patient_list_user.php">Cancel</a>
     </form>
   </div>

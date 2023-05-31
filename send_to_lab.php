@@ -120,7 +120,14 @@ form .error {
           </div>
           <div class="mb-3">
             <label for="test" class="form-label"><i class="fas fa-comment-medical"></i> Test for:</label>
-            <textarea name="test" id="test" rows="2" required class="form-control"></textarea>
+              <select class="form-control" id="test_name" name="test_name" required>
+                <option value="">Select a test</option>
+                <option value="Haematology">Haematology</option>
+                <option value="Biochemistry">Biochemistry</option>
+                <option value="Microbiology">Microbiology</option>
+                <option value="Parasitology">Parasitology</option>
+                <option value="Serology">Serology</option>
+              </select>
           </div>
           <div class="text-center">
             <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit</button>

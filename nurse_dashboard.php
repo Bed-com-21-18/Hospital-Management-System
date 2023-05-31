@@ -16,7 +16,14 @@
     <link rel="stylesheet" href="bootstrap-5.0.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="home.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+            .icon-image {
+                width: 60px;
+                height: 60px;
+                object-fit: contain;
+            }
+        </style>
 </head>
   <body>
       <!--NavBar-->
@@ -25,28 +32,30 @@
 
     <!-- side bar -->
 
-             <!--Cards-->
+
+                 <!--Cards-->
      <section class=""> 
         <h4 class="bg-light p-2 text-center text-secondary">Modules</h4>
     <div class="container p-4">
         <div class="row text-center g-4">
-            <div class="col-md-3">
-                <div class="card text-dark flex-fill">
-                    <div class="card-body text-center">
-                        <div class="h1 mb-3">
-                            <i class="bi bi-people-fill text-primary"></i>
-                        </div>
-                        <h4 class="card-title mb-3 text-primary">Patients registration</h4>
-                        <a href="patient_reg.php" class="btn btn-primary">Proceed</a>
+        <div class="col-md-3">
+            <div class="card text-dark flex-fill">
+                <div class="card-body text-center">
+                    <div class="h1 mb-3">
+                        <img src="img/crowd.png" alt="Outpatient" class="icon-image">
                     </div>
+                    <h3 class="card-title mb-3 text-primary">Registration</h3>
+                    <a href="patient_reg.php" class="btn btn-primary">Proceed</a>
                 </div>
             </div>
+        </div>
+       
             <div class="col-md-3">
                 <div class="card text-dark flex-fill">
                     <div class="card-body text-center">
-                        <div class="h1 mb-3">
-                            <i class="bi bi-people-fill text-primary"></i>
-                        </div>
+                    <div class="h1 mb-3">
+                        <img src="img/advice.png" alt="Outpatient" class="icon-image">
+                    </div>
                         <h3 class="card-title mb-3 text-primary">Outpatient</h3>
                         <a href="patient_list_user.php" class="btn btn-primary">Proceed</a>                   
                     </div>
@@ -55,9 +64,9 @@
             <div class="col-md-3">
                 <div class="card text-dark flex-fill">
                     <div class="card-body text-center">
-                        <div class="h1 mb-3">
-                            <i class="bi bi-people text-primary"></i>
-                        </div>
+                    <div class="h1 mb-3">
+                        <img src="img/doctor1.png" alt="Outpatient" class="icon-image">
+                    </div>
                         <h3 class="card-title mb-3 text-primary">Inpatients</h3>
                         <a href="inpatient.php" class="btn btn-primary">Proceed</a>
                     </div>
@@ -67,9 +76,9 @@
             <div class="col-md-3">
                 <div class="card text-dark flex-fill">
                     <div class="card-body text-center">
-                        <div class="h1 mb-3">
-                            <i class="bi bi-people text-primary"></i>
-                        </div>
+                    <div class="h1 mb-3">
+                        <img src="img/laboratory.png" alt="Outpatient" class="icon-image">
+                    </div>
                         <h3 class="card-title mb-3 text-primary">Laboratory</h3>
                         <a href="laboratory.php" class="btn btn-primary">Proceed</a>
                     </div>
@@ -78,9 +87,9 @@
             <div class="col-md-3">
                 <div class="card text-dark flex-fill">
                     <div class="card-body text-center">
-                        <div class="h1 mb-3">
-                            <i class="bi bi-people text-primary"></i>
-                        </div>
+                    <div class="h1 mb-3">
+                        <img src="img/pharmacy.png" alt="Outpatient" class="icon-image">
+                    </div>
                         <h3 class="card-title mb-3 text-primary">Pharmacy</h3>
                         <a href="pharmacy.php" class="btn btn-primary">Proceed</a>
                     </div>
@@ -89,9 +98,9 @@
             <div class="col-md-3">
                 <div class="card text-dark flex-fill">
                     <div class="card-body text-center">
-                        <div class="h1 mb-3">
-                            <i class="bi bi-people text-primary"></i>
-                        </div>
+                    <div class="h1 mb-3">
+                        <img src="img/accounting.png" alt="Outpatient" class="icon-image">
+                    </div>
                         <h3 class="card-title mb-3 text-primary">Finance</h3>
                         <a href="finance.php" class="btn btn-primary">Proceed</a>
                     </div>
@@ -100,10 +109,10 @@
             <div class="col-md-3">
                 <div class="card text-dark flex-fill">
                     <div class="card-body text-center">
-                        <div class="h1 mb-3">
-                            <i class="bi bi-people text-primary"></i>
-                        </div>
-                        <h3 class="card-title mb-3 text-primary">Consultant</h3>
+                    <div class="h1 mb-3">
+                        <img src="img/consultation.png" alt="Outpatient" class="icon-image">
+                    </div>
+                        <h3 class="card-title mb-3 text-primary">Conselling</h3>
                         <a href="consultant_list.php" class="btn btn-primary">Proceed</a>
                     </div>
                 </div>
@@ -111,9 +120,9 @@
             <div class="col-md-3">
                 <div class="card text-dark flex-fill">
                     <div class="card-body text-center">
-                        <div class="h1 mb-3">
-                            <i class="bi bi-people text-primary"></i>
-                        </div>
+                    <div class="h1 mb-3">
+                        <img src="img/x-ray.png" alt="Outpatient" class="icon-image">
+                    </div>
                         <h3 class="card-title mb-3 text-primary">Radiology</h3>
                         <a href="radiology.php" class="btn btn-primary">Proceed</a>
                     </div>
@@ -124,7 +133,7 @@
                 <div class="card text-dark flex-fill">
                     <div class="card-body text-center">
                         <div class="h1 mb-3">
-                            <i class="bi bi-people text-primary"></i>
+                            <img src="img/blood-test.png" alt="Outpatient" class="icon-image">
                         </div>
                         <h3 class="card-title mb-3 text-primary">HIV/AIDS</h3>
                         <a href="hiv_test.php" class="btn btn-primary">Proceed</a>

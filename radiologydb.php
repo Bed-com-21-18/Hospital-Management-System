@@ -8,7 +8,6 @@
 
     if (isset($_POST['rad_button'])){
         $scan = $_POST['scan'];
-        $messages = $_POST['messages'];
         $patient_id = $_POST['patient_id'];
         $patient_name = $_POST['patient_name'];
 
@@ -20,21 +19,16 @@
             return $data;
         }
         $scan = validate($_POST['scan']);
-        $messages = validate($_POST['messages']);
 
-        $user_data = 'scan='. $scan. '&messages='. $messages .'&patient_id=' .$patient_id .'&patient_name=' .$patient_name; 
+        $user_data = 'scan='. $scan .'&patient_id=' .$patient_id .'&patient_name=' .$patient_name; 
 
         if (empty($scan)) {
             header ("Location: radiology_page.php?error=Indicate the area to be scanned&$user_data");
             exit();
         }
-        else if (empty($messages)) {
-            header ("Location: radiology_page.php?error=Add description&$user_data");
-            exit();
-        }
         else {
             //add to database
-                $sql1 = "INSERT INTO radiology(scan, messages, patient_id, patient_name) VALUES('$scan', '$messages', '$patient_id', '$patient_name')";
+                $sql1 = "INSERT INTO radiology(scan, patient_id, patient_name) VALUES('$scan', '$patient_id', '$patient_name')";
                  if ($mysqli->query($sql1) === TRUE){
                     // header ("Location: radiology_page.php?success=Request for scanning has been sent");
                     // exit();
