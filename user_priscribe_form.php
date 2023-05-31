@@ -207,9 +207,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
          </div>
          </div>
         
-
-        <a type="submit" href="user_prescribe.php?diagnose=<?php echo $row["id"]; ?> " class="btn btn-primary">Diagnise</a>
+<div class="form-group py-2 text-center">
+        <a type="submit" href="user_prescribe.php?diagnose=<?php echo $row["id"]; ?> " class="btn btn-primary">Diagnose</a>
         <a class="btn btn-secondary" href="patient_list_user.php">Cancel</a>
+        </div>
     </form>
   </div>
   
