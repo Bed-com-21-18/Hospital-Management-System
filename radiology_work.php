@@ -79,7 +79,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                                 </div>
                                 <div class="form-group">
                                     <label>Status</label>
-                                    <input type="hidden" value="Scanned" name="status" class="form-control"/>
+                                    <input type="hidden" value="Scanned" name="statu" class="form-control"/>
                                 </div>
                                 <div class="form-group">
                                     <label>Comments</label>
@@ -87,7 +87,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                                 </div>
                                 <div class="form-group">
                                     <label>Date</label>
-                                    <input type="date" value="" name="date" class="form-control"/>
+                                    <input type="date" value="" name="dates" class="form-control"/>
                                 </div>
                                 <div class="form-group mb-3 text-center p-4">
                                     <button type="submit" class="btn btn-primary" name="add_rad">Submit</button>

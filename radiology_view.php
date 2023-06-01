@@ -35,7 +35,7 @@
         ?>
 
 <section class="p-5 text-center">
-        <div class="container p-5">
+        <div class=" p-5">
         <h2 class="text-center text-info">Radiology results</h2>
         <hr>
                 <?php 

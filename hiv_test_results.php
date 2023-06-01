@@ -52,7 +52,7 @@
  <!--Update table-->
             <div class="container p-2"> 
                 <h3 class="text-center text-secondary">
-                    HIV/AIDS test results
+                    HIV test results
                 </h3>
                       <!-- search -->
                         <input class="form-control me-1" id="myInput" style="width:100%; max-width:20rem" type="text" placeholder="Search" aria-label="Search">             

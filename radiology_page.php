@@ -78,6 +78,10 @@
                                             
                                         </select>
                                     </div> 
+                                    <div class="form-group py-2">
+                                        <label>Area to scan</label>
+                                        <textarea class="form-control" name="messages" placeholder="Short description of a problem"></textarea>
+                                    </div> 
                                     <br> 
                                     <div class="form-group p-2 text-center">         
                                         <button type="submit" name="rad_button" class="btn btn-primary">Send</button>

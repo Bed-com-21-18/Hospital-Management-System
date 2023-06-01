@@ -26,11 +26,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
         </script>
 </head>
 <body>
-
+<div class="container">
    <!--NavBar-->
-   <nav class="navbar navbar-expand py-1"style="background-color:#F1F6F9;" >
+   <nav class="navbar navbar-expand py-2"style="background-color:#F1F6F9;" >
             <div class="container">
-			<h5 class="navbar-brand"> Patient List</h5>
+			<h5 class="navbar-brand"> Patients for counselling</h5>
                 <button 
                 class="navbar-toggler" 
                 type="button" 
@@ -57,47 +57,32 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                  <thead class="table table-hover">
 				<tr>
 					<th>Name</th>
-					<th>Date of Birth</th>
-					<th>Age</th>
 					<th>Sex</th>
-					<th>Phone Number</th>
-					<th>District</th>
-					<th>Village</th>
-					<th>Residential</th>
-					<th>Prescribed By</th>
+					<th>Location</th>
+					<th>Counsellor</th>
+					<th>Date</th>
+					<th>Status</th>
 					<th>Action</th>
 					</tr>
 			</thead>
 
 			<tbody  id = "myTable">
 				<?php
-				// Connect to the database
-				$conn = new mysqli("localhost", "root", "", "hms");
-
-				// Check connection
-				if ($conn->connect_error) {
-					die("Connection failed: " . $conn->connect_error);
-				}
-                $query = "SELECT * FROM patient ORDER BY id DESC";
-                $stmt = $conn->prepare($query);
-                $stmt->execute();
-                $result = $stmt->get_result();
+                $sql = "SELECT * FROM counselling ORDER BY id DESC";
+                $result = $mysqli->query($sql);
 
 				// Display patient information in table rows
 				if ($result->num_rows > 0) {
 					while ($row = $result->fetch_assoc()) { ?>
 						 <tr>
-							<td><?php echo $row["name"]; ?></td>
-							<td><?php echo $row["date"]; ?></td>
-							<td><?php echo $row["age"]; ?></td>
+							<td><?php echo $row["patient_name"]; ?></td>
 							<td><?php echo $row["gender"]; ?></td>
-							<td><?php echo $row["phoneNumber"]; ?></td>
-							<td><?php echo $row["district"]; ?></td>
-							<td><?php echo $row["village"]; ?></td>
-							<td><?php echo $row["residential"]; ?></td>
-							<td><?php echo $row["prescribed_by"]; ?></td>
+							<td><?php echo $row["address"]; ?></td>
+							<td><?php echo $row["counsel"]; ?></td>
+							<td><?php echo $row["dates"]; ?></td>
+							<td><?php echo $row["statu"]; ?></td>
 							<td class='btn-group btn-group-justified'>                                    
-									<a href='consulting.php?consult=<?php echo $row["id"]; ?>' class='badge bg-success'>Proceed</a>
+									<a href='consultant_result.php?consult=<?php echo $row["id"]; ?>' class='badge bg-primary'>Proceed</a>
 							</td>
 						</tr>
                       <?php  
@@ -105,18 +90,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 				} else {
 					echo "<tr><td colspan='12' class='text-center'>No patients found</td></tr>";
 				}
-                    
-				// Close the database connection
-				$conn->close();
-                        
-				?>
-
+                
+?>
 			</tbody>
 		</table>             
 	</div>
 	</div>
 </div>
-   
+</div>
 <!-- Bootstrap JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

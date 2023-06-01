@@ -63,7 +63,7 @@
                                 <tr>
                                
                                     <th>Name</th>
-                                    <th>Area to scan</th>
+                                    <th>Type of scan</th>
                                     <th>Description</th>
                                     <th>Status</th>
                                     <th>Action</th>

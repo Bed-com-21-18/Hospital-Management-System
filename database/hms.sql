@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2023 at 06:11 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 7.3.28
+-- Generation Time: Jun 01, 2023 at 09:49 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -50,7 +51,10 @@ INSERT INTO `add_radiology` (`id`, `patient_id`, `patient_name`, `photo`, `comme
 (14, 3, 'Gomboz Tech', 'uploads/Capture.PNG', 'no any damages', ''),
 (15, 3, 'Gomboz Tech', 'uploads/Capture.PNG', 'no any damages', ''),
 (16, 3, 'Gomboz Tech', 'uploads/Capture.PNG', 'no any damages', ''),
-(17, 3, 'Gomboz Tech', 'uploads/Capture.PNG', 'no any damages', '');
+(17, 3, 'Gomboz Tech', 'uploads/Capture.PNG', 'no any damages', ''),
+(18, 11, 'Charle Cee Graphix', 'uploads/usecase.PNG', 'hfhriygf', ''),
+(19, 17, 'Jenifer Lopez', 'uploads/usecase.PNG', 'guyftiyf', ''),
+(20, 17, 'Jenifer Lopez', 'uploads/usecase.PNG', 'hiuhi', '2023-06-01');
 
 -- --------------------------------------------------------
 
@@ -105,6 +109,30 @@ INSERT INTO `appointments` (`id`, `patient_id`, `name`, `date`, `time`, `profess
 (2, 12, 'OMEXIE CHAMA', '2023-05-18', '11:00:00', 'Surgeon', 'Nedds Head surgery', 'Mary Juma', '11:00:57 18-05-2023 ', 'Prescribed by Charle Cee'),
 (3, 17, 'Jenifer Lopez', '2023-05-18', '17:50:00', 'Physiotherapist', 'gffffffffffffffffffffffffffffffffff', 'ida', '15:50:31 18-05-2023 ', 'Prescribed by Charle Cee'),
 (4, 4, 'Edson Magombo', '2023-05-18', '15:50:00', 'Physiotherapist', 'kkkkkkkkkkkkkkkkkkkkkkkkk', 'ida', '15:51:01 18-05-2023 ', 'Prescribed by ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `counselling`
+--
+
+CREATE TABLE `counselling` (
+  `id` int(11) NOT NULL,
+  `patient_id` int(30) NOT NULL,
+  `patient_name` varchar(30) NOT NULL,
+  `statu` text NOT NULL,
+  `dates` varchar(15) NOT NULL,
+  `address` text NOT NULL,
+  `counsel` text NOT NULL,
+  `gender` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `counselling`
+--
+
+INSERT INTO `counselling` (`id`, `patient_id`, `patient_name`, `statu`, `dates`, `address`, `counsel`, `gender`) VALUES
+(3, 18, 'Omexie Chama', 'Counselled', '2023-06-01', 'Zomba', 'Charplain', 'Male');
 
 -- --------------------------------------------------------
 
@@ -332,8 +360,8 @@ INSERT INTO `patient` (`id`, `name`, `date`, `gender`, `age`, `address`, `next_o
 (14, 'Gilson Chongo', '1990-05-14', 'Male', 33, '2147483647', 'Bangwe', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, 'Cough:2 days ago', 'Temperature:89', 'pale:Wakomoka', 'Pneumia,TB', 'Drug history:heart surgery', 'Acetymethrin,Amoxycilin      ', 'Acetymethrin 2 morn ,Amoxycilin      dsfghhgfdsa', '', '', '', 'Mary Juma', '15:13:34 17-05-2023 ', 4000, 'Paid Fully', NULL, NULL, NULL, 'Malaria results- negative', NULL, NULL),
 (15, 'Precious Mlimbika', '1998-05-16', 'Male', 25, '996842414', 'Lilongwe', 'Govala', 'Kufumbi', 'b, Azithromycin, Intoxcyclin, Oxygen', 'Fever:2 days ago', 'Temperature:23', 'pale:need serious attention', 'Pneumia,Pleural', 'Family history:heart surgery', 'Acetymethrin,Amoxycilin      ', 'Acetymethrin 2 morning, afternoon and evening,Amoxycilin      dsfghhgfdsa', '', '', '', 'Charle Cee', '18:03:46 16-05-2023 ', 4000, 'Paid Fully', 'Test for AIds', NULL, NULL, 'AIDS NEGATIVE', NULL, NULL),
 (16, 'Ruben Dias', '2000-05-16', 'Male', 23, '435678', 'sfdghj', 'sdfgfhj', 'fdgfhyu', NULL, 'Fever:2 days ago', 'Pulse rate:89', 'pale:need serious attention', NULL, 'Acetymethrin', 'Drug history:Achikuda', '', '', '', '', 'Mary Juma', '12:48:01 20-05-2023 ', 0, 'Paid Fully', 'Biochemistry', NULL, NULL, 'AIDS negative', NULL, NULL),
-(17, 'Jenifer Lopez', '1978-05-17', 'Female', 45, '34567890', 'Zambia', 'Zingwangwa', 'Zimbabwe', NULL, 'Shortness of breath:', 'Pulse rate:', 'pale:', 'Pneumia,TB', 'Social history:', 'Acetymethrin', 'Acetymethrin 2 morn ', '', '', '', 'ida', '23:34:02 01-06-2023 ', 4000, 'not paid', 'Haematology', NULL, NULL, 'Blood Test: Negative', 1000, NULL),
-(18, 'Omexie Chama', '2000-06-08', 'Male', 23, 'Zomba', 'Charle', 'SDA', 'Guard', NULL, 'Cough:', 'Temperature:', 'alert:', 'TB', 'Drug history:', 'Acetymethrin,Amoxycilin      ', 'Acetymethrin 2 morn ,Acetymethrin 2 morn ', '', NULL, '', NULL, NULL, 4000, 'not paid', NULL, NULL, NULL, NULL, NULL, NULL);
+(17, 'Jenifer Lopez', '1978-05-17', 'Female', 45, '34567890', 'Zambia', 'Zingwangwa', 'Zimbabwe', NULL, 'Fever:2 days', 'Temperature:37', 'alert:', 'Pneumia,TB', 'Drug history:panado', 'Acetymethrin', 'Acetymethrin 2 morn ', '', '', '', 'ida', '23:34:02 01-06-2023 ', 4000, 'not paid', 'Haematology', NULL, NULL, 'Blood Test: Negative', 1000, NULL),
+(18, 'Omexie Chama', '2000-06-08', 'Male', 23, 'Zomba', 'Charle', 'SDA', 'Guard', NULL, 'Fever:2 days', 'Temperature:37', 'pale:', 'TB', 'Drug history:panado', 'Acetymethrin,Amoxycilin      ', 'Acetymethrin 2 morn ,Acetymethrin 2 morn ', '', NULL, '', NULL, NULL, 4000, 'not paid', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -355,13 +383,7 @@ CREATE TABLE `radiology` (
 --
 
 INSERT INTO `radiology` (`id`, `patient_id`, `patient_name`, `scan`, `messages`, `statu`) VALUES
-(11, 15, 'Precious Mlimbika', 'Chibayo', 'iuyutyrter', 'Scanned'),
-(12, 8, 'Maureen', 'Stomach', 'sfghjfkl', ''),
-(13, 3, 'Gomboz Tech', 'leg bone fracture', 'Has broken his leg', ''),
-(14, 17, 'Jenifer Lopez', 'Skin Breachableness', 'Test her skin', 'Scanned'),
-(15, 17, 'Jenifer Lopez', 'Stomach', 'kjohigu', ''),
-(16, 3, 'Gomboz Tech', 'Magnetic resonance imaging', '', ''),
-(17, 11, 'Charle Cee Graphix', 'UltraSound Scanning', '', '');
+(1, 17, 'Jenifer Lopez', 'X-ray', 'chest pain', 'Scanned');
 
 -- --------------------------------------------------------
 
@@ -412,6 +434,12 @@ ALTER TABLE `admins`
 ALTER TABLE `appointments`
   ADD PRIMARY KEY (`id`),
   ADD KEY `patient_id` (`patient_id`);
+
+--
+-- Indexes for table `counselling`
+--
+ALTER TABLE `counselling`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `doctor`
@@ -475,7 +503,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `add_radiology`
 --
 ALTER TABLE `add_radiology`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `admins`
@@ -488,6 +516,12 @@ ALTER TABLE `admins`
 --
 ALTER TABLE `appointments`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `counselling`
+--
+ALTER TABLE `counselling`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `doctor`
@@ -535,7 +569,7 @@ ALTER TABLE `patient`
 -- AUTO_INCREMENT for table `radiology`
 --
 ALTER TABLE `radiology`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`

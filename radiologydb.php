@@ -10,6 +10,7 @@
         $scan = $_POST['scan'];
         $patient_id = $_POST['patient_id'];
         $patient_name = $_POST['patient_name'];
+        $messages = $_POST['messages'];
 
         //validation
         function validate($data){
@@ -19,16 +20,22 @@
             return $data;
         }
         $scan = validate($_POST['scan']);
+        $messages = validate($_POST['messages']);
 
-        $user_data = 'scan='. $scan .'&patient_id=' .$patient_id .'&patient_name=' .$patient_name; 
+        $user_data = 'scan='. $scan .'&patient_id=' .$patient_id .'&patient_name=' .$patient_name . '&messages=' .$messages; 
 
         if (empty($scan)) {
+            header ("Location: radiology_page.php?error=Indicate the radiology type&$user_data");
+            exit();
+        }
+        else if(empty($messages)) {
             header ("Location: radiology_page.php?error=Indicate the area to be scanned&$user_data");
             exit();
         }
         else {
             //add to database
-                $sql1 = "INSERT INTO radiology(scan, patient_id, patient_name) VALUES('$scan', '$patient_id', '$patient_name')";
+                $sql1 = "INSERT INTO radiology(patient_id, patient_name, messages, scan) 
+                VALUES('$patient_id', '$patient_name', '$messages', '$scan')";
                  if ($mysqli->query($sql1) === TRUE){
                     // header ("Location: radiology_page.php?success=Request for scanning has been sent");
                     // exit();
@@ -125,26 +132,28 @@
         $stmt1->bind_param("ss", $rad_price, $patient_id);
     
         // Prepare the SQL query to update the radiology table with the status
-        $sql2 = "UPDATE radiology SET statu = ? WHERE patient_id = ?";
-        $stmt2 = $mysqli->prepare($sql2);
-        $stmt2->bind_param("ss", $statu, $patient_id);
+          
+        $sql3 = "UPDATE radiology SET statu='$statu' WHERE patient_id='$patient_id'";
+        $result3 = $mysqli->query($sql3);
     
-        // Prepare the SQL query to insert into add_radiology table
-        $sql3 = "INSERT INTO add_radiology(photo, comments, dates, patient_id, patient_name) VALUES (?, ?, ?, ?, ?)";
-        $stmt3 = $mysqli->prepare($sql3);
-        $stmt3->bind_param("sssss", $upload, $comments, $dates, $patient_id, $patient_name);
+       $sql = "INSERT INTO add_radiology(photo, comments, dates, patient_id, patient_name) 
+       VALUES('$upload', '$comments', '$dates', '$patient_id', '$patient_name')";
     
         move_uploaded_file($_FILES['photo']['tmp_name'], $upload);
     
-        // Execute the queries and handle the results
-        if ($stmt1->execute() && $stmt2->execute() && $stmt3->execute()) {
+         if ($mysqli->query($sql) === TRUE) {
+            // header ("Location: radiology_work.php?success=Added succesfully");
+            // exit();
             echo "<script>alert('Successfully Submitted');
-                window.location.href = 'radiology.php';
-                </script>";
-        } else {
-            header("Location: radiology_work.php?error=Unknown error&$user_data");
+            window.location.href = 'radiology.php';
+            </script>";
+         } else {
+         //echo "Error: " . $sql . "<br>" . $mysqli->error;
+            header ("Location: radiology_work.php?error=unknown error&$user_data");
             exit();
-        }
+    
+         }
+        
     }
     
 ?>

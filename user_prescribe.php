@@ -12,9 +12,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
     <meta name="patient_idport" content="width=device-width, initial-scale=1.0">
     <title>Prescribe Patient</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    
+
 
 </head>
+
 
 <body>
     <div class="container">
@@ -139,7 +140,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
                      </div>
                        
                         <div class="card text-center p-2">
-                            <div class="row px-4">
+                            <div class="">
                                 <h5 class="">Patient Management</h5>
 <hr>
                             <div class="row px-4">

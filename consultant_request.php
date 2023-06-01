@@ -1,10 +1,12 @@
 
-<?php
- include 'user_regdb.php';
- if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
-   include "unavbar.php";
-   include "comfig.php";
-        ?>
+<?php 
+    include 'user_regdb.php';
+    include 'consultingdb.php';
+    include 'unavbar.php';
+    include 'comfig.php';
+    if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
+
+?>
  <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -94,16 +96,17 @@ form .error {
       $row = $result2->fetch_assoc();
       $id = $row['id'];
       $name = $row['name'];  
-      $_SESSION['name'] = $row['name']; 
-      $_SESSION['id'] = $row['id']; 
+      $gender = $row['gender'];
+      $address = $row['address'];
+
   
 } ?>
   <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-4">
-        <form method="post" action="" class="border p-3 rounded">
+        <form method="post" action="consultingdb.php" class="border p-3 rounded">
           <div class="card-header">
-             <h5 class="mb-3 text-center"><i class="fas fa-calendar-plus"></i> Lab Test Request form</h5>
+             <h5 class="mb-3 text-center"><i class="fas fa-calendar-plus"></i> Counselling Request form</h5>
         </div>
           <?php if (isset($_GET['error'])) {?>
                 <p class="error text-center"><?php echo $_GET['error']; ?></p>
@@ -124,18 +127,20 @@ form .error {
           <div class="mb-3">
           <input type="hidden" class="form-control" value="<?= $id; ?>" id="patient_id" name="patient_id" placeholder="Patient ID" required> 
           <label for="name" class="form-label"><i class="fas fa-user"></i> Patient Name</label>
-          <input type="text" class="form-control" value="<?= $name; ?>" name="name" readonly>
+          <input type="hidden" class="form-control" value="<?= $address; ?>" name="address" required> 
+          <input type="hidden" class="form-control" value="<?= $gender; ?>" name="gender"> <br>
+          <input type="text" class="form-control" value="<?= $name; ?>" name="patient_name" readonly>
           </div>
           <div class="mb-3">
-            <label for="test" class="form-label"><i class="fas fa-comment-medical"></i> Test for:</label>
-              <select class="select-control" id="test_name" name="test_name"select required>
+            <label for="test" class="form-label"><i class="fas fa-comment-medical"></i>Choose consellor:</label>
+              <select class="select-control" name="counsel"select required>
                 <option disabled selected>Select</option>
-                <option value="Psychology">Psychology</option>
+                <option value="Psychology">Psychologist</option>
                 <option value="Charplain">Charplain</option>
               </select>
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit</button>
+            <button type="submit" name="counsell" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit</button>
           </div>
         </form>
       </div>
