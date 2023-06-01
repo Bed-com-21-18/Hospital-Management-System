@@ -2,9 +2,9 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $patient_id = $_POST['patient_id'];
-  $ward_bed = $_POST['ward_bed'];
-  $symptoms = $_POST['symptoms'];
+  $id = $_SESSION['id'];
+  $discharge_status = $_POST['discharge_status'];
+  $discharge_date = $_POST['discharge_date'];
   // Connect to the database
   $host = 'localhost';
   $username = 'root';
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Check if the patient ID exists in the patient table
   $sql = "SELECT * FROM patient WHERE id = ?";
   $stmt = $conn->prepare($sql);
-  $stmt->bind_param("s", $patient_id);
+  $stmt->bind_param("s", $id);
   $stmt->execute();
   $result = $stmt->get_result();
 
@@ -38,14 +38,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>';
   } else {
    // Prepare the SQL query to update the status and drug_given_by data in the patient table
-$sql = "UPDATE patient SET ward_bed = ?, symptoms = ? WHERE id = ?";
-
+$sql = "UPDATE patient SET discharge_status = ?, discharge_date = ? WHERE id = ?";
 
 // Create a prepared statement
 $stmt = $conn->prepare($sql);
 
 // Bind the parameters
-                                  $stmt->bind_param("sss", $ward_bed, $symptoms, $patient_id);
+                                  $stmt->bind_param("sss", $discharge_status, $discharge_date, $patient_id);
 
 
     // Execute the SQL query
@@ -54,10 +53,10 @@ if ($stmt->execute()) {
     $message = 'Success: The status request for '.$_SESSION['name']. ' .';
   
     // Set the session message and redirect back to send_to_lab.php
-    $_SESSION['message'] = $message;
-    $_SESSION['symptoms'] = $symptoms;
+    $_SESSION['discharge_status'] = $message;
+    $_SESSION['discharge_date'] = $symptoms;
 
-    echo "<script>alert('Successfully Added to In patient');
+    echo "<script>alert('Successfully $discharge_status; patient');
     window.location.href = 'inpatient.php';
     </script>";
     // header('Location: inpatient.php ');
