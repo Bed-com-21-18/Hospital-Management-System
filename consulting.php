@@ -88,6 +88,7 @@
            <a class="link-offset-2 link-underline link-underline-opacity-0" href="investigation.php">Investigation</a></p>
             </ul>
         </div>
+        
         <div class="row g-3 align-items-center">
   <div class="col-auto">
     <label for="name" class="col-form-label">Patient Name</label>
