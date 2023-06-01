@@ -73,7 +73,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                 </h3>
 
 		 <?php
-$sql2 = "SELECT * FROM patient WHERE ward_bed IS NOT NULL ORDER BY id DESC";
+$sql2 = "SELECT * FROM patient ORDER BY id DESC";
 $result2 = $mysqli->query($sql2);
 
 // Display patient information in table rows
@@ -119,7 +119,7 @@ if ($result2->num_rows > 0) {
 
 } else {
     echo "<div class='container'><div class='table-responsive'><table class='table table-bordered bg-secondary text-light'>";
-    echo "<thead class='thead-light'><tr><th colspan='15' class='text-center'>No test request found!</th></tr></thead>";
+    echo "<thead class='thead-light'><tr><th colspan='15' class='text-center'>No Inpatient found!</th></tr></thead>";
     echo "</table></div></div>";
     }
     ?>
