@@ -33,6 +33,20 @@
      <!-- Navbar -->
      <?php
             include "unavbar.php";
+
+            
+            if(isset($_GET['hiv_results'])){
+                $id = $_GET['hiv_results'];
+            $sql2 = "SELECT * FROM hiv_test WHERE patient_id='$id'";
+            $result2 = $mysqli->query($sql2);
+
+           while($row = $result2->fetch_assoc()){ 
+    
+                $name = $row['patient_name'];
+                $id = $row['patient_id'];
+
+            }}
+            
  ?>
  <section>
  <!--Update table-->
@@ -45,7 +59,7 @@
                
                 <?php
                  
-                    $sql = "SELECT * FROM hiv_test_results ORDER BY id DESC";
+                    $sql = "SELECT * FROM hiv_test WHERE patient_id='$id' ORDER BY id DESC";
                     $result = $mysqli->query($sql);
                 ?>
                 <hr>
@@ -61,7 +75,7 @@
                             <?php while($row = $result->fetch_assoc()) { ?>
                                 <tr>
                                     <td><?php echo $row['patient_name']; ?></td>
-                                    <td><?php echo $row['dates']; ?></td>
+                                    <td><?php echo $row['date']; ?></td>
                                     <td><?php echo $row['statu']; ?></td>
                                 </tr>
                             <?php }?>
