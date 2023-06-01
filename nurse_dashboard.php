@@ -119,6 +119,18 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-3">
+                <div class="card text-dark flex-fill">
+                    <div class="card-body text-center">
+                        <div class="h1 mb-3">
+                            <i class="bi bi-people text-primary"></i>
+                        </div>
+                        <h3 class="card-title mb-3 text-primary">HIV/AIDS</h3>
+                        <a href="hiv_test.php" class="btn btn-primary">Proceed</a>
+                    </div>
+                </div>
+            </div>
            
         </div>
     </div>

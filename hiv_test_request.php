@@ -1,6 +1,6 @@
 <?php 
     include 'user_regdb.php';
-    include 'radiologydb.php';
+    include 'hiv_testdb.php';
     include 'comfig.php';
     if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 
@@ -35,8 +35,8 @@
             include "unavbar.php";
 
             
-            if(isset($_GET['page'])){
-                $id = $_GET['page'];
+            if(isset($_GET['hiv_test'])){
+                $id = $_GET['hiv_test'];
             $sql2 = "SELECT * FROM patient WHERE id='$id'";
             $result2 = $mysqli->query($sql2);
 
@@ -44,6 +44,8 @@
     
                 $name = $row['name'];
                 $id = $row['id'];
+                $gender = $row['gender'];
+                $residential = $row['residential'];
 
            }}
  ?>
@@ -55,7 +57,7 @@
                 <div class="col-md-5">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="text-center text-secondary">Radiology</h4>
+                            <h4 class="text-center text-secondary">HIV/AIDS</h4>
                         </div>
                       
                             <?php if (isset($_GET['error'])) {?>
@@ -65,19 +67,17 @@
                                 <?php if (isset($_GET['success'])) {?>
                                 <p class="success"><?php echo $_GET['success']; ?></p>
                                 <?php } ?>
-                                <form class="form-group p-4" method="POST" action="radiologydb.php">
+                                <form class="form-group p-4" method="POST" action="hiv_testdb.php">
                                     <input type="hidden" class="form-control" value="<?= $id; ?>" id="patient_id" name="patient_id" required> 
+                                    <input type="hidden" class="form-control" value="<?= $residential; ?>" name="residential" required> 
+                                    <input type="hidden" class="form-control" value="<?= $gender; ?>" name="gender"> <br>
                                     <input type="text" class="form-control" value="<?= $name; ?>" id="patient_name" name="patient_name" readonly> <br>
                                     <div class="form-group">
-                                        <label><b>Symptom</b></label>
-                                        <input name="scan" class="form-control" type="text" value="" placeholder="indicate a symptom">
-                                    </div><br>
-                                    <div class="form-group">
                                         <label><b>Add Text</b></label>
-                                        <textarea class="form-control" name="messages" placeholder="Short description of a problem"></textarea>
+                                        <textarea class="form-control" name="descriptions" placeholder="Short description of a problem"></textarea>
                                     </div> 
                                     <div class="form-group p-2">         
-                                        <button type="submit" name="rad_button" class="btn btn-primary">Send for scanning</button>
+                                        <button type="submit" name="hiv_test" class="btn btn-primary">Send for testing</button>
                                     </div>
                                 </form>
                                 </div>
@@ -86,7 +86,10 @@
                 </div>
             </section>
 
-   
+    <!-- footer -->
+        <?php
+            include "footer.php";
+        ?>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     </body>

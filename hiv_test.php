@@ -1,6 +1,6 @@
 <?php 
     include 'user_regdb.php';
-    include 'radiologydb.php';
+    include 'hiv_testdb.php';
     if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 
 ?>
@@ -34,26 +34,44 @@
             include "unavbar.php";
         ?>
       
+      <section class="p-4">
+              <!--NavBar-->
+              <nav class="navbar navbar-expand-lg bg-light navbar-light py-3">
+            <div class="container">
+                <h5 class="navbar-brand"><i>HIV/AIDS TEST</i></h5>
+                <button 
+                class="navbar-toggler" 
+                type="button" 
+                data-bs-toggle="collapse" 
+                data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+                </button>
 
+                <div class="collapse navbar-collapse" id="navmenu">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a href="hiv_patients.php" class="btn btn-secondary text-light mx-1 p-2">HIV/AIDS Patients</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="hiv_vol_testing.php" class="btn btn-secondary text-light mx-1 p-2">Voluntary testing</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
         <!--Form-->
              <!--Update table-->
                 <div class="p-4"> 
-                <h3 class="text-center text-secondary">
-                    Patients for Scanning
-                </h3>
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                       <!-- search -->
-                            <input class="form-control me-1" id="myInput" style="width:100%; max-width:20rem" type="text" placeholder="Search" aria-label="Search">             
-                        </div>
-                        <div class="col-md-6 text-end">
-                            <a href="radiology_results.php" class="btn btn-secondary text-light mx-1 p-2">View Scanned Patients</a>
+                            <input class="form-control me-1" id="myInput" style="width:100%; max-width:20rem" type="text" placeholder="Search" aria-label="Search">            
                         </div>
                     </div> 
                 </div> 
                 <?php
-                    $sql = "SELECT * FROM radiology ORDER BY id DESC";
+                    $sql = "SELECT * FROM hiv_test ORDER BY id DESC";
                     $result = $mysqli->query($sql);
                     
                 ?>
@@ -63,8 +81,10 @@
                                 <tr>
                                
                                     <th>Name</th>
-                                    <th>Area to scan</th>
+                                    <th>Gender</th>
+                                    <th>Location</th>
                                     <th>Description</th>
+                                    <th>Deate tested</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -74,11 +94,13 @@
                                 ?>
                                 <tr>
                                     <td><?php echo $row['patient_name']; ?></td>
-                                    <td><?php echo $row['scan']; ?></td>
-                                    <td><?php echo $row['messages']; ?></td>
+                                    <td><?php echo $row['gender']; ?></td>
+                                    <td><?php echo $row['location']; ?></td>
+                                    <td><?php echo $row['descriptions']; ?></td>
+                                    <td><?php echo $row['date']; ?></td>
                                     <td><?php echo $row['statu']; ?></td>
                                     <td class="btn-group btn-group-justified">                                       
-                                         <a href="radiology_work.php?proceed=<?php echo $row["patient_id"]; ?>" class="badge bg-primary text-light p-2 mx-1">Proceed</a>
+                                         <a href="hiv_testing.php?test=<?php echo $row["id"]; ?>" class="badge bg-primary text-light p-2 mx-1">Add results</a>
                                     </td> 
                                 </tr>
                             <?php }?>
@@ -88,8 +110,8 @@
          </div>
     </section>
 
-   
-           
+    <!-- footer -->
+        
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     </body>

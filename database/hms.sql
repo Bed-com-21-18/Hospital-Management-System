@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2023 at 05:38 PM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 8.0.9
+-- Generation Time: May 30, 2023 at 05:59 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -120,10 +121,10 @@ CREATE TABLE `doctor` (
 --
 
 INSERT INTO `doctor` (`id`, `uname`, `prof`, `pwd`) VALUES
-(4, 'joe viola', 'Radiologist', 'c20ad4d76fe97759aa27a0c99bff6710'),
 (5, 'omexie', 'Physiotherapist', '81dc9bdb52d04dc20036dbd8313ed055'),
 (6, 'Charle Cee', 'Physiotherapist', '70965feb0441ff7fc1982fc5c509136e'),
-(7, 'chama', 'Surgeon', 'c20ad4d76fe97759aa27a0c99bff6710');
+(7, 'chama', 'Surgeon', 'c20ad4d76fe97759aa27a0c99bff6710'),
+(9, 'jo viola', 'Radiologist', 'c20ad4d76fe97759aa27a0c99bff6710');
 
 -- --------------------------------------------------------
 
@@ -164,6 +165,89 @@ INSERT INTO `drug` (`id`, `drug_name`, `drug_price2`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `hiv_test`
+--
+
+CREATE TABLE `hiv_test` (
+  `id` int(11) NOT NULL,
+  `patient_id` varchar(30) NOT NULL,
+  `patient_name` varchar(30) NOT NULL,
+  `statu` varchar(11) NOT NULL,
+  `location` varchar(30) NOT NULL,
+  `gender` varchar(11) NOT NULL,
+  `descriptions` text NOT NULL,
+  `date` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `hiv_test`
+--
+
+INSERT INTO `hiv_test` (`id`, `patient_id`, `patient_name`, `statu`, `location`, `gender`, `descriptions`, `date`) VALUES
+(18, '', 'joe', 'Positive', 'Mpomba', 'Male', 'jvjh', '2023-05-23'),
+(19, '', 'joe', 'Negative', 'zomba', 'Male', 'k;jil;', '2023-05-03'),
+(21, '16', 'Ruben Dias', 'Positive', 'fdgfhyu', 'Male', 'body pains', '2023-05-26'),
+(22, '15', 'Precious Mlimbika', 'Positive', 'Kufumbi', 'Male', 'loss of appetite', '2023-05-24'),
+(23, '', 'Peter', 'Positive', 'zomba', 'Male', 'any', '2023-06-01');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hiv_test_results`
+--
+
+CREATE TABLE `hiv_test_results` (
+  `id` int(11) NOT NULL,
+  `patient_id` varchar(30) NOT NULL,
+  `patient_name` varchar(30) NOT NULL,
+  `statu` text NOT NULL,
+  `dates` date NOT NULL,
+  `treatment` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `hiv_test_results`
+--
+
+INSERT INTO `hiv_test_results` (`id`, `patient_id`, `patient_name`, `statu`, `dates`, `treatment`) VALUES
+(47, '', 'joe', 'Positive', '2023-05-23', ''),
+(48, '', 'joe', 'Negative', '2023-05-03', ''),
+(49, '', 'Precious Mlimbika', 'Positive', '2023-05-24', 'On treatment'),
+(50, '', 'Ruben Dias', 'Positive', '2023-05-26', 'On treatment'),
+(51, '', 'Peter', 'Positive', '2023-06-01', 'On treatment');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hiv_treatment`
+--
+
+CREATE TABLE `hiv_treatment` (
+  `id` int(11) NOT NULL,
+  `patient_id` int(11) NOT NULL,
+  `patient_name` varchar(30) NOT NULL,
+  `weight` varchar(100) NOT NULL,
+  `drug` text NOT NULL,
+  `dates` date NOT NULL,
+  `next_treat` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `hiv_treatment`
+--
+
+INSERT INTO `hiv_treatment` (`id`, `patient_id`, `patient_name`, `weight`, `drug`, `dates`, `next_treat`) VALUES
+(6, 14, 'Gilson Chongo', '55', '100 ARVs', '2023-05-29', '2023-12-02'),
+(7, 0, 'Ruben Dias', '40', '100 ARVs', '2023-05-30', '2023-09-08'),
+(8, 0, 'Precious Mlimbika', '40', '100 ARVs', '2023-05-30', '2023-08-25'),
+(9, 0, 'joe', '60', '100 ARVs', '2023-05-24', '2023-06-30'),
+(10, 0, 'Peter', '55', '100 ARVs', '2023-06-01', '2023-06-09'),
+(11, 0, 'Peter', '40', '100 ARVs', '2023-06-09', '2023-06-10'),
+(12, 0, 'Precious Mlimbika', '40', '100 ARVs', '2023-05-25', '2023-06-10');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `patient`
 --
 
@@ -197,22 +281,22 @@ CREATE TABLE `patient` (
 -- Dumping data for table `patient`
 --
 
-INSERT INTO `patient` (`id`, `name`, `date`, `gender`, `age`, `phoneNumber`, `district`, `village`, `residential`, `others`, `symptoms`, `history`, `drug`, `dosage`, `drug_given_by`, `drug_status`, `prescribed_by`, `prescribed_on`, `total_bills`, `status`, `tests`, `lab_results`) VALUES
-(1, 'Chiso Bwanali', '2458-09-09', 'female', 20, 888678728, 'Lilongwe', 'Kabudula', 'Chikanda', 'poiuytrew', 'Shortness of breath, Loss of taste, Diarrhoea', 'Kidney Disease', '', '', '', '', 'chama', '16:24:35 08-05-2023 ', NULL, 'Paid not fully', 'Test for TB', NULL),
-(2, 'Chiso Bwanali', '1100-09-02', 'female', 17, 996348737, 'Lilongwe', 'Kachoka', 'Matawale', 'rtkdjrsgeafken', 'Fatigue, Headache', 'Fatigue, Headache', ', Asprin, Parapain, Doxycyclin, Fragel', '1 morn afternoon and evening\r\n2 jfdkslfgh', 'Mary Juma', 'Medication Given', 'Mary Juma', '19:00:32 18-05-2023 ', 24447, 'paid fully', 'Test for Malaria and TB', NULL),
-(3, 'Gomboz Tech', '2020-02-02', 'male', 54, 881955791, 'Dowa', 'Kachoka', 'Kalimbuka', 'lskdfj', 'Dizziness', 'Fever, Cough, Shortness of breath', '', 'Array', '', '', 'Charle Cee', '15:12:00 18-05-2023 ', 6407, 'not paid', 'Tets for HIV', NULL),
-(4, 'Edson Magombo', '2020-08-09', 'male', 19, 997740566, 'Dowa', 'Mponela', 'Nason', 'palibe', 'Muscle aches, Loss of appetite, Loss of taste', 'Muscle aches, Loss of appetite, Loss of taste', 'Amoxycilin, Aspirin, Buffen, Oxygen, Paracetamol', 'wretjjhgfdsadsfghgjh\r\ndsfghjkhgfdsasdsfdgfh\r\nfdgfhgfgdsasdsfg', '', 'Medication Given', NULL, '17:12:50 24-05-2023 ', 18300, 'Paid Fully', 'Test for HIV', 'HIV NEGATIVE'),
-(5, 'Avio', '2020-02-02', 'male', 11, 2147483647, 'Phalombe', 'olala', 'Old Naisi', 'Malungo', 'Loss of appetite, Pink eye, Vomiting', 'Loss of appetite, Pink eye, Vomiting', '', '', '', '', 'Mary Juma', '12:49:47 18-05-2023 ', 3480, 'Paid Fully', 'Test for HIV', NULL),
-(7, 'Mary Banda', '1999-04-07', 'female', 10, 882595892, 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', 'Malungo', 'Shortness of breath, Loss of appetite', 'Asthma, Heart Disease, Kidney Disease, Thyroid Problems', '', '', '', '', 'Charle Cee', '00:48:42 16-05-2023 ', 3613, 'Paid Fully', 'Test for AIDS', 'Malaria Negative, HIV Negative, and TB Positive'),
-(8, 'Maureen', '1998-03-12', 'female', 12, 882595892, 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, 'Nausea, Vomiting', 'Nausea, Vomiting', 'Oxygen, Tumbocid, Aspirin', 'kdffjgnkavskjbdvnjvdjsbb,\r\nbzXVb zdgvabszc.\r\nhdsfbsjdkdhgsvjdl', '', '', 'ida', '16:55:48 24-05-2023 ', 16300, 'Paid Fully', 'Test for HIV and AIDS', NULL),
-(9, 'Zione Muliya', '1933-12-12', 'female', 90, 2147483647, 'Bangwe', 'Blantyre', 'Nyambadwe', 'Chibayo', 'Fever, Cough, Shortness of breath, Fatigue, Headache, Chest Pain, Dizziness', 'Fever, Cough, Shortness of breath, Fatigue, Headache, Chest Pain, Dizziness', '', '', '', '', 'Mary Juma', '17:32:56 23-05-2023 ', 22147, 'not paid', 'Tets for Hiv', NULL),
-(11, 'Charle Cee Graphix', '1988-02-21', 'Female', 35, 882595892, 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, 'Fever, Cough, Shortness of breath, Headache', NULL, '', '', '', '', 'Charle Cee', '19:43:06 17-05-2023 ', 7147, 'not paid', 'HIV', NULL),
-(12, 'OMEXIE CHAMA', '1999-12-09', 'Female', 24, 2147483647, 'Phalombe', 'Muwake', 'Zomba', 'MaLungo', 'Muscle aches, Loss of appetite', 'Loss of taste', 'Acetaminophen, Azithromycin, Bruffen, Carbamazepine, indosine and Parapain', '2 tablets per day', '', '', 'Mary Juma', '12:33:36 20-05-2023 ', 1000, 'not paid', 'Test for Malaria', 'Malaria negative results'),
-(13, 'mary kama', '2023-05-08', 'Female', 12, 2147483647, 'muwake', 'Muwake', 'Zomba', NULL, 'General body aches, Skin rash, Allergy', 'Sore throat, Runny nose, Nausea, Vomiting', '', '', '', '', 'ida', '16:54:09 24-05-2023 ', 4676, 'not paid', 'Test for HIv', 'HIV negative results'),
-(14, 'Gilson Chongo', '1990-05-14', 'Male', 33, 2147483647, 'Bangwe', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, 'Cough, Fatigue, Sore throat, Runny nose, Vomiting, Diarrhoea', NULL, '', '', '', '', 'Mary Juma', '15:13:34 17-05-2023 ', 7007, 'Paid Fully', 'Test for Malaria', 'Malaria results- negative'),
-(15, 'Precious Mlimbika', '1998-05-16', 'Male', 25, 996842414, 'Lilongwe', 'Govala', 'Kufumbi', 'b, Azithromycin, Intoxcyclin, Oxygen', 'Sore throat, Runny nose, Pink eye', NULL, '', '', '', '', 'Charle Cee', '18:03:46 16-05-2023 ', 5202, 'Paid Fully', 'Test for AIds', 'AIDS NEGATIVE'),
-(16, 'Ruben Dias', '2000-05-16', 'Male', 23, 435678, 'sfdghj', 'sdfgfhj', 'fdgfhyu', NULL, 'Muscle aches, Loss of appetite, Loss of taste, Nausea, Vomiting, Diarrhoea, Itching', 'Muscle aches, Loss of appetite, Loss of taste, Nausea, Vomiting, Diarrhoea, Itching', 'acetaminophen, aspirin, bruffen, hedax, carbamazepine, doxycylin', '@ tablets per day', '', '', 'Mary Juma', '12:48:01 20-05-2023 ', 5853, 'Paid Fully', 'Test for AIDS', 'AIDS negative'),
-(17, 'Jenifer Lopez', '1978-05-17', 'Female', 45, 34567890, 'Zambia', 'Zingwangwa', 'Zimbabwe', NULL, 'Muscle aches, Loss of appetite', 'Muscle aches, Loss of appetite', 'Aspirin, Panadol', 'dsdfghjk\r\nfdghjkl', '', '', 'ida', '17:26:32 24-05-2023 ', 3300, 'not paid', 'Test for AIDS', 'HIV and AIDS negative results');
+INSERT INTO `patient` (`id`, `name`, `date`, `gender`, `age`, `phoneNumber`, `district`, `village`, `residential`, `others`, `symptoms`, `history`, `drug`, `dosage`, `drug_given_by`, `drug_status`, `prescribed_by`, `prescribed_on`, `total_bills`, `status`, `tests`, `ward_bed`, `lab_results`) VALUES
+(1, 'Chiso Bwanali', '2458-09-09', 'female', 20, 888678728, 'Lilongwe', 'Kabudula', 'Chikanda', 'poiuytrew', 'Shortness of breath, Loss of taste, Diarrhoea', 'Kidney Disease', '', '', '', '', 'chama', '16:24:35 08-05-2023 ', NULL, 'Paid not fully', 'Test for TB', NULL, NULL),
+(2, 'Chiso Bwanali', '1100-09-02', 'female', 17, 996348737, 'Lilongwe', 'Kachoka', 'Matawale', 'rtkdjrsgeafken', 'Fatigue, Headache', 'Fatigue, Headache', ', Asprin, Parapain, Doxycyclin, Fragel', '1 morn afternoon and evening\r\n2 jfdkslfgh', 'Mary Juma', 'Medication Given', 'Mary Juma', '19:00:32 18-05-2023 ', 24447, 'paid fully', 'Test for Malaria and TB', NULL, NULL),
+(3, 'Gomboz Tech', '2020-02-02', 'male', 54, 881955791, 'Dowa', 'Kachoka', 'Kalimbuka', 'lskdfj', 'Dizziness', 'Fever, Cough, Shortness of breath', '', 'Array', '', '', 'Charle Cee', '15:12:00 18-05-2023 ', 6407, 'not paid', 'Tets for HIV', NULL, NULL),
+(4, 'Edson Magombo', '2020-08-09', 'male', 19, 997740566, 'Dowa', 'Mponela', 'Nason', 'palibe', 'Muscle aches, Loss of appetite, Loss of taste', 'Muscle aches, Loss of appetite, Loss of taste', 'Amoxycilin, Aspirin, Buffen, Oxygen, Paracetamol', 'wretjjhgfdsadsfghgjh\r\ndsfghjkhgfdsasdsfdgfh\r\nfdgfhgfgdsasdsfg', '', 'Medication Given', NULL, '17:12:50 24-05-2023 ', 18300, 'Paid Fully', 'Test for HIV', NULL, 'HIV NEGATIVE'),
+(5, 'Avio', '2020-02-02', 'male', 11, 2147483647, 'Phalombe', 'olala', 'Old Naisi', 'Malungo', 'Loss of appetite, Pink eye, Vomiting', 'Loss of appetite, Pink eye, Vomiting', '', '', '', '', 'Mary Juma', '12:49:47 18-05-2023 ', 3480, 'Paid Fully', 'Test for HIV', NULL, NULL),
+(7, 'Mary Banda', '1999-04-07', 'female', 10, 882595892, 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', 'Malungo', 'Shortness of breath, Loss of appetite', 'Asthma, Heart Disease, Kidney Disease, Thyroid Problems', '', '', '', '', 'Charle Cee', '00:48:42 16-05-2023 ', 3613, 'Paid Fully', 'Test for AIDS', NULL, 'Malaria Negative, HIV Negative, and TB Positive'),
+(8, 'Maureen', '1998-03-12', 'female', 12, 882595892, 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, 'Nausea, Vomiting', 'Nausea, Vomiting', 'Oxygen, Tumbocid, Aspirin', 'kdffjgnkavskjbdvnjvdjsbb,\r\nbzXVb zdgvabszc.\r\nhdsfbsjdkdhgsvjdl', '', '', 'ida', '16:55:48 24-05-2023 ', 16300, 'Paid Fully', 'Test for HIV and AIDS', NULL, NULL),
+(9, 'Zione Muliya', '1933-12-12', 'female', 90, 2147483647, 'Bangwe', 'Blantyre', 'Nyambadwe', 'Chibayo', 'Fever, Cough, Shortness of breath, Fatigue, Headache, Chest Pain, Dizziness', 'Fever, Cough, Shortness of breath, Fatigue, Headache, Chest Pain, Dizziness', '', '', '', '', 'Mary Juma', '17:32:56 23-05-2023 ', 22147, 'not paid', 'Tets for Hiv', NULL, NULL),
+(11, 'Charle Cee Graphix', '1988-02-21', 'Female', 35, 882595892, 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, 'Fever, Cough, Shortness of breath, Headache', NULL, '', '', '', '', 'Charle Cee', '19:43:06 17-05-2023 ', 7147, 'not paid', 'HIV', NULL, NULL),
+(12, 'OMEXIE CHAMA', '1999-12-09', 'Female', 24, 2147483647, 'Phalombe', 'Muwake', 'Zomba', 'MaLungo', 'Muscle aches, Loss of appetite', 'Loss of taste', 'Acetaminophen, Azithromycin, Bruffen, Carbamazepine, indosine and Parapain', '2 tablets per day', '', '', 'Mary Juma', '12:33:36 20-05-2023 ', 1000, 'not paid', 'Test for Malaria', NULL, 'Malaria negative results'),
+(13, 'mary kama', '2023-05-08', 'Female', 12, 2147483647, 'muwake', 'Muwake', 'Zomba', NULL, 'General body aches, Skin rash, Allergy', 'Sore throat, Runny nose, Nausea, Vomiting', '', '', '', '', 'ida', '16:54:09 24-05-2023 ', 4676, 'not paid', 'Test for HIv', NULL, 'HIV negative results'),
+(14, 'Gilson Chongo', '1990-05-14', 'Male', 33, 2147483647, 'Bangwe', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, 'Cough, Fatigue, Sore throat, Runny nose, Vomiting, Diarrhoea', NULL, '', '', '', '', 'Mary Juma', '15:13:34 17-05-2023 ', 7007, 'Paid Fully', 'Test for Malaria', NULL, 'Malaria results- negative'),
+(15, 'Precious Mlimbika', '1998-05-16', 'Male', 25, 996842414, 'Lilongwe', 'Govala', 'Kufumbi', 'b, Azithromycin, Intoxcyclin, Oxygen', 'Sore throat, Runny nose, Pink eye', NULL, '', '', '', '', 'Charle Cee', '18:03:46 16-05-2023 ', 5202, 'Paid Fully', 'Test for AIds', NULL, 'AIDS NEGATIVE'),
+(16, 'Ruben Dias', '2000-05-16', 'Male', 23, 435678, 'sfdghj', 'sdfgfhj', 'fdgfhyu', NULL, 'Muscle aches, Loss of appetite, Loss of taste, Nausea, Vomiting, Diarrhoea, Itching', 'Muscle aches, Loss of appetite, Loss of taste, Nausea, Vomiting, Diarrhoea, Itching', 'acetaminophen, aspirin, bruffen, hedax, carbamazepine, doxycylin', '@ tablets per day', '', '', 'Mary Juma', '12:48:01 20-05-2023 ', 5853, 'Paid Fully', 'Test for AIDS', NULL, 'AIDS negative'),
+(17, 'Jenifer Lopez', '1978-05-17', 'Female', 45, 34567890, 'Zambia', 'Zingwangwa', 'Zimbabwe', NULL, 'Cough', 'Muscle aches, Loss of appetite', 'Aspirin, Panadol', 'dsdfghjk\r\nfdghjkl', '', '', 'jo viola', '14:02:55 29-05-2023 ', 3300, 'not paid', 'Test for AIDS', NULL, 'HIV and AIDS negative results');
 
 -- --------------------------------------------------------
 
@@ -261,7 +345,8 @@ INSERT INTO `user` (`id`, `uname`, `prof`, `pwd`) VALUES
 (7, 'ida', 'Clinician', 'c20ad4d76fe97759aa27a0c99bff6710'),
 (8, 'Charle Cee', 'Nurse', '70965feb0441ff7fc1982fc5c509136e'),
 (11, 'Charle', 'Receptionist', 'c20ad4d76fe97759aa27a0c99bff6710'),
-(12, 'Mary Juma', 'Nurse', 'c20ad4d76fe97759aa27a0c99bff6710');
+(12, 'Mary Juma', 'Nurse', 'c20ad4d76fe97759aa27a0c99bff6710'),
+(13, 'jo viola', 'Clinician', 'c20ad4d76fe97759aa27a0c99bff6710');
 
 --
 -- Indexes for dumped tables
@@ -299,6 +384,24 @@ ALTER TABLE `doctor`
 -- Indexes for table `drug`
 --
 ALTER TABLE `drug`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hiv_test`
+--
+ALTER TABLE `hiv_test`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hiv_test_results`
+--
+ALTER TABLE `hiv_test_results`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hiv_treatment`
+--
+ALTER TABLE `hiv_treatment`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -345,13 +448,31 @@ ALTER TABLE `appointments`
 -- AUTO_INCREMENT for table `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `drug`
 --
 ALTER TABLE `drug`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `hiv_test`
+--
+ALTER TABLE `hiv_test`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `hiv_test_results`
+--
+ALTER TABLE `hiv_test_results`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
+--
+-- AUTO_INCREMENT for table `hiv_treatment`
+--
+ALTER TABLE `hiv_treatment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `patient`
@@ -369,7 +490,7 @@ ALTER TABLE `radiology`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables

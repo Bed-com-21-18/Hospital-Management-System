@@ -172,12 +172,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
         </div>
         <div class="container">
         <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 p-2">
         <a href="send_to_lab.php?send=<?php echo $row["id"]; ?> " class=" badge btn-primary ">Send Lab Request</a> &nbsp; &nbsp;&nbsp;&nbsp;
          <a href="View_lab_results.php?view_results=<?php echo $row["id"]; ?>" class=" badge btn-secondary">View Lab Results</a> &nbsp; &nbsp;&nbsp;&nbsp;
          <a href="radiology_page.php?page=<?php echo $row["id"]; ?> " class=" badge btn-primary ">Send Radiology request</a> &nbsp; &nbsp;&nbsp;&nbsp;
-         <a href="radiology_view.php?viewing=<?php echo $row["id"]; ?>" class=" badge btn-secondary">View Radiology Results</a>
-         </div> 
+         <a href="radiology_view.php?viewing=<?php echo $row["id"]; ?>" class=" badge btn-secondary">View Radiology Results</a> &nbsp; &nbsp;&nbsp;&nbsp;
+         <a href="hiv_test_request.php?hiv_test=<?php echo $row["id"]; ?> " class=" badge btn-primary ">Send HIV test</a> &nbsp; &nbsp;&nbsp;&nbsp;
+         <a href="hiv_test_results.php?hiv_results=<?php echo $row["id"]; ?>" class=" badge btn-secondary">View HIV Results</a>
+        </div> 
         </div>
         </div>
          <br>  <br>
