@@ -114,6 +114,24 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
                             </div>
                         </div>
 
+                        <div class="card ">
+                            <div class="row px-4">
+                                <h5 class="text-center">General Examination</h5>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select name="examination[]" class="form-select" onchange="showNotes(this)" required multiple>
+                                            <option value="pale">Pale conjunctivae</option>
+                                            <option value="unconscious">Unconscious</option>
+                                            <option value="alert">Alert</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            <div class="col-md-6">
+                                <div class="form-group" id="notesContainer">
+                                    <!-- Measurement text areas will be dynamically generated here -->
+                                </div>
+                            </div>
+                            </div>
                     <div class="card ">
                         <div class="row px-4">
                             <h5 class="text-center">Measurements</h5>
@@ -133,29 +151,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
                                 </div>
                             </div>
                         </div>
-                        <div class="card ">
-                            <div class="row px-4">
-                                <h5 class="text-center">General Examination</h5>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <select name="examination[]" class="form-select" onchange="showNotes(this)" required multiple>
-                                            <option value="pale">Pale conjunctives</option>
-                                            <option value="unconscious">Unconscious</option>
-                                            <option value="alert">Alert</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            <div class="col-md-6">
-                                <div class="form-group" id="notesContainer">
-                                    <!-- Measurement text areas will be dynamically generated here -->
-                                </div>
-                            </div>
+                      
                         <div class="form-group py-2 text-center">
                             <button type="submit" class="btn btn-primary" name="submit">Diagnose</button>
                             <a class="btn btn-secondary" href="patient_list_user.php">Cancel</a>
 
                         </div>
-                    </div>
+                   
                 </div>
             </div>
         </form>

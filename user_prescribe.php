@@ -114,7 +114,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
                     <div class="card p-2 text-center">
 
                         <div class="col-md-12">
-                        <h5 class="text-center">Diagnosis work up</h5>
+                        <h5 class="text-center">Diagnostic work up</h5>
                             <div class="dropdown d-inline-block">
                                 <button class="btn btn-primary dropdown-toggle" type="button" id="sendRequestDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Send Test Request
