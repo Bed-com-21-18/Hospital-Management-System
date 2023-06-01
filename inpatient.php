@@ -30,7 +30,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
    <!--NavBar-->
    <nav class="navbar navbar-expand py-1"style="background-color:#F1F6F9;" >
             <div class="container">
-			<h5 class="navbar-brand"> Patient List</h5>
+			<h5 class="navbar-brand">
+                    <b>Admitted Patient List</b>
+                </h5>
                 <button 
                 class="navbar-toggler" 
                 type="button" 
@@ -50,14 +52,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 
                 <div class="collapse navbar-collapse" id="navmenu">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item dropdown">
-                  <a href="#inpatient_list" class="nav-link p-2 active" data-toggle="tab" id="inpatient_list">View inPatient List</a>
-               </li>
-               
               
                
                <li class="nav-item dropdown">
-                  <a href="#list_patient" class="nav-link p-2" data-toggle="tab" id="list_patient">All Registered Patients</a>
+                  <a href="admit_patient_list.php" class="nav-link p-2">All Registered Patients</a>
                </li>
             </ul>
          </div>
@@ -68,9 +66,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 		  <div class="container mt-4">
             <div class="tab-content">
          <div class="tab-pane fade show active" id="inpatient_list">
-		 <h3 class="text-center text-black">
-                    <b>Admitted Patient List</b>
-                </h3>
+		 
 
 		 <?php
 $sql2 = "SELECT * FROM patient WHERE ward_bed IS NOT NULL ORDER BY id DESC";
@@ -119,7 +115,7 @@ if ($result2->num_rows > 0) {
 
 } else {
     echo "<div class='container'><div class='table-responsive'><table class='table table-bordered bg-secondary text-light'>";
-    echo "<thead class='thead-light'><tr><th colspan='15' class='text-center'>No test request found!</th></tr></thead>";
+    echo "<thead class='thead-light'><tr><th colspan='15' class='text-center'>No Admitted Patient found!</th></tr></thead>";
     echo "</table></div></div>";
     }
     ?>

@@ -178,7 +178,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
          <a href="radiology_page.php?page=<?php echo $row["id"]; ?> " class=" badge btn-primary ">Send Radiology request</a> &nbsp; &nbsp;&nbsp;&nbsp;
          <a href="radiology_view.php?viewing=<?php echo $row["id"]; ?>" class=" badge btn-secondary">View Radiology Results</a> &nbsp; &nbsp;&nbsp;&nbsp;
          <a href="hiv_test_request.php?hiv_test=<?php echo $row["id"]; ?> " class=" badge btn-primary ">Send HIV test</a> &nbsp; &nbsp;&nbsp;&nbsp;
-         <a href="hiv_test_results.php?hiv_results=<?php echo $row["id"]; ?>" class=" badge btn-secondary">View HIV Results</a>
+         <a href="hiv_test_results.php?hiv_results=<?php echo $row["id"]; ?>" class=" badge btn-secondary">View HIV Results</a>&nbsp; &nbsp;&nbsp;&nbsp;
+         <a href="inpatient_form.php?view=<?php echo $row["id"]; ?> " class=" badge btn-primary ">Addmit Patient</a>
         </div> 
         </div>
         </div>
