@@ -254,6 +254,7 @@ INSERT INTO `hiv_treatment` (`id`, `patient_id`, `patient_name`, `weight`, `drug
 CREATE TABLE `patient` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
+  `discharge_date` date DEFAULT NULL,
   `date` date NOT NULL,
   `gender` varchar(10) NOT NULL,
   `age` int(2) NOT NULL,
@@ -267,6 +268,7 @@ CREATE TABLE `patient` (
   `drug` text NOT NULL,
   `dosage` text NOT NULL,
   `drug_given_by` text NOT NULL,
+    `discharge_status` text NOT NULL,
   `drug_status` text NOT NULL,
   `prescribed_by` text DEFAULT NULL,
   `prescribed_on` text DEFAULT NULL,

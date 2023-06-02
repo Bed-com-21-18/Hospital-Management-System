@@ -30,9 +30,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
    <!--NavBar-->
    <nav class="navbar navbar-expand py-1"style="background-color:#F1F6F9;" >
             <div class="container">
-			<h5 class="navbar-brand">
-                    <b>Admitted Patient List</b>
-                </h5>
+			<h3 class="navbar-brand"><b>All Registered Patients</b> </h3>
                 <button 
                 class="navbar-toggler" 
                 type="button" 
@@ -49,87 +47,29 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                         </li>
                     </ul>
                 </div>
-
-                <div class="collapse navbar-collapse" id="navmenu">
+				<div class="collapse navbar-collapse" id="navmenu">
             <ul class="navbar-nav ms-auto">
               
                
-               <li class="nav-item dropdown">
-                  <a href="admit_patient_list.php" class="nav-link p-2">All Registered Patients</a>
+            <li class="nav-item dropdown">
+                  <a href="inpatient.php" class="nav-link p-2">View inPatient List</a>
                </li>
+               
+        
             </ul>
          </div>
+
+            
 		 </div>
         </nav>
 
 		  <!-- Tab Content -->
 		  <div class="container mt-4">
             <div class="tab-content">
-         <div class="tab-pane fade show active" id="inpatient_list">
-		 
-
-		 <?php
-$sql2 = "SELECT * FROM patient ORDER BY id DESC";
-$result2 = $mysqli->query($sql2);
-
-// Display patient information in table rows
-if ($result2->num_rows > 0) {
-    ?>
-    <div class="container">
-    <div class="table-responsive">
-        <table class="table table-bordered  bg-light">
-            <thead class="thead-light">
-                <tr>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Sex</th>
-                    <th>Symptoms</th>
-                    <th>Ward Bed</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody id = "myTable">
-                <?php
-                while ($row = $result2->fetch_assoc()) {
-                    ?>
-                    <tr>
-                        <td><?php echo $row["name"]; ?></td>
-                        <td><?php echo $row["age"]; ?></td>
-                        <td><?php echo $row["gender"]; ?></td>
-                        <td><?php echo $row["symptoms"]; ?></td>
-                        <td><?php echo $row["ward_bed"]; ?></td>
-                        <td class='btn-group btn-group-justified'>                                    
-                        <a href="discharge_patient.php?view=<?php echo $row['id']; ?>&name=<?php echo $row['name']; ?>" class="badge bg-primary">Discharge</a>
-
-							</td>
-                    </tr>
-                    <?php
-                }
-                ?>
-            </tbody>
-        </table>
-        <br>             
-        <button class='btn btn-primary mb-3' onclick='window.history.back()'> Go Back</button>
-    </div>
-</div>
-<?php
-
-} else {
-    echo "<div class='container'><div class='table-responsive'><table class='table table-bordered bg-secondary text-light'>";
-    echo "<thead class='thead-light'><tr><th colspan='15' class='text-center'>No Admitted Patient found!</th></tr></thead>";
-    echo "</table></div></div>";
-    }
-    ?>
-		
-
-
-         </div>
          
-         <div class="tab-pane fade show" id="list_patient">
+         <div class="tab-pane fade show active">
             <!-- patient list -->
-			<h3 class="text-center text-black">
-                    <b>Patients List</b> 
-                </h3>
+			
 			<div class="p-2">
 		<div class="row">
 		<div class="col-md-12"> 

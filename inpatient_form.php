@@ -54,8 +54,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
       <div class="mb-3">
       <input type="hidden" class="form-control" value="<?= $id; ?>" id="patient_id" name="patient_id" placeholder="Patient ID" required> 
       </div>
+      <div class="form-group">
+         <label>Symptom</label>
+          <input name="symptoms" class="form-control" type="text" value="" id="symptoms" placeholder="indicate a symptom">
+            </div><br>
+    
       <div class="mb-3">
-        <label for="ward_bed" class="form-label"><i class="fas fa-comment-medical"></i> Assign ward Bed:</label>
+        <label for="ward_bed" class="form-label"><i class="fas fa-comment-medical"></i> Assign ward Bed: </label>
         <select name="ward_bed" id="ward_bed" required class="form-control">
           <option value="">Select a bed</option>
           <optgroup label="Ward A">

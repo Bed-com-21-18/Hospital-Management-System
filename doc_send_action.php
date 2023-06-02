@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if ($result->num_rows === 0) {
     // Display an error message if the patient ID does not exist in the patient table
     $response = '<div class="alert alert-danger" role="alert">
-      Error: The patient ID does not exist. Please make sure you have entered the ID of a registered patient.
+      Error: The patient ID does not exist. Please make sure you have the ID of a registered patient.
       <br>
       <br><button class="btn btn-danger" onclick="history.back()">Go Back</button>
     </div>';
