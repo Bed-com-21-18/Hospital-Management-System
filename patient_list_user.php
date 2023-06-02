@@ -65,6 +65,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 					<th>Religion</th>
 					<th>Occupation</th>
 					<th>Action</th>
+					<th>Test results</th>
 					</tr>
 			</thead>
 
@@ -88,8 +89,20 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 							<td><?php echo $row["next_of_kin"]; ?></td>
 							<td><?php echo $row["religion"]; ?></td>
 							<td><?php echo $row["occupation"]; ?></td>
-							<td class='btn-group btn-group-justified'>                                    
+							<td>                                    
 									<a href='user_prescribe_form.php?view=<?php echo $row["id"]; ?>' class='badge bg-primary'>Prescribe</a>
+							</td>
+							<td class="text-center">                                    
+							<div class="dropdown d-inline-block">
+                                <button class="badge bg-secondary dropdown-toggle" type="button" id="sendRequestDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    View
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="sendRequestDropdown">
+                                    <a class="dropdown-item" href="View_lab_results.php?view_results=<?php echo $row['id']; ?>">Laboratory</a>
+                                    <a class="dropdown-item" href="radiology_view.php?viewing=<?php echo $row['id']; ?>">Radiology</a>
+                                    <a class="dropdown-item" href="hiv_test_results.php?hiv_results=<?php echo $row['id']; ?>">HIV</a>
+                                </div>
+                            </div>
 							</td>
 						</tr>
                       <?php  

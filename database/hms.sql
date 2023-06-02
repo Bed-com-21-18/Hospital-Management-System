@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2023 at 11:31 AM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 7.3.28
+-- Generation Time: Jun 02, 2023 at 11:45 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -368,7 +369,7 @@ INSERT INTO `patient` (`id`, `name`, `date`, `gender`, `age`, `address`, `next_o
 (19, 'Peter Makazi', '2023-06-07', 'Male', 0, 'Thyolo', 'Chimwemwe', 'CCAP', 'teaccher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', NULL, '', NULL, NULL, NULL, 'not paid', NULL, NULL, NULL, NULL, NULL, NULL),
 (20, 'Steven Chungu', '1987-06-07', 'Female', 36, 'Zomba', 'Chimwemwe', 'CCAP', 'Police', NULL, 'Cough:2 days ago', 'Surgery', 'Temperature:89', 'pale:', 'TB', 'Drug history:heart surgery', 'Aspirin ', '45', '', NULL, '', NULL, NULL, 2300, 'Cleared', NULL, 'Surgical Ward', NULL, NULL, NULL, 10000),
 (21, 'Mavuto Kambuwe', '1999-06-07', 'Male', 24, 'Zomba', 'Chimwemwe', 'CCAP', 'Not working', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', NULL, '', NULL, NULL, NULL, 'not paid', NULL, NULL, NULL, NULL, NULL, NULL),
-(22, 'Chikondi Malabada', '1998-06-02', 'Male', 25, 'Zomba', 'Charle', 'SDA', 'teaccher', NULL, 'Cough:2 days', 'Drip', 'Temperature:89', 'pale:', NULL, 'Drug history:heart surgery', 'Acetymethrin,Amoxycilin      ,Buffen', 'Acetymethrin: 2  morning,afternoon and evening for 5 days,Amoxycilin      : 2  morning,afternoon and evening for 5 days,Buffen: 2  morning,afternoon and evening for 5 days', '', 'Discharged', '', NULL, NULL, 5000, 'not paid', NULL, 'Paediatrics Ward', '2023-06-09', NULL, NULL, NULL);
+(22, 'Chikondi Malabada', '1998-06-02', 'Male', 25, 'Zomba', 'Charle', 'SDA', 'teaccher', NULL, 'Fever:2 days', 'Drip', 'Temperature:37', 'alert:', NULL, 'Drug history:panado', 'Acetymethrin,Amoxycilin      ,Buffen', 'Acetymethrin: 2  morning,afternoon and evening for 5 days,Amoxycilin      : 2  morning,afternoon and evening for 5 days,Buffen: 2  morning,afternoon and evening for 5 days', '', 'Discharged', '', NULL, NULL, 5000, 'not paid', NULL, 'Paediatrics Ward', '2023-06-09', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -419,6 +420,32 @@ INSERT INTO `user` (`id`, `uname`, `prof`, `pwd`) VALUES
 (11, 'Charle', 'Receptionist', 'c20ad4d76fe97759aa27a0c99bff6710'),
 (12, 'Mary Juma', 'Nurse', 'c20ad4d76fe97759aa27a0c99bff6710'),
 (13, 'jo viola', 'Clinician', 'c20ad4d76fe97759aa27a0c99bff6710');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `uname` varchar(30) NOT NULL,
+  `prof` varchar(30) NOT NULL,
+  `pwd` text NOT NULL,
+  `role` text NOT NULL,
+  `email` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `uname`, `prof`, `pwd`, `role`, `email`) VALUES
+(16, 'jo vio', 'radiologist', '12', 'admin', 'jo@gmail.com'),
+(17, 'Kizito', 'Cardiologist', '12', 'admin', 'Joe@gmail.com'),
+(18, 'George', 'Cardiologist', '12', 'doctor', ''),
+(19, 'Peter', 'Nurse', '12', 'other_user', ''),
+(20, 'jo viola', 'Radiologist', '12', 'admin', 'Joe@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -507,6 +534,12 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -587,6 +620,12 @@ ALTER TABLE `radiology`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables

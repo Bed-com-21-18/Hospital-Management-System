@@ -14,6 +14,7 @@
             $uname = $_POST['uname'];
             $email = $_POST['email'];
             $prof = $_POST['prof'];
+            $admin = $_POST['admin'];
             $pwd = $_POST['pwd'];
             $re_pwd = $_POST['re_pwd'];
 
@@ -56,17 +57,17 @@
             exit();
         }else {
             //hashing password
-            $pwd = md5($pwd);
+            // $pwd = md5($pwd);
 
             //checking if the user exit
-           $sql = "SELECT * FROM admins WHERE prof ='$prof' AND uname='$uname' AND email='$email'";
+           $sql = "SELECT * FROM users WHERE prof ='$prof' AND uname='$uname' AND email='$email'";
            if (mysqli_num_rows($mysqli->query($sql)) > 0){
                 header ("Location: admin_reg.php?error=The username already exit&$user_data");
                 exit();
            }else {
             //insert user
-                $sql2 = "INSERT INTO admins(prof, uname, email, pwd) 
-                VALUES('$prof', '$uname', '$email', '$pwd')";
+                $sql2 = "INSERT INTO users(prof, uname, email, role, pwd) 
+                VALUES('$prof', '$uname', '$email','$admin', '$pwd')";
                  if ($mysqli->query($sql2) === TRUE){
                     header ("Location: admin_reg.php?success=Successfully registered");
                     exit();
@@ -83,7 +84,7 @@
     if(isset($_GET['delete'])){
         $id = $_GET['delete'];
       
-        $sql = "DELETE FROM admins WHERE id='$id'";
+        $sql = "DELETE FROM users WHERE id='$id'";
       
         if ($mysqli->query($sql) === TRUE) {
                   echo "<script>alert('Successfully Deleted');
@@ -101,7 +102,7 @@
       if(isset($_GET['edit'])){
         $id = $_GET['edit'];
         $update = true;
-        $sql2 = "SELECT * FROM admins WHERE id='$id'";
+        $sql2 = "SELECT * FROM users WHERE id='$id'";
         $result2 = $mysqli->query($sql2);
       
             $row = $result2->fetch_assoc();
@@ -120,7 +121,7 @@
         $email = $_POST['email'];
         $prof = $_POST['prof'];
 
-        $sql3 = "UPDATE admins SET uname='$uname', email='$email', prof='$prof' WHERE id='$id'";
+        $sql3 = "UPDATE users SET uname='$uname', email='$email', prof='$prof' WHERE id='$id'";
         $result3 = $mysqli->query($sql3);
 
         header("Location: admin_reg.php?success=Successfully updated");

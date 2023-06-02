@@ -23,7 +23,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 <body>
     <div class="container-fluid  p-2">
         <div class="row justify-content-center">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="card">
                     <div class="card-header">
                         <b><h2 class="text-center text-dark mt-2">

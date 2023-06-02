@@ -19,22 +19,7 @@
                <hr>
                <p class="my-4">This is a system that stores patients' records, performs billing...</p>
              </div>
-             <div class="container-fluid pt-4">
-               <div class="row text-center g-4">
-                 <div class="col-md">
-                   <div class="dropdown">
-                     <button class="btn dropdown-toggle" type="button" id="loginDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#EEEEEE;">
-                       Login
-                     </button>
-                     <ul class="dropdown-menu" aria-labelledby="loginDropdown">
-                       <li><a class="dropdown-item" href="doctor_login.php">Doctor</a></li>
-                       <li><a class="dropdown-item" href="user_login.php">System User</a></li>
-                       <li><a class="dropdown-item" href="admin_login.php">Admin</a></li>
-                     </ul>
-                   </div>
-                 </div>
-               </div>
-             </div>
+             
            </div>
         </section>
 

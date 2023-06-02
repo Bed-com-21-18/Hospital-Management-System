@@ -28,16 +28,7 @@
                             <a href="home.php" class="nav-link bi bi-house-fill"> Home</a>
                         </li>
                     <br>
-                    
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle bi bi-person-fill" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Login
-                            </a>
-                            <ul class="dropdown-menu text-center">
-                                <li><a class="dropdown-item" href="admin_login.php">Admin</a></li>
-                                <li><a class="dropdown-item" href="doctor_login.php">Doctor</a></li>
-                                <li><a class="dropdown-item" href="user_login.php">System user</a></li>
-                            </ul>
+                    <a href="users_login.php" class="nav-link bi bi-person-fill"> Login</a>
                         </li>
                     </ul>
                 </div>

@@ -32,16 +32,16 @@ session_start();
             }
             else{
                 //hashing password
-                $old_pwd = md5($old_pwd);
-                $new_pwd = md5($new_pwd);
+                // $old_pwd = md5($old_pwd);
+                // $new_pwd = md5($new_pwd);
                 $id = $_SESSION['id'];
 
-                $sql = "SELECT pwd FROM admins WHERE id=$id AND pwd='$old_pwd'";
+                $sql = "SELECT pwd FROM users WHERE id=$id AND pwd='$old_pwd'";
                 $result = $mysqli->query($sql);
 
                 if($result->num_rows === 1){
                         
-                    $sql2 = "UPDATE admins SET pwd='$new_pwd' WHERE id='$id'";
+                    $sql2 = "UPDATE users SET pwd='$new_pwd' WHERE id='$id'";
                     $mysqli->query($sql2);
                     header("Location: change_pwd.php?success=Password successfully changed");
                     exit();

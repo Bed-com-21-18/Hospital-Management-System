@@ -43,7 +43,7 @@
                         </div>
                         <div class="card-body">
                         <form action="user_regdb.php" method="POST">
-                       
+                        <input type="hidden" value="other_user" name="other_user" class="form-control"/>
                        <?php if (isset($_GET['error'])) {?>
                            <p class="error"><?php echo $_GET['error']; ?></p>
                            <?php } ?>
@@ -113,7 +113,7 @@
                         <input class="form-control me-1" id="myInput" style="width:100%; max-width:20rem" type="text" placeholder="Search" aria-label="Search">             
                
                 <?php
-                    $sql = "SELECT * FROM user ORDER BY id DESC";
+                    $sql = "SELECT * FROM users WHERE role='other_user' ORDER BY id DESC";
                     $result = $mysqli->query($sql);
                 ?>
                 <hr>

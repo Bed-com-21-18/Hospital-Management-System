@@ -11,6 +11,7 @@
     if (isset($_POST['save'])){
         $uname = $_POST['uname'];
         $prof = $_POST['prof'];
+        $doctor = $_POST['doctor'];
         $pwd = $_POST['pwd'];
         $re_pwd = $_POST['re_pwd'];
 
@@ -48,17 +49,17 @@
             exit();
         }else {
             //hashing password
-            $pwd = md5($pwd);
+            // $pwd = md5($pwd);
 
             //checking if the user exit
-           $sql = "SELECT * FROM doctor WHERE prof ='$prof' AND uname='$uname'";
+           $sql = "SELECT * FROM users WHERE prof ='$prof' AND uname='$uname'";
            if (mysqli_num_rows($mysqli->query($sql)) > 0){
                 header ("Location: doctor_reg.php?error=The username already exit&$user_data");
                 exit();
            }else {
             //insert user
-                $sql2 = "INSERT INTO doctor(prof, uname, pwd) 
-                VALUES('$prof', '$uname', '$pwd')";
+                $sql2 = "INSERT INTO users(prof, uname, role, pwd) 
+                VALUES('$prof', '$uname', '$doctor', '$pwd')";
                  if ($mysqli->query($sql2) === TRUE){
                     header ("Location: doctor_reg.php?success=Successfully registered");
                     exit();
@@ -75,7 +76,7 @@
     if(isset($_GET['delete'])){
         $id = $_GET['delete'];
       
-        $sql = "DELETE FROM doctor WHERE id='$id'";
+        $sql = "DELETE FROM users WHERE id='$id'";
       
         if ($mysqli->query($sql) === TRUE) {
                   echo "<script>alert('Successfully Deleted');
@@ -93,7 +94,7 @@
       if(isset($_GET['edit'])){
         $id = $_GET['edit'];
         $update = true;
-        $sql2 = "SELECT * FROM doctor WHERE id='$id'";
+        $sql2 = "SELECT * FROM users WHERE id='$id'";
         $result2 = $mysqli->query($sql2);
       
             $row = $result2->fetch_assoc();
@@ -110,7 +111,7 @@
         $uname = $_POST['uname'];
         $prof = $_POST['prof'];
 
-        $sql3 = "UPDATE doctor SET uname='$uname', prof='$prof' WHERE id='$id'";
+        $sql3 = "UPDATE users SET uname='$uname', prof='$prof' WHERE id='$id'";
         $result3 = $mysqli->query($sql3);
 
         header("Location: doctor_reg.php?success=Successfully updated");
