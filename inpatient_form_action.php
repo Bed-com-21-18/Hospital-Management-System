@@ -4,7 +4,7 @@ session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $patient_id = $_POST['patient_id'];
   $ward_bed = $_POST['ward_bed'];
-  $symptoms = $_POST['symptoms'];
+  $treatment_plan = $_POST['treatment_plan'];
   // Connect to the database
   $host = 'localhost';
   $username = 'root';
@@ -38,14 +38,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>';
   } else {
    // Prepare the SQL query to update the status and drug_given_by data in the patient table
-$sql = "UPDATE patient SET ward_bed = ?, symptoms = ? WHERE id = ?";
+$sql = "UPDATE patient SET ward_bed = ?, treatment_plan = ? WHERE id = ?";
 
 
 // Create a prepared statement
 $stmt = $conn->prepare($sql);
 
 // Bind the parameters
-                                  $stmt->bind_param("sss", $ward_bed, $symptoms, $patient_id);
+                                  $stmt->bind_param("sss", $ward_bed, $treatment_plan, $patient_id);
 
 
     // Execute the SQL query

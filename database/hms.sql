@@ -276,6 +276,8 @@ CREATE TABLE `patient` (
   `residential` varchar(100) NOT NULL,
   `others` text DEFAULT NULL,
   `symptoms` text DEFAULT NULL,
+  `treatment_plan` text DEFAULT NULL,
+
   `history` text DEFAULT NULL,
   `drug` text NOT NULL,
   `address` text NOT NULL,
@@ -284,7 +286,7 @@ CREATE TABLE `patient` (
   `occupation` text NOT NULL,
   `dosage` text NOT NULL,
   `drug_given_by` text NOT NULL,
-    `discharge_status` text NOT NULL,
+  `discharge_status` text NOT NULL,
   `drug_status` text NOT NULL,
   `prescribed_by` text DEFAULT NULL,
   `prescribed_on` text DEFAULT NULL,

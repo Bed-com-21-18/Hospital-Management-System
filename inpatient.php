@@ -69,7 +69,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 		 
 
 		 <?php
-$sql2 = "SELECT * FROM patient ORDER BY id DESC";
+$sql2 = "SELECT * FROM patient WHERE ward_bed IS NOT NULL ORDER BY id DESC";
 $result2 = $mysqli->query($sql2);
 
 // Display patient information in table rows
@@ -83,7 +83,7 @@ if ($result2->num_rows > 0) {
                     <th>Name</th>
                     <th>Age</th>
                     <th>Sex</th>
-                    <th>Symptoms</th>
+                    <th>Treatment Plan</th>
                     <th>Ward Bed</th>
                     <th>Action</th>
                 </tr>
@@ -96,7 +96,7 @@ if ($result2->num_rows > 0) {
                         <td><?php echo $row["name"]; ?></td>
                         <td><?php echo $row["age"]; ?></td>
                         <td><?php echo $row["gender"]; ?></td>
-                        <td><?php echo $row["symptoms"]; ?></td>
+                        <td><?php echo $row["treatment_plan"]; ?></td>
                         <td><?php echo $row["ward_bed"]; ?></td>
                         <td class='btn-group btn-group-justified'>                                    
                         <a href="discharge_patient.php?view=<?php echo $row['id']; ?>&name=<?php echo $row['name']; ?>" class="badge bg-primary">Discharge</a>

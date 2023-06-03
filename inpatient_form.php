@@ -54,12 +54,41 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
       <div class="mb-3">
       <input type="hidden" class="form-control" value="<?= $id; ?>" id="patient_id" name="patient_id" placeholder="Patient ID" required> 
       </div>
+      <div class="form-group p-2">
+        <label>Ward</label>
+        <select name="ward_bed" type="text" value="" id="symptoms"  required class="form-select">
+        <option value="">Select Ward</option>
+        <option value="Paediatrics Ward" >Paediatrics</option>
+        <option value="Surgical Ward">Surgical Ward</option> 
+        <option value="Medical Ward">Medical Ward</option>
+        <option value="Obestetrics Ward">Obestetrics Ward</option>
+        <option value="Gynaecology Ward">Gynaecology Ward</option>
+        </select>
+      </div>
+
       <div class="form-group">
-         <label>Symptom</label>
-          <input name="symptoms" class="form-control" type="text" value="" id="symptoms" placeholder="indicate a symptom">
-            </div><br>
-    
-      <div class="mb-3">
+         <label>Treament Plan</label>
+          <textarea name="treatment_plan" class="form-control" type="text" value="" id="symptoms" placeholder="Write a treatment plan..."></textarea>
+            </div>
+      <button type="submit" align-center class="btn btn-primary">Proceed</button>&nbsp;&nbsp;&nbsp;&nbsp;
+      <button class='btn btn-secondary' onclick='window.history.back()'>Go Back</button>
+    </form>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+<?php 
+} else {
+    header("Location: home.php");
+    exit();
+}
+?>
+<!-- 
+<div class="mb-3">
         <label for="ward_bed" class="form-label"><i class="fas fa-comment-medical"></i> Assign ward Bed: </label>
         <select name="ward_bed" id="ward_bed" required class="form-control">
           <option value="">Select a bed</option>
@@ -92,23 +121,4 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
             ?>
           </optgroup>
         </select>
-      </div>
-
-      <br><br>
-      <button type="submit" class="btn btn-primary">Proceed</button>&nbsp;&nbsp;&nbsp;&nbsp;
-      <button class='btn btn-secondary' onclick='window.history.back()'>Go Back</button>
-    </form>
-  </div>
-  
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</body>
-</html>
-
-<?php 
-} else {
-    header("Location: home.php");
-    exit();
-}
-?>
+      </div> -->

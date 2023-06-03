@@ -31,8 +31,8 @@ if(isset($_POST['add'])){
         exit();
      }else {
     //insert user
-        $sql2 = "INSERT INTO patient (name,date,gender,address,next_of_kin,religion,occupation) 
-        VALUES('$name', '$age', '$gender', '$address', '$next_of_kin', '$religion', '$occupation')";
+        $sql2 = "INSERT INTO patient (name,date,gender,address,next_of_kin,religion,occupation, age) 
+        VALUES('$name', '$date', '$gender', '$address', '$next_of_kin', '$religion', '$occupation', '$age')";
          if ($mysqli->query($sql2) === TRUE){
             // header ("Location: patient_reg.php?success=Successfully registered");
             // exit();
