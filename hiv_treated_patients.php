@@ -29,13 +29,13 @@
     </head>
     <body>
 
-     <!-- Navbar -->
-     <?php
-            include "dnavbar.php";
-        ?>
+   
+    <!--NavBar-->
+ <div class="container-fluid mb-5"> <?php include 'unavbar.php'; ?></div>
+
 
         <!--Form-->
-<section class="p-4 bg-white"> 
+<section class="p-5 bg-white"> 
         <div class="container">
             <div class="row">
              <!--Update table-->

@@ -1,7 +1,6 @@
 <?php
 include 'user_regdb.php';
 if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
-  include "unavbar.php";
   include "comfig.php";
 ?>
 
@@ -15,8 +14,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 </head>
 
 <body>
-   
-  <div class="container">
+   <!--NavBar-->
+ <div class="container-fluid mb-5"> <?php include 'unavbar.php'; ?></div>
+
+  <div class="container p-5">
     <h3 class="text-center bg-light text-secondary">Admit Patient</h3>
   </div>
 

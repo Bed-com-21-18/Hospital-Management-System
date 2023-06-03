@@ -1,12 +1,9 @@
 <?php 
-// include 'user_regdb.php';
-include "discharge_patient_action.php";
+include 'user_regdb.php';
+include 'discharge_patient_action.php';
 include 'comfig.php';
-// if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
-if(isset($_GET['view']) && isset($_SESSION['name'])){
-    $id = $_GET['view'];
-    $name = $_GET['name'];
-
+if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
+  
 ?>
 
 <!doctype html>
@@ -26,8 +23,8 @@ if(isset($_GET['view']) && isset($_SESSION['name'])){
         <?php
         include "unavbar.php";
 
-        if(isset($_GET['patient'])){
-            $id = $_GET['patient_id'];
+        if(isset($_GET['view'])){
+            $id = $_GET['view'];
             $sql2 = "SELECT * FROM patient WHERE id='$id'";
             $result2 = $mysqli->query($sql2);
 

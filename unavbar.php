@@ -11,7 +11,7 @@
     <body>
       
       <!--NavBar-->
-        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
             <div class="container">
                 <h5 class="navbar-brand">HOSPITAL MANAGEMENT SYSTEM</h5>
                 <button 

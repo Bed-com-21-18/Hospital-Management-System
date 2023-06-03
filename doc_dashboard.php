@@ -20,7 +20,7 @@
 </head>
   <body>
       <!--NavBar-->
-    <?php include 'dnavbar.php'; ?>
+      <div class="container-fluid mb-5"> <?php include 'dnavbar.php'; ?></div>
 
 
     <!-- side bar -->
@@ -65,40 +65,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                            <div class="card text-dark flex-fill">
-                                <div class="card-body text-center">
-                                <div class="h1 mb-3">
-                                    <img src="img/x-ray.png" alt="Outpatient" class="icon-image">
-                                </div>
-                                    <h3 class="card-title mb-3 text-primary">Radiology</h3>
-                                    <a href="radiology.php" class="btn btn-primary">Proceed</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-3">
-                            <div class="card text-dark flex-fill">
-                                <div class="card-body text-center">
-                                    <div class="h1 mb-3">
-                                        <img src="img/blood-test.png" alt="Outpatient" class="icon-image">
-                                    </div>
-                                    <h3 class="card-title mb-3 text-primary">HIV/AIDS</h3>
-                                    <a href="hiv_test.php" class="btn btn-primary">Proceed</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card text-dark flex-fill">
-                                <div class="card-body text-center">
-                                <div class="h1 mb-3">
-                                    <img src="img/laboratory.png" alt="Outpatient" class="icon-image">
-                                </div>
-                                    <h3 class="card-title mb-3 text-primary">Laboratory</h3>
-                                    <a href="laboratory.php" class="btn btn-primary">Proceed</a>
-                                </div>
-                            </div>
-                        </div>
             </div>
         </div>
         <br>

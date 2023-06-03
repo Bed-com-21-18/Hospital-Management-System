@@ -29,15 +29,13 @@
     </head>
     <body>
 
-     <!-- Navbar -->
-     <?php
-            include "dnavbar.php";
-        ?>
-      
+     <!--NavBar-->
+ <div class="container-fluid mb-5"> <?php include 'unavbar.php'; ?></div>
+
 
         <!--Form-->
              <!--Update table-->
-                <div class="p-4"> 
+                <div class="p-5"> 
                 <h3 class="text-center text-secondary">
                     Patients for Scanning
                 </h3>

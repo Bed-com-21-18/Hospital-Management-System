@@ -29,12 +29,11 @@
     </head>
     <body>
 
-     <!-- Navbar -->
-     <?php
-            include "unavbar.php";
-        ?>
+     <!--NavBar-->
+ <div class="container-fluid mb-5"> <?php include 'unavbar.php'; ?></div>
+
       
-      <section class="p-4">
+      <section class="p-5">
               <!--NavBar-->
               <nav class="navbar navbar-expand-lg bg-light navbar-light py-3">
             <div class="container">

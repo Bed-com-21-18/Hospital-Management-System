@@ -30,15 +30,14 @@
     <body>
 
      <!-- Navbar -->
-     <?php
-            include "dnavbar.php";
-        ?>
-      
-      <section class="p-4">
+   <!--NavBar-->
+ <div class="container-fluid mb-5"> <?php include 'unavbar.php'; ?></div>
+
+      <section class="p-5">
               <!--NavBar-->
               <nav class="navbar navbar-expand-lg bg-light navbar-light py-3">
             <div class="container">
-                <h5 class="navbar-brand"><i>HIV/AIDS TEST</i></h5>
+                <h5 class="navbar-brand"><i>HIV TEST</i></h5>
                 <button 
                 class="navbar-toggler" 
                 type="button" 

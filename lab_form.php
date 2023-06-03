@@ -1,7 +1,7 @@
 <?php
 include 'user_regdb.php';
 if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
-  include "unavbar.php";
+
   include "comfig.php";
 ?>
 <!DOCTYPE html>
@@ -88,7 +88,10 @@ if(isset($_GET['respond']) && isset($_GET['test'])) {
   $name = $row['name']; 
 }
 ?>
-<div class="container mt-5">
+<!--NavBar-->
+<div class="container-fluid mb-5"> <?php include 'unavbar.php'; ?></div>
+
+<div class="container p-5">
   <div class="row justify-content-center">
     <div class="col-md-4">
       <form method="post" action="lab_action.php" class="border p-3 rounded">

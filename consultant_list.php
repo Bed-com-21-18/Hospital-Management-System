@@ -50,7 +50,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
             </div>
         </nav>
 
-	<div class="p-2">
+	<div class="p-5">
 		<div class="row">
 		<div class="col-md-12"> 
 		<table class="table table-hover bg-light" style="overflow:auto">

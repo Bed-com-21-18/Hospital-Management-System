@@ -29,9 +29,11 @@
     </head>
     <body>
 
-     <!-- Navbar -->
+     <!--NavBar-->
+ <div class="container-fluid mb-5"> <?php include 'unavbar.php'; ?></div>
+
      <?php
-            include "unavbar.php";
+           
 
             if(isset($_GET['treat'])){
                 $id = $_GET['treat'];
@@ -48,7 +50,7 @@
         ?>
 
         <!--Form-->
-<section class="p-4 bg-white"> 
+<section class="p-5 bg-white"> 
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-5">

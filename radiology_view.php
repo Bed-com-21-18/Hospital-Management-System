@@ -28,9 +28,9 @@
     </head>
     <body>
         <!-- Navbar -->
-        <?php
-            include "dnavbar.php";
-        ?>
+         <!--NavBar-->
+   <div class="container-fluid mb-5"> <?php include 'unavbar.php'; ?></div>
+
 
         <section class="p-5 text-center">
             <div class="p-5">

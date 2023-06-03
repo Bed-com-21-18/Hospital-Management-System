@@ -1,7 +1,6 @@
 <?php
 include 'user_regdb.php';
 if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
-    include "unavbar.php";
     include "comfig.php";
 ?>
 <!DOCTYPE html>
@@ -18,7 +17,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
 
 
 <body>
-    <div class="container">
+     <!--NavBar-->
+   <div class="container-fluid mb-5"> <?php include 'unavbar.php'; ?></div>
+
+
+    <div class="container p-5">
         <div class="P-2">
             <h4 class="text-center bg-light text-secondary p-2">DIAGNOSIS</h4>
         </div>
@@ -117,9 +120,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
 
                         <div class="col-md-12">
                         <h5 class="text-center">Diagnostic work up</h5>
-                            <div class="dropdown d-inline-block">
-                                <button class="btn btn-primary dropdown-toggle" type="button" id="sendRequestDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Send Test Request
+                        <div class="dropdown">
+                         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                     Send Test Request
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="sendRequestDropdown">
                                     <a class="dropdown-item" href="send_to_lab.php?send=<?php echo $id; ?>">Lab Request</a>

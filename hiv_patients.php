@@ -31,12 +31,12 @@
     <body>
 
      <!-- Navbar -->
-     <?php
-            include "dnavbar.php";
- ?>
+     <!--NavBar-->
+ <div class="container-fluid mb-5"> <?php include 'unavbar.php'; ?></div>
+
  <section>
  <!--Update table-->
-            <div class="container p-2"> 
+            <div class="container p-5"> 
                     <div class="row">
                         <div class="col-md-6">
                       <!-- search -->

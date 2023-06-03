@@ -2,7 +2,7 @@
 <?php 
     include 'user_regdb.php';
     include 'consultingdb.php';
-    include 'unavbar.php';
+   
     include 'comfig.php';
     if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 
@@ -87,6 +87,9 @@ form .error {
   </style>
 </head>
 <body>
+  <!--NavBar-->
+ <div class="container-fluid mb-5"> <?php include 'unavbar.php'; ?></div>
+
 <?php
     if(isset($_GET['request'])){
   $id = $_GET['request'];
@@ -101,7 +104,7 @@ form .error {
 
   
 } ?>
-  <div class="container mt-5">
+  <div class="container p-5">
     <div class="row justify-content-center">
       <div class="col-md-4">
         <form method="post" action="consultingdb.php" class="border p-3 rounded">

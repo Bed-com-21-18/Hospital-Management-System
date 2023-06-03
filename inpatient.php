@@ -73,7 +73,7 @@ $result2 = $mysqli->query($sql2);
 // Display patient information in table rows
 if ($result2->num_rows > 0) {
     ?>
-    <div class="container">
+    <div class="container p-3">
     <div class="table-responsive">
         <table class="table table-bordered  bg-light">
             <thead class="thead-light">

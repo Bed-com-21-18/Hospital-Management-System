@@ -28,7 +28,8 @@
 </head>
   <body>
       <!--NavBar-->
-    <?php include 'anavbar.php'; ?>
+    
+      <div class="container-fluid mb-5"> <?php include 'anavbar.php'; ?></div>
 
 
     <!-- side bar -->

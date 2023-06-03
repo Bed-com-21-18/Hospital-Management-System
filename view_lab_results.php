@@ -2,7 +2,7 @@
 <?php
  include 'user_regdb.php';
  if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
-   include "unavbar.php";
+ 
    include "comfig.php";
         ?>
 <!DOCTYPE html>
@@ -26,9 +26,11 @@
         </script>
 </head>
 <body>
+     <!--NavBar-->
+   <div class="container-fluid mb-5"> <?php include 'unavbar.php'; ?></div>
 
-   <!--NavBar-->
-   <nav class="navbar py-2"style="background-color:#F1F6F9;" >
+   
+   <nav class="navbar py-5"style="background-color:#F1F6F9;" >
             <div class="container">
 			<h5 class="navbar-brand text-center"> Lab results</h5>
             </div>

@@ -28,10 +28,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
     </script>
 </head>
 <body>
-    <!-- Navbar -->
-    <?php
-    include "unavbar.php";
+    <!--NavBar-->
+ <div class="container-fluid mb-5"> <?php include 'unavbar.php'; ?></div>
 
+    <?php
+    
     if (isset($_GET['proceed']) && isset($_GET['request'])) {
         $id = $_GET['proceed'];
         $request = $_GET['request'];
@@ -47,7 +48,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
     ?>
 
     <!-- Form -->
-    <section class="p-4 bg-white"> 
+    <section class="p-5 bg-white"> 
         <div class="container">  
             <div class="row justify-content-center">
                 <div class="col-md-5">

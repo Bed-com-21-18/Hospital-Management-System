@@ -11,7 +11,7 @@
     <body>
       
       <!--NavBar-->
-        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
             <div class="container">
                 <h5 class="navbar-brand"><i>HOSPITAL MANAGEMENT SYSTEM</i></h5>
                 <button 
@@ -37,7 +37,7 @@
                             <ul class="dropdown-menu text-center">
                                 <li><a class="dropdown-item" href="dchange_pwd.php">Change password</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="home.php">Logout</a></li>
+                                <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                             </ul>
                         </li>
                     </ul>

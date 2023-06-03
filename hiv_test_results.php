@@ -29,8 +29,11 @@
     </head>
     <body>
         <!-- Navbar -->
+         <!--NavBar-->
+   <div class="container-fluid mb-5"> <?php include 'unavbar.php'; ?></div>
+
+
         <?php
-            include "dnavbar.php";
 
             if(isset($_GET['hiv_results'])){
                 $id = $_GET['hiv_results'];
@@ -44,7 +47,7 @@
             }
         ?>
 
-        <section>
+        <section p-5>
     
                 <?php
                     $sql = "SELECT * FROM hiv_test WHERE patient_id='$id' ORDER BY id DESC";

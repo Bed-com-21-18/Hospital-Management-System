@@ -28,29 +28,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 <body>
 
    <!--NavBar-->
-   <nav class="navbar navbar-expand py-1"style="background-color:#F1F6F9;" >
-            <div class="container">
-			<h5 class="navbar-brand"> Patient List</h5>
-                <button 
-                class="navbar-toggler" 
-                type="button" 
-                data-bs-toggle="collapse" 
-                data-bs-target="#navmenu">
-                <span class="navbar-toggler-icon"></span>
-                </button>     
+   <div class="container-fluid mb-5"> <?php include 'unavbar.php'; ?></div>
 
-                <div class="collapse navbar-collapse" id="navmenu">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item dropdown">
-                                <!-- search -->
-                        <input class="form-control me-1" id="myInput" style="width:100%; max-width:20rem" type="text" placeholder="Search" aria-label="Search">             
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
 
-	<div class="p-2">
+	<div class="p-5">
 		<div class="row">
 		<div class="col-md-12"> 
 		<table class="table table-hover bg-light" style="overflow:auto">
@@ -121,6 +102,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 	</div>
 	</div>
 </div>
+<?php
+  include 'footer.php';
+  ?>
    
 <!-- Bootstrap JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

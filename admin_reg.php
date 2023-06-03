@@ -28,12 +28,11 @@
     <body>
 
      <!-- Navbar -->
-     <?php
-            include "anavbar.php";
-        ?>
+     <div class="container-fluid mb-5"> <?php include 'anavbar.php'; ?></div>
+
 
         <!--Form to register administrator-->
-<section class="p-4 bg-white"> 
+<section class="p-5 bg-white"> 
         <div class="container">
             <div class="row">
                 <div class="col-md-4">

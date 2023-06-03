@@ -1,7 +1,6 @@
 <?php
 include 'user_regdb.php';
 if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
-    include "unavbar.php";
     include "comfig.php";
 ?>
 <!DOCTYPE html>
@@ -15,7 +14,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
 </head>
 
 <body>
-    <div class="container">
+
+ <!--NavBar-->
+ <div class="container-fluid mb-5"> <?php include 'unavbar.php'; ?></div>
+
+
+    <div class="container p-5">
         <div class="P-2">
             <h4 class="text-center bg-light text-secondary p-2">HISTORY TAKING</h4>
         </div>

@@ -15,17 +15,16 @@ include 'users_logindb.php';
     </head>
     <body>
 
-     <!-- Navbar -->
-     <?php
-            include "navbar2.php";
-        ?>
+     <!--NavBar-->
+   <div class="container-fluid mb-5"> <?php include 'navbar2.php'; ?></div>
+
         
          <!--Form-->
         <div class="row justify-content-center p-5">
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="text-center text-secondary"> HMS LOGIN</h4>
+                        <h4 class="text-center text-secondary"> LOGIN</h4>
                     </div>
                     <div class="card-body">
                         <form action="route_login.php" method="POST">

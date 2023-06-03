@@ -1,74 +1,31 @@
 <?php
-session_start();
+
 include "comfig.php";
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $id = $_SESSION['id'];
-  $discharge_status = $_POST['discharge_status'];
-  $discharge_date = $_POST['discharge_date'];
-  // mysq$mysqliect to the database
+
  
+if(isset($_POST['discharge'])){
+  $discharge_status = $_POST['discharge_status'];
+  $id = $_POST['id'];
+  $discharge_date = $_POST['discharge_date'];
 
-  // Check if the user is logged in
-  if (isset($_SESSION['uname'])) {
-    $usernam = $_SESSION['uname'];
-  }
+  $sql = "UPDATE patient SET discharge_status = '$discharge_status', 
+  discharge_date = '$discharge_date' WHERE id = '$id'";
+   $result3 = $mysqli->query($sql);
 
-  // Check if the patient ID exists in the patient table
-  $sql = "SELECT * FROM patient WHERE id = ?";
-  $stmt = $mysqli->prepare($sql);
-  $stmt->bind_param("s", $id);
-  $stmt->execute();
-  $result = $stmt->get_result();
+   if ($mysqli->query($sql) === TRUE) {
+      echo "<script>alert('Successfully Submitted');
+      window.location.href = 'inpatient.php';
+      </script>";
+   } else {
+   //echo "Error: " . $sql . "<br>" . $mysqli->error;
+      header ("Location: discharge_patient.php?error=unknown error&$user_data");
+      exit();
 
-  if ($result->num_rows === 0) {
-    // Display an error message if the patient ID does not exist in the patient table
-    $response = '<div class="alert alert-danger" role="alert">
-      Error: The patient ID does not exist. Please make sure you have entered the ID of a registered patient.
-      <br>
-      <br><button class="btn btn-danger" onclick="history.back()">Go Back</button>
-    </div>';
-  } else {
-   // Prepare the SQL query to update the status and drug_given_by data in the patient table
-$sql = "UPDATE patient SET discharge_status = ?, discharge_date = ? WHERE id = ?";
-
-// Create a prepared statement
-$stmt = $mysqli->prepare($sql);
-
-// Bind the parameters
-                                  $stmt->bind_param("sss", $discharge_status, $discharge_date, $id);
-
-
-    // Execute the SQL query
-if ($stmt->execute()) {
-    // Set a success message if the statuss data was successfully updated
-    $message = 'Success: The status request for '.$_SESSION['name']. ' .';
+   }
   
-    // Set the session message and redirect back to send_to_lab.php
-    $_SESSION['discharge_status'] = $message;
-    $_SESSION['discharge_date'] = $symptoms;
-
-    echo "<script>alert('Successfully $discharge_status; patient');
-    window.location.href = 'inpatient.php';
-    </script>";
-    // header('Location: inpatient.php ');
-    exit();
-  } else {
-    // Display an error message if the statuss data could not be updated
-    $response = '<div class="alert alert-danger" role="alert">
-      Error: ' . $sql . '<br>' . mysqli_error($mysqli) . '
-      <button class="btn btn-danger" onclick="history.back()">Go Back</button>
-    </div>';
-  
-    // Output the response
-    echo $response;
-  }
-  
-  }
 
   // Close the database mysq$mysqliection
   mysqli_close($mysqli);
 
-  // Output the response
-  echo $response;
 }
 ?>

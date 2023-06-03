@@ -10,10 +10,11 @@
     </head>
     <body style="background-color:#9BA4B5;">
         <section>
-           <!-- Navbar -->
-           <?php include "navbar2.php"; ?>
+     <!--NavBar-->
+   <div class="container-fluid mb-5"> <?php include 'navbar2.php'; ?></div>
+
            <div class="showcase">
-             <div class="p-4 text-light text-center">
+             <div class="p-5 text-light text-center">
                <h1>HMS</h1>
                <h1>HOSPITAL MANAGEMENT SYSTEM</h1>
                <hr>

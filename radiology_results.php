@@ -30,12 +30,11 @@
     </head>
     <body>
 
-     <!-- Navbar -->
-     <?php
-            include "dnavbar.php";
- ?>
+  <!--NavBar-->
+ <div class="container-fluid mb-5"> <?php include 'unavbar.php'; ?></div>
+
  <!--Update table-->
-            <div class="container p-2"> 
+            <div class="container p-5"> 
                 <h3 class="text-center text-secondary">
                     Radiology results
                 </h3>
