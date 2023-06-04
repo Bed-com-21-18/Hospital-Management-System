@@ -4,10 +4,21 @@
     include "unavbar.php";
     if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
     // retrieve the symptoms and patient ID stored in session
-        $symptoms = $_SESSION["symptoms"];
-        $symptoms_string =  $_SESSION["symptoms_string"];
-        $servicefee= 1000;
-        $patient_id = $_SESSION["patient_id"];
+    
+    if (isset($_GET['patient_id'])) {
+        $id = $_GET['patient_id'];
+        $sql2 = "SELECT * FROM patient WHERE id='$id'";
+        $result2 = $mysqli->query($sql2);
+
+        $row = $result2->fetch_assoc();
+        $id = $row['id'];
+        $name = $row['name'];
+        $age = $row['age'];
+        $date = $row['gender'];
+    }
+
+        
+        $patient_id = $id ;
 
 ?>
 <!DOCTYPE html>
@@ -86,7 +97,6 @@
                 $patient_id = $patient["id"];
                 $name = $patient["name"];
                 $total_amount = 0;
-                $total_amount = 0;
                 echo "<table class='table'>";
                 echo "<thead><tr><th>Drug Name</th><th>Price (MWK)</th></tr></thead>";
                 echo "<tbody>";
@@ -97,7 +107,7 @@
                 $stmt->execute();
                 $result = $stmt->get_result();
                 $patientData = $result->fetch_assoc();
-                $drugs = explode(", ", $patientData['drug']);
+                $drugs = explode(",", $patientData['drug']);
                 $dosage = $patientData['dosage'];
                 // Fetch the matching drugs based on drug name from the drug table
                 foreach ($drugs as $drug) {
@@ -114,10 +124,13 @@
                         }
                     }
                 }
+                $servicefee =1000;
                 $total_bill = $total_amount + $servicefee;
                 echo "</tbody>";
                 echo "</table>";
-                echo "<p class='lead'>Dosage : <strong>" . $dosage . "</strong></p>";
+                echo "<p class='lead'><b>Dosage :</b> <strong>" . $dosage . "</strong></p>";
+
+                echo "<p class='lead'>The bill for drugs fee: <strong> MWK" . $total_amount . "</strong></p>";
                 echo "<p class='lead'>The service fee: <strong> MWK" . $servicefee . "</strong></p>";
                 echo "<p class='lead'>Total Bill:  <strong>MWK" . $total_bill . " <strong></p>";
                 

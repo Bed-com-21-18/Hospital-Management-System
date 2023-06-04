@@ -95,7 +95,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 							<td><?php echo $row["village"]; ?></td>
 							<td><?php echo $row["residential"]; ?></td>
 							<td class='btn-group btn-group-justified'>                                    
-									<a href='user_priscribe_form.php?view=<?php echo $row["id"]; ?>' class='badge bg-primary'>Prescribe</a>
+									<a href='user_prescribe_form.php?view=<?php echo $row["id"]; ?>' class='badge bg-primary'>Prescribe</a>
 							</td>
 						</tr>
                       <?php  
