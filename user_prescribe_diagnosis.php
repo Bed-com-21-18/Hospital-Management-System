@@ -3,20 +3,27 @@ include "comfig.php";
 
 if (isset($_POST['submit'])) {
     $patientId = $_POST["patient_id"];
+    $history = $_POST["history"];
     $patient_history = $_POST["patient_history"];
     $drugContainer = $_POST["drugContainer"];
     $patient_historyContainer = $_POST["patient_historyContainer"];
     $drug = $_POST["drug"];
 
     // Prepare the SQL statements
+    $updateHistorySql = "UPDATE patient SET history = ? WHERE id = ?";
     $updatePatientHistorySql  = "UPDATE patient SET drug = ? WHERE id = ?";
     $updateDrugSql= "UPDATE patient SET bio_history = ? WHERE id = ?";
     $updateDosageSql = "UPDATE patient SET dosage = ? WHERE id = ?";
 
     try {
+        $stmt1 = $mysqli->prepare($updateHistorySql);
         $stmt2 = $mysqli->prepare($updateDrugSql);
         $stmt3 = $mysqli->prepare($updatePatientHistorySql);
         $stmt4 = $mysqli->prepare($updateDosageSql);
+
+        $updatedHistory = implode(",", $history);
+        $stmt1->bind_param("si", $updatedHistory, $patientId);
+        $stmt1->execute();
 
         $updatedPatientHistory = "";
         foreach ($patient_history as $index => $history) {
