@@ -292,24 +292,14 @@ CREATE TABLE `patient` (
   `residential` varchar(100) NOT NULL,
   `others` text DEFAULT NULL,
   `symptoms` text DEFAULT NULL,
-<<<<<<< HEAD
   `measurement` text DEFAULT NULL,
   `examination` text DEFAULT NULL,
   `disease` text DEFAULT NULL,
   `bio_history` text DEFAULT NULL,
-=======
-  `treatment_plan` text DEFAULT NULL,
-
-  `history` text DEFAULT NULL,
->>>>>>> 425666454b427ea6994b0a1cea18dc5f29858986
   `drug` text NOT NULL,
   `dosage` text NOT NULL,
   `drug_given_by` text NOT NULL,
-<<<<<<< HEAD
   `discharge_status` text DEFAULT NULL,
-=======
-  `discharge_status` text NOT NULL,
->>>>>>> 425666454b427ea6994b0a1cea18dc5f29858986
   `drug_status` text NOT NULL,
   `prescribed_by` text DEFAULT NULL,
   `prescribed_on` text DEFAULT NULL,
