@@ -7,245 +7,242 @@
       
 
 ?>
-        <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prescription Summary</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="patient_idport" content="width=device-width, initial-scale=1.0">
+    <title>Prescribe Patient</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 
 <body>
-  <div class="container mt-5 bg-light">
-    <div class="pat$patient">
-      <div class="col-sm-12">
+    <div class="container">
+        <div class="P-2">
+            <h4 class="text-center bg-light text-secondary p-2">DIAGNOSIS</h4>
+        </div>
+        <?php if (isset($_GET['error'])) {?>
+                           <p class="error"><?php echo $_GET['error']; ?></p>
+                           <?php } ?>
+                           
+                       <?php if (isset($_GET['success'])) {?>
+                           <p class="success"><?php echo $_GET['success']; ?></p>
+                           <?php } ?>
+
         <?php
- 
-        if (!isset($_SESSION['uname'])) {
-          // User is not authenticated, redirect to login page
-          header("Location: doctor_login.php");
-          exit();
-        }
-        // Connect to the database
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "hms";
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Check connection
-        if ($conn->connect_error) {
-          die("Connection failed: " . $conn->connect_error);
-        }
-
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-          $patient_id = $_POST["patient_id"];
-          $symptoms = $_POST["symptoms"]; // This is an array
-          $others = $_POST["others"];
-          // Store the symptoms and patient ID in session
-          $_SESSION["symptoms"] = $symptoms;
-          $_SESSION["patient_id"] = $patient_id;
-          // Prepare and execute the query
-          $stmt = $conn->prepare("SELECT * FROM patient WHERE id = ?");
-          $stmt->bind_param("i", $patient_id);
-          $result = $stmt->execute();
-
-          if ($result === false) {
-            // Display an error message if the query execution failed
-            echo "<div class='alert alert-danger' role='alert'>Error: " . $stmt->error . "</div>";
-          
-          
-          } else {
-            
-            // Display the patient details if the query execution succeeded
-            $patient = $stmt->get_result()->fetch_assoc();
-            $id = $patient['id'];
-            $name = $patient['name'];
-            $age = $patient['age'];
-            $gender = $patient['gender'];
-            $date = $patient['date']; 
-            $appoint_id = $_SESSION ['appoint_id'];
-            echo "<h1 class='mb-4'>Prescription Summary</h1>";
-              echo "<h4 class='mb-3'>Section A: Patient Details</h4>";?>
-              <hr>
-              <table class="table table-hover" style="overflow:auto">
-                  <thead class="table table-hover">
-                      <tr>
-                          <th>Name</th>
-                          <th>Date of Birth</th>
-                          <th>Age</th>
-                          <th>Gender</th>
-                      </tr>
-                  </thead>
-                  <tbody id = "myTable">
-                 
-                      <tr>
-                          <td><?php echo $name; ?></td>
-                          <td><?php echo $date; ?></td>
-                          <td><?php echo $age; ?></td> 
-                          <td><?php echo $gender; ?></td> 
-                          </td>
-                      </tr>
-                
-                  </tbody>
-              </table>
-              
-              <?php
-          }
-          echo "<div class='col-sm-12'><strong>Current Symptoms</strong></div>";
-          echo "<div class='col-sm-12'>";
-          if (!empty($symptoms)) {
-            // Convert the array of symptoms to a comma-separated string
-            $symptoms_string = implode(", ", $symptoms);
-            $_SESSION["symptoms_string"]=$symptoms_string;
-          
-            // Update the patient table with the new symptoms string
-            $update_query = "UPDATE patient SET symptoms='$symptoms_string' WHERE id=$patient_id";
-            // Replace $patient_id with the actual patient ID
-          
-// Execute the update query
-if ($conn->query($update_query) === TRUE) {
-  // If the update is successful, display the symptoms in a table
-  echo "<table class='table'>";
-  echo "<thead><tr><th>Symptom</th></tr></thead>";
-  echo "<tbody>";
-  foreach ($symptoms as $symptom) {
-      echo "<tr>";
-      echo "<td>" . $symptom . "</td>";
-      echo "</tr>";
-  }
-  echo "</div>";
-
-  echo "</tbody></table>";
-  if (!empty($others)) {
-    // Query the database for drugs associated with this symptom
-    $sql = "SELECT drug_name FROM drug WHERE symptoms LIKE '%" . $others . "%'";
-    $result = mysqli_query($conn, $sql);
-    
-    // If there are matching drugs, display them
-    if (mysqli_num_rows($result) > 0) {
-      echo "<p><b> Other Symptoms: </b>" . $others . "\t&nbsp;\t&nbsp;\t&nbsp;" . $patient['drug_name'] . "</p>";
-  
-      // Update patient table with the extra symptoms and associated drugs
-      $others_with_drugs = $others;
-      while ($patient = mysqli_fetch_assoc($result)) {
-        $others_with_drugs .= ", " . $patient['drug_name'];
-      }
-      $query = "UPDATE patient SET others='$others_with_drugs' WHERE id=$patient_id";
-      $result = mysqli_query($conn, $query);
       
-    } else {
-      // If no matching drugs are found, display a message to the user
-      echo "<p><b> Other Symptoms: </b>" . $others . " </p>";
-  
-      // Update patient table with the extra symptoms
-      $query = "UPDATE patient SET others='$others' WHERE id=$patient_id";
-      $result = mysqli_query($conn, $query);
-    }
-  }
-  
-  // Display the drugs and dosages
-  echo "<form method='post' action='process_prescription.php'>";
-  echo "<table class='table'>";
-  echo "<thead><tr><th>Drugs Available</th><th>Type the Name(s) Drug</th> <th>Dosage</th></tr></thead>";
-  echo "<tbody>";
-  echo "<tr>";
-  echo "<td>";
-  echo "<input type='hidden' class='form-control' value='" . $patient_id . "' id='patient_id' name='patient_id' required>";
- 
- 
-  echo "<select name='drugs[]' multiple>";
-  // Query the database for drugs
-  $sql = "SELECT * FROM drug ORDER BY drug_name ASC";
-  $result = mysqli_query($conn, $sql);
-  while ($row = mysqli_fetch_assoc($result)) {
-      echo "<option value='" . $row['drug_name'] . "'>" . $row['drug_name'] . "</option>";
-  }
-  echo "</select>";
-  echo "</td>";
-  echo "<td>";
-  echo "<textarea name='drugs' rows='3' cols='30' placeholder='Enter name of drugs separated by comma followed by space'></textarea>";
-  echo "</td>";
-  echo "<td>";
-  echo "<textarea name='dosages' rows='3' cols='30' placeholder='Type how each drug  should be taken by patient'></textarea>";
-  echo "</td>";
-  echo "</tr>";
-  echo "</tbody></table>";
-  if (isset($_SESSION['uname'])) {
-    $username = $_SESSION['uname'];
-    $stmt = $conn->prepare("SELECT * FROM doctor WHERE uname = ?");
-    $stmt->bind_param("s", $username);
-    $result = $stmt->execute();
-  
-    if ($result === false) {
-      // Display an error message if the query execution failed
-      echo "<div class='alert alert-danger' role='alert'>Error: " . $stmt->error . "</div>";
-    } else {
-      // Display the doctor's username if the query execution succeeded
-      $doctor = $stmt->get_result()->fetch_assoc();
-      $prescribed_on = date("H:i:s d-m-Y ");
-      echo "<div class='col-sm-12'>";
-      echo "</div>";
-      echo "<p class='list-group-item'><b style='color: green;'>Prescribed by</b><b> " . $doctor['uname'] . "</b>&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  <b style='color: green;'>Prescribed at </b><b>".$prescribed_on." </b></p>";
-      echo "</div>";
-      // Update patient table with prescription details
-      $prescribed_by = $doctor['uname'];
-      $appoint_status = 'Prescribed by ' . $doctor['uname'];
-      $stmt = $conn->prepare("UPDATE patient SET prescribed_by=?, prescribed_on=? WHERE id=?");
-      $stmt->bind_param("ssi", $prescribed_by, $prescribed_on, $patient_id);
-      $stmt->execute();
-      $appoint_id = $_SESSION['appoint_id'];
-      $stmt2 = $conn->prepare("UPDATE appointments SET status=? WHERE id=?");
-      $stmt2->bind_param("si", $appoint_status, $appoint_id);
-      $stmt2->execute(); // Execute the query to update the appointment status
-    }
-  }
-  
-  echo "<br>";
-  echo "<div style='text-align:center;'>";
-  echo "<button type='submit' class='btn btn-primary mb-3'>Proceed to Billing</button>";
-  echo "&nbsp;&nbsp;&nbsp;&nbsp;";
-  echo "<button class='btn btn-danger mb-3' onclick='window.history.back()'>Cancel</button>";
-  echo "</div>";
-  
-  echo "</form>";
-} else {
-  // If the update fails, display an error message
-  echo "Error updating record: " . $conn->error;
-}
+            $id = $_SESSION['patient_id'];
+            $sql2 = "SELECT * FROM patient WHERE id='$id'";
+            $result2 = $mysqli->query($sql2);
 
-          
-          
-echo "</div>";
-echo "</div>";
+            $row = $result2->fetch_assoc();
+            $id = $row['id'];
+            $name = $row['name'];
+            $age = $row['age'];
+            $date = $row['gender'];
+        
+        ?>
 
+        <div class="container">
+            <table class="table table-hover" style="overflow:auto">
+                <thead class="table table-hover">
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Sex</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="myTable">
+                    <tr>
+                        <td><?php echo $row['name']; ?></td>
+                        <td><?php echo $row['age']; ?></td>
+                        <td><?php echo $row['gender']; ?></td>
+                        <td class="btn-group btn-group-justified">
+                            <a href="view_history.php?history=<?php echo $row["id"]; ?>" class="badge text-light bg-secondary">Previous Treatment History</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-}
+        <form method="POST" action="prescribe_diagnosis.php">
+            <input type="hidden" class="form-control" value="<?= $id; ?>" id="patient_id" name="patient_id" placeholder="Patient ID" required>
+            <div class="container py-2">
+                <div class="card ">
+                    <div class="row px-4">
+                        <h5 class="text-center">Diagnosis</h5>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <select name="disease[]" class="form-select" required multiple>
+                                    <option disabled selected><b>Respiratory diseases</b></option>
+                                    <option value="Pneumia">Pneumia</option>
+                                    <option value="TB">TB</option>
+                                    <option value="Pleural">Pleural</option> 
+                                    <option value="Tuberculosis">Tuberculosis</option> 
+                                    <option value="Acute respiratory infection">Acute respiratory infection</option>
+                                    <option value="Upper respiratory tract infection">Upper respiratory tract infection</option>
+                                    <option value="Covid 19">Covid 19</option> 
+                                    <option disabled selected><b>Cardiovascular diseases</b></option>
+                                    <option value="Hypertension">Hypertension</option>
+                                    <option value="Rheumatic heart disease">Rheumatic heart disease</option> 
+                                    <option value="Rheumatic heart fever">Rheumatic heart fever</option>
+                                    <option value="Vascular heart fever">Vascular heart fever</option>
+                                    <option value="Heart attack">Heart attack</option>
+                                    <option disabled selected><b>Gastro intestine diseases</b> </option>
+                                    <option value="Gastritis">Gastritis</option>
+                                    <option value="Pectic ulcer disease">Pectic ulcer disease</option> 
+                                    <option value="Gastrol oesophagal reflus disease">Gastrol oesophagal reflus disease</option>
+                                    <option value="Abnaminal mass">Abnaminal mass</option>
+                                    <option value="Appendix mass">Appendix mass</option> 
+                                    <option value="Tuber ovlian mass">Tuber ovlian mass</option>
+                                    <option disabled selected><b> Extrimites diseases</b></option>
+                                    <option value="Fractures">Fractures</option>
+                                    <option value="Masses">Masses</option> 
+                                    <option value="Cancers">Cancers</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" id="diseaseContainer">
+                                <!-- Duration text areas will be dynamically generated here -->
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="card ">
+                        <div class="row px-4">
+                            <h5 class="text-center">Patient History</h5>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <select name="patient_history[]" class="form-select" required multiple>
+                                        <option value="Drug history">History of Drug history</option>
+                                        <option value="Surgical history">Surgical history</option>
+                                        <option value="Social history">Social history</option>
+                                        <option value="Family history">Family history</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" id="patient_historyContainer">
+                                    <!-- Patient history text areas will be dynamically generated here -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card ">
+                            <div class="row px-4">
+                                <h5 class="text-center">Assigning Drugs  and dosages</h5>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select name="drug[]" class="form-select" required multiple onchange="showNotes(this)">
+                                            <?php
+                                            // Query the database for drugs
+                                            $sql = "SELECT * FROM drug ORDER BY drug_name ASC";
+                                            $result = mysqli_query($mysqli, $sql);
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                echo "<option value='" . $row['drug_name'] . "'>" . $row['drug_name'] . "</option>";
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group" id="drugContainer">
+                                        <!-- Drug dosage text areas will be dynamically generated here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+    <div class="dropdown d-inline-block">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="sendRequestDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Send Test Request
+        </button>
+        <div class="dropdown-menu" aria-labelledby="sendRequestDropdown">
+            <a class="dropdown-item" href="doc_send_to_lab.php?doc_send=<?php echo $id; ?>">Lab Request</a>
+            <a class="dropdown-item" href="doc_radiology_page.php?doc_page=<?php echo $id; ?>">Radiology Request</a>
+            <a class="dropdown-item" href="doc_hiv_test_request.php?doc_hiv_test=<?php echo $id; ?>">HIV Test</a>
+        </div>
+    </div>
 
-// Close the database connection
-$conn->close();
-        }
-?>
+    <div class="dropdown d-inline-block">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="viewResultsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            View Results
+        </button>
+        <div class="dropdown-menu" aria-labelledby="viewResultsDropdown">
+            <a class="dropdown-item" href="View_lab_results.php?view_results=<?php echo $id; ?>">Lab Results</a>
+            <a class="dropdown-item" href="radiology_view.php?viewing=<?php echo $id; ?>">Radiology Results</a>
+            <a class="dropdown-item" href="hiv_test_results.php?hiv_results=<?php echo $id; ?>">HIV Results</a>
+        </div>
+    </div>
 </div>
-</div>
-<?php 
-        include 'footer.php';
-    ?>
-  <!-- Bootstrap JS -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+                    <div class="form-group py-2 text-center">
+                        <button type="submit" class="btn btn-primary" name="submit">Proceed</button>
+                        <a class="btn btn-secondary" href="patient_list_user.php">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script>
+$(document).ready(function() {
+                $('select[name="disease[]"]').change(function() {
+                    var selectedSymptoms = $(this).val();
+                    var diseaseContainer = $('#diseaseContainer');
+                    diseaseContainer.empty();
+
+                    if (selectedSymptoms.length > 0) {
+                    selectedSymptoms.forEach(function(symptom) {
+                        var symptomText = '<span>' + symptom + '</span><br>';
+                        diseaseContainer.append(symptomText);
+                    });
+                    }
+                });
+
+
+
+            $('select[name="patient_history[]"]').change(function() {
+                var selectedPatientHistory = $(this).val();
+                var patientHistoryContainer = $('#patient_historyContainer');
+                patientHistoryContainer.empty();
+
+                if (selectedPatientHistory.length > 0) {
+                    selectedPatientHistory.forEach(function(patientHistory) {
+                        var patientHistoryInput = '<input type="text" class="form-control" name="patient_historyContainer[]" placeholder="Enter patient_history of ' + patientHistory + '"><br>';
+                        patientHistoryContainer.append(patientHistoryInput);
+                    });
+                }
+            });
+
+            $('select[name="drug[]"]').change(function() {
+                var selectedDrug = $(this).val();
+                var drugContainer = $('#drugContainer');
+                drugContainer.empty();
+
+                if (selectedDrug.length > 0) {
+                    selectedDrug.forEach(function(drug) {
+                        var drugInput = '<input type="text" class="form-control" name="drugContainer[]" value="' + drug + '"><br>';
+                        drugContainer.append(drugInput);
+                    });
+                }
+            });
+        });
+    </script>
+
 </body>
+
 </html>
-
-
-<?php 
-    }else {
-        header("Location: home.php");
-        exit();
-    }
-?> 
+<?php
+} else {
+    header("Location: home.php");
+}
+?>

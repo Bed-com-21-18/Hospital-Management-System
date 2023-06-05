@@ -1,21 +1,12 @@
 <?php
 session_start();
 
+include "comfig.php";
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $patient_id = $_POST['patient_id'];
   $results = $_POST['results'];
-  $name = $_SESSION['name'];
-  // Connect to the database
-  $host = 'localhost';
-  $username = 'root';
-  $password = '';
-  $database = 'hms';
-  $conn = mysqli_connect($host, $username, $password, $database);
-
-  // Check if the connection was successful
-  if (!$conn) {
-    die('Connection failed: ' . mysqli_connect_error());
-  }
+  $test = $_POST['test'];
 
   // Check if the user is logged in
   if (isset($_SESSION['uname'])) {
@@ -24,57 +15,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   // Check if the patient ID exists in the patient table
   $sql = "SELECT * FROM patient WHERE id = ?";
-  $stmt = $conn->prepare($sql);
+  $stmt = $mysqli->prepare($sql);
   $stmt->bind_param("s", $patient_id);
   $stmt->execute();
   $result = $stmt->get_result();
 
   if ($result->num_rows === 0) {
     // Display an error message if the patient ID does not exist in the patient table
-    $response = '<div class="alert alert-danger" role="alert">
-      Error: The patient ID does not exist. Please make sure you have entered the ID of a registered patient.
-      <br>
-      <br><button class="btn btn-danger" onclick="history.back()">Go Back</button>
-    </div>';
+    header("Location: lab_form.php?respond=$patient_id&test=$test&error=The patient does not exist. Please make sure you have entered the ID of a registered patient.");
+    exit();
   } else {
-    // Prepare the SQL query to insert the resultss data into the database
-    $sql = "UPDATE patient SET lab_results = ? WHERE id = ?";
+    // Fetch the lab price from the laboratory table based on the test name
+    $sql = "SELECT price FROM laboratory WHERE test_name = ?";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("s", $test);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    if ($result->num_rows === 0) {
+      // Display an error message if the test name does not exist in the laboratory table
+      header("Location: lab_form.php?respond=$patient_id&test=$test&error=The test does not exist in the laboratory.");
+      exit();
+    }
+    
+    // Fetch the associated price
+    $row = $result->fetch_assoc();
+    $lab_price = $row['price'];
+
+    // Prepare the SQL query to update the patient table with the lab price and results
+    $sql = "UPDATE patient SET lab_results = ?, lab_price = ? WHERE id = ?";
 
     // Create a prepared statement
-    $stmt = $conn->prepare($sql);
+    $stmt = $mysqli->prepare($sql);
 
     // Bind the parameters
-    $stmt->bind_param("ss", $results, $patient_id);
+    $stmt->bind_param("sss", $results, $lab_price, $patient_id);
 
     // Execute the SQL query
-if ($stmt->execute()) {
-    // Set a success message if the resultss data was successfully updated
-    $message = 'Success: The resultss request for '.$_SESSION['name']. ' has been sent to the lab.';
-  
-    // Set the session message and redirect back to send_to_lab.php
-    $_SESSION['message'] = $message;
-    // header('Location: lab_results_success.php');
-    // exit();
-    echo "<script>alert('Successfully sent');
-    window.location.href = 'laboratory.php';
-    </script>";
-  } else {
-    // Display an error message if the resultss data could not be updated
-    $response = '<div class="alert alert-danger" role="alert">
-      Error: ' . $sql . '<br>' . mysqli_error($conn) . '
-      <button class="btn btn-danger" onclick="history.back()">Go Back</button>
-    </div>';
-  
-    // Output the response
-    echo $response;
-  }
-  
+    if ($stmt->execute()) {
+      // Display a success message if the results were successfully sent
+      header("Location: lab_form.php?respond=$patient_id&test=$test&success=Test results successfully sent");
+    } else {
+      // Display an error message if there was an error executing the SQL query
+      header("Location: lab_form.php?respond=$patient_id&test=$test&error=Error: " . $stmt->error);
+    }
   }
 
   // Close the database connection
-  mysqli_close($conn);
-
-  // Output the response
-  echo $response;
+  $stmt->close();
+  $mysqli->close();
+  exit();
 }
 ?>

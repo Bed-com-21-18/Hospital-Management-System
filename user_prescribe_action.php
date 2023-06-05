@@ -48,7 +48,7 @@ if (isset($_POST['submit'])) {
 
         $stmt3->execute([$updatedExamination, $patientId]);
 
-        header("Location: user_prescribe.php?patient_id=$patientId&success=Symptoms, measurements, and general examination updated successfully!");
+        header("Location: user_prescribe.php?patient_id=$patientId&success=Symptoms, measurements, and general examination added successfully!");
         exit();
     } catch (PDOException $e) {
         header("Location: user_prescribe.php?patient_id=$patientId&error=Failed to update data: " . $e->getMessage());

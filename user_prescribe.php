@@ -19,6 +19,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
         <div class="P-2">
             <h4 class="text-center bg-light text-secondary p-2">HISTORY TAKING</h4>
         </div>
+        <?php if (isset($_GET['error'])) {?>
+                           <p class="error"><?php echo $_GET['error']; ?></p>
+                           <?php } ?>
+                           
+                       <?php if (isset($_GET['success'])) {?>
+                           <p class="success"><?php echo $_GET['success']; ?></p>
+                           <?php } ?>
 
         <?php
         if (isset($_GET['patient_id'])) {

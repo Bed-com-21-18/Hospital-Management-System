@@ -78,8 +78,9 @@
                                     <td><?php echo $row['messages']; ?></td>
                                     <td><?php echo $row['statu']; ?></td>
                                     <td class="btn-group btn-group-justified">                                       
-                                         <a href="radiology_work.php?proceed=<?php echo $row["patient_id"]; ?>" class="badge bg-primary text-light p-2 mx-1">Proceed</a>
-                                    </td> 
+                                        <a href="radiology_work.php?proceed=<?php echo $row["patient_id"]; ?>&request=<?php echo $row["scan"]; ?>" class="badge bg-primary text-light p-2 mx-1">Proceed</a>
+                                    </td>
+
                                 </tr>
                             <?php }?>
                             </tbody>

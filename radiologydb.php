@@ -92,37 +92,59 @@
 
 
 
-    if(isset($_POST['add_rad'])){
+    if (isset($_POST['add_rad'])) {
         $comments = $_POST['comments'];
         $dates = $_POST['dates'];
         $patient_id = $_POST['patient_id'];
         $patient_name = $_POST['patient_name'];
         $statu = $_POST['statu'];
-    
+        $request = $_POST['request'];
         $photo = $_FILES['photo']['name'];
-        $upload = "uploads/".$photo;
-
-        
-        $sql3 = "UPDATE radiology SET statu='$statu' WHERE patient_id='$patient_id'";
-        $result3 = $mysqli->query($sql3);
+        $upload = "uploads/" . $photo;
     
-       $sql = "INSERT INTO add_radiology(photo, comments, dates, patient_id, patient_name) 
-       VALUES('$upload', '$comments', '$dates', '$patient_id', '$patient_name')";
+        // Fetch the lab price from the laboratory table based on the test name
+        $sql = "SELECT price FROM laboratory WHERE test_name = ?";
+        $stmt = $mysqli->prepare($sql);
+        $stmt->bind_param("s", $request);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        if ($result->num_rows === 0) {
+            // Display an error message if the test name does not exist in the laboratory table
+            header("Location: radiology_page.php?error=The radiology test does not exist in the laboratory.");
+            exit();
+        }
+    
+        // Fetch the associated price
+        $row = $result->fetch_assoc();
+        $rad_price = $row['price'];
+    
+        // Prepare the SQL query to update the patient table with the lab price and results
+        $sql1 = "UPDATE patient SET rad_price = ? WHERE id = ?";
+        $stmt1 = $mysqli->prepare($sql1);
+        $stmt1->bind_param("ss", $rad_price, $patient_id);
+    
+        // Prepare the SQL query to update the radiology table with the status
+        $sql2 = "UPDATE radiology SET statu = ? WHERE patient_id = ?";
+        $stmt2 = $mysqli->prepare($sql2);
+        $stmt2->bind_param("ss", $statu, $patient_id);
+    
+        // Prepare the SQL query to insert into add_radiology table
+        $sql3 = "INSERT INTO add_radiology(photo, comments, dates, patient_id, patient_name) VALUES (?, ?, ?, ?, ?)";
+        $stmt3 = $mysqli->prepare($sql3);
+        $stmt3->bind_param("sssss", $upload, $comments, $dates, $patient_id, $patient_name);
     
         move_uploaded_file($_FILES['photo']['tmp_name'], $upload);
     
-         if ($mysqli->query($sql) === TRUE) {
-            // header ("Location: radiology_work.php?success=Added succesfully");
-            // exit();
+        // Execute the queries and handle the results
+        if ($stmt1->execute() && $stmt2->execute() && $stmt3->execute()) {
             echo "<script>alert('Successfully Submitted');
-            window.location.href = 'radiology.php';
-            </script>";
-         } else {
-         //echo "Error: " . $sql . "<br>" . $mysqli->error;
-            header ("Location: radiology_work.php?error=unknown error&$user_data");
+                window.location.href = 'radiology.php';
+                </script>";
+        } else {
+            header("Location: radiology_work.php?error=Unknown error&$user_data");
             exit();
-    
-         }
         }
-
+    }
+    
 ?>

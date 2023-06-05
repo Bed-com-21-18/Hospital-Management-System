@@ -80,8 +80,9 @@ if ($result2->num_rows > 0) {
                         <td><?php echo $row["tests"]; ?></td>
                         <td><?php echo $row["lab_results"]; ?></td>
                         <td class='btn-group btn-group-justified'>                                    
-									<a href='lab_form.php?respond=<?php echo $row["id"]; ?>' class='badge bg-success'>Proceed</a>
-							</td>
+                            <a href='lab_form.php?respond=<?php echo $row["id"]; ?>&test=<?php echo $row["tests"]; ?>' class='badge bg-success'>Proceed</a>
+                            </td>
+
                     </tr>
                     <?php
                 }

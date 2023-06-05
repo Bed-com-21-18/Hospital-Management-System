@@ -30,9 +30,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                <li class="nav-item dropdown">
                   <a href="#view-bill" class="nav-link p-2 active" data-toggle="tab">View Bills</a>
                </li>
-               
                <li class="nav-item dropdown">
-                  <a href="#add-bill" class="nav-link p-2" data-toggle="tab">Add New Bill</a>
+                  <a href="bill_service.php" class="nav-link p-2">Bill Service</a>
                </li>
                
             </ul>
@@ -47,7 +46,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
             <?php include "bills.php"; ?>
          </div>
          <div class="tab-pane fade " id="add-bill">
-            <?php include " "; ?>
+            <?php include "bill_service.php"; ?>
          </div>
       </div>
    </div>

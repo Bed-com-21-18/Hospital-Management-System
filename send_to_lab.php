@@ -103,6 +103,12 @@ form .error {
       <div class="col-md-6">
         <form method="post" action="send_action.php" class="border p-3 rounded">
           <h1 class="mb-3 text-center"><i class="fas fa-calendar-plus"></i> Lab Test Request form</h1>
+          <?php if (isset($_GET['error'])) {?>
+                <p class="error text-center"><?php echo $_GET['error']; ?></p>
+              <?php } ?>
+              <?php if (isset($_GET['success'])) {?>
+                <p class="success text-center"><?php echo $_GET['success']; ?></p>
+              <?php } ?>
           <?php if(isset($_SESSION['success_message'])) { ?>
           <div class="alert alert-success" role="alert">
             <?php echo $_SESSION['success_message']; ?>
@@ -120,8 +126,8 @@ form .error {
           </div>
           <div class="mb-3">
             <label for="test" class="form-label"><i class="fas fa-comment-medical"></i> Test for:</label>
-              <select class="form-control" id="test_name" name="test_name" required>
-                <option value="">Select a test</option>
+              <select class="form-control" id="test_name" name="test_name"select required>
+                <option disabled selected>Select a test</option>
                 <option value="Haematology">Haematology</option>
                 <option value="Biochemistry">Biochemistry</option>
                 <option value="Microbiology">Microbiology</option>

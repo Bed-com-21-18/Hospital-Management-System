@@ -3,8 +3,6 @@
     include "comfig.php";
     include "unavbar.php";
     if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
-    // retrieve the symptoms and patient ID stored in session
-    
     if (isset($_GET['patient_id'])) {
         $id = $_GET['patient_id'];
         $sql2 = "SELECT * FROM patient WHERE id='$id'";
@@ -33,16 +31,21 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.10.0/jspdf.umd.min.js"></script>
   </head>
+  <style>
+    .container {
+        padding: 15px;
+        border: 3px solid black;
+        box-sizing: border-box;
+
+    }
+</style>
+
   <body>
     <div class="container mt-5">
       <div class="row">
         <div class="col-sm-12">
           <?php
           if (isset($_SESSION['uname'])) {
-                //updating total bills
-                $stmt = $mysqli->prepare("UPDATE patient SET history=? WHERE id=?");
-                $stmt->bind_param("ss", $symptoms_string, $patient_id);
-                $stmt->execute();
           }
 
           // Prepare and execute the query
@@ -60,12 +63,22 @@
                       $name = $patient['name'];
                       $age = $patient['age'];
                       $gender = $patient['gender'];
-                      $date = $patient['date']; 
+                      $date = $patient['date'];
+                      $lab_bill = $patient['lab_price'];
+                      $tests = $patient['tests']; 
+                      $rad_bill = $patient['rad_price']; 
                       echo "<h1 class='mb-4'>Prescription, Dosage and Billing Summary</h1>";
                       ?>
                         <table class="table table-hover" style="overflow:auto">
                             <thead class="table table-hover">
                                 <tr>
+                                <?php if (isset($_GET['error'])) {?>
+                           <p class="error"><?php echo $_GET['error']; ?></p>
+                           <?php } ?>
+                           
+                       <?php if (isset($_GET['success'])) {?>
+                           <p class="success"><?php echo $_GET['success']; ?></p>
+                           <?php } ?>
                                     <th>Name</th>
                                     <th>Date of Birth</th>
                                     <th>Age</th>
@@ -125,14 +138,23 @@
                     }
                 }
                 $servicefee =1000;
-                $total_bill = $total_amount + $servicefee;
+                $total_bill = $total_amount + $servicefee + $rad_bill +$lab_bill;
                 echo "</tbody>";
                 echo "</table>";
-                echo "<p class='lead'><b>Dosage :</b> <strong>" . $dosage . "</strong></p>";
-
-                echo "<p class='lead'>The bill for drugs fee: <strong> MWK" . $total_amount . "</strong></p>";
-                echo "<p class='lead'>The service fee: <strong> MWK" . $servicefee . "</strong></p>";
-                echo "<p class='lead'>Total Bill:  <strong>MWK" . $total_bill . " <strong></p>";
+                
+                 echo "<p class='lead'><b>Dosage :</b> <strong>" . $dosage . "</strong></p>";
+                if ($lab_bill > 0) {
+                  echo "<p class='lead'>The bill for laboratory test: <b>$tests</b> <strong> MWK" . $lab_bill . "</strong></p>";
+              }
+              
+              if ($rad_bill > 0) {
+                  echo "<p class='lead'>The bill for Radiology test: <strong> MWK" . $rad_bill . "</strong></p>";
+              }
+              
+              echo "<p class='lead'>The bill for drugs fee: <strong> MWK" . $total_amount . "</strong></p>";
+              echo "<p class='lead'>The service fee: <strong> MWK" . $servicefee . "</strong></p>";
+              echo "<p class='lead'>Total Bill:  <strong>MWK" . $total_bill . " <strong></p>";
+              
                 
                 //updating total bills
                 $stmt = $mysqli->prepare("UPDATE patient SET total_bills=? WHERE id=?");
@@ -156,9 +178,8 @@
                       // Display the user's username if the query execution succeeded
                       $user = $stmt->get_result()->fetch_assoc();
                       $prescribed_on = date("H:i:s d-m-Y ");
-                      echo "<p class='list-group-item'><b style='color: green;'>Prescribed by</b><b> " . $user['uname'] . "</b>&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  <b style='color: green;'>Prescribed at </b><b>".$prescribed_on." </b></p>";
-
-                      echo "<a href='download_pdf.php' class='btn btn-primary'>Print</a>";
+                      echo "<p class='list-group-item'><b style='color: green;'>Prescribed by</b><b> " . $user['uname'] . "   </b>&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  <b style='color: green;'>Prescribed at </b><b>".$prescribed_on." </b></p>";
+                      echo "<a href='download_pdf.php?download=" . $id . "' class='btn btn-primary'>Print</a>";
                       echo"&nbsp";  echo"&nbsp";  echo"&nbsp";  echo"&nbsp"; 
                       echo"&nbsp";  echo"&nbsp";  echo"&nbsp";  echo"&nbsp"; 
                       echo "<a href='nurse_dashboard.php' class='btn btn-primary'>Go to Dashboard</a>";
@@ -169,6 +190,7 @@
         </div>
       </div>
     </div>
+
           <!-- jQuery -->
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
           <!-- Bootstrap JavaScript -->

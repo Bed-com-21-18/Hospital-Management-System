@@ -3,16 +3,16 @@ include "comfig.php";
 
 if (isset($_POST['submit'])) {
     $patientId = $_POST["patient_id"];
-    $history = $_POST["history"];
+    $history = $_POST["disease"];
     $patient_history = $_POST["patient_history"];
     $drugContainer = $_POST["drugContainer"];
     $patient_historyContainer = $_POST["patient_historyContainer"];
     $drug = $_POST["drug"];
 
     // Prepare the SQL statements
-    $updateHistorySql = "UPDATE patient SET history = ? WHERE id = ?";
-    $updatePatientHistorySql  = "UPDATE patient SET drug = ? WHERE id = ?";
-    $updateDrugSql= "UPDATE patient SET bio_history = ? WHERE id = ?";
+    $updateHistorySql = "UPDATE patient SET disease = ? WHERE id = ?";
+    $updateDrugSql = "UPDATE patient SET bio_history = ? WHERE id = ?";
+    $updatePatientHistorySql = "UPDATE patient SET drug = ? WHERE id = ?";
     $updateDosageSql = "UPDATE patient SET dosage = ? WHERE id = ?";
 
     try {
