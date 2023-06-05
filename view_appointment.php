@@ -23,19 +23,9 @@
         header("Location: doctor_login.php?error=You Logged out from session, Login again");
         exit();
    }
-    // Connect to the database
-    $host = 'localhost';
-    $username = 'root';
-    $password = '';
-    $database = 'hms';
-    $conn = mysqli_connect($host, $username, $password, $database);
-    // Check if the connection was successful
-    if (!$conn) {
-        die('Connection failed: ' . mysqli_connect_error());
-    }
-
+   
     $sql = "SELECT * FROM doctor WHERE uname = ?";
-    $stmt = $conn->prepare($sql);
+    $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("s", $_SESSION['uname']);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -46,7 +36,7 @@
 
         // Prepare the SQL query to retrieve appointments
         $sql = "SELECT * FROM appointments WHERE professional = ? ORDER BY id DESC";
-        $stmt = $conn->prepare($sql);
+        $stmt = $mysqli->prepare($sql);
         $stmt->bind_param("s", $professional);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -101,7 +91,7 @@
     }
 
     // Close the database connection
-    mysqli_close($conn);
+    mysqli_close($mysqli);
     
     ?>
   </div>

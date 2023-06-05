@@ -14,7 +14,7 @@
       <!--NavBar-->
       <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
             <div class="container">
-                <h5 class="navbar-brand"><i>HOSPITAL MANAGEMENT SYSTEM</i></h5>
+                <h5 class="navbar-brand">HOSPITAL MANAGEMENT SYSTEM</h5>
                 <button 
                 class="navbar-toggler" 
                 type="button" 

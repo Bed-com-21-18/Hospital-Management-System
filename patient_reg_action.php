@@ -2,12 +2,7 @@
 // Connect to the database
 include 'comfig.php';
 
-// Check connection
-if ($conn->connect_error) {
-die("Connection failed: " . $conn->connect_error);
-}
- 
-// $conn = new mysqli("localhost", "root", "", "hospital-management-system");
+// inserting patient details into the database");
 if(isset($_POST['add'])){
     $name=$_POST['name'];
     $gender=$_POST['gender'];

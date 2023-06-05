@@ -70,15 +70,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 
 			<tbody  id = "myTable">
 				<?php
-				// Connect to the database
-				$conn = new mysqli("localhost", "root", "", "hms");
-
-				// Check connection
-				if ($conn->connect_error) {
-					die("Connection failed: " . $conn->connect_error);
-				}
+				
                 $query = "SELECT * FROM patient ORDER BY id DESC";
-                $stmt = $conn->prepare($query);
+                $stmt = $mysqli->prepare($query);
                 $stmt->execute();
                 $result = $stmt->get_result();
 
@@ -105,7 +99,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 				}
                     
 				// Close the database connection
-				$conn->close();
+				$mysqli->close();
                         
 				?>
 

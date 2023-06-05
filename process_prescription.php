@@ -2,20 +2,6 @@
 include 'doctor_regdb.php';
 include 'comfig.php';
 
-// Database configuration
-$host = 'localhost';
-$db_name = 'hms';
-$username = 'root';
-$password = '';
-
-// Create a new instance of mysqli
-$mysqli = new mysqli($host, $username, $password, $db_name);
-
-// Check the connection
-if ($mysqli->connect_error) {
-    die("Connection failed: " . $mysqli->connect_error);
-}
-
 if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
         // Retrieve the drugs and dosages from the form submission
         $drugs = $_POST['drugs'];

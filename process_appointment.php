@@ -13,25 +13,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $reason = $_POST['reason'];
   $booked_at = date("H:i:s d-m-Y ");
 
-  // Connect to the database
-  $host = 'localhost';
-  $usernam = 'root';
-  $password = '';
-  $database = 'hms';
-  $conn = mysqli_connect($host, $usernam, $password, $database);
-
-  // Check if the connection was successful
-  if (!$conn) {
-    die('Connection failed: ' . mysqli_connect_error());
-  }
-
+  
   // Check if the user is logged in
     $username = $_SESSION['uname'];
   
 
   // Check if the patient ID exists in the patient table
   $sql = "SELECT * FROM patient WHERE id = ?";
-  $stmt = $conn->prepare($sql);
+  $stmt = $mysqli->prepare($sql);
   $stmt->bind_param("s", $patient_id);
   $stmt->execute();
   $result = $stmt->get_result();
@@ -49,7 +38,7 @@ $sql = "INSERT INTO appointments (patient_id, name, date, time, professional, re
 VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 // Create a prepared statement
-$stmt = $conn->prepare($sql);
+$stmt = $mysqli->prepare($sql);
 
 // Bind the parameters
 $stmt->bind_param("ssssssss", $patient_id, $name, $date, $time, $professional, $reason, $username, $booked_at);
@@ -66,14 +55,14 @@ $result = $stmt->execute();
     } else {
       // Display an error message if the appointment booking failed
       echo '<div class="alert alert-danger" role="alert">
-        Error: ' . $sql . '<br>' . mysqli_error($conn) . '
+        Error: ' . $sql . '<br>' . mysqli_error($mysqli) . '
         <button class="btn btn-danger" onclick="history.back()">Go Back</button>
       </div>';
     }
   }
 
   // Close the database connection
-  mysqli_close($conn);
+  mysqli_close($mysqli);
 }
 }else {
   header("Location: home.php");

@@ -1,17 +1,5 @@
 <?php
 
-// Connect to the database
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "hms";
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-
 // If the user has submitted the form
     // Get the drug name, symptoms, and price from the form
     $id = $_POST['drug_id'];
@@ -20,12 +8,12 @@ if ($conn->connect_error) {
     $status = $_POST['status'];
     // Check if drug already exists in the database
     $check_sql = "SELECT * FROM drug WHERE drug_name = '$drug_name'";
-    $check_result = $conn->query($check_sql);
+    $check_result = $mysqli->query($check_sql);
         
     if ($check_result->num_rows > 0) {
         // Update the drug in the database
         $sql = "UPDATE drug SET drug_name = '$drug_name', drug_price2 = '$drug_price', status = '$status' WHERE id = '$id'";
-        if ($conn->query($sql) === TRUE) {
+        if ($mysqli->query($sql) === TRUE) {
             header('location: update_success.php');
             exit; // Exit to prevent further execution
         }
@@ -41,6 +29,6 @@ if ($conn->connect_error) {
 
 
 // Close the database connection
-$conn->close();
+$mysqli->close();
 
 ?>
