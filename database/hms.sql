@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2023 at 05:44 PM
+-- Generation Time: Jun 06, 2023 at 06:11 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -286,10 +286,10 @@ CREATE TABLE `patient` (
   `date` date NOT NULL,
   `gender` varchar(10) NOT NULL,
   `age` int(2) NOT NULL,
-  `phoneNumber` int(10) NOT NULL,
-  `district` varchar(100) NOT NULL,
-  `village` varchar(100) NOT NULL,
-  `residential` varchar(100) NOT NULL,
+  `address` text NOT NULL,
+  `next_of_kin` varchar(100) NOT NULL,
+  `religion` varchar(100) NOT NULL,
+  `occupation` varchar(100) NOT NULL,
   `others` text DEFAULT NULL,
   `symptoms` text DEFAULT NULL,
   `measurement` text DEFAULT NULL,
@@ -317,22 +317,23 @@ CREATE TABLE `patient` (
 -- Dumping data for table `patient`
 --
 
-INSERT INTO `patient` (`id`, `name`, `date`, `gender`, `age`, `phoneNumber`, `district`, `village`, `residential`, `others`, `symptoms`, `measurement`, `examination`, `disease`, `bio_history`, `drug`, `dosage`, `drug_given_by`, `discharge_status`, `drug_status`, `prescribed_by`, `prescribed_on`, `total_bills`, `status`, `tests`, `ward_bed`, `discharge_date`, `lab_results`, `lab_price`, `rad_price`) VALUES
-(1, 'Chiso Bwanali', '2458-09-09', 'female', 20, 888678728, 'Lilongwe', 'Kabudula', 'Chikanda', 'poiuytrew', 'Fever:1 day ago', 'Temperature:67', 'unconscious:need serious attention', NULL, 'Family history:heart surgery', 'Acetymethrin,Amoxycilin      ', 'Acetymethrin 2 morn,Amoxycilin  2 morn    ', '', '', '', 'chama', '16:24:35 08-05-2023 ', 4000, 'Paid Fully', 'Test for TB', NULL, NULL, NULL, NULL, NULL),
-(2, 'Chiso Bwanali', '1100-09-02', 'female', 17, 996348737, 'Lilongwe', 'Kachoka', 'Matawale', 'rtkdjrsgeafken', 'Fatigue, Headache', NULL, NULL, NULL, NULL, ', Asprin, Parapain, Doxycyclin, Fragel', '1 morn afternoon and evening\r\n2 jfdkslfgh', 'Mary Juma', '', 'Medication Given', 'Mary Juma', '19:00:32 18-05-2023 ', 24447, 'paid fully', 'Test for Malaria and TB', NULL, NULL, NULL, NULL, NULL),
-(3, 'Gomboz Tech', '2020-02-02', 'male', 54, 881955791, 'Dowa', 'Kachoka', 'Kalimbuka', 'lskdfj', 'Cough:2 days ago', 'Temperature:67', 'alert:Wakomoka', NULL, NULL, '', 'Array', '', '', '', 'Charle Cee', '15:12:00 18-05-2023 ', 6407, 'not paid', 'Tets for HIV', NULL, NULL, NULL, NULL, 30000),
-(4, 'Edson Magombo', '2020-08-09', 'male', 19, 997740566, 'Dowa', 'Mponela', 'Nason', 'palibe', 'Muscle aches, Loss of appetite, Loss of taste', NULL, NULL, NULL, NULL, 'Amoxycilin, Aspirin, Buffen, Oxygen, Paracetamol', 'wretjjhgfdsadsfghgjh\r\ndsfghjkhgfdsasdsfdgfh\r\nfdgfhgfgdsasdsfg', '', '', 'Medication Given', NULL, '17:12:50 24-05-2023 ', 18300, 'Paid Fully', 'Test for HIV', NULL, NULL, 'HIV NEGATIVE', NULL, NULL),
-(5, 'Avio', '2020-02-02', 'male', 11, 2147483647, 'Phalombe', 'olala', 'Old Naisi', 'Malungo', 'Fever:2 days ago,Cough:2 days ago', 'Pulse rate:65,Respiratory rate:2', 'pale:dfghkli', NULL, 'Family history:weewewweew', 'Acetymethrin,Aspirin ', 'Acetymethrin 2khgfgf,Aspirin 5fdgdf', '', '', '', NULL, '03:29:42 04-06-2023 ', 4300, 'Paid Fully', 'Test for HIV', NULL, NULL, NULL, NULL, NULL),
-(7, 'Mary Banda', '1999-04-07', 'female', 10, 882595892, 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', 'Malungo', 'Shortness of breath, Loss of appetite', NULL, NULL, NULL, NULL, '', '', '', '', '', 'Charle Cee', '00:48:42 16-05-2023 ', 3613, 'Paid Fully', 'Test for AIDS', NULL, NULL, 'Malaria Negative, HIV Negative, and TB Positive', NULL, NULL),
-(8, 'Maureen', '1998-03-12', 'female', 12, 882595892, 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, 'Nausea, Vomiting', NULL, NULL, NULL, NULL, 'Oxygen, Tumbocid, Aspirin', 'kdffjgnkavskjbdvnjvdjsbb,\r\nbzXVb zdgvabszc.\r\nhdsfbsjdkdhgsvjdl', '', '', '', 'ida', '16:55:48 24-05-2023 ', 16300, 'Paid Fully', 'Test for HIV and AIDS', NULL, NULL, NULL, NULL, NULL),
-(9, 'Zione Muliya', '1933-12-12', 'female', 90, 2147483647, 'Bangwe', 'Blantyre', 'Nyambadwe', 'Chibayo', 'Cough', NULL, NULL, NULL, NULL, 'Buffen', '', '', '', '', 'ida', '15:27:15 02-06-2023 ', 2000, 'not paid', 'Tets for Hiv', NULL, NULL, NULL, NULL, NULL),
-(11, 'Charle Cee Graphix', '1988-02-21', 'Female', 35, 882595892, 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, 'Fever:2 days ago', 'Temperature:65', 'pale:need serious attention', 'Pneumia,TB,Pleural', 'Family history:heart surgery', 'Amoxycilin      ,Aspirin ', 'Amoxycilin      dsfghhgfdsa,Aspirin  2 per day   ', '', '', '', 'Charle Cee', '19:43:06 17-05-2023 ', 24800, 'not paid', 'Parasitology', NULL, NULL, 'Parasitology: Not Found', 1500, 20000),
-(12, 'OMEXIE CHAMA', '1999-12-09', 'Female', 24, 2147483647, 'Phalombe', 'Muwake', 'Zomba', 'MaLungo', 'Shortness of breath:2 days ago,Fatigue:2 days', 'Temperature:67,Blood pressure:89', 'unconscious:need serious attention', 'Pneumia', 'Drug history:heart surgery', 'Acetymethrin,Amoxycilin      ', 'Acetymethrin 2 morning, afternoon and evening,Amoxycilin      dsfghhgfdsa', '', '', '', 'Mary Juma', '12:33:36 20-05-2023 ', 4000, 'not paid', 'Test for Malaria', NULL, NULL, 'Malaria negative results', NULL, NULL),
-(13, 'mary kama', '2023-05-08', 'Female', 12, 2147483647, 'muwake', 'Muwake', 'Zomba', NULL, 'General body aches, Skin rash, Allergy', NULL, NULL, NULL, NULL, '', '', '', '', '', 'ida', '16:54:09 24-05-2023 ', 4676, 'not paid', 'Test for HIv', NULL, NULL, 'HIV negative results', NULL, NULL),
-(14, 'Gilson Chongo', '1990-05-14', 'Male', 33, 2147483647, 'Bangwe', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, 'Cough:2 days ago', 'Temperature:89', 'pale:Wakomoka', 'Pneumia,TB', 'Drug history:heart surgery', 'Acetymethrin,Amoxycilin      ', 'Acetymethrin 2 morn ,Amoxycilin      dsfghhgfdsa', '', '', '', 'Mary Juma', '15:13:34 17-05-2023 ', 4000, 'Paid Fully', NULL, NULL, NULL, 'Malaria results- negative', NULL, NULL),
-(15, 'Precious Mlimbika', '1998-05-16', 'Male', 25, 996842414, 'Lilongwe', 'Govala', 'Kufumbi', 'b, Azithromycin, Intoxcyclin, Oxygen', 'Fever:2 days ago', 'Temperature:23', 'pale:need serious attention', 'Pneumia,Pleural', 'Family history:heart surgery', 'Acetymethrin,Amoxycilin      ', 'Acetymethrin 2 morning, afternoon and evening,Amoxycilin      dsfghhgfdsa', '', '', '', 'Charle Cee', '18:03:46 16-05-2023 ', 4000, 'Paid Fully', 'Test for AIds', NULL, NULL, 'AIDS NEGATIVE', NULL, NULL),
-(16, 'Ruben Dias', '2000-05-16', 'Male', 23, 435678, 'sfdghj', 'sdfgfhj', 'fdgfhyu', NULL, 'Fever:2 days ago', 'Pulse rate:89', 'pale:need serious attention', NULL, 'Acetymethrin', 'Drug history:Achikuda', '', '', '', '', 'Mary Juma', '12:48:01 20-05-2023 ', 0, 'Paid Fully', 'Biochemistry', NULL, NULL, 'AIDS negative', NULL, NULL),
-(17, 'Jenifer Lopez', '1978-05-17', 'Female', 45, 34567890, 'Zambia', 'Zingwangwa', 'Zimbabwe', NULL, 'Fever:2 days ago', 'Temperature:89', 'pale:need serious attention', 'Tuberculosis,Acute respiratory infection,Upper respiratory tract infection,Covid 19', 'Social history:heart surgery', 'Aspirin ,Buffen,Carbamazepine', 'Aspirin  2 per day   ,Buffen 5 per day,Carbamazepine 5 per 2 days', '', '', '', 'ida', '23:34:02 01-06-2023 ', 5630, 'not paid', 'Haematology', NULL, NULL, 'Blood Test: Negative', 1000, NULL);
+INSERT INTO `patient` (`id`, `name`, `date`, `gender`, `age`, `address`, `next_of_kin`, `religion`, `occupation`, `others`, `symptoms`, `measurement`, `examination`, `disease`, `bio_history`, `drug`, `dosage`, `drug_given_by`, `discharge_status`, `drug_status`, `prescribed_by`, `prescribed_on`, `total_bills`, `status`, `tests`, `ward_bed`, `discharge_date`, `lab_results`, `lab_price`, `rad_price`) VALUES
+(1, 'Chiso Bwanali', '2458-09-09', 'female', 20, '888678728', 'Lilongwe', 'Kabudula', 'Chikanda', 'poiuytrew', 'Fever:1 day ago', 'Temperature:67', 'unconscious:need serious attention', NULL, 'Family history:heart surgery', 'Acetymethrin,Amoxycilin      ', 'Acetymethrin 2 morn,Amoxycilin  2 morn    ', '', '', '', 'chama', '16:24:35 08-05-2023 ', 4000, 'Paid Fully', 'Test for TB', NULL, NULL, NULL, NULL, NULL),
+(2, 'Chiso Bwanali', '1100-09-02', 'female', 17, '996348737', 'Lilongwe', 'Kachoka', 'Matawale', 'rtkdjrsgeafken', 'Fatigue, Headache', NULL, NULL, NULL, NULL, ', Asprin, Parapain, Doxycyclin, Fragel', '1 morn afternoon and evening\r\n2 jfdkslfgh', 'Mary Juma', '', 'Medication Given', 'Mary Juma', '19:00:32 18-05-2023 ', 24447, 'paid fully', 'Test for Malaria and TB', NULL, NULL, NULL, NULL, NULL),
+(3, 'Gomboz Tech', '2020-02-02', 'male', 54, '881955791', 'Dowa', 'Kachoka', 'Kalimbuka', 'lskdfj', 'Cough:2 days ago', 'Temperature:67', 'alert:Wakomoka', NULL, NULL, '', 'Array', '', '', '', 'Charle Cee', '15:12:00 18-05-2023 ', 6407, 'not paid', 'Tets for HIV', NULL, NULL, NULL, NULL, 30000),
+(4, 'Edson Magombo', '2020-08-09', 'male', 19, '997740566', 'Dowa', 'Mponela', 'Nason', 'palibe', 'Muscle aches, Loss of appetite, Loss of taste', NULL, NULL, NULL, NULL, 'Amoxycilin, Aspirin, Buffen, Oxygen, Paracetamol', 'wretjjhgfdsadsfghgjh\r\ndsfghjkhgfdsasdsfdgfh\r\nfdgfhgfgdsasdsfg', '', '', 'Medication Given', NULL, '17:12:50 24-05-2023 ', 18300, 'Paid Fully', 'Test for HIV', NULL, NULL, 'HIV NEGATIVE', NULL, NULL),
+(5, 'Avio', '2020-02-02', 'male', 11, '2147483647', 'Phalombe', 'olala', 'Old Naisi', 'Malungo', 'Fever:2 days ago,Cough:2 days ago', 'Pulse rate:65,Respiratory rate:2', 'pale:dfghkli', NULL, 'Family history:weewewweew', 'Acetymethrin,Aspirin ', 'Acetymethrin 2khgfgf,Aspirin 5fdgdf', '', '', '', NULL, '03:29:42 04-06-2023 ', 4300, 'Paid Fully', 'Test for HIV', NULL, NULL, NULL, NULL, NULL),
+(7, 'Mary Banda', '1999-04-07', 'female', 10, '882595892', 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', 'Malungo', 'Shortness of breath:2 days ago', 'Temperature:68988', 'unconscious:adsryioo', NULL, 'Drug history:', '', '', '', '', '', 'Charle Cee', '00:48:42 16-05-2023 ', 3613, 'Paid Fully', 'Test for AIDS', NULL, NULL, 'Malaria Negative, HIV Negative, and TB Positive', NULL, NULL),
+(8, 'Maureen', '1998-03-12', 'female', 12, '882595892', 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, 'Nausea, Vomiting', NULL, NULL, NULL, NULL, 'Oxygen, Tumbocid, Aspirin', 'kdffjgnkavskjbdvnjvdjsbb,\r\nbzXVb zdgvabszc.\r\nhdsfbsjdkdhgsvjdl', '', '', '', 'ida', '16:55:48 24-05-2023 ', 16300, 'Paid Fully', 'Test for HIV and AIDS', NULL, NULL, NULL, NULL, NULL),
+(9, 'Zione Muliya', '1933-12-12', 'female', 90, '2147483647', 'Bangwe', 'Blantyre', 'Nyambadwe', 'Chibayo', 'Cough', NULL, NULL, NULL, NULL, 'Buffen', '', '', '', '', 'ida', '15:27:15 02-06-2023 ', 2000, 'not paid', 'Tets for Hiv', NULL, NULL, NULL, NULL, NULL),
+(11, 'Charle Cee Graphix', '1988-02-21', 'Female', 35, '882595892', 'Zomba', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, 'Fever:2 days ago', 'Temperature:65', 'pale:need serious attention', 'Pneumia,TB,Pleural', 'Family history:heart surgery', 'Amoxycilin      ,Aspirin ', 'Amoxycilin      dsfghhgfdsa,Aspirin  2 per day   ', '', '', '', 'Charle Cee', '19:43:06 17-05-2023 ', 24800, 'not paid', 'Parasitology', NULL, NULL, 'Parasitology: Not Found', 1500, 20000),
+(12, 'OMEXIE CHAMA', '1999-12-09', 'Female', 24, '2147483647', 'Phalombe', 'Muwake', 'Zomba', 'MaLungo', 'Fever:2 days ago,Cough:2 days ago', 'Temperature:6798999,Blood pressure:67', 'alert:yttttttt', 'Pneumia', 'Drug history:heart surgery', 'Acetymethrin,Amoxycilin      ', 'Acetymethrin 2 morning, afternoon and evening,Amoxycilin      dsfghhgfdsa', '', '', '', 'Mary Juma', '12:33:36 20-05-2023 ', 4000, 'not paid', 'Test for Malaria', NULL, NULL, 'Malaria negative results', NULL, NULL),
+(13, 'mary kama', '2023-05-08', 'Female', 12, '2147483647', 'muwake', 'Muwake', 'Zomba', NULL, 'General body aches, Skin rash, Allergy', NULL, NULL, NULL, NULL, '', '', '', '', '', 'ida', '16:54:09 24-05-2023 ', 4676, 'not paid', 'Test for HIv', NULL, NULL, 'HIV negative results', NULL, NULL),
+(14, 'Gilson Chongo', '1990-05-14', 'Male', 33, '2147483647', 'Bangwe', 'Chikanda', 'university of malawi, po box 280, zomba', NULL, 'Cough:2 days ago', 'Temperature:89', 'pale:Wakomoka', 'Pneumia,TB', 'Drug history:heart surgery', 'Acetymethrin,Amoxycilin      ', 'Acetymethrin 2 morn ,Amoxycilin      dsfghhgfdsa', '', '', '', 'Mary Juma', '15:13:34 17-05-2023 ', 4000, 'Paid Fully', NULL, NULL, NULL, 'Malaria results- negative', NULL, NULL),
+(15, 'Precious Mlimbika', '1998-05-16', 'Male', 25, '996842414', 'Lilongwe', 'Govala', 'Kufumbi', 'b, Azithromycin, Intoxcyclin, Oxygen', 'Fever:2 days ago', 'Temperature:23', 'pale:need serious attention', 'Pneumia,Pleural', 'Family history:heart surgery', 'Acetymethrin,Amoxycilin      ', 'Acetymethrin 2 morning, afternoon and evening,Amoxycilin      dsfghhgfdsa', '', '', '', 'Charle Cee', '18:03:46 16-05-2023 ', 4000, 'Paid Fully', 'Test for AIds', NULL, NULL, 'AIDS NEGATIVE', NULL, NULL),
+(16, 'Ruben Dias', '2000-05-16', 'Male', 23, '435678', 'sfdghj', 'sdfgfhj', 'fdgfhyu', NULL, 'Fever:2 days ago', 'Pulse rate:89', 'pale:need serious attention', NULL, 'Acetymethrin', 'Drug history:Achikuda', '', '', '', '', 'Mary Juma', '12:48:01 20-05-2023 ', 0, 'Paid Fully', 'Biochemistry', NULL, NULL, 'AIDS negative', NULL, NULL),
+(17, 'Jenifer Lopez', '1978-05-17', 'Female', 45, '34567890', 'Zambia', 'Zingwangwa', 'Zimbabwe', NULL, 'Shortness of breath:', 'Pulse rate:', 'pale:', 'Pneumia,TB', 'Social history:', 'Acetymethrin', 'Acetymethrin 2 morn ', '', '', '', 'ida', '23:34:02 01-06-2023 ', 4000, 'not paid', 'Haematology', NULL, NULL, 'Blood Test: Negative', 1000, NULL),
+(18, 'Omexie Chama', '2000-06-08', 'Male', 23, 'Zomba', 'Charle', 'SDA', 'Guard', NULL, 'Cough:', 'Temperature:', 'alert:', 'TB', 'Drug history:', 'Acetymethrin,Amoxycilin      ', 'Acetymethrin 2 morn ,Acetymethrin 2 morn ', '', NULL, '', NULL, NULL, 4000, 'not paid', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -528,7 +529,7 @@ ALTER TABLE `laboratory`
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `radiology`
