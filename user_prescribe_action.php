@@ -3,6 +3,8 @@
 if (isset($_POST['submit'])) {
     $patientId = $_POST["patient_id"];
     $symptoms = $_POST["symptoms"];
+    $patient_history = $_POST["patient_history"];
+    $patient_historyContainer = $_POST["patient_historyContainer"];
     $examination = $_POST["examination"];
     $notes = $_POST["notes"];
     $durations = $_POST["duration"];
@@ -11,6 +13,7 @@ if (isset($_POST['submit'])) {
 
     // Prepare the SQL statements
     $updateSymptomsSql = "UPDATE patient SET symptoms = ? WHERE id = ?";
+    $updateDrugSql = "UPDATE patient SET bio_history = ? WHERE id = ?";
     $updateMeasurementSql = "UPDATE patient SET measurement = ? WHERE id = ?";
     $updateExaminationSql = "UPDATE patient SET examination = ? WHERE id = ?";
 
@@ -18,6 +21,7 @@ if (isset($_POST['submit'])) {
         // Execute the SQL statements using prepared statements or your preferred database library
         $pdo = new PDO("mysql:host=localhost;dbname=hms", "root", "");
         $stmt1 = $pdo->prepare($updateSymptomsSql);
+        $stmt4 = $pdo->prepare($updateDrugSql);
         $stmt2 = $pdo->prepare($updateMeasurementSql);
         $stmt3 = $pdo->prepare($updateExaminationSql);
 
@@ -29,6 +33,17 @@ if (isset($_POST['submit'])) {
         $updatedSymptoms = rtrim($updatedSymptoms, ",");
 
         $stmt1->execute([$updatedSymptoms, $patientId]);
+
+        
+        $updatedPatientHistory = "";
+        foreach ($patient_history as $index => $history) {
+            $patient_historyValue = $patient_historyContainer[$index];
+            $updatedPatientHistory .= $history . ":" .  $patient_historyValue . ",";
+        }
+        $updatedPatientHistory = rtrim($updatedPatientHistory, ",");
+        
+        $stmt4->execute([ $updatedPatientHistory, $patientId]);
+
 
         $updatedMeasurement = "";
         foreach ($measurement as $index => $measure) {

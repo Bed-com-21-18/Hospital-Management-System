@@ -71,7 +71,7 @@
                                    
                                     <div class="form-group">
                                         <select class="form-select" id="test_name" name="scan" required>
-                                            <option value="">Select scanning options</option>
+                                            <option disabled selected>Select scanning options</option>
                                             <option value="X-ray">X-ray</option>
                                             <option value="UltraSound Scanning">UltraSound Scanning</option>
                                             <option value="Magnetic resonance imaging">Magnetic resonance imaging</option>

@@ -95,6 +95,25 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
                         </div>
                     </div>
 
+                    <div class="row px-4">
+                            <h5 class="text-center">Patient History</h5>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <select name="patient_history[]" class="form-select" required multiple>
+                                        <option value="Drug history">Drug history</option>
+                                        <option value="Surgical history">Surgical history</option>
+                                        <option value="Social history">Social history</option>
+                                        <option value="Family history">Family history</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" id="patient_historyContainer">
+                                    <!-- Patient history text areas will be dynamically generated here -->
+                                </div>
+                            </div>
+                        </div>
+
                     <div class="card ">
                         <div class="row px-4">
                             <h5 class="text-center">Measurements</h5>
@@ -126,15 +145,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div id="notesContainer" style="display: none;">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="notes[]" placeholder="Enter enter short description">
-                                        </div>
-                                    </div>
+                            <div class="col-md-6">
+                                <div class="form-group" id="notesContainer">
+                                    <!-- Measurement text areas will be dynamically generated here -->
                                 </div>
                             </div>
-                        </div>
                         <div class="form-group py-2 text-center">
                             <button type="submit" class="btn btn-primary" name="submit">Diagnose</button>
                             <a class="btn btn-secondary" href="patient_list_user.php">Cancel</a>
@@ -165,6 +180,19 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
                 }
             });
 
+            $('select[name="patient_history[]"]').change(function() {
+                var selectedPatientHistory = $(this).val();
+                var patientHistoryContainer = $('#patient_historyContainer');
+                patientHistoryContainer.empty();
+
+                if (selectedPatientHistory.length > 0) {
+                    selectedPatientHistory.forEach(function(patientHistory) {
+                        var patientHistoryInput = '<input type="text" class="form-control" name="patient_historyContainer[]" placeholder="Enter ' + patientHistory + '"><br>';
+                        patientHistoryContainer.append(patientHistoryInput);
+                    });
+                }
+            });
+
             $('select[name="measurement[]"]').change(function() {
                 var selectedMeasurement = $(this).val();
                 var measurementContainer = $('#measurementContainer');
@@ -172,23 +200,40 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
 
                 if (selectedMeasurement.length > 0) {
                     selectedMeasurement.forEach(function(measurement) {
-                        var measurementInput = '<input type="text" class="form-control" name="measurementContainer[]" placeholder="Enter measurement of ' + measurement + '"><br>';
+                        var measurementInput = '<input type="text" class="form-control" name="measurementContainer[]" placeholder="Enter ' + measurement + '"><br>';
                         measurementContainer.append(measurementInput);
                     });
                 }
             });
+
+            
+        $('select[name="examination[]"]').change(function() {
+                    var selectedSymptoms = $(this).val();
+                    var diseaseContainer = $('#notesContainer');
+                    diseaseContainer.empty();
+
+                    if (selectedSymptoms.length > 0) {
+                    selectedSymptoms.forEach(function(examination) {
+                        var symptomText = '<span>' + examination + '</span><br>';
+                        diseaseContainer.append(symptomText);
+                    });
+                    }
+                });
         });
 
-        function showNotes(selectElement) {
-            var selectedValue = selectElement.value;
-            var notesContainer = document.getElementById("notesContainer");
+        // function showNotes(selectElement) {
+        //     var selectedValue = selectElement.value;
+        //     var notesContainer = document.getElementById("notesContainer");
 
-            if (selectedValue !== "") {
-                notesContainer.style.display = "block";
-            } else {
-                notesContainer.style.display = "none";
-            }
-        }
+        //     if (selectedValue !== "") {
+        //         notesContainer.style.display = "block";
+        //     } else {
+        //         notesContainer.style.display = "none";
+        //     }
+        // }
+
+
+
     </script>
 
 </body>

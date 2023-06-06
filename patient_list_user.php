@@ -84,10 +84,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 							<td><?php echo $row["date"]; ?></td>
 							<td><?php echo $row["age"]; ?></td>
 							<td><?php echo $row["gender"]; ?></td>
-							<td><?php echo $row["phoneNumber"]; ?></td>
-							<td><?php echo $row["district"]; ?></td>
-							<td><?php echo $row["village"]; ?></td>
-							<td><?php echo $row["residential"]; ?></td>
+							<td><?php echo $row["address"]; ?></td>
+							<td><?php echo $row["next_of_kin"]; ?></td>
+							<td><?php echo $row["religion"]; ?></td>
+							<td><?php echo $row["occupation"]; ?></td>
 							<td class='btn-group btn-group-justified'>                                    
 									<a href='user_prescribe_form.php?view=<?php echo $row["id"]; ?>' class='badge bg-primary'>Prescribe</a>
 							</td>

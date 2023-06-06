@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
     <head>
@@ -12,12 +11,13 @@
     </head>
     <body style="background-color:#9BA4B5;">
 
-    <!-- Navbar -->
-        <?php
-            include "navbar2.php";
-        ?>
+   
 
 <section>
+   <!-- Navbar -->
+   <?php
+            include "navbar2.php";
+        ?>
   <div class="showcase">
     <div class="p-4 text-light text-center">
       <h1>

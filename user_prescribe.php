@@ -12,12 +12,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
     <meta name="patient_idport" content="width=device-width, initial-scale=1.0">
     <title>Prescribe Patient</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    
+
 </head>
 
 <body>
     <div class="container">
         <div class="P-2">
-            <h4 class="text-center bg-light text-secondary p-2">HISTORY TAKING</h4>
+            <h4 class="text-center bg-light text-secondary p-2">DIAGNOSIS</h4>
         </div>
         <?php if (isset($_GET['error'])) {?>
                            <p class="error"><?php echo $_GET['error']; ?></p>
@@ -72,7 +74,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
                         <h5 class="text-center">Diagnosis</h5>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <select name="disease[]" class="form-select" required multiple>
+                            <select name="disease[]" class="form-select" required multiple>
                                     <option disabled selected><b>Respiratory diseases</b></option>
                                     <option value="Pneumia">Pneumia</option>
                                     <option value="TB">TB</option>
@@ -108,31 +110,44 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
                         </div>
                     </div>
 
-                    <div class="card ">
-                        <div class="row px-4">
-                            <h5 class="text-center">Patient History</h5>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <select name="patient_history[]" class="form-select" required multiple>
-                                        <option value="Drug history">History of Drug history</option>
-                                        <option value="Surgical history">Surgical history</option>
-                                        <option value="Social history">Social history</option>
-                                        <option value="Family history">Family history</option>
-                                    </select>
+                    <div class="card p-2 text-center">
+
+                        <div class="col-md-12">
+                        <h5 class="text-center">Diagnosis work up</h5>
+                            <div class="dropdown d-inline-block">
+                                <button class="btn btn-primary dropdown-toggle" type="button" id="sendRequestDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Send Test Request
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="sendRequestDropdown">
+                                    <a class="dropdown-item" href="send_to_lab.php?send=<?php echo $id; ?>">Lab Request</a>
+                                    <a class="dropdown-item" href="radiology_page.php?page=<?php echo $id; ?>">Radiology Request</a>
+                                    <a class="dropdown-item" href="hiv_test_request.php?hiv_test=<?php echo $id; ?>">HIV Test</a>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group" id="patient_historyContainer">
-                                    <!-- Patient history text areas will be dynamically generated here -->
+
+                            <div class="dropdown d-inline-block">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="viewResultsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    View Results
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="viewResultsDropdown">
+                                    <a class="dropdown-item" href="View_lab_results.php?view_results=<?php echo $id; ?>">Lab Results</a>
+                                    <a class="dropdown-item" href="radiology_view.php?viewing=<?php echo $id; ?>">Radiology Results</a>
+                                    <a class="dropdown-item" href="hiv_test_results.php?hiv_results=<?php echo $id; ?>">HIV Results</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="card ">
+                     </div>
+                       
+                        <div class="card text-center p-2">
+                            <div class="row px-4">
+                                <h5 class="">Patient Management</h5>
+<hr>
                             <div class="row px-4">
                                 <h5 class="text-center">Assigning Drugs  and dosages</h5>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <select name="drug[]" class="form-select" required multiple onchange="showNotes(this)">
+                                 
+                                            <select name="drug[]" class="form-select" required multiple onchange="showNotes(this)">
                                             <?php
                                             // Query the database for drugs
                                             $sql = "SELECT * FROM drug ORDER BY drug_name ASC";
@@ -151,31 +166,22 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
                                 </div>
                             </div>
                         </div>
+                    
+                  
+                              
+                                    <div class="dropdown d-inline-block">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" id="viewResultsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Select other management 
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="viewResultsDropdown">
+                                        
+                                        <a class="dropdown-item" href="inpatient_form.php?view=<?php echo $id; ?>">Admit Patient</a>
+                                        <a class="dropdown-item" href="consultant_request.php?request=<?php echo $id; ?>">Counselling</a>
+                                    </div>
+                                   </div>   
+                            
+                        </div>
                     </div>
-                    <div class="col-md-12">
-    <div class="dropdown d-inline-block">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="sendRequestDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Send Test Request
-        </button>
-        <div class="dropdown-menu" aria-labelledby="sendRequestDropdown">
-            <a class="dropdown-item" href="send_to_lab.php?send=<?php echo $id; ?>">Lab Request</a>
-            <a class="dropdown-item" href="radiology_page.php?page=<?php echo $id; ?>">Radiology Request</a>
-            <a class="dropdown-item" href="hiv_test_request.php?hiv_test=<?php echo $id; ?>">HIV Test</a>
-        </div>
-    </div>
-
-    <div class="dropdown d-inline-block">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="viewResultsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            View Results
-        </button>
-        <div class="dropdown-menu" aria-labelledby="viewResultsDropdown">
-            <a class="dropdown-item" href="View_lab_results.php?view_results=<?php echo $id; ?>">Lab Results</a>
-            <a class="dropdown-item" href="radiology_view.php?viewing=<?php echo $id; ?>">Radiology Results</a>
-            <a class="dropdown-item" href="hiv_test_results.php?hiv_results=<?php echo $id; ?>">HIV Results</a>
-        </div>
-    </div>
-</div>
-
                     <div class="form-group py-2 text-center">
                         <button type="submit" class="btn btn-primary" name="submit">Proceed</button>
                         <a class="btn btn-secondary" href="patient_list_user.php">Cancel</a>
@@ -191,7 +197,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
 
     <script>
 $(document).ready(function() {
-                $('select[name="disease[]"]').change(function() {
+    $('select[name="disease[]"]').change(function() {
                     var selectedSymptoms = $(this).val();
                     var diseaseContainer = $('#diseaseContainer');
                     diseaseContainer.empty();
@@ -205,20 +211,6 @@ $(document).ready(function() {
                 });
 
 
-
-            $('select[name="patient_history[]"]').change(function() {
-                var selectedPatientHistory = $(this).val();
-                var patientHistoryContainer = $('#patient_historyContainer');
-                patientHistoryContainer.empty();
-
-                if (selectedPatientHistory.length > 0) {
-                    selectedPatientHistory.forEach(function(patientHistory) {
-                        var patientHistoryInput = '<input type="text" class="form-control" name="patient_historyContainer[]" placeholder="Enter patient_history of ' + patientHistory + '"><br>';
-                        patientHistoryContainer.append(patientHistoryInput);
-                    });
-                }
-            });
-
             $('select[name="drug[]"]').change(function() {
                 var selectedDrug = $(this).val();
                 var drugContainer = $('#drugContainer');
@@ -226,7 +218,7 @@ $(document).ready(function() {
 
                 if (selectedDrug.length > 0) {
                     selectedDrug.forEach(function(drug) {
-                        var drugInput = '<input type="text" class="form-control" name="drugContainer[]" value="' + drug + '"><br>';
+                        var drugInput = '<input type="text" class="form-control" name="drugContainer[]" placeholder="Enter dosage and drug duration"><br>';
                         drugContainer.append(drugInput);
                     });
                 }

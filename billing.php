@@ -34,7 +34,7 @@
   <style>
     .container {
         padding: 15px;
-        border: 3px solid black;
+        border: 1px solid black;
         box-sizing: border-box;
 
     }

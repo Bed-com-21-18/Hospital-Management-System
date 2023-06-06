@@ -10,7 +10,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Send lab test request form</title>
+  <title>Counselling request form</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-RXdRUZ72MkRiR7Kj1MZrtI+2E5a5ntwLV5z+sWjlKgrP5N9tFVrMk14TwNNHDPMe0D1ELb/2COwleHc8z0/WTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css" integrity="sha512-57NKyaJFZhCGbzEWz8uV7IJ+g1hhn2S2jZ/j+oJFupafyksGp4KsB4+8xv1MWnX9B0SzmjKnmqlTpfT0Hupufw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
@@ -86,8 +86,8 @@ form .error {
 </head>
 <body>
 <?php
-    if(isset($_GET['send'])){
-  $id = $_GET['send'];
+    if(isset($_GET['request'])){
+  $id = $_GET['request'];
   $sql2 = "SELECT * FROM patient WHERE id='$id'";
   $result2 = $mysqli->query($sql2);
 
@@ -101,7 +101,7 @@ form .error {
   <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-4">
-        <form method="post" action="send_action.php" class="border p-3 rounded">
+        <form method="post" action="" class="border p-3 rounded">
           <div class="card-header">
              <h5 class="mb-3 text-center"><i class="fas fa-calendar-plus"></i> Lab Test Request form</h5>
         </div>
@@ -129,12 +129,9 @@ form .error {
           <div class="mb-3">
             <label for="test" class="form-label"><i class="fas fa-comment-medical"></i> Test for:</label>
               <select class="select-control" id="test_name" name="test_name"select required>
-                <option disabled selected>Select a test</option>
-                <option value="Haematology">Haematology</option>
-                <option value="Biochemistry">Biochemistry</option>
-                <option value="Microbiology">Microbiology</option>
-                <option value="Parasitology">Parasitology</option>
-                <option value="Serology">Serology</option>
+                <option disabled selected>Select</option>
+                <option value="Psychology">Psychology</option>
+                <option value="Charplain">Charplain</option>
               </select>
           </div>
           <div class="text-center">
