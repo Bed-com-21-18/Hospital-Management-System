@@ -1,21 +1,12 @@
 <?php
 session_start();
-
+include "comfig.php";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $id = $_SESSION['id'];
   $discharge_status = $_POST['discharge_status'];
   $discharge_date = $_POST['discharge_date'];
-  // Connect to the database
-  $host = 'localhost';
-  $username = 'root';
-  $password = '';
-  $database = 'hms';
-  $conn = mysqli_connect($host, $username, $password, $database);
-
-  // Check if the connection was successful
-  if (!$conn) {
-    die('Connection failed: ' . mysqli_connect_error());
-  }
+  // mysq$mysqliect to the database
+ 
 
   // Check if the user is logged in
   if (isset($_SESSION['uname'])) {
@@ -24,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   // Check if the patient ID exists in the patient table
   $sql = "SELECT * FROM patient WHERE id = ?";
-  $stmt = $conn->prepare($sql);
+  $stmt = $mysqli->prepare($sql);
   $stmt->bind_param("s", $id);
   $stmt->execute();
   $result = $stmt->get_result();
@@ -41,10 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $sql = "UPDATE patient SET discharge_status = ?, discharge_date = ? WHERE id = ?";
 
 // Create a prepared statement
-$stmt = $conn->prepare($sql);
+$stmt = $mysqli->prepare($sql);
 
 // Bind the parameters
-                                  $stmt->bind_param("sss", $discharge_status, $discharge_date, $patient_id);
+                                  $stmt->bind_param("sss", $discharge_status, $discharge_date, $id);
 
 
     // Execute the SQL query
@@ -64,7 +55,7 @@ if ($stmt->execute()) {
   } else {
     // Display an error message if the statuss data could not be updated
     $response = '<div class="alert alert-danger" role="alert">
-      Error: ' . $sql . '<br>' . mysqli_error($conn) . '
+      Error: ' . $sql . '<br>' . mysqli_error($mysqli) . '
       <button class="btn btn-danger" onclick="history.back()">Go Back</button>
     </div>';
   
@@ -74,8 +65,8 @@ if ($stmt->execute()) {
   
   }
 
-  // Close the database connection
-  mysqli_close($conn);
+  // Close the database mysq$mysqliection
+  mysqli_close($mysqli);
 
   // Output the response
   echo $response;

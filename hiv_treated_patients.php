@@ -79,7 +79,7 @@
                             <?php }?>
                             </tbody>
                         </table>
-                </div>
+                        <a class="btn btn-secondary" href="hiv_patients.php"> Back to Patient List </a>
          </div>
     </section>
 

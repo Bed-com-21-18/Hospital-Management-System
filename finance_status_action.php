@@ -1,21 +1,11 @@
 <?php
+include "comfig.php";
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $patient_id = $_POST['patient_id'];
   $status = $_POST['status'];
-  // Connect to the database
-  $host = 'localhost';
-  $username = 'root';
-  $password = '';
-  $database = 'hms';
-  $conn = mysqli_connect($host, $username, $password, $database);
-
-  // Check if the connection was successful
-  if (!$conn) {
-    die('Connection failed: ' . mysqli_connect_error());
-  }
-
+  
   // Check if the user is logged in
   if (isset($_SESSION['uname'])) {
     $username = $_SESSION['uname'];
@@ -23,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   // Check if the patient ID exists in the patient table
   $sql = "SELECT * FROM patient WHERE id = ?";
-  $stmt = $conn->prepare($sql);
+  $stmt = $mysqli->prepare($sql);
   $stmt->bind_param("s", $patient_id);
   $stmt->execute();
   $result = $stmt->get_result();
@@ -40,24 +30,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sql = "UPDATE patient SET status = ? WHERE id = ?";
 
     // Create a prepared statement
-    $stmt = $conn->prepare($sql);
+    $stmt = $mysqli->prepare($sql);
 
     // Bind the parameters
     $stmt->bind_param("ss", $status, $patient_id);
 
     // Execute the SQL query
 if ($stmt->execute()) {
-    // Set a success message if the statuss data was successfully updated
-    $message = 'Success: The status request for '.$_SESSION['name']. ' has been sent to the lab.';
-  
     // Set the session message and redirect back to send_to_lab.php
-    $_SESSION['message'] = $message;
-    header('Location: finance_status_success.php');
-    exit();
+    echo "<script>alert('Successfully Cleared');
+            window.location.href = 'finance.php';
+            </script>";
+    
   } else {
     // Display an error message if the statuss data could not be updated
     $response = '<div class="alert alert-danger" role="alert">
-      Error: ' . $sql . '<br>' . mysqli_error($conn) . '
+      Error: ' . $sql . '<br>' . mysqli_error($mysqli) . '
       <button class="btn btn-danger" onclick="history.back()">Go Back</button>
     </div>';
   
@@ -67,8 +55,8 @@ if ($stmt->execute()) {
   
   }
 
-  // Close the database connection
-  mysqli_close($conn);
+  // Close the database mysqliection
+  mysqli_close($mysqli);
 
   // Output the response
   echo $response;

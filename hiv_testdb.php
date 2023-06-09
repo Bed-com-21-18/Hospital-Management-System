@@ -60,10 +60,10 @@
                 VALUES('$weight', '$height', '$drug', '$dates', '$next_treat', '$patient_name')";
                  if ($mysqli->query($sql3) === TRUE){
                     echo "<script>alert('Successfully Submitted');
-                    window.location.href = 'hiv_patients.php';
+                    window.location.href = 'hiv_treated_patients.php';
                     </script>";
                  }else{
-                    header ("Location: hiv_treatment.php?error=unknown error&$user_data");
+                    header ("Location: hiv_treatment.php?treat=$id&error=unknown error&$user_data");
                     exit();
                  }
            }

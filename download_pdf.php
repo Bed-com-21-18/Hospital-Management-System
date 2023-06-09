@@ -67,7 +67,7 @@ if (isset($_GET['download'])) {
   $html .= '<table class="table table-striped">';
   $html .= '<thead>';
   $html .= '<h4>Section B: Drugs and Dosage</h4>';
-  $html .= '<tr><th style="padding: 10px; border: 1px solid black;">Drug Name</th><th style="padding: 10px; border: 1px solid black;">Drug Price</th></tr>';
+  $html .= '<tr><th style="padding: 10px; border: 1px solid black;">Drug Name</th><th style="padding: 10px; border: 1px solid black;">Drug Price (MWK)</th></tr>';
   $html .= '</thead>';
   $html .= '<tbody>';
 
@@ -93,18 +93,18 @@ if (isset($_GET['download'])) {
   $html .= '<tr><td colspan="2"><p class="lead"><strong> Dosage: </strong>' . $dosage . '</p></td></tr>';
   $html .= '<h4>Section C: Bill Breakdown</h4>';
   $html .= '<tr><td colspan="12"><hr></td></tr>';
-  $html .= '<tr><td colspan="2"><p class="lead"><b>The Service Fee:</b></p></td><td colspan="2">MWK 1000</td></tr>';
-  $html .= '<tr><td colspan="2"><p class="lead"><b>The bill for drugs fee:</b></p></td><td colspan="2">MWK ' . $total_amount . '</td></tr>';
+  $html .= '<tr><td colspan="2"><p class="lead"><b>The Service Fee:</b></p></td><td >1000</td></tr>';
+  $html .= '<tr><td colspan="2"><p class="lead"><b>The bill for drugs fee:</b></p></td><td >' . $total_amount . '</td></tr>';
 
   // Conditionally include the bill amounts for laboratory and radiology tests
   if ($lab_bill > 0) {
-    $html .= '<tr><td colspan="2"><p class="lead"><b>The bill for laboratory test: <b>' . $tests . '</b></p></td><td colspan="2">MWK ' . $lab_bill . '</td></tr>';
+    $html .= '<tr><td colspan="2"><p class="lead"><b>The bill for laboratory test: <b>' . $tests . '</b></p></td><td>' . $lab_bill . '</td></tr>';
   }
   if ($rad_bill > 0) {
-    $html .= '<tr><td colspan="2"><p class="lead"><b>The bill for Radiology test: </b></p></td><td colspan="2"> MWK ' . $rad_bill . '</td></tr>';
+    $html .= '<tr><td colspan="2"><p class="lead"><b>The bill for Radiology test: </b></p></td><td>' . $rad_bill . '</td></tr>';
   }
 
-  $html .= '<tr><td colspan="2"><p class="lead"><b>Total Bill:</b></p></td><td colspan="2">MWK ' . $total_bill . '</td></tr>';
+  $html .= '<tr><td colspan="1"><p class="lead"><b>Total Bill:</b></p></td><td colspan="1">MWK ' . $total_bill . '</td></tr>';
 
   if (isset($_SESSION['uname'])) {
     $username = $_SESSION['uname'];

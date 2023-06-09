@@ -40,7 +40,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
           <tr>
             <th>Name</th>
             <th>Age</th>
-            <th>Gender</th>
+            <th>Sex</th>
           </tr>
         </thead>
         <tbody id="myTable">

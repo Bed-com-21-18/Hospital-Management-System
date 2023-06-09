@@ -141,8 +141,9 @@
                 $total_bill = $total_amount + $servicefee + $rad_bill +$lab_bill;
                 echo "</tbody>";
                 echo "</table>";
-                
+                echo "<div>";
                  echo "<p class='lead'><b>Dosage :</b> <strong>" . $dosage . "</strong></p>";
+                 echo "</div>";
                 if ($lab_bill > 0) {
                   echo "<p class='lead'>The bill for laboratory test: <b>$tests</b> <strong> MWK" . $lab_bill . "</strong></p>";
               }

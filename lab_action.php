@@ -54,7 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Execute the SQL query
     if ($stmt->execute()) {
       // Display a success message if the results were successfully sent
-      header("Location: lab_form.php?respond=$patient_id&test=$test&success=Test results successfully sent");
+      echo "<script>alert('Successfully Submitted');
+      window.location.href = 'laboratory.php';
+      </script>";
     } else {
       // Display an error message if there was an error executing the SQL query
       header("Location: lab_form.php?respond=$patient_id&test=$test&error=Error: " . $stmt->error);

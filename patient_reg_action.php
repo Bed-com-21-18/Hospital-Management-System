@@ -29,11 +29,9 @@ if(isset($_POST['add'])){
         $sql2 = "INSERT INTO patient (name,date,gender,address,next_of_kin,religion,occupation, age) 
         VALUES('$name', '$date', '$gender', '$address', '$next_of_kin', '$religion', '$occupation', '$age')";
          if ($mysqli->query($sql2) === TRUE){
-            // header ("Location: patient_reg.php?success=Successfully registered");
-            // exit();
-            echo "<script>alert('Successfully Submitted');
-            window.location.href = 'patient_reg.php';
-            </script>";
+            header ("Location: patient_reg.php?success=Successfully registered");
+             exit();
+           
          }else{
             header ("Location: patient_reg.php?error=unknown error&$user_data");
             exit();

@@ -17,7 +17,13 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
 
-    
+    <style>
+        .icon-image {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+</style>  
         
 </head>
   <body>
@@ -36,7 +42,7 @@
                     
                         <div class="card-body text-center">
                             <div class="h1 mb-3">
-                                <i class="bi bi-people-fill text-secondary"></i>
+                            <img src="img/doctor.png" alt="Outpatient" class="icon-image">
                             </div>
                             <h3 class="card-title mb-3 text-secondary">Doctors</h3>
                             <p class="card-text">Register, view or delete doctor</p>
@@ -49,7 +55,7 @@
                     
                         <div class="card-body text-center">
                             <div class="h1 mb-3">
-                                <i class="bi bi-people text-secondary"></i>
+                            <img src="img/doctor.png" alt="Outpatient" class="icon-image">
                             </div>
                             <h3 class="card-title mb-3 text-secondary">Admins</h3>
                             <p class="card-text">Register, view or delete admin</p>
@@ -62,7 +68,7 @@
                     
                         <div class="card-body text-center">
                             <div class="h1 mb-3">
-                                <i class="bi bi-people text-secondary"></i>
+                            <img src="img/doctor.png" alt="Outpatient" class="icon-image">
                             </div>
                             <h3 class="card-title mb-3 text-secondary">System User</h3>
                             <p class="card-text">Register, view or delete user</p>

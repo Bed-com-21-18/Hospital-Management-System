@@ -61,7 +61,7 @@ if(isset($_GET['view']) && isset($_SESSION['name'])){
                                     <div class="form-group p-2">
                                         <label>Select Status</label>
                                         <select name="discharge_status" class="form-select">
-                                            <option value="Admitted">Admitted</option>
+                                            <option disabled selected>Click to Select</option>
                                             <option value="Discharged">Discharged</option> 
                                             <option value="Transferred">Transferred</option> 
                                         </select>

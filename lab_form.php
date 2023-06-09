@@ -54,20 +54,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
       border-color: #4CAF50;
     }
 
-    /* Style for the form submit button */
-    form button[type="submit"] {
-      background-color: #4CAF50;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 4px;
-      font-size: 16px;
-      cursor: pointer;
-    }
+    
 
     /* Style for the form submit button on hover */
     form button[type="submit"]:hover {
-      background-color: #45a049;
+      background-color: blue;
     }
 
     /* Style for the form error message */
@@ -99,9 +90,11 @@ if(isset($_GET['respond']) && isset($_GET['test'])) {
 ?>
 <div class="container mt-5">
   <div class="row justify-content-center">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <form method="post" action="lab_action.php" class="border p-3 rounded">
-        <h1 class="mb-3 text-center"><i class="fas fa-calendar-plus"></i> Sending lab results</h1>
+        <div class= "card-header mb-1">
+        <h4 class=" text-center"><i class="fas fa-calendar-plus"></i> Sending lab results</h4>
+        </div>
         <?php if (isset($_GET['error'])) {?>
           <p class="error text-center"><?php echo $_GET['error']; ?></p>
         <?php } ?>
@@ -123,6 +116,7 @@ if(isset($_GET['respond']) && isset($_GET['test'])) {
         </div>
         <div class="text-center">
           <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit</button>
+          <a class="btn btn-secondary " href="laboratory.php"> Back</a>
         </div>
       </form>
     </div>

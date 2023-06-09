@@ -27,7 +27,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
       <div class="col-md-6 offset-md-3">
         <div class="form-container">
           <form action="radiology_set_price_action.php" method="POST" onsubmit="return validateForm()">
-            <h2 class="text-center mb-4">Setting Radiology Test Price</h2>
+          <div class="card-header mb-1"> 
+            <h4 class="text-center">Setting Radiology Test Price</h4>
+            </div>
             <div class="form-group">
               <?php if (isset($_GET['error'])) {?>
                 <p class="error text-center"><?php echo $_GET['error']; ?></p>
@@ -36,13 +38,16 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                 <p class="success text-center"><?php echo $_GET['success']; ?></p>
               <?php } ?>
               <label for="test_name">Test Name:</label>
-              <select class="form-control" id="test_name" name="test_name" required>
-                <option value="" selected disabled>Select Radiology test</option>
+              <div class="form-group">
+              <select class="form-select" id="test_name" name="test_name" required>
+                <option  disabled selected>Select Radiology test</option>
                 <option value="X-ray">X-ray</option>
                 <option value="UltraSound Scanning">UltraSound Scanning</option>
                 <option value="Magnetic resonance imaging">Magnetic resonance imaging</option>
+           
                 
               </select>
+              </div>
             </div>
             <div class="form-group">
               <label for="price">Price:</label>

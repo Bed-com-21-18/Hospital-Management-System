@@ -85,6 +85,7 @@
                                     <br> 
                                     <div class="form-group p-2 text-center">         
                                         <button type="submit" name="rad_button" class="btn btn-primary">Send</button>
+                                        
                                     </div>
                                 </form>
                                 </div>

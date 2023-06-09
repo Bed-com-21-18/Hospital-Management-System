@@ -223,19 +223,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
                 });
         });
 
-        // function showNotes(selectElement) {
-        //     var selectedValue = selectElement.value;
-        //     var notesContainer = document.getElementById("notesContainer");
-
-        //     if (selectedValue !== "") {
-        //         notesContainer.style.display = "block";
-        //     } else {
-        //         notesContainer.style.display = "none";
-        //     }
-        // }
-
-
-
+   
     </script>
 
 </body>

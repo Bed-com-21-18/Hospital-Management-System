@@ -54,9 +54,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
             <ul class="navbar-nav ms-auto">
               
                
-               <li class="nav-item dropdown">
-                  <a href="admit_patient_list.php" class="nav-link p-2">All Registered Patients</a>
-               </li>
+              
             </ul>
          </div>
 		 </div>
@@ -85,6 +83,8 @@ if ($result2->num_rows > 0) {
                     <th>Sex</th>
                     <th>Treatment Plan</th>
                     <th>Ward Bed</th>
+                    <th>Status</th>
+                    <th>Date Discharged</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -98,6 +98,8 @@ if ($result2->num_rows > 0) {
                         <td><?php echo $row["gender"]; ?></td>
                         <td><?php echo $row["treatment_plan"]; ?></td>
                         <td><?php echo $row["ward_bed"]; ?></td>
+                        <td><?php echo $row["discharge_status"]; ?></td>
+                        <td><?php echo $row["discharge_date"]; ?></td>
                         <td class='btn-group btn-group-justified'>                                    
                         <a href="discharge_patient.php?view=<?php echo $row['id']; ?>&name=<?php echo $row['name']; ?>" class="badge bg-primary">Discharge</a>
 
@@ -200,7 +202,6 @@ if ($result2->num_rows > 0) {
          </div>
     
    
-   ///
 
            
 	

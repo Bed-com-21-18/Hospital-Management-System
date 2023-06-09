@@ -60,7 +60,7 @@ if ($result2->num_rows > 0) {
             <thead class="thead-light">
                 <tr>
                     <th>Name</th>
-                    <th>Date of Birth</th>
+
                     <th>Age</th>
                     <th>Sex</th>
                     <th>Test(s) requested</th>
@@ -74,13 +74,12 @@ if ($result2->num_rows > 0) {
                     ?>
                     <tr>
                         <td><?php echo $row["name"]; ?></td>
-                        <td><?php echo $row["date"]; ?></td>
                         <td><?php echo $row["age"]; ?></td>
                         <td><?php echo $row["gender"]; ?></td>
                         <td><?php echo $row["tests"]; ?></td>
                         <td><?php echo $row["lab_results"]; ?></td>
                         <td class='btn-group btn-group-justified'>                                    
-                            <a href='lab_form.php?respond=<?php echo $row["id"]; ?>&test=<?php echo $row["tests"]; ?>' class='badge bg-success'>Proceed</a>
+                            <a href='lab_form.php?respond=<?php echo $row["id"]; ?>&test=<?php echo $row["tests"]; ?>' class='badge bg-primary'>Proceed</a>
                             </td>
 
                     </tr>

@@ -138,7 +138,8 @@ form .error {
               </select>
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit</button>
+            <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit</button>&nbsp;
+            <a class='btn btn-secondary mb' href="patient_list_user.php?"> Go to Patient List</a>
           </div>
         </form>
       </div>

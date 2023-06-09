@@ -127,9 +127,9 @@
         $rad_price = $row['price'];
     
         // Prepare the SQL query to update the patient table with the lab price and results
-        $sql1 = "UPDATE patient SET rad_price = ? WHERE id = ?";
-        $stmt1 = $mysqli->prepare($sql1);
-        $stmt1->bind_param("ss", $rad_price, $patient_id);
+        $sql1 = "UPDATE patient SET rad_price = '$rad_price' WHERE id = '$patient_id'";
+        $result1 = $mysqli->query($sql1);
+
     
         // Prepare the SQL query to update the radiology table with the status
           

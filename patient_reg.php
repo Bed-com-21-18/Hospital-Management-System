@@ -47,6 +47,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                            
                        <?php if (isset($_GET['success'])) {?>
                            <p class="success"><?php echo $_GET['success']; ?></p>
+                           
                            <?php } ?>
                         <div class="form-group p-1">
                             <input type = "text" name="name" class="form-control" placeholder="    Full Name" required>

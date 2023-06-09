@@ -81,7 +81,7 @@
                                 <tr>
                                
                                     <th>Name</th>
-                                    <th>Gender</th>
+                                    <th>Sex</th>
                                     <th>Location</th>
                                     <th>Description</th>
                                     <th>Date tested</th>

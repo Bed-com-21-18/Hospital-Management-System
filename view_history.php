@@ -47,7 +47,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                   $dob = $row['date'];
                   $age = $row['age'];
                   $sex = $row['gender'];
-                  $history = $row['history']; 
+                  $history = $row['disease']; 
                   $prescribed_by = $row['prescribed_by'];
                   $prescribed_on = $row['prescribed_on'];         
                 }

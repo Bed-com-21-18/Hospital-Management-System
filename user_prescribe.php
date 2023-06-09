@@ -219,7 +219,7 @@ $(document).ready(function() {
 
                 if (selectedDrug.length > 0) {
                     selectedDrug.forEach(function(drug) {
-                        var drugInput = '<input type="text" class="form-control" name="drugContainer[]" placeholder="Enter dosage and drug duration"><br>';
+                        var drugInput = '<input type="text" class="form-control" name="drugContainer[]" value="' + drug + ':"><br>';
                         drugContainer.append(drugInput);
                     });
                 }

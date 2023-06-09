@@ -40,8 +40,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 					<th>Name</th>
 					<th>Age</th>
 					<th>Sex</th>
-					<th>Phone</th>
-					<th>Prescribed By</th>
+					<th>Location</th>
+					<th>Occupation</th>
                     <th>Total Bill</th>
                     <th>Status</th>
 					<th>Action</th>
@@ -50,17 +50,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 
 			<tbody>
 				<?php
-				// Connect to the database
-				$conn = new mysqli("localhost", "root", "", "hms");
-
-				// Check connection
-				if ($conn->connect_error) {
-					die("Connection failed: " . $conn->connect_error);
-				}
-
+				include "comfig.php";
+		
 				// Retrieve all patients from the patient table
-				$sql = "SELECT * FROM patient ORDER BY id ASC";
-				$result = $conn->query($sql);
+				$sql = "SELECT * FROM patient WHERE total_bills !=0 ORDER BY id DESC";
+				$result = $mysqli->query($sql);
 
 				// Display patient information in table rows
 				if ($result->num_rows > 0) {
@@ -69,8 +63,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 							   <td><?php echo $row["name"]; ?></td>
 							   <td><?php echo $row["age"]; ?></td>
 							   <td><?php echo $row["gender"]; ?></td>
-							   <td><?php echo $row["phoneNumber"]; ?></td>
-							   <td><?php echo $row["prescribed_by"]; ?></td>
+							   <td><?php echo $row["address"]; ?></td>
+							   <td><?php echo $row["occupation"]; ?></td>
 							   <td ><?php echo $row["total_bills"]; ?></td>
 							   <td><?php echo $row["status"]; ?></td>
 								<td class='btn-group btn-group-justified'>                                    
@@ -83,8 +77,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 					   echo "<tr><td colspan='12' class='text-center'>No patients found</td></tr>";
 				   }
                     
-				// Close the database connection
-				$conn->close();
+				// Close the database mysqliection
+				$mysqli->close();
                         
 				?>
 

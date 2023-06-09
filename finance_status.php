@@ -54,21 +54,6 @@ form textarea:focus {
   border-color: #4CAF50;
 }
 
-/* Style for the form submit button */
-form button[type="submit"] {
-  background-color: #4CAF50;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-/* Style for the form submit button on hover */
-form button[type="submit"]:hover {
-  background-color: #45a049;
-}
 
 /* Style for the form error message */
 form .error {
@@ -99,9 +84,11 @@ form .error {
 } ?>
   <div class="container mt-5">
     <div class="row justify-content-center">
-      <div class="col-md-6">
+      <div class="col-md-4">
         <form method="post" action="finance_status_action.php" class="border p-3 rounded">
-          <h1 class="mb-3 text-center"><i class="fas fa-calendar-plus"></i> Clearance of Patient Bill</h1>
+          <div class = "card-header mb-1 ">
+          <h4 class="text-center"><i class="fas fa-calendar-plus"></i> Clearance of Patient Bill</h4>
+          </div>
           <?php if(isset($_SESSION['success_message'])) { ?>
           <div class="alert alert-success" role="alert">
             <?php echo $_SESSION['success_message']; ?>
@@ -120,9 +107,8 @@ form .error {
           <div class="mb-3">
             <label for="results" class="form-label"><i class="fas fa-comment-medical"></i> Bill Status:</label>
             <select id="status" name="status" required class="form-select">
-                                        <option>Select Bill Status</option>
-                                        <option value="Paid Fully">Paid Fully</option>
-                                        <option value="Paid not fully">Paid not fully</option>
+                                        <option disabled selected>Select Bill Status</option>
+                                        <option value="Cleared">Cleared</option>
                                     </select>
           </div>
           <div class="text-center">

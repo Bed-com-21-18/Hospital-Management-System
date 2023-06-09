@@ -62,7 +62,7 @@
                                     <input type="text" value="" name="location" class="form-control"/>
                                 </div>
                                 <div class="form-group p-1">
-                                    <label>Gender</label>
+                                    <label>Sex</label>
                                     <select name="gender" class="form-select">
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option> 
