@@ -1,5 +1,5 @@
 <?php
-
+include "comfig.php";
 // If the user has submitted the form
     // Get the drug name, symptoms, and price from the form
     $id = $_POST['drug_id'];

@@ -34,7 +34,7 @@
         }
         else {
             //add to database
-                $sql1 = "INSERT INTO radiology(patient_id, patient_name, messages, scan) 
+                $sql1 = "INSERT INTO radiology (patient_id, patient_name, messages, scan) 
                 VALUES('$patient_id', '$patient_name', '$messages', '$scan')";
                  if ($mysqli->query($sql1) === TRUE){
                     // header ("Location: radiology_page.php?success=Request for scanning has been sent");

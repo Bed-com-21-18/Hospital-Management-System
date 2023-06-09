@@ -60,7 +60,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
                         <td><?php echo $row['age']; ?></td>
                         <td><?php echo $row['gender']; ?></td>
                         <td class="btn-group btn-group-justified">
-                            <a href="view_history.php?history=<?php echo $row["id"]; ?>" class="badge text-light bg-secondary">Previous Treatment History</a>
+                            <a href="view_history.php?history=<?php echo $row["id"]; ?>" class="badge text-light bg-primary">Previous Treatment History</a>
+                            &nbsp;<a href="book_appointment.php?book=<?php echo $row["id"]; ?>" class="badge text-light bg-secondary">Book Appointment</a>
+
                         </td>
                     </tr>
                 </tbody>

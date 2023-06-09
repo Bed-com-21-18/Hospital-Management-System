@@ -139,7 +139,32 @@
                                 </div>
                             </div>
                         </div>
-                       
+                        <div class="col-md-3">
+                <div class="card text-dark flex-fill">
+                    <div class="card-body text-center">
+                    <div class="h1 mb-3">
+                                    <img src="img/pregnant.png" alt="Outpatient" class="icon-image">
+                                </div>
+                      
+                        <h3 class="card-title mb-3 text-primary">Antenatal Care</h3>
+                        <a href="antenatal_display.php" class="btn btn-primary">Proceed</a>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="col-md-3">
+                <div class="card text-dark flex-fill">
+                    <div class="card-body text-center">
+                    <div class="h1 mb-3">
+                                    <img src="img/cancer.png" alt="Outpatient" class="icon-image">
+                                </div>
+    
+                        <h3 class="card-title mb-3 text-primary">Cervical Cancer</h3>
+                        <a href="" class="btn btn-primary">Proceed</a>
+                    </div>
+                </div>
+            </div>
+           
                     </div>
                 </div>
             </section>

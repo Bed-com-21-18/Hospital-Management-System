@@ -52,8 +52,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                 echo "<div style='text-align:center;'>";
                 echo "<button class='btn btn-primary mb-3' onclick='window.location.href=\"nurse_dashboard.php\"'>Go to Dashboard</button>";
                 echo "&nbsp;&nbsp;&nbsp;&nbsp;";
-                echo "<button class='btn btn-secondary mb-3' onclick='window.history.back()'>Book Again</button>";
-                echo "</div>";
+                              echo "</div>";
 
 
 ?>
