@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2023 at 11:45 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.3
+-- Generation Time: Jun 10, 2023 at 09:29 AM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -43,7 +42,6 @@ CREATE TABLE `add_radiology` (
 
 INSERT INTO `add_radiology` (`id`, `patient_id`, `patient_name`, `photo`, `comments`, `dates`) VALUES
 (8, 7, 'Mary Banda', 'uploads/img.jpg', 'hiiljhl', '2023-05-04'),
-(9, 11, 'Charle Cee Graphix', 'uploads/images.png', 'piwoureiwe', '2023-05-17'),
 (10, 11, 'Charle Cee Graphix', 'uploads/logo.jpg', 'piwoureiwe', '2023-05-17'),
 (11, 15, 'Precious Mlimbika', 'uploads/2023y3.png', 'No comment', '2023-05-17'),
 (12, 3, 'Gomboz Tech', 'uploads/Minica.png', 'Scanned and there results ', '2023-05-17'),
@@ -52,7 +50,6 @@ INSERT INTO `add_radiology` (`id`, `patient_id`, `patient_name`, `photo`, `comme
 (15, 3, 'Gomboz Tech', 'uploads/Capture.PNG', 'no any damages', ''),
 (16, 3, 'Gomboz Tech', 'uploads/Capture.PNG', 'no any damages', ''),
 (17, 3, 'Gomboz Tech', 'uploads/Capture.PNG', 'no any damages', ''),
-(18, 11, 'Charle Cee Graphix', 'uploads/usecase.PNG', 'hfhriygf', ''),
 (19, 17, 'Jenifer Lopez', 'uploads/usecase.PNG', 'guyftiyf', ''),
 (20, 17, 'Jenifer Lopez', 'uploads/usecase.PNG', 'hiuhi', '2023-06-01'),
 (21, 18, 'Omexie Chama', 'uploads/macheda.jpg', 'Open frature on ribs ', '2023-06-08'),
@@ -114,7 +111,9 @@ INSERT INTO `appointments` (`id`, `patient_id`, `name`, `date`, `time`, `profess
 (1, 3, 'Gomboz Tech', '2023-05-18', '10:59:00', 'Surgeon', 'Need Heartbreak surgery', 'Mary Juma', '11:00:16 18-05-2023 ', 'Prescribed by Charle Cee'),
 (2, 12, 'OMEXIE CHAMA', '2023-05-18', '11:00:00', 'Surgeon', 'Nedds Head surgery', 'Mary Juma', '11:00:57 18-05-2023 ', 'Prescribed by Charle Cee'),
 (3, 17, 'Jenifer Lopez', '2023-05-18', '17:50:00', 'Physiotherapist', 'gffffffffffffffffffffffffffffffffff', 'ida', '15:50:31 18-05-2023 ', 'Prescribed by Charle Cee'),
-(4, 4, 'Edson Magombo', '2023-05-18', '15:50:00', 'Physiotherapist', 'kkkkkkkkkkkkkkkkkkkkkkkkk', 'ida', '15:51:01 18-05-2023 ', 'Prescribed by ');
+(4, 4, 'Edson Magombo', '2023-05-18', '15:50:00', 'Physiotherapist', 'kkkkkkkkkkkkkkkkkkkkkkkkk', 'ida', '15:51:01 18-05-2023 ', 'Prescribed by '),
+(5, 18, 'Omexie Chama', '2023-07-09', '08:53:00', 'Surgeon', 'need surgery', 'charle-cee-graphix', '08:53:26 10-06-2023 ', NULL),
+(6, 18, 'Omexie Chama', '2023-07-09', '08:53:00', 'Surgeon', 'need surgery', 'charle-cee-graphix', '08:53:26 10-06-2023 ', NULL);
 
 -- --------------------------------------------------------
 
@@ -369,7 +368,7 @@ INSERT INTO `patient` (`id`, `name`, `date`, `gender`, `age`, `address`, `next_o
 (19, 'Peter Makazi', '2023-06-07', 'Male', 0, 'Thyolo', 'Chimwemwe', 'CCAP', 'teaccher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', NULL, '', NULL, NULL, NULL, 'not paid', NULL, NULL, NULL, NULL, NULL, NULL),
 (20, 'Steven Chungu', '1987-06-07', 'Female', 36, 'Zomba', 'Chimwemwe', 'CCAP', 'Police', NULL, 'Cough:2 days ago', 'Surgery', 'Temperature:89', 'pale:', 'TB', 'Drug history:heart surgery', 'Aspirin ', '45', '', NULL, '', NULL, NULL, 2300, 'Cleared', NULL, 'Surgical Ward', NULL, NULL, NULL, 10000),
 (21, 'Mavuto Kambuwe', '1999-06-07', 'Male', 24, 'Zomba', 'Chimwemwe', 'CCAP', 'Not working', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', NULL, '', NULL, NULL, NULL, 'not paid', NULL, NULL, NULL, NULL, NULL, NULL),
-(22, 'Chikondi Malabada', '1998-06-02', 'Male', 25, 'Zomba', 'Charle', 'SDA', 'teaccher', NULL, 'Fever:2 days', 'Drip', 'Temperature:37', 'alert:', NULL, 'Drug history:panado', 'Acetymethrin,Amoxycilin      ,Buffen', 'Acetymethrin: 2  morning,afternoon and evening for 5 days,Amoxycilin      : 2  morning,afternoon and evening for 5 days,Buffen: 2  morning,afternoon and evening for 5 days', '', 'Discharged', '', NULL, NULL, 5000, 'not paid', NULL, 'Paediatrics Ward', '2023-06-09', NULL, NULL, NULL);
+(22, 'Chikondi Malabada', '1998-06-02', 'Male', 25, 'Zomba', 'Charle', 'SDA', 'teaccher', NULL, 'Shortness of breath:3 days ago', 'Drip', 'Temperature:35', 'pale:', 'TB', 'Family history:panadol', 'Acetymethrin', 'Acetymethrin: 2 morn', '', 'Discharged', '', NULL, NULL, 3000, 'not paid', NULL, 'Paediatrics Ward', '2023-06-09', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -445,7 +444,10 @@ INSERT INTO `users` (`id`, `uname`, `prof`, `pwd`, `role`, `email`) VALUES
 (17, 'Kizito', 'Cardiologist', '12', 'admin', 'Joe@gmail.com'),
 (18, 'George', 'Cardiologist', '12', 'doctor', ''),
 (19, 'Peter', 'Nurse', '12', 'other_user', ''),
-(20, 'jo viola', 'Radiologist', '12', 'admin', 'Joe@gmail.com');
+(20, 'jo viola', 'Radiologist', '12', 'admin', 'Joe@gmail.com'),
+(22, 'charle-cee', 'Gastroenterologist', '12', 'admin', 'chidulecharles1@gmail.com'),
+(23, 'charle-cee-programmer', 'Surgeon', '12', 'doctor', ''),
+(24, 'charle-cee-graphix', 'Clinician', '12', 'other_user', '');
 
 --
 -- Indexes for dumped tables
@@ -559,7 +561,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `counselling`
@@ -625,7 +627,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Constraints for dumped tables
