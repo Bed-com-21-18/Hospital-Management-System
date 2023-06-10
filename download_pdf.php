@@ -108,7 +108,7 @@ if (isset($_GET['download'])) {
 
   if (isset($_SESSION['uname'])) {
     $username = $_SESSION['uname'];
-    $stmt = $mysqli->prepare("SELECT * FROM user WHERE uname = ?");
+    $stmt = $mysqli->prepare("SELECT * FROM users WHERE uname = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -144,7 +144,7 @@ if (isset($_GET['download'])) {
   $dompdf->render();
 
   // Generate a unique filename for the PDF
-  $filename = 'prescription_' . $id . '.pdf';
+  $filename = 'prescription_' . $name . '.pdf';
 
   // Save the PDF to a file
   $output = $dompdf->output();

@@ -165,7 +165,7 @@
 
                 if (isset($_SESSION['uname'])) {
                     $username = $_SESSION['uname'];
-                    $stmt = $mysqli->prepare("SELECT * FROM user WHERE uname = ?");
+                    $stmt = $mysqli->prepare("SELECT * FROM users WHERE uname = ?");
                     $stmt->bind_param("s", $username);
                     $result = $stmt->execute();
                   

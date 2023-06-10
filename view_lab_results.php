@@ -43,6 +43,7 @@
               $result2 = $mysqli->query($sql2);
             
                   $row = $result2->fetch_assoc();
+                  $patient_id = $row['id'];
                   $name = $row['name'];
                   $dob = $row['date'];
                   $age = $row['age'];
@@ -91,8 +92,9 @@
 			</tbody>
 		</table>
         <br><br>             
-        <button class='btn btn-primary mb-3' onclick='window.history.back()'> Go Back</button>
-	</div>
+        <a class="btn btn-primary mb-3" href="user_prescribe.php?patient_id=<?php echo $patient_id; ?>&success=Symptoms, measurements, and general examination were already added"> Proceed</a>&nbsp; 
+        <button class='btn btn-secondary mb-3' onclick='window.history.back()'> Go Back</button>
+        </div>
 </div>
    
 <!-- Bootstrap JS -->

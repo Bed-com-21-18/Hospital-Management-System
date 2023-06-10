@@ -128,16 +128,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
                                 </div>
                             </div>
 
-                            <div class="dropdown d-inline-block">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="viewResultsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    View Results
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="viewResultsDropdown">
-                                    <a class="dropdown-item" href="View_lab_results.php?view_results=<?php echo $id; ?>">Lab Results</a>
-                                    <a class="dropdown-item" href="radiology_view.php?viewing=<?php echo $id; ?>">Radiology Results</a>
-                                    <a class="dropdown-item" href="hiv_test_results.php?hiv_results=<?php echo $id; ?>">HIV Results</a>
-                                </div>
-                            </div>
                         </div>
                      </div>
                        

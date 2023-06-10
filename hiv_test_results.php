@@ -3,7 +3,6 @@
     include 'hiv_testdb.php';
     include 'comfig.php';
     if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
-
 ?>
 
 <!doctype html>
@@ -19,79 +18,92 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script>
             $(document).ready(function(){
-            $("#myInput").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                $("#myInput").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $("#myTable tr").filter(function() {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
                 });
-            });
             });
         </script>
     </head>
     <body>
-
-     <!-- Navbar -->
-     <?php
+        <!-- Navbar -->
+        <?php
             include "unavbar.php";
 
-            
             if(isset($_GET['hiv_results'])){
                 $id = $_GET['hiv_results'];
-            $sql2 = "SELECT * FROM hiv_test WHERE patient_id='$id'";
-            $result2 = $mysqli->query($sql2);
+                $sql2 = "SELECT * FROM hiv_test WHERE patient_id='$id'";
+                $result2 = $mysqli->query($sql2);
 
-           while($row = $result2->fetch_assoc()){ 
+                while($row = $result2->fetch_assoc()){ 
+                    $name = $row['patient_name'];
+                    $id = $row['patient_id'];
+                }
+            }
+        ?>
+
+        <section>
     
-                $name = $row['patient_name'];
-                $id = $row['patient_id'];
-
-            }}
-            
- ?>
- <section>
- <!--Update table-->
-            <div class="container p-2"> 
-                <h3 class="text-center text-secondary">
-                    HIV test results
-                </h3>
-                      <!-- search -->
-                        <input class="form-control me-1" id="myInput" style="width:100%; max-width:20rem" type="text" placeholder="Search" aria-label="Search">             
-               
                 <?php
-                 
                     $sql = "SELECT * FROM hiv_test WHERE patient_id='$id' ORDER BY id DESC";
                     $result = $mysqli->query($sql);
+
+                    if ($result->num_rows === 0) {
+                        ?>
+                        <div class="text-center">
+                        <br> <br>
+    <p>No HIV test results found!</p>
+    <br>
+    <button class="btn btn-secondary mb-3" onclick="window.history.back()">Go Back</button>
+</div>
+     <?php  } else {
                 ?>
                 <hr>
-                        <table class="table table-hover" style="overflow:auto">
-                            <thead class="table table-hover">
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Date tested</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody id = "myTable">
-                            <?php while($row = $result->fetch_assoc()) { ?>
-                                <tr>
-                                    <td><?php echo $row['patient_name']; ?></td>
-                                    <td><?php echo $row['date']; ?></td>
-                                    <td><?php echo $row['statu']; ?></td>
-                                </tr>
-                            <?php }?>
-                            </tbody>
-                        </table>
+                        <!-- Update table -->
+            <div class="container p-2"> 
+                
+            <h3 class="text-center text-secondary">
+                    HIV test results
+                </h3>
+                <!-- search -->
+                <input class="form-control me-1" id="myInput" style="width:100%; max-width:20rem" type="text" placeholder="Search" aria-label="Search">             
+
+                <table class="table table-hover" style="overflow:auto">
+                    <thead class="table table-hover">
+                        <tr>
+                            <th>Name</th>
+                            <th>Date tested</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myTable">
+                        <?php 
+                            while($row = $result->fetch_assoc()) { 
+                        ?>
+                        <tr>
+                            <td><?php echo $row['patient_name']; ?></td>
+                            <td><?php echo $row['date']; ?></td>
+                            <td><?php echo $row['statu']; ?></td>
+                        </tr>
+                        <?php 
+                            }
+                        ?>
+                    </tbody>
+                </table>
+                <a class="btn btn-primary mb-3" href="user_prescribe.php?patient_id=<?= $id; ?>&success=Symptoms, measurements, and general examination were already added"> Proceed</a>
+                &nbsp;
+                <?php } ?>
             </div>
         </section>
-       
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     </body>
-</html> 
+</html>
 <?php 
-    }else {
+    } else {
         header("Location: home.php");
         exit();
     }
 ?> 
-            
