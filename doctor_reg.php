@@ -117,7 +117,7 @@
                         <input class="form-control me-1" id="myInput" style="width:100%; max-width:20rem" type="text" placeholder="Search" aria-label="Search">             
                 
                 <?php
-                    $sql = "SELECT * FROM users WHERE role='doctor' ORDER BY id DESC";
+                    $sql = "SELECT * FROM doctor ORDER BY id DESC";
                     $result = $mysqli->query($sql);
                 ?>
                 <hr>

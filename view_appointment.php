@@ -24,7 +24,7 @@
         exit();
    }
    
-    $sql = "SELECT * FROM users WHERE uname = ?";
+    $sql = "SELECT * FROM doctor WHERE uname = ?";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("s", $_SESSION['uname']);
     $stmt->execute();

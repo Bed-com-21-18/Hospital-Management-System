@@ -71,8 +71,10 @@
                                     </select>
                                 <?php } else { ?>
                                     <select name="prof" required class="form-select">
-                                        <option value="">Select Professional</option>
+                                        <option disabled selected>Select Professional</option>
                                         <option value="Nurse">Nurse</option>
+                                        <option value="Pharmacist">Pharmacist</option>
+                                        <option value="Accountant">Accountant</option>
                                         <option value="Receptionist">Receptionist</option>
                                         <option value="Clinician">Clinician</option>
                                       
@@ -113,7 +115,7 @@
                         <input class="form-control me-1" id="myInput" style="width:100%; max-width:20rem" type="text" placeholder="Search" aria-label="Search">             
                
                 <?php
-                    $sql = "SELECT * FROM users WHERE role='other_user' ORDER BY id DESC";
+                    $sql = "SELECT * FROM user ORDER BY id DESC";
                     $result = $mysqli->query($sql);
                 ?>
                 <hr>

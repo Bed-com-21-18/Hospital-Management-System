@@ -30,7 +30,7 @@
     <body>
         <!-- Navbar -->
         <?php
-            include "dnavbar.php";
+            include "unavbar.php";
 
             if(isset($_GET['hiv_results'])){
                 $id = $_GET['hiv_results'];

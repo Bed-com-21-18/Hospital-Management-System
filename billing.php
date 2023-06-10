@@ -157,15 +157,12 @@
               echo "<p class='lead'>Total Bill:  <strong>MWK" . $total_bill . " <strong></p>";
               
                 
-                //updating total bills
-                $stmt = $mysqli->prepare("UPDATE patient SET total_bills=? WHERE id=?");
-                $stmt->bind_param("ss", $total_bill, $patient_id);
-                $stmt->execute();
+
             
 
                 if (isset($_SESSION['uname'])) {
                     $username = $_SESSION['uname'];
-                    $stmt = $mysqli->prepare("SELECT * FROM users WHERE uname = ?");
+                    $stmt = $mysqli->prepare("SELECT * FROM user WHERE uname = ?");
                     $stmt->bind_param("s", $username);
                     $result = $stmt->execute();
                   
@@ -184,7 +181,11 @@
                       echo"&nbsp";  echo"&nbsp";  echo"&nbsp";  echo"&nbsp"; 
                       echo"&nbsp";  echo"&nbsp";  echo"&nbsp";  echo"&nbsp"; 
                       echo "<a href='nurse_dashboard.php' class='btn btn-primary'>Go to Dashboard</a>";
-                    }
+                                      //updating total bills
+                      $stmt = $mysqli->prepare("UPDATE patient SET prescribed_by=?, prescribed_on=?, total_bills=? WHERE id=?");
+                      $stmt->bind_param("ssss", $username, $prescribed_on, $total_bill, $patient_id);
+                      $stmt->execute();
+                          }
                 }
                 
                 ?>

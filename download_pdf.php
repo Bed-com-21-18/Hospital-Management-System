@@ -108,7 +108,7 @@ if (isset($_GET['download'])) {
 
   if (isset($_SESSION['uname'])) {
     $username = $_SESSION['uname'];
-    $stmt = $mysqli->prepare("SELECT * FROM users WHERE uname = ?");
+    $stmt = $mysqli->prepare("SELECT * FROM user WHERE uname = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();

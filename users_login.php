@@ -25,10 +25,10 @@ include 'users_logindb.php';
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="text-center text-secondary">LOGIN</h4>
+                        <h4 class="text-center text-secondary"> HMS LOGIN</h4>
                     </div>
                     <div class="card-body">
-                        <form action="users_logindb.php" method="POST">
+                        <form action="route_login.php" method="POST">
 
                              <?php if (isset($_GET['error'])) {?>
                                 <p class="error"><?php echo $_GET['error']; ?></p>
