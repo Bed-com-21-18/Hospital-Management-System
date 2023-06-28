@@ -22,10 +22,15 @@
   }
   </script>
 <body>
-   
-            <div class="container">
-                <h3 class="text-center bg-light text-secondary">Prescription</h3>
-            </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+<div class="container">
+    <h3 class="text-center bg-light text-secondary">Prescription</h3>
+</div>
     
   <!-- prescription form -->
   <div class="container bg-light">
@@ -128,27 +133,26 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="card ">
                             <div class="row px-4">
                                 <h5 class="text-center">General Examination</h5>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <select name="examination[]" class="form-select" onchange="showNotes(this)" required multiple>
-                                            <option value="pale">Pale conjunctives</option>
+                                            <option value="pale">Pale conjunctivae</option>
                                             <option value="unconscious">Unconscious</option>
                                             <option value="alert">Alert</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div id="notesContainer" style="display: none;">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="notes[]" placeholder="Enter enter short description">
-                                        </div>
-                                    </div>
+                            <div class="col-md-6">
+                                <div class="form-group" id="notesContainer">
+                                    <!-- Measurement text areas will be dynamically generated here -->
                                 </div>
                             </div>
-                        </div>
+                            </div>
+
                         <div class="form-group py-2 text-center">
                             <button type="submit" class="btn btn-primary" name="submit">Diagnose</button>
                             <a class="btn btn-secondary" href="doc_dashboard.php">Cancel</a>
@@ -179,19 +183,21 @@
                 }
             });
 
-            $('select[name="measurement[]"]').change(function() {
-                var selectedMeasurement = $(this).val();
-                var measurementContainer = $('#measurementContainer');
-                measurementContainer.empty();
+            $('select[name="examination[]"]').change(function() {
+                    var selectedSymptoms = $(this).val();
+                    var diseaseContainer = $('#notesContainer');
+                    diseaseContainer.empty();
 
-                if (selectedMeasurement.length > 0) {
-                    selectedMeasurement.forEach(function(measurement) {
-                        var measurementInput = '<input type="text" class="form-control" name="measurementContainer[]" placeholder="Enter measurement of ' + measurement + '"><br>';
-                        measurementContainer.append(measurementInput);
+                    if (selectedSymptoms.length > 0) {
+                    selectedSymptoms.forEach(function(examination) {
+                        var symptomText = '<span>' + examination + '</span><br>';
+                        diseaseContainer.append(symptomText);
                     });
-                }
-            });
+                    }
+                });
         });
+
+         
 
         function showNotes(selectElement) {
             var selectedValue = selectElement.value;
@@ -213,3 +219,13 @@
     header("Location: home.php");
 }
 ?>
+
+
+
+
+
+
+
+
+
+

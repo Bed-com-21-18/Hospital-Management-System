@@ -11,22 +11,20 @@
     <body>
       
       <!--NavBar-->
-        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3">
+        <nav class="navbar navbar-expand-lg bg-light navbar-white py-3">
             <div class="container">
                 <button 
                 class="navbar-toggler" 
                 type="button" 
                 data-bs-toggle="collapse" 
                 data-bs-target="#navmenu">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon" hidden></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navmenu">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a href="nurse_dashboard.php" class="nav-link"> Modules</a>
-                        </li>
-                        <li class="nav-item dropdown">
+                       
+                        <li class="nav-item dropdown" >
                             <a class="nav-link dropdown-toggle bi bi-person-fill" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <?php echo $_SESSION['uname']; ?></a>
                             </a>
@@ -35,6 +33,10 @@
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                             </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="nurse_dashboard.php" class="nav-link"> Modules</a>
                         </li>
                     </ul>
                 </div>

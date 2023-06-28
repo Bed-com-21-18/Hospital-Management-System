@@ -1,9 +1,10 @@
 <?php
-include 'user_regdb.php';
-if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
-  include "unavbar.php";
-  include "comfig.php";
-        ?>
+session_start();
+include "comfig.php";
+
+if (isset($_SESSION['id']) && isset($_SESSION['uname']) && isset($_SESSION['prof'])) {
+    $prof = $_SESSION['prof'];
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +27,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
         </script>
 </head>
 <body>
+	<br>
+	<br>
+	<br>
+	<br>
 
    <!--NavBar-->
    <nav class="navbar navbar-expand py-1"style="background-color:#F1F6F9;" >

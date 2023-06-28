@@ -32,10 +32,10 @@
 
 
         <!--Form-->
-    <section class="p-5 bg-white"> 
+<section class="p-5 bg-white"> 
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
                             <h4 class="text-center text-secondary">Register user</h4>
@@ -61,7 +61,16 @@
                                     <input type="text" value="<?= $uname; ?>" name="uname" class="form-control"/>
                                <?php }?> 
                            </div>
-                            
+                           <div class="form-group mb-3">
+                               <label>Email</label>
+                               <?php if (isset($_GET['email'])) {?>
+                               <input type="email" name="email" class="form-control" 
+                               value="<?php echo $_GET['email']; ?>"/>
+                               <?php }else { ?>
+                                   <input type="email" value="<?= $email; ?>" name="email" class="form-control"/>
+                               <?php }?> 
+                           </div>
+                           
                            <div class="form-group mb-3">
                                 <label for="professional">Professional</label>
                                 <?php if (isset($_GET['prof'])) { ?>
@@ -71,16 +80,39 @@
                                 <?php } else { ?>
                                     <select name="prof" required class="form-select">
                                         <option disabled selected>Select Professional</option>
+                                        <option value="Cardiologist">Cardiologist</option>
+                                        <option value="Radiologist">Radiologist</option>
+                                        <option value="Dermatologist">Dermatologist</option>
+                                        <option value="Gastroenterologist">Gastroenterologist</option>
+                                        <option value="Neurologist">Neurologist</option>
+                                        <option value="Orthopedic">Orthopedic</option>
+                                        <option value="Medical Lab Scientist">Medical Lab Scientist</option>
+                                        <option value="Pediatric">Pediatric</option>
+                                        <option value="Surgeon">Surgeon</option>
+                                        <option value="Physiotherapist">Physiotherapist</option>
                                         <option value="Nurse">Nurse</option>
                                         <option value="Pharmacist">Pharmacist</option>
                                         <option value="Accountant">Accountant</option>
                                         <option value="Receptionist">Receptionist</option>
                                         <option value="Clinician">Clinician</option>
-                                        <option value="Medical Laboratory Scientist"> Medical Laboratory Scientist</option>
-
+                                      
                                     </select>
                                 <?php } ?>
                             </div>
+                            <div class="form-group mb-3">
+                                <label for="role">Role</label>
+                                    <select name="role" class="form-select">
+                                        <option disabled selected>Select Role</option>
+                                        <option value="Admin">Admin</option>
+                                        <option value="Doctor">Doctor</option>
+                                        <option value="Nurse">Nurse</option>
+                                        <option value="Pharmacist">Pharmacist</option>
+                                        <option value="Accountant">Accountant</option>
+                                        <option value="Medical Lab Scientist">Medical Lab Scientist</option>
+                                    
+                                    </select>
+                            </div>
+
 
 
                        <div class="form-group mb-3">
@@ -105,44 +137,7 @@
                     </div>
                 </div>
         
-
-             <!--Update table-->
-                <div class="col-md-8"> 
-                <h3 class="text-center text-secondary">
-                    Users list
-                </h3>
-                      <!-- search -->
-                        <input class="form-control me-1" id="myInput" style="width:100%; max-width:20rem" type="text" placeholder="Search" aria-label="Search">             
-               
-                <?php
-                    $sql = "SELECT * FROM user ORDER BY id DESC";
-                    $result = $mysqli->query($sql);
-                ?>
-                <hr>
-                        <table class="table table-hover" style="overflow:auto">
-                            <thead class="table table-hover">
-                                <tr>
-                                    <th>Username</th>
-                                    <th>Proffessional</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id = "myTable">
-                            <?php while($row = $result->fetch_assoc()) { ?>
-                                <tr>
-                                    <td><?php echo $row['uname']; ?></td>
-                                    <td><?php echo $row['prof']; ?></td>
-                                    <td class="btn-group btn-group-justified">                                       
-                                         <a href="user_regdb.php?delete=<?php echo $row['id']; ?>" class="badge bg-danger mx-1" 
-                                         onclick="return confirm('This will be deleted completely?');">Delete</a>
-                                        <a href="user_reg.php?edit=<?php echo $row['id']; ?>" class="badge bg-success">Edit</a>
-                                    </td> 
-                                </tr>
-                            <?php }?>
-                            </tbody>
-                        </table>
-                </div>
-         </div>
+</div>
     </section>
 
     <!-- footer -->

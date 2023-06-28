@@ -21,6 +21,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 </head>
 
 <body>
+    <br>
+	<br>
+	<br>
+	<br>
+
     <div class="container-fluid  p-2">
         <div class="row justify-content-center">
             <div class="col-md-4">

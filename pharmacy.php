@@ -25,6 +25,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
         </script>
 </head>
 <body class="p-2">
+    
     <!-- NavBar -->
     <nav class="navbar navbar-expand" style="background-color:#F1F6F9;">
         <div class="container">
@@ -49,6 +50,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
     </nav>
 
     <!-- Tab Content -->
+    <br>   
+    <br>  
+     
     <div class="container">
         <div class="tab-content">
         <div class="tab-pane fade show active" id="view">

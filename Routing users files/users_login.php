@@ -1,8 +1,6 @@
 <?php
 
 include 'users_logindb.php';
-include 'route_login.php';
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -14,14 +12,6 @@ include 'route_login.php';
         <link rel="stylesheet" href="style.css"/>
         <link rel="stylesheet" href="bootstrap-5.0.0/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="home.css"/>
-
-        <style>
-        .icon-image {
-            width: 80px;
-            height: 40%;
-      
-        }
-    </style>
     </head>
     <body>
 
@@ -32,14 +22,10 @@ include 'route_login.php';
          <!--Form-->
         <div class="row justify-content-center p-5">
             <div class="col-md-4">
-                <div class="card" style="margin-top:100px; ">
-                   
-                    <div class="card-body text-center">
-                        <div class="h1 mb-3">
-                            <img src="img/pass4.png" alt="Outpatient" class="icon-image">
-                        </div>    
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="text-center text-secondary"> LOGIN</h4>
                     </div>
-        
                     <div class="card-body">
                         <form action="route_login.php" method="POST">
 

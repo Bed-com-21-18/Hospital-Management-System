@@ -83,9 +83,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 							<td><?php echo $row["drug_price2"]; ?></td>
 							<td><?php echo $row["status"]; ?></td>
 							<td class='btn-group btn-group-justified'>                                    
-									<a href='doc_update_drug.php?view=<?php echo $row["id"]; ?>' class='badge bg-success'>Update</a> &nbsp;
-									<a href='doc_delete_drug.php?delete=<?php echo $row["id"]; ?>' class='badge bg-danger'>Delete</a>
-								</td>
+								<a href='doc_update_drug.php?view=<?php echo $row["id"]; ?>' class='badge bg-success'>Update</a> &nbsp;
+								<a href='doc_delete_drug.php?delete=<?php echo $row["id"]; ?>' class='badge bg-danger'>Delete</a>
+							</td>
 						</tr>
                       <?php  
 					}

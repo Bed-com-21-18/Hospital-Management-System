@@ -25,10 +25,10 @@
                 <div class="collapse navbar-collapse" id="navmenu">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a href="doc_dashboard.php" class="nav-link"> Dashboard</a>
+                            <a href="doc_dashboard.php" class="nav-link"> Modules</a>
                         </li>
                         <li class="nav-item">
-                            <a href="view_appointment.php" class="nav-link"> Appointments</a>
+                            <a href="view_appointment.php" class="nav-link">Notification</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle bi bi-person-fill" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

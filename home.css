@@ -1,12 +1,10 @@
-body
-{
-	margin: 0;
-	padding: 0;
-	background: url(img/homepic.jpeg);
+body {
+    margin: 0;
+    padding: 0;
+   
     background-size: 100%;
     font-family: sans-serif;
     box-sizing: border-box;
-
 }
 
 .showcase {

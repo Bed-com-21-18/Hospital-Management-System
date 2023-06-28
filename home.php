@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
         <link rel="stylesheet" href="home.css"/>
     </head>
-    <body style="background-color:#9BA4B5;">
+    <body style="background-color:#9494b8;">
         <section>
      <!--NavBar-->
    <div class="container-fluid mb-5"> <?php include 'navbar2.php'; ?></div>

@@ -24,12 +24,15 @@
 
 
     <!-- side bar -->
-
-             <!--Cards-->
-    <section class="p-5 bg-secondary"> 
+    <br>
+    <br>
+    <br>
+    
+    <!--Cards-->
+    <section class="modules p-5 "style="margin-top:100px;"> 
         <div class="container">
             <div class="row text-center g-4">
-                <div class="col-md">
+                <div class="col-md-4">
                     <div class="card text-dark">
                     
                         <div class="card-body text-center">
@@ -41,18 +44,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md">
-                    <div class="card text-dark">
-                    
+
+                <div class="col-md-4">
+                    <div class="card text-dark flex-fill">
                         <div class="card-body text-center">
-                            <div class="h1 mb-3">
-                                <img src="img/medica1l.png" alt="Outpatient" class="icon-image">
-                            </div>
-                            <h3 class="card-title mb-3 text-primary">Manage Nurses</h3>
-                            <a href="doc_nurse_reg.php" class="btn btn-primary">Proceed</a>                    
+                        <div class="h1 mb-3">
+                            <img src="img/x-ray.png" alt="Outpatient" class="icon-image">
+                        </div>
+                            <h3 class="card-title mb-3 text-primary">Radiology</h3>
+                            <a href="radiology.php" class="btn btn-primary">Proceed</a>
                         </div>
                     </div>
                 </div>
+<!-- 
                 <div class="col-md">
                     <div class="card text-dark">
                     
@@ -64,8 +68,20 @@
                             <a href="doc_manage_drug.php" class="btn btn-primary">Proceed</a>
                         </div>
                     </div>
+                </div> -->
+
+                <div class="col-md-4">
+                    <div class="card text-dark flex-fill">
+                        <div class="card-body text-center">
+                            <div class="h1 mb-3">
+                                <img src="img/advice.png" alt="Outpatient" class="icon-image">
+                            </div>
+                            <h3 class="card-title mb-3 text-primary">Outpatient</h3>
+                            <a href="patient_list_user.php" class="btn btn-primary">Proceed</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
+    </div>
         </div>
         <br>
         <br><br><br><br>
