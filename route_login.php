@@ -28,6 +28,7 @@ if (isset($_POST['uname']) && isset($_POST['pwd'])) {
         $_SESSION['uname'] = $admin_row['uname'];
         $_SESSION['prof'] = $admin_row['prof'];
         $_SESSION['id'] = $admin_row['id'];
+        $_SESSION['role'] = $admin_row['role'];
         header("Location: dashboard.php");
         exit();
     } else {
@@ -41,6 +42,7 @@ if (isset($_POST['uname']) && isset($_POST['pwd'])) {
             $_SESSION['username'] = $doctor_row['username'];
             $_SESSION['prof'] = $doctor_row['prof'];
             $_SESSION['id'] = $doctor_row['id'];
+            $_SESSION['role'] = $doctor_row['role'];
             header("Location: doc_dashboard.php");
             exit();
         } else {
@@ -53,6 +55,7 @@ if (isset($_POST['uname']) && isset($_POST['pwd'])) {
                 $_SESSION['uname'] = $users_row['uname'];
                 $_SESSION['prof'] = $users_row['prof'];
                 $_SESSION['id'] = $users_row['id'];
+                $_SESSION['role'] = $users_row['role'];
                 header("Location: nurse_dashboard.php?");
                 exit();
             } else {

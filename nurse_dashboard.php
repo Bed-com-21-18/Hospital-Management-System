@@ -4,6 +4,7 @@ include "comfig.php";
 
 if (isset($_SESSION['id']) && isset($_SESSION['uname']) && isset($_SESSION['prof'])) {
     $prof = $_SESSION['prof'];
+    $role = $_SESSION['role'];
 ?>
 
 <!DOCTYPE html>
@@ -275,7 +276,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname']) && isset($_SESSION['prof
                             </div>
                         </div>
 
-                        <?php } elseif ($prof === 'Accountant') { ?>
+                        <?php } elseif ($prof === 'Accountant') { 
+                             if ($role === 'Pharmacist') {?>
+                           
                             <div class="col-md-6">
                                 <div class="card text-dark flex-fill">
                                     <div class="card-body text-center">
@@ -301,7 +304,218 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname']) && isset($_SESSION['prof
                             </div>
 
 
-                        <?php } ?>
+                        <?php
+                    } elseif ($role === 'Nurse'){ ?>
+                        <div class="col-md-4">
+                        <div class="card text-dark flex-fill">
+                            <div class="card-body text-center">
+                                <div class="h1 mb-3">
+                                    <img src="img/accounting.png" alt="Outpatient" class="icon-image">
+                                </div>
+                                <h3 class="card-title mb-3 text-primary">Finance</h3>
+                                <a href="finance.php" class="btn btn-primary">Proceed</a>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="col-md-4">
+                            <div class="card text-dark flex-fill">
+                                <div class="card-body text-center">
+                                    <div class="h1 mb-3">
+                                        <img src="img/blood-test.png" alt="Outpatient" class="icon-image">
+                                    </div>
+                                    <h3 class="card-title mb-3 text-primary">Registration</h3>
+                                    <a href="patient_list_user.php" class="btn btn-primary">Proceed</a>
+                                </div>
+                            </div>
+                        </div>
+                            
+                            <div class="col-md-4">
+                                <div class="card text-dark flex-fill">
+                                    <div class="card-body text-center">
+                                        <div class="h1 mb-3">
+                                            <img src="img/advice.png" alt="Outpatient" class="icon-image">
+                                        </div>
+                                        <h3 class="card-title mb-3 text-primary">Outpatient</h3>
+                                        <a href="patient_list_user.php" class="btn btn-primary">Proceed</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card text-dark flex-fill">
+                                    <div class="card-body text-center">
+                                        <div class="h1 mb-3">
+                                            <img src="img/doctor1.png" alt="Outpatient" class="icon-image">
+                                        </div>
+                                        <h3 class="card-title mb-3 text-primary">Inpatients</h3>
+                                        <a href="inpatient.php" class="btn btn-primary">Proceed</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        
+                        <div class="col-md-4">
+                            <div class="card text-dark flex-fill">
+                                <div class="card-body text-center">
+                                    <div class="h1 mb-3">
+                                        <img src="img/blood-test.png" alt="Outpatient" class="icon-image">
+                                    </div>
+                                    <h3 class="card-title mb-3 text-primary">HIV/AIDS</h3>
+                                    <a href="hiv_test.php" class="btn btn-primary">Proceed</a>
+                                </div>
+                            </div>
+                        </div>
+                       
+
+                            <div class="col-md-4">
+                                <div class="card text-dark flex-fill">
+                                    <div class="card-body text-center">
+                                        <div class="h1 mb-3">
+                                            <img src="img/consultation.png" alt="Outpatient" class="icon-image">
+                                        </div>
+                                        <h3 class="card-title mb-3 text-primary">Counseling</h3>
+                                        <a href="consultant_list.php" class="btn btn-primary">Proceed</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card text-dark flex-fill">
+                                    <div class="card-body text-center">
+                                        <div class="h1 mb-3">
+                                            <img src="img/pregnant.png" alt="Outpatient" class="icon-image">
+                                        </div>
+                                        <h3 class="card-title mb-3 text-primary">Antenatal Care</h3>
+                                        <a href="antenatal_display.php" class="btn btn-primary">Proceed</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+
+                   <?php } 
+                     elseif ($role === 'Doctor'){ ?>
+                        <div class="col-md-4">
+                        <div class="card text-dark flex-fill">
+                            <div class="card-body text-center">
+                                <div class="h1 mb-3">
+                                    <img src="img/accounting.png" alt="Outpatient" class="icon-image">
+                                </div>
+                                <h3 class="card-title mb-3 text-primary">Finance</h3>
+                                <a href="finance.php" class="btn btn-primary">Proceed</a>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="col-md-4">
+                        <div class="card text-dark">
+                        
+                            <div class="card-body text-center">
+                            <div class="h1 mb-3">
+                                    <img src="img/doctor.png" alt="Outpatient" class="icon-image">
+                                </div>
+                                <h3 class="card-title mb-3 text-primary">Appointments</h3>
+                                <a href="view_appointment.php" class="btn btn-primary">Proceed</a>               
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-4">
+                        <div class="card text-dark flex-fill">
+                            <div class="card-body text-center">
+                            <div class="h1 mb-3">
+                                <img src="img/x-ray.png" alt="Outpatient" class="icon-image">
+                            </div>
+                                <h3 class="card-title mb-3 text-primary">Radiology</h3>
+                                <a href="radiology.php" class="btn btn-primary">Proceed</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                            <div class="card text-dark flex-fill">
+                                    <div class="card-body text-center">
+                                    <div class="h1 mb-3">
+                                        <img src="img/laboratory.png" alt="Outpatient" class="icon-image">
+                                    </div>
+                                        <h3 class="card-title mb-3 text-primary">Laboratory</h3>
+                                        <a href="laboratory.php" class="btn btn-primary">Proceed</a>
+                                    </div>
+                                </div>
+                            </div>
+    
+                    <div class="col-md-4">
+                        <div class="card text-dark flex-fill">
+                            <div class="card-body text-center">
+                                <div class="h1 mb-3">
+                                    <img src="img/advice.png" alt="Outpatient" class="icon-image">
+                                </div>
+                                <h3 class="card-title mb-3 text-primary">Outpatient</h3>
+                                <a href="patient_list_user.php" class="btn btn-primary">Proceed</a>
+                            </div>
+                        </div>
+                    </div>
+                   <?php  }
+                    elseif ($role === 'Admin'){ ?>
+                        <div class="col-md-4">
+                        <div class="card text-dark flex-fill">
+                            <div class="card-body text-center">
+                                <div class="h1 mb-3">
+                                    <img src="img/accounting.png" alt="Outpatient" class="icon-image">
+                                </div>
+                                <h3 class="card-title mb-3 text-primary">Finance</h3>
+                                <a href="finance.php" class="btn btn-primary">Proceed</a>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="col-md-4">
+                    <div class="card text-dark">
+                    
+                        <div class="card-body text-center">
+                            <div class="h1 mb-3">
+                            <img src="img/doctor.png" alt="Outpatient" class="icon-image">
+                            </div>
+                            <h3 class="card-title mb-3 text-secondary">Financial Records</h3>
+                            <p class="card-text">View Finances</p>
+                                <a href="doctor_reg.php" class="btn btn-primary">Manage Doctors</a>                    
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-dark">
+                    
+                        <div class="card-body text-center">
+                            <div class="h1 mb-3">
+                            <img src="img/doctor.png" alt="Outpatient" class="icon-image">
+                            </div>
+                            <h3 class="card-title mb-3 text-secondary">Patient Records</h3>
+                            <p class="card-text">View or patient Records</p>
+                            <a href="admin_reg.php" class="btn btn-primary">Manage Admins</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-dark">
+                    
+                        <div class="card-body text-center">
+                            <div class="h1 mb-3">
+                            <img src="img/doctor.png" alt="Outpatient" class="icon-image">
+                            </div>
+                            <h3 class="card-title mb-3 text-secondary">System Users</h3>
+                            <p class="card-text">Register, view or delete users</p>
+                            <a href="user_list.php" class="btn btn-primary">Manage users</a>
+                        </div>
+                    </div>
+                   <?php }
+                    else{ ?>
+                        <div class="col-md-6">
+                        <div class="card text-dark flex-fill">
+                            <div class="card-body text-center">
+                                <div class="h1 mb-3">
+                                    <img src="img/accounting.png" alt="Outpatient" class="icon-image">
+                                </div>
+                                <h3 class="card-title mb-3 text-primary">Finance</h3>
+                                <a href="finance.php" class="btn btn-primary">Proceed</a>
+                            </div>
+                        </div>
+                    </div>
+                       <?php }
+                    } ?>
                     </div>
                 </div>
             </section>

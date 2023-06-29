@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2023 at 12:36 PM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 8.0.9
+-- Generation Time: Jun 29, 2023 at 05:12 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 7.3.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -57,7 +57,8 @@ INSERT INTO `add_radiology` (`id`, `patient_id`, `patient_name`, `photo`, `comme
 (23, 22, 'Chikondi Malabada', 'uploads/', 'no any damages', '2023-06-09'),
 (24, 22, 'Chikondi Malabada', 'uploads/', 'no any damages', '2023-06-09'),
 (25, 20, 'Steven Chungu', 'uploads/Screenshot (9).png', 'no any damages', '2023-06-09'),
-(26, 20, 'Steven Chungu', 'uploads/Screenshot (9).png', 'no any damages', '2023-06-09');
+(26, 20, 'Steven Chungu', 'uploads/Screenshot (9).png', 'no any damages', '2023-06-09'),
+(27, 26, 'Lordwell manondo', 'uploads/Screenshot (4).png', 'open fracture on the left eye', '2023-06-28');
 
 -- --------------------------------------------------------
 
@@ -68,6 +69,7 @@ INSERT INTO `add_radiology` (`id`, `patient_id`, `patient_name`, `photo`, `comme
 CREATE TABLE `admins` (
   `id` int(11) NOT NULL,
   `prof` varchar(100) NOT NULL,
+  `role` text DEFAULT NULL,
   `uname` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `pwd` varchar(200) NOT NULL,
@@ -79,10 +81,10 @@ CREATE TABLE `admins` (
 -- Dumping data for table `admins`
 --
 
-INSERT INTO `admins` (`id`, `prof`, `uname`, `email`, `pwd`, `code`, `expire`) VALUES
-(9, 'Psychologists', 'jo viola', 'Avio@gmail.com', 'c20ad4d76fe97759aa27a0c99bff6710', '', 0),
-(14, 'Physiotherapist', 'Omexie', 'Omexie@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '', 0),
-(21, 'Cardiologist', 'charle-cee-programmer', 'chidulecharles1@gmail.com', 'c20ad4d76fe97759aa27a0c99bff6710', '', 0);
+INSERT INTO `admins` (`id`, `prof`, `role`, `uname`, `email`, `pwd`, `code`, `expire`) VALUES
+(9, 'Psychologists', NULL, 'jo viola', 'Avio@gmail.com', 'c20ad4d76fe97759aa27a0c99bff6710', '', 0),
+(14, 'Physiotherapist', NULL, 'Omexie', 'Omexie@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', '', 0),
+(21, 'Cardiologist', NULL, 'charle-cee-programmer', 'chidulecharles1@gmail.com', 'c20ad4d76fe97759aa27a0c99bff6710', '', 0);
 
 -- --------------------------------------------------------
 
@@ -113,7 +115,8 @@ INSERT INTO `appointments` (`id`, `patient_id`, `name`, `date`, `time`, `profess
 (3, 17, 'Jenifer Lopez', '2023-05-18', '17:50:00', 'Physiotherapist', 'gffffffffffffffffffffffffffffffffff', 'ida', '15:50:31 18-05-2023 ', 'Prescribed by Charle Cee'),
 (4, 4, 'Edson Magombo', '2023-05-18', '15:50:00', 'Physiotherapist', 'kkkkkkkkkkkkkkkkkkkkkkkkk', 'ida', '15:51:01 18-05-2023 ', 'Prescribed by '),
 (5, 18, 'Omexie Chama', '2023-07-09', '08:53:00', 'Surgeon', 'need surgery', 'charle-cee-graphix', '08:53:26 10-06-2023 ', NULL),
-(6, 18, 'Omexie Chama', '2023-07-09', '08:53:00', 'Surgeon', 'need surgery', 'charle-cee-graphix', '08:53:26 10-06-2023 ', NULL);
+(6, 18, 'Omexie Chama', '2023-07-09', '08:53:00', 'Surgeon', 'need surgery', 'charle-cee-graphix', '08:53:26 10-06-2023 ', NULL),
+(7, 26, 'Lordwell manondo', '2023-06-28', '12:39:00', 'Surgeon', 'check up', 'matilda', '22:40:16 28-06-2023 ', NULL);
 
 -- --------------------------------------------------------
 
@@ -149,6 +152,8 @@ CREATE TABLE `doctor` (
   `id` int(11) NOT NULL,
   `uname` varchar(100) NOT NULL,
   `prof` varchar(100) NOT NULL,
+  `role` text DEFAULT NULL,
+  `email` text DEFAULT NULL,
   `pwd` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -156,12 +161,13 @@ CREATE TABLE `doctor` (
 -- Dumping data for table `doctor`
 --
 
-INSERT INTO `doctor` (`id`, `uname`, `prof`, `pwd`) VALUES
-(5, 'omexie', 'Physiotherapist', '81dc9bdb52d04dc20036dbd8313ed055'),
-(7, 'chama', 'Surgeon', 'c20ad4d76fe97759aa27a0c99bff6710'),
-(9, 'jo viola', 'Radiologist', 'c20ad4d76fe97759aa27a0c99bff6710'),
-(10, 'Njotcha', 'Neurologist', 'c20ad4d76fe97759aa27a0c99bff6710'),
-(11, 'charle-cee-graphix', 'Cardiologist', 'c20ad4d76fe97759aa27a0c99bff6710');
+INSERT INTO `doctor` (`id`, `uname`, `prof`, `role`, `email`, `pwd`) VALUES
+(5, 'omexie', 'Physiotherapist', NULL, NULL, '81dc9bdb52d04dc20036dbd8313ed055'),
+(7, 'chama', 'Surgeon', NULL, NULL, 'c20ad4d76fe97759aa27a0c99bff6710'),
+(9, 'jo viola', 'Radiologist', NULL, NULL, 'c20ad4d76fe97759aa27a0c99bff6710'),
+(10, 'Njotcha', 'Neurologist', NULL, NULL, 'c20ad4d76fe97759aa27a0c99bff6710'),
+(11, 'charle-cee-graphix', 'Cardiologist', NULL, NULL, 'c20ad4d76fe97759aa27a0c99bff6710'),
+(12, 'Mana', 'Medical Lab Scientist', 'Doctor', 'omexiechama@gmail.com', 'c20ad4d76fe97759aa27a0c99bff6710');
 
 -- --------------------------------------------------------
 
@@ -367,7 +373,11 @@ INSERT INTO `patient` (`id`, `name`, `date`, `gender`, `age`, `address`, `next_o
 (19, 'Peter Makazi', '2023-06-07', 'Male', 0, 'Thyolo', 'Chimwemwe', 'CCAP', 'teaccher', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', NULL, '', NULL, NULL, NULL, 'not paid', NULL, NULL, NULL, NULL, NULL, NULL),
 (20, 'Steven Chungu', '1987-06-07', 'Female', 36, 'Zomba', 'Chimwemwe', 'CCAP', 'Police', 'Cough:2 days ago', 'Surgery', 'Temperature:89', 'pale:', 'TB', 'Drug history:heart surgery', 'Aspirin ', '45', '', NULL, '', NULL, NULL, 2300, 'Cleared', NULL, 'Surgical Ward', NULL, NULL, NULL, 10000),
 (21, 'Mavuto Kambuwe', '1999-06-07', 'Male', 24, 'Zomba', 'Chimwemwe', 'CCAP', 'Not working', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', NULL, '', NULL, NULL, NULL, 'not paid', NULL, NULL, NULL, NULL, NULL, NULL),
-(22, 'Chikondi Malabada', '1998-06-02', 'Male', 25, 'Zomba', 'Charle', 'SDA', 'teaccher', 'Fever:3 days ago', 'Drip', 'Temperature:35', 'pale:', 'Pneumia', 'Drug history:panadol', 'Acetymethrin,Amoxycilin      ', 'Acetymethrin: 2 morn,Amoxycilin      : 2 morn', '', 'Discharged', '', 'charle-cee', '11:43:20 10-06-2023 ', 4000, 'not paid', NULL, 'Paediatrics Ward', '2023-06-09', NULL, NULL, NULL);
+(22, 'Chikondi Malabada', '1998-06-02', 'Male', 25, 'Zomba', 'Charle', 'SDA', 'teaccher', 'Cough:2 days,Shortness of breath:2 days ago', 'Drip', 'Temperature:45', 'pale:', 'TB', 'Drug history:heart surgery', 'Acetymethrin', 'Acetymethrin: 2  morning,afternoon and evening for 5 days', '', 'Discharged', '', 'matilda', '17:43:10 28-06-2023 ', 3000, 'not paid', 'Parasitology', 'Paediatrics Ward', '2023-06-09', NULL, NULL, NULL),
+(23, 'Hannah Panatha', '1995-06-30', 'Female', 28, 'Nadzombe, Phalombe', 'Novahiwa', 'Catholic', 'Banker', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', NULL, '', NULL, NULL, NULL, 'not paid', NULL, NULL, NULL, NULL, NULL, NULL),
+(24, 'Kervin Msimuko', '1987-06-30', 'Male', 36, 'Zomba', 'Chimwemwe', 'Catholic', 'Police', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', NULL, '', NULL, NULL, NULL, 'not paid', NULL, NULL, NULL, NULL, NULL, NULL),
+(25, 'Gomboz Tech', '2000-06-14', 'Male', 23, 'Zomba', 'Eddie', 'Catholic', 'Designer', 'Fever:2 days', NULL, 'Temperature:67', 'unconscious:', 'Pneumia', 'Surgical history:heart surgery', 'Acetymethrin', 'Acetymethrin:2', '', NULL, '', 'matilda', '20:40:32 28-06-2023 ', 3000, 'not paid', 'Microbiology', NULL, NULL, NULL, NULL, NULL),
+(26, 'Lordwell manondo', '1993-06-28', 'Male', 30, 'Lilongwe', 'Mwananga', 'CCAP', 'teaccher', 'Shortness of breath:2 days', NULL, 'Temperature:23', 'unconscious:', 'Pneumia', 'Surgical history:heart surgery', 'Acetymethrin', 'Acetymethrin: 2  morning,afternoon and evening for 5 days', '', NULL, '', 'matilda', '12:12:16 29-06-2023 ', 23000, 'not paid', NULL, NULL, NULL, NULL, NULL, 20000);
 
 -- --------------------------------------------------------
 
@@ -393,7 +403,8 @@ INSERT INTO `radiology` (`id`, `patient_id`, `patient_name`, `scan`, `messages`,
 (2, 18, 'Omexie Chama', 'X-ray', 'Scan for ribs', 'Scanned'),
 (3, 18, 'Omexie Chama', 'X-ray', 'chest open fracture', 'Scanned'),
 (4, 20, 'Steven Chungu', 'X-ray', 'Skull scanning', 'Scanned'),
-(5, 22, 'Chikondi Malabada', 'X-ray', 'Need to check bone fracture', 'Scanned');
+(5, 22, 'Chikondi Malabada', 'X-ray', 'Need to check bone fracture', 'Scanned'),
+(7, 26, 'Lordwell manondo', 'UltraSound Scanning', 'Skull', 'Scanned');
 
 -- --------------------------------------------------------
 
@@ -405,6 +416,8 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `uname` varchar(100) NOT NULL,
   `prof` varchar(100) NOT NULL,
+  `role` text DEFAULT NULL,
+  `email` text DEFAULT NULL,
   `pwd` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -412,11 +425,15 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `uname`, `prof`, `pwd`) VALUES
-(7, 'ida', 'Clinician', 'c20ad4d76fe97759aa27a0c99bff6710'),
-(12, 'Mary Juma', 'Nurse', 'c20ad4d76fe97759aa27a0c99bff6710'),
-(13, 'jo viola', 'Clinician', 'c20ad4d76fe97759aa27a0c99bff6710'),
-(15, 'charle-cee', 'Receptionist', 'c20ad4d76fe97759aa27a0c99bff6710');
+INSERT INTO `user` (`id`, `uname`, `prof`, `role`, `email`, `pwd`) VALUES
+(12, 'Mary Juma', 'Nurse', NULL, NULL, 'c20ad4d76fe97759aa27a0c99bff6710'),
+(13, 'jo viola', 'Clinician', NULL, NULL, 'c20ad4d76fe97759aa27a0c99bff6710'),
+(15, 'charle-cee', 'Receptionist', NULL, NULL, 'c20ad4d76fe97759aa27a0c99bff6710'),
+(16, 'matilda', 'Nurse', NULL, NULL, 'c20ad4d76fe97759aa27a0c99bff6710'),
+(17, 'Memory Madeya', 'Receptionist', NULL, NULL, 'c20ad4d76fe97759aa27a0c99bff6710'),
+(18, 'Rushford Marcus', 'Medical Laboratory Scientist', NULL, NULL, 'c20ad4d76fe97759aa27a0c99bff6710'),
+(19, 'Yamikani Mount', 'Pharmacist', NULL, NULL, 'c20ad4d76fe97759aa27a0c99bff6710'),
+(20, 'Jimmy Madeya', 'Accountant', 'Admin', NULL, 'c20ad4d76fe97759aa27a0c99bff6710');
 
 --
 -- Indexes for dumped tables
@@ -512,7 +529,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `add_radiology`
 --
 ALTER TABLE `add_radiology`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `admins`
@@ -524,7 +541,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `counselling`
@@ -536,7 +553,7 @@ ALTER TABLE `counselling`
 -- AUTO_INCREMENT for table `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `drug`
@@ -572,19 +589,19 @@ ALTER TABLE `laboratory`
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `radiology`
 --
 ALTER TABLE `radiology`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Constraints for dumped tables

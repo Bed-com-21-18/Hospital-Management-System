@@ -200,17 +200,25 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
             });
 
             $('select[name="measurement[]"]').change(function() {
-                var selectedMeasurement = $(this).val();
-                var measurementContainer = $('#measurementContainer');
-                measurementContainer.empty();
+                            var selectedMeasurement = $(this).val();
+                            var measurementContainer = $('#measurementContainer');
+                            measurementContainer.empty();
 
-                if (selectedMeasurement.length > 0) {
-                    selectedMeasurement.forEach(function(measurement) {
-                        var measurementInput = '<input type="text" class="form-control" name="measurementContainer[]" placeholder="Enter ' + measurement + '"><br>';
-                        measurementContainer.append(measurementInput);
-                    });
+                            if (selectedMeasurement.length > 0) {
+                                selectedMeasurement.forEach(function(measurement) {
+                                    var measurementInput = '<input type="number" class="form-control" name="measurementContainer[]" placeholder="Enter ' + measurement + '" min="0" onchange="validateInput(this)"><br>';
+                                    measurementContainer.append(measurementInput);
+                                });
+                            }
+                        });
+
+            function validateInput(input) {
+                var value = input.value;
+                if (value < 0 || isNaN(value)) {
+                    alert("Please enter a non-negative number.");
+                    input.value = ''; // Clear the input field
                 }
-            });
+            }
 
             
         $('select[name="examination[]"]').change(function() {

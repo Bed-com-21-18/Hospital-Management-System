@@ -45,8 +45,8 @@
                             <div class="h1 mb-3">
                             <img src="img/doctor.png" alt="Outpatient" class="icon-image">
                             </div>
-                            <h3 class="card-title mb-3 text-secondary">Doctors</h3>
-                            <p class="card-text">Register, view or delete doctor</p>
+                            <h3 class="card-title mb-3 text-secondary">Financial Records</h3>
+                            <p class="card-text">View Finances</p>
                                 <a href="doctor_reg.php" class="btn btn-primary">Manage Doctors</a>                    
                         </div>
                     </div>
@@ -58,8 +58,8 @@
                             <div class="h1 mb-3">
                             <img src="img/doctor.png" alt="Outpatient" class="icon-image">
                             </div>
-                            <h3 class="card-title mb-3 text-secondary">Admins</h3>
-                            <p class="card-text">Register, view or delete admin</p>
+                            <h3 class="card-title mb-3 text-secondary">Patient Records</h3>
+                            <p class="card-text">View or patient Records</p>
                             <a href="admin_reg.php" class="btn btn-primary">Manage Admins</a>
                         </div>
                     </div>
@@ -71,9 +71,9 @@
                             <div class="h1 mb-3">
                             <img src="img/doctor.png" alt="Outpatient" class="icon-image">
                             </div>
-                            <h3 class="card-title mb-3 text-secondary">System User</h3>
-                            <p class="card-text">Register, view or delete user</p>
-                            <a href="user_reg.php" class="btn btn-primary">Manage users</a>
+                            <h3 class="card-title mb-3 text-secondary">System Users</h3>
+                            <p class="card-text">Register, view or delete users</p>
+                            <a href="user_list.php" class="btn btn-primary">Manage users</a>
                         </div>
                     </div>
                 </div>

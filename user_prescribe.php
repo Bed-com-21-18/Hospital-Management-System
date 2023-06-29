@@ -13,6 +13,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
 
+
 </head>
 
 
@@ -21,7 +22,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
    <div class="container-fluid mb-5"> <?php include 'unavbar.php'; ?></div>
 
 
-    <div class="container p-5">
+    <div class="container">
         <div class="P-2">
             <h4 class="text-center bg-light text-secondary p-2">DIAGNOSIS</h4>
         </div>
@@ -48,7 +49,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
         ?>
 
         <div class="container">
-            <table class="table table-hover" style="overflow:auto">
+            <table class="table table-hover" >
                 <thead class="table table-hover">
                     <tr>
                         <th>Name</th>
@@ -63,7 +64,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
                         <td><?php echo $row['age']; ?></td>
                         <td><?php echo $row['gender']; ?></td>
                         <td class="btn-group btn-group-justified">
-                            <a href="view_history.php?history=<?php echo $row["id"]; ?>" class="badge text-light bg-primary">Previous Treatment History</a>
+                            <a href="view_history.php?history=<?php echo $row["id"]; ?>" class="badge text-light bg-primary">Treatment History</a>
                             &nbsp;<a href="book_appointment.php?book=<?php echo $row["id"]; ?>" class="badge text-light bg-secondary">Book Appointment</a>
 
                         </td>
@@ -137,11 +138,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
                         <div class="card text-center p-2">
                             <div class="">
                                 <h5 class="">Patient Management</h5>
-<hr>
+                                <hr>
+
                             <div class="row px-4">
                                 <h5 class="text-center">Assigning Drugs  and dosages</h5>
                                 <div class="col-md-6">
-                                    <div class="form-group">
+                                    <div class="form-group" >
                                  
                                             <select name="drug[]" class="form-select" required multiple onchange="showNotes(this)">
                                             <?php
@@ -205,20 +207,20 @@ $(document).ready(function() {
                     });
                     }
                 });
+                $('select[name="drug[]"]').change(function() {
+                    var selectedDrug = $(this).val();
+                    var drugContainer = $('#drugContainer');
+                    drugContainer.empty();
 
+                    if (selectedDrug.length > 0) {
+                        selectedDrug.forEach(function(drug) {
+                            var drugInput = '<input type="text" class="form-control" style="width: 300px; display: inline-block;" name="drugContainer[]" value="' + drug + ':"> Quantity: <input type="number" class="form-control" style="width: 70px; display: inline-block;" name="totalNumber[]" min="0"><br>';
 
-            $('select[name="drug[]"]').change(function() {
-                var selectedDrug = $(this).val();
-                var drugContainer = $('#drugContainer');
-                drugContainer.empty();
+                            drugContainer.append(drugInput);
+                        });
+                    }
+                });
 
-                if (selectedDrug.length > 0) {
-                    selectedDrug.forEach(function(drug) {
-                        var drugInput = '<input type="text" class="form-control" name="drugContainer[]" value="' + drug + ':"><br>';
-                        drugContainer.append(drugInput);
-                    });
-                }
-            });
         });
     </script>
 

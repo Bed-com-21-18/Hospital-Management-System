@@ -7,12 +7,15 @@
     $prof = '';
     $uname = '';
     $pwd = '';
+    $email = '';
 
     if (isset($_POST['save'])){
         $uname = $_POST['uname'];
         $prof = $_POST['prof'];
         $other_user = $_POST['other-user'];
         $pwd = $_POST['pwd'];
+        $role = $_POST['role'];
+        $email = $_POST['email'];
         $re_pwd = $_POST['re_pwd'];
 
         //validation
@@ -50,7 +53,10 @@
         }else {
             //hashing password
             $pwd = md5($pwd);
-           
+              //redifining empty role
+            if ($role === '') {
+                $role = $prof;
+            } else{
 
             //checking if the user exit
            $sql = "SELECT * FROM user WHERE prof ='$prof' AND uname='$uname'";
@@ -59,8 +65,9 @@
                 exit();
            }else {
             //insert user
-                $sql2 = "INSERT INTO user (prof, uname, pwd) 
-                VALUES('$prof', '$uname', '$pwd')";
+            if ($role === 'Admin') {
+                $sql2 = "INSERT INTO admins (prof,role, uname, email, pwd) 
+                VALUES('$prof', '$role', '$uname', '$email', '$pwd')";
                  if ($mysqli->query($sql2) === TRUE){
                     header ("Location: user_reg.php?success=Successfully registered");
                     exit();
@@ -68,9 +75,36 @@
                     header ("Location: user_reg.php?error=unknown error&$user_data");
                     exit();
                  }
+            }
+            else if($role === 'Doctor') {
+                $sql2 = "INSERT INTO doctor (prof, role, uname, email, pwd) 
+                VALUES('$prof', '$role','$uname', '$email', '$pwd')";
+                 if ($mysqli->query($sql2) === TRUE){
+                    header ("Location: user_reg.php?success=Successfully registered");
+                    exit();
+                 }else{
+                    header ("Location: user_reg.php?error=unknown error&$user_data");
+                    exit();
+                 }
+
+            }
+            else{
+                $sql2 = "INSERT INTO user (prof, role, uname, email, pwd) 
+                VALUES('$prof', '$role', '$uname', '$email', '$pwd')";
+                 if ($mysqli->query($sql2) === TRUE){
+                    header ("Location: user_reg.php?success=Successfully registered");
+                    exit();
+                 }else{
+                    header ("Location: user_reg.php?error=unknown error&$user_data");
+                    exit();
+                 }
+            }
+               
            }
         }
-    }else{
+         }
+    }
+    else{
         
     }
 
@@ -103,6 +137,7 @@
             $uname = $row['uname'];
             $prof = $row['prof'];
             $pwd = $row['pwd'];
+            $email = $row['email'];
                  
         
       }
@@ -111,11 +146,13 @@
         $id = $_POST['id'];
         $uname = $_POST['uname'];
         $prof = $_POST['prof'];
+        $email = $row['email'];
 
-        $sql3 = "UPDATE user SET uname='$uname', prof='$prof' WHERE id='$id'";
+        $sql3 = "UPDATE user SET uname='$uname',  email = '$email', prof='$prof' WHERE id='$id'";
         $result3 = $mysqli->query($sql3);
 
         header("Location: user_reg.php?success=Successfully updated");
         exit();
     }
+
 ?>

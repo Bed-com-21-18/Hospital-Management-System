@@ -56,19 +56,17 @@
                         </div>
                     </div>
                 </div>
-<!-- 
-                <div class="col-md">
-                    <div class="card text-dark">
-                    
-                        <div class="card-body text-center">
-                            <div class="h1 mb-3">
-                                <img src="img/medica1l.png" alt="Outpatient" class="icon-image">
+            <div class="col-md-4">
+                        <div class="card text-dark flex-fill">
+                                <div class="card-body text-center">
+                                <div class="h1 mb-3">
+                                    <img src="img/laboratory.png" alt="Outpatient" class="icon-image">
+                                </div>
+                                    <h3 class="card-title mb-3 text-primary">Laboratory</h3>
+                                    <a href="laboratory.php" class="btn btn-primary">Proceed</a>
+                                </div>
                             </div>
-                            <h3 class="card-title mb-3 text-primary">Manage Medicine</h3>
-                            <a href="doc_manage_drug.php" class="btn btn-primary">Proceed</a>
                         </div>
-                    </div>
-                </div> -->
 
                 <div class="col-md-4">
                     <div class="card text-dark flex-fill">
