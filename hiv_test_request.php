@@ -28,7 +28,7 @@
             });
         </script>
     </head>
-    <body>
+    <body style="margin-top : 200px">
 
      <!--NavBar-->
  <div class="container-fluid mb-5"> <?php include 'unavbar.php'; ?></div>
@@ -57,7 +57,7 @@
                 <div class="col-md-5">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="text-center text-secondary">HIV/AIDS</h4>
+                            <h4 class="text-center text-secondary"> Sending HIV/AIDS Test</h4>
                         </div>
                       
                             <?php if (isset($_GET['error'])) {?>

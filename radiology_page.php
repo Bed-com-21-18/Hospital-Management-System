@@ -28,7 +28,7 @@
             });
         </script>
     </head>
-    <body>
+    <body style="margin-top : 200px">
 
      <!-- Navbar -->
      <!--NavBar-->

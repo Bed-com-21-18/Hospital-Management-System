@@ -1,7 +1,6 @@
 <?php 
-    include 'user_regdb.php';
-    if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
-
+include 'user_regdb.php';
+if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 ?>
 
 <!doctype html>
@@ -28,7 +27,7 @@
     <body>
 
      <!-- Navbar -->
-     <div class="container-fluid mb-5"> <?php include 'anavbar.php'; ?></div>
+     <div class="container-fluid mb-5"> <?php include 'unavbar.php'; ?></div>
 
 
         <!--Form-->
@@ -53,103 +52,80 @@
                            <div class="form-group mb-3">
                                 <input type="hidden" name="id" value="<?= $id; ?>"/>
                                <label>Username</label>
-                               <?php if (isset($_GET['uname'])) {?>
-                               <input type="text" name="uname" class="form-control" 
-                               value="<?php echo $_GET['uname']; ?>"/>
-                               <?php }else { ?>
-                                    <input type="text" value="<?= $uname; ?>" name="uname" class="form-control"/>
-                               <?php }?> 
+                               <input type="text" name="uname" class="form-control" value="<?php echo isset($_GET['uname']) ? $_GET['uname'] : $uname; ?>"/>
                            </div>
                            <div class="form-group mb-3">
                                <label>Email</label>
-                               <?php if (isset($_GET['email'])) {?>
-                               <input type="email" name="email" class="form-control" 
-                               value="<?php echo $_GET['email']; ?>"/>
-                               <?php }else { ?>
-                                   <input type="email" value="<?= $email; ?>" name="email" class="form-control"/>
-                               <?php }?> 
+                               <input type="email" name="email" class="form-control" value="<?php echo isset($_GET['email']) ? $_GET['email'] : $email; ?>"/>
                            </div>
                            
                            <div class="form-group mb-3">
                                 <label for="professional">Professional</label>
-                                <?php if (isset($_GET['prof'])) { ?>
-                                    <select name="prof" class="form-control">
-                                        <option value="<?php echo $_GET['prof']; ?>"><?php echo $_GET['prof']; ?></option>
-                                    </select>
-                                <?php } else { ?>
-                                    <select name="prof" required class="form-select">
-                                        <option disabled selected>Select Professional</option>
-                                        <option value="Cardiologist">Cardiologist</option>
-                                        <option value="Radiologist">Radiologist</option>
-                                        <option value="Dermatologist">Dermatologist</option>
-                                        <option value="Gastroenterologist">Gastroenterologist</option>
-                                        <option value="Neurologist">Neurologist</option>
-                                        <option value="Orthopedic">Orthopedic</option>
-                                        <option value="Medical Lab Scientist">Medical Lab Scientist</option>
-                                        <option value="Pediatric">Pediatric</option>
-                                        <option value="Surgeon">Surgeon</option>
-                                        <option value="Physiotherapist">Physiotherapist</option>
-                                        <option value="Nurse">Nurse</option>
-                                        <option value="Pharmacist">Pharmacist</option>
-                                        <option value="Accountant">Accountant</option>
-                                        <option value="Receptionist">Receptionist</option>
-                                        <option value="Clinician">Clinician</option>
-                                      
-                                    </select>
-                                <?php } ?>
+                                <select name="prof" required class="form-select">
+                                    <option disabled selected>Select Professional</option>
+                                    <option value="Cardiologist" <?php echo isset($_GET['prof']) && $_GET['prof'] == 'Cardiologist' ? 'selected' : ''; ?>>Cardiologist</option>
+                                    <option value="Radiologist" <?php echo isset($_GET['prof']) && $_GET['prof'] == 'Radiologist' ? 'selected' : ''; ?>>Radiologist</option>
+                                    <option value="Dermatologist" <?php echo isset($_GET['prof']) && $_GET['prof'] == 'Dermatologist' ? 'selected' : ''; ?>>Dermatologist</option>
+                                    <option value="Gastroenterologist" <?php echo isset($_GET['prof']) && $_GET['prof'] == 'Gastroenterologist' ? 'selected' : ''; ?>>Gastroenterologist</option>
+                                    <option value="Neurologist" <?php echo isset($_GET['prof']) && $_GET['prof'] == 'Neurologist' ? 'selected' : ''; ?>>Neurologist</option>
+                                    <option value="Orthopedic" <?php echo isset($_GET['prof']) && $_GET['prof'] == 'Orthopedic' ? 'selected' : ''; ?>>Orthopedic</option>
+                                    <option value="Medical Lab Scientist" <?php echo isset($_GET['prof']) && $_GET['prof'] == 'Medical Lab Scientist' ? 'selected' : ''; ?>>Medical Lab Scientist</option>
+                                    <option value="Pediatric" <?php echo isset($_GET['prof']) && $_GET['prof'] == 'Pediatric' ? 'selected' : ''; ?>>Pediatric</option>
+                                    <option value="Surgeon" <?php echo isset($_GET['prof']) && $_GET['prof'] == 'Surgeon' ? 'selected' : ''; ?>>Surgeon</option>
+                                    <option value="Physiotherapist" <?php echo isset($_GET['prof']) && $_GET['prof'] == 'Physiotherapist' ? 'selected' : ''; ?>>Physiotherapist</option>
+                                    <option value="Nurse" <?php echo isset($_GET['prof']) && $_GET['prof'] == 'Nurse' ? 'selected' : ''; ?>>Nurse</option>
+                                    <option value="Pharmacist" <?php echo isset($_GET['prof']) && $_GET['prof'] == 'Pharmacist' ? 'selected' : ''; ?>>Pharmacist</option>
+                                    <option value="Accountant" <?php echo isset($_GET['prof']) && $_GET['prof'] == 'Accountant' ? 'selected' : ''; ?>>Accountant</option>
+                                    <option value="Receptionist" <?php echo isset($_GET['prof']) && $_GET['prof'] == 'Receptionist' ? 'selected' : ''; ?>>Receptionist</option>
+                                    <option value="Clinician" <?php echo isset($_GET['prof']) && $_GET['prof'] == 'Clinician' ? 'selected' : ''; ?>>Clinician</option>
+                                </select>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="role">Role</label>
-                                    <select name="role" class="form-select">
-                                        <option disabled selected>Select Role</option>
-                                        <option value="Admin">Admin</option>
-                                        <option value="Doctor">Doctor</option>
-                                        <option value="Nurse">Nurse</option>
-                                        <option value="Pharmacist">Pharmacist</option>
-                                        <option value="Accountant">Accountant</option>
-                                        <option value="Medical Lab Scientist">Medical Lab Scientist</option>
-                                    
-                                    </select>
+                                <select name="role" class="form-select">
+                                    <option disabled selected>Select Role</option>
+                                    <option value="Admin" <?php echo isset($_GET['role']) && $_GET['role'] == 'Admin' ? 'selected' : ''; ?>>Admin</option>
+                                    <option value="Doctor" <?php echo isset($_GET['role']) && $_GET['role'] == 'Doctor' ? 'selected' : ''; ?>>Doctor</option>
+                                    <option value="Nurse" <?php echo isset($_GET['role']) && $_GET['role'] == 'Nurse' ? 'selected' : ''; ?>>Nurse</option>
+                                    <option value="Pharmacist" <?php echo isset($_GET['role']) && $_GET['role'] == 'Pharmacist' ? 'selected' : ''; ?>>Pharmacist</option>
+                                    <option value="Accountant" <?php echo isset($_GET['role']) && $_GET['role'] == 'Accountant' ? 'selected' : ''; ?>>Accountant</option>
+                                    <option value="Medical Lab Scientist" <?php echo isset($_GET['role']) && $_GET['role'] == 'Medical Lab Scientist' ? 'selected' : ''; ?>>Medical Lab Scientist</option>
+                                </select>
                             </div>
 
-
-
-                       <div class="form-group mb-3">
-                           <label>Password</label>
-                           <input type="password" value="<?= $pwd; ?>" name="pwd" class="form-control"/>
-                       </div>
-                       <div class="form-group mb-3">
-                           <label>Re-enter Password</label>
-                           <input type="password" value="<?= $pwd; ?>" name="re_pwd" class="form-control"/>
-                       </div>
-                       <div class="form-group mb-3 text-center">
-                        <?php if($update == TRUE) {?>
-                            <button type="submit" name="update" class="btn btn-success">Update</button>
-                        <?php } else {?>
-                           <button type="submit" class="btn btn-primary" name="save">Submit</button>
-                           <?php } ?>
-                       </div>
-
-                   </form>
-               
-                        </div>
+                           <div class="form-group mb-3">
+                               <label>Password</label>
+                               <input type="password" value="<?= $pwd; ?>" name="pwd" class="form-control"/>
+                           </div>
+                           <div class="form-group mb-3">
+                               <label>Re-enter Password</label>
+                               <input type="password" value="<?= $pwd; ?>" name="re_pwd" class="form-control"/>
+                           </div>
+                           <div class="form-group mb-3 text-center">
+                                <?php if($update == TRUE) {?>
+                                    <button type="submit" name="update" class="btn btn-success">Update</button>
+                                <?php } else {?>
+                                   <button type="submit" class="btn btn-primary" name="save">Submit</button>
+                                   <?php } ?>
+                           </div>
+                       </form>
                     </div>
                 </div>
-        
-</div>
+            </div>
+        </div>
     </section>
 
     <!-- footer -->
-        <?php
-            include "footer.php";
-        ?>
+    <?php
+        include "footer.php";
+    ?>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</body>
 </html> 
 <?php 
-    }else {
-        header("Location: home.php");
-        exit();
-    }
-?> 
+}else {
+    header("Location: home.php");
+    exit();
+}
+?>

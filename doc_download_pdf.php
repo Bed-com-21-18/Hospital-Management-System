@@ -1,163 +1,168 @@
-<?php
-// Include the Composer autoloader
-require 'vendor/autoload.php';
-include "config.php";
+<?php 
 include 'user_regdb.php';
+include "comfig.php";
+include "unavbar.php";
 
-use Dompdf\Dompdf;
+if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
+    if (isset($_GET['patient_id'])) {
+        $id = $_GET['patient_id'];
+        $sql2 = "SELECT * FROM patient WHERE id='$id'";
+        $result2 = $mysqli->query($sql2);
 
-if (!isset($_SESSION['uname'])) {
-  // User is not authenticated, redirect to login page
-  header("Location: user_login.php");
-  exit();
-}
-
-if (isset($_GET['download'])) {
-  $id = $_GET['download'];
-  $sql2 = "SELECT * FROM patient WHERE id='$id'";
-  $result2 = $mysqli->query($sql2);
-  $row = $result2->fetch_assoc();
-
-  $name = $row['name'];
-  $age = $row['age'];
-  $gender = $row['gender'];
-  $date = $row['date'];
-  $lab_bill = $row['lab_price'];
-  $tests = $row['tests'];
-  $rad_bill = $row['rad_price'];
-  $drugs = explode(",", $row['drug']);
-  $dosage = $row['dosage'];
-
-  $_SESSION['name'] = $row['name'];
-
-  // Create a new Dompdf instance
-  $dompdf = new Dompdf();
-
-  // Create the PDF content
-  $html = '<html>';
-  $html .= '<body>';
-  $html .= '<div class="container" style="padding: 15px; border: 3px solid black; box-sizing: border-box;">';
-  $html .= '<h1 class="mb-4">Prescription, Dosage, and Billing Summary</h1>';
-  $html .= '<h4>Section A: Patient Details</h4>';
-  $html .= '<div class="row">';
-  $html .= '<div class="col">';
-  $html .= '<table class="table table-bordered">';
-  $html .= '<thead><tr>';
-  $html .= '<th style="padding: 10px; border: 1px solid black;">Patient Name</th>';
-  $html .= '<th style="padding: 10px; border: 1px solid black;">Date of Birth</th>';
-  $html .= '<th style="padding: 10px; border: 1px solid black;">Age</th>';
-  $html .= '<th style="padding: 10px; border: 1px solid black;">Gender</th>';
-  $html .= '</tr></thead>';
-  $html .= '<tbody>';
-  $html .= '<tr>';
-  $html .= '<td style="padding: 10px; border: 1px solid black;">' . $name . '</td>';
-  $html .= '<td style="padding: 10px; border: 1px solid black;">' . $date . '</td>';
-  $html .= '<td style="padding: 10px; border: 1px solid black;">' . $age . '</td>';
-  $html .= '<td style="padding: 10px; border: 1px solid black;">' . $gender . '</td>';
-  $html .= '</tr>';
-  $html .= '</tbody>';
-  $html .= '</table>';
-  $html .= '</div>';
-  $html .= '</div>';
-  $html .= '<br>';
-
-  // Prepare the table for displaying the prescription
-  $html .= '<div class="row mb-3">';
-  $html .= '<div class="table-responsive">';
-  $html .= '<table class="table table-striped">';
-  $html .= '<thead>';
-  $html .= '<h4>Section B: Drugs and Dosage</h4>';
-  $html .= '<tr><th style="padding: 10px; border: 1px solid black;">Drug Name</th><th style="padding: 10px; border: 1px solid black;">Drug Price</th></tr>';
-  $html .= '</thead>';
-  $html .= '<tbody>';
-
-  $total_amount = 0;
-
-  // Fetch the matching drugs based on drug name from the drug table
-  foreach ($drugs as $drug) {
-    $drugNamePattern = "%$drug%";
-    $stmt = $mysqli->prepare("SELECT drug_name, drug_price2 FROM drug WHERE drug_name LIKE ?");
-    $stmt->bind_param("s", $drugNamePattern);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($result->num_rows > 0) {
-      while ($row = $result->fetch_assoc()) {
-        $html .= '<tr><td style="padding: 10px; border: 1px solid black;">' . $row["drug_name"] . '</td><td style="padding: 10px; border: 1px solid black;">' . $row["drug_price2"] . '</td></tr>';
-        $total_amount += $row["drug_price2"];
-      }
+        $row = $result2->fetch_assoc();
+        $id = $row['id'];
+        $name = $row['name'];
+        $age = $row['age'];
+        $date = $row['date'];
     }
-  }
 
-  $total_bill = $total_amount + 1000 + $rad_bill + $lab_bill;
-  $html .= '<tr><td colspan="6"><hr></td></tr>';
-  $html .= '<tr><td colspan="2"><p class="lead"><strong> Dosage: </strong>' . $dosage . '</p></td></tr>';
-  $html .= '<h4>Section C: Bill Breakdown</h4>';
-  $html .= '<tr><td colspan="12"><hr></td></tr>';
-  $html .= '<tr><td colspan="2"><p class="lead"><b>The Service Fee:</b></p></td><td colspan="2">MWK 1000</td></tr>';
-  $html .= '<tr><td colspan="2"><p class="lead"><b>The bill for drugs fee:</b></p></td><td colspan="2">MWK ' . $total_amount . '</td></tr>';
-
-  // Conditionally include the bill amounts for laboratory and radiology tests
-  if ($lab_bill > 0) {
-    $html .= '<tr><td colspan="2"><p class="lead"><b>The bill for laboratory test: <b>' . $tests . '</b></p></td><td colspan="2">MWK ' . $lab_bill . '</td></tr>';
-  }
-  if ($rad_bill > 0) {
-    $html .= '<tr><td colspan="2"><p class="lead"><b>The bill for Radiology test: </b></p></td><td colspan="2"> MWK ' . $rad_bill . '</td></tr>';
-  }
-
-  $html .= '<tr><td colspan="2"><p class="lead"><b>Total Bill:</b></p></td><td colspan="2">MWK ' . $total_bill . '</td></tr>';
-
-  if (isset($_SESSION['uname'])) {
-    $username = $_SESSION['uname'];
-    $stmt = $mysqli->prepare("SELECT * FROM doctor WHERE uname = ?");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result === false) {
-      // Display an error message if the query execution failed
-      echo '<div class="alert alert-danger" role="alert">Error: ' . $stmt->error . '</div>';
-    } else {
-      // Display the user's username if the query execution succeeded
-      $user = $result->fetch_assoc();
-      $prescribed_on = date("H:i:s d-m-Y ");
-      $html .= '<tr><td colspan="12"><hr></td></tr>';
-      $html .= '<tr><td colspan="4"><p class="list-group-item"><b style="color: green;">Prescribed by</b><b> ' . $username . '  &nbsp;</b> <b style="color: green;">Prescribed at </b><b>' . $prescribed_on . '  </b></p></td></tr>';
-      $html .= '<tr><td colspan="12"><hr></td></tr>';
+    $patient_id = $id;
+    
+    if (isset($_SESSION['uname'])) {
+        $appoint_id = $_SESSION['appoint_id'];
+        $status = "Prescribed by " . $_SESSION['uname'];
+        $stmt = $mysqli->prepare("UPDATE appointments SET status=? WHERE id=?");
+        $stmt->bind_param("ss", $status, $appoint_id);
+        $stmt->execute();
     }
-  }
-  
-  $html .= '</tbody>';
-  $html .= '</table>';
-  $html .= '</div>';
-  $html .= '</div>';
-  $html .= '</div>';
-  $html .= '</body>';
-  $html .= '</html>';
+?>
 
-  // Load the HTML content into Dompdf
-  $dompdf->loadHtml($html);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dosage and Billing</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.10.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        .container {
+            padding: 15px;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
 
-  // Set the paper size and orientation (optional)
-  $dompdf->setPaper('A4', 'portrait');
+<body>
+    <br><br><br><br>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-sm-12">
+                <?php
+                // Prepare and execute the query
+                $stmt = $mysqli->prepare("SELECT * FROM patient WHERE id = ?");
+                $stmt->bind_param("i", $patient_id);
+                $result = $stmt->execute();
 
-  // Render the PDF
-  $dompdf->render();
+                if ($result === false) {
+                    // Display an error message if the query execution failed
+                    echo "<div class='alert alert-danger' role='alert'>Error: " . $stmt->error . "</div>";
+                } else {
+                    // Display the patient details if the query execution succeeded
+                    $patient = $stmt->get_result()->fetch_assoc();
+                    $id = $patient['id'];
+                    $name = $patient['name'];
+                    $age = $patient['age'];
+                    $gender = $patient['gender'];
+                    $date = $patient['date'];
+                    $lab_bill = $patient['lab_price'];
+                    $tests = $patient['tests'];
+                    $rad_bill = $patient['rad_price'];
 
-  // Generate a unique filename for the PDF
-  $filename = 'prescription_' . $id . '.pdf';
+                    echo "<h1 class='mb-4'>Prescription, Dosage and Billing Summary</h1>";
+                ?>
+                <table class="table table-hover" style="overflow:auto">
+                    <thead class="table table-hover">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><?php echo $id; ?></td>
+                            <td><?php echo $name; ?></td>
+                            <td><?php echo $age; ?></td>
+                            <td><?php echo $gender; ?></td>
+                            <td><?php echo $date; ?></td>
+                        </tr>
+                    </tbody>
+                </table>
 
-  // Save the PDF to a file
-  $output = $dompdf->output();
-  file_put_contents($filename, $output);
+                <h3 class="mt-4 mb-3">Prescription:</h3>
+                <table class="table table-hover" style="overflow:auto">
+                    <thead class="table table-hover">
+                        <tr>
+                            <th>Sr. No.</th>
+                            <th>Medicine Name</th>
+                            <th>Dosage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $medicines = explode(",", $tests);
+                        for ($i = 0; $i < count($medicines); $i++) {
+                            $medicine = trim($medicines[$i]);
+                            $dosage = $_POST['dosage' . $i];
+                            echo "<tr><td>" . ($i + 1) . "</td><td>$medicine</td><td>$dosage</td></tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
 
-  // Force download the PDF
-  header('Content-Type: application/pdf');
-  header('Content-Disposition: attachment; filename="' . $filename . '"');
-  header('Content-Length: ' . filesize($filename));
-  readfile($filename);
+                <h3 class="mt-4 mb-3">Billing Summary:</h3>
+                <table class="table table-hover" style="overflow:auto">
+                    <thead class="table table-hover">
+                        <tr>
+                            <th>Particulars</th>
+                            <th>Amount (in INR)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Lab Test Charges</td>
+                            <td><?php echo $lab_bill; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Radiology Charges</td>
+                            <td><?php echo $rad_bill; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td><?php echo ($lab_bill + $rad_bill); ?></td>
+                        </tr>
+                    </tbody>
+                </table>
 
-  // Delete the temporary PDF file
-  unlink($filename);
-  exit();
+                <button id="pdfButton" class="btn btn-primary">Generate PDF</button>
+
+                <?php
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("pdfButton").addEventListener("click", function() {
+            const element = document.getElementById("content");
+            html2pdf().from(element).save();
+        });
+    </script>
+</body>
+
+</html>
+
+<?php
+} else {
+    header("Location: login.php");
+    exit();
 }
 ?>

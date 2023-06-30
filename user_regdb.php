@@ -138,6 +138,7 @@
             $prof = $row['prof'];
             $pwd = $row['pwd'];
             $email = $row['email'];
+            $role = $row['role'];
                  
         
       }
@@ -146,9 +147,10 @@
         $id = $_POST['id'];
         $uname = $_POST['uname'];
         $prof = $_POST['prof'];
-        $email = $row['email'];
+        $email = $_POST['email'];
+        $role = $_POST['role'];
 
-        $sql3 = "UPDATE user SET uname='$uname',  email = '$email', prof='$prof' WHERE id='$id'";
+        $sql3 = "UPDATE user SET uname='$uname',  email = '$email', prof='$prof',  role = '$role' WHERE id='$id'";
         $result3 = $mysqli->query($sql3);
 
         header("Location: user_reg.php?success=Successfully updated");

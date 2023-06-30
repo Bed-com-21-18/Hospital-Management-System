@@ -35,6 +35,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
             $name = $row['name'];
             $age = $row['age'];
             $date = $row['gender'];
+            if (isset($_GET['id'])) {
+               $appoint_id = $_GET['id'];
+                $_SESSION['$appoint_id '] = $appoint_id; 
+
+            }
         }
         ?>
 
@@ -54,7 +59,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
                         <td><?php echo $row['age']; ?></td>
                         <td><?php echo $row['gender']; ?></td>
                         <td class="btn-group btn-group-justified">
-                            <a href="view_history.php?history=<?php echo $row["id"]; ?>" class="badge text-light bg-secondary">Previous History</a>
+                            <a href="view_history.php?history=<?php echo $row["id"]; ?>" class="badge text-light bg-secondary">Medical History</a>
                         </td>
                     </tr>
                 </tbody>

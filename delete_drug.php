@@ -19,7 +19,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
             $deleteSql = "DELETE FROM drug WHERE id='$id'";
             if ($mysqli->query($deleteSql)) {
                 // Deletion successful
-                header("Location: pharmacy.php");
+                header("Location: drug_list.php");
                 exit();
             } else {
                 // Deletion failed
@@ -39,9 +39,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body style ="margin-top:200px">
     <div class="container mt-5">
-        <h2>Deleting Drug</h2>
         <p>Are you sure you want to delete <b><?= $name; ?>?</b></p>
         <a href="?delete=<?= $id ?>&confirm=true" class="btn btn-danger">Confirm Deletion</a>
         <a href="doc_dashboard.php" class="btn btn-secondary">Cancel</a>

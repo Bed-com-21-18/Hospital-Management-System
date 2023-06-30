@@ -25,7 +25,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
             });
         </script>
 </head>
-<body>
+<body style ="margin-top:200px">
 <div class="container">
    <!--NavBar-->
    <nav class="navbar navbar-expand py-2"style="background-color:#F1F6F9;" >

@@ -65,7 +65,6 @@
     <tr>
       <th scope="col">Full name</th>
       <th scope="col">Facility name</th>
-      <th scope="col">Id</th>
       <th scope="col">Age</th>
       <th scope="col">Gender</th>
       <th scope="col">Last menstrual preriod</th>
@@ -91,7 +90,6 @@
       <tr>
       <td><?php echo $row["full_name"]; ?></td>
       <td><?php echo $row["facility_name"]; ?></td>
-      <td><?php echo $row["id"]; ?></td>
       <td><?php echo $row["age"]; ?></td>
       <td><?php echo $row["gender"]; ?></td>
       <td><?php echo $row["last_menstrual_period"]; ?></td>
@@ -100,7 +98,7 @@
       <td><?php echo $row["visit_date"]; ?></td>
       <td><?php echo $row["next_visit_date"]; ?></td>
       <td class='btn-group btn-group-justified'>                                    
-									<a href='?view=<?php echo $row["id"]; ?>' class='badge bg-primary text-white'>Details</a>
+									<a href='antenatal_history.php?view=<?php echo $row["id"]; ?>' class='badge bg-primary text-white'>Details</a>
 							</td>
      
 

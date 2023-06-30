@@ -27,7 +27,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
         });
     </script>
 </head>
-<body>
+<body style= "margin-top:200px">
     <!--NavBar-->
  <div class="container-fluid mb-5"> <?php include 'unavbar.php'; ?></div>
 
@@ -54,7 +54,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                 <div class="col-md-5">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="text-center text-secondary">Add results</h4>
+                            <h4 class="text-center text-secondary">Return Radiology results</h4>
                         </div>
                         <div class="card-body">
                             <form action="radiologydb.php" method="POST" enctype="multipart/form-data">
@@ -91,7 +91,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                                     <input type="date" value="" name="dates" class="form-control"/>
                                 </div>
                                 <div class="form-group mb-3 text-center p-4">
-                                    <button type="submit" class="btn btn-primary" name="add_rad">Submit</button>
+                                    <button type="submit" class="btn btn-primary" name="add_rad">Return</button>
                                 </div>
                             </form>
                         </div>

@@ -15,7 +15,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
-<body>
+<body> <br><br><br>
   <div class="container mt-5">
     <div class="row">
       <div class="col-sm-12">

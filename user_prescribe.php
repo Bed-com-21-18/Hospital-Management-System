@@ -64,7 +64,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
                         <td><?php echo $row['age']; ?></td>
                         <td><?php echo $row['gender']; ?></td>
                         <td class="btn-group btn-group-justified">
-                            <a href="view_history.php?history=<?php echo $row["id"]; ?>" class="badge text-light bg-primary">Treatment History</a>
+                            <a href="view_treatment.php?treatment=<?php echo $row["id"]; ?>" class="badge text-light bg-primary">Treatment History</a>
                             &nbsp;<a href="book_appointment.php?book=<?php echo $row["id"]; ?>" class="badge text-light bg-secondary">Book Appointment</a>
 
                         </td>
@@ -122,7 +122,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
                         <div class="col-md-12">
                         <h5 class="text-center">Diagnostic work up</h5>
                         <div class="dropdown">
-                         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                         <button type="button" class="badge btn-primary dropdown-toggle" data-toggle="dropdown">
                                      Send Test Request
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="sendRequestDropdown">
@@ -168,8 +168,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
                   
                               
                                     <div class="dropdown d-inline-block">
-                                    <button class="btn btn-primary dropdown-toggle" type="button" id="viewResultsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Select other management 
+                                    <button class="badge btn-primary dropdown-toggle" type="button" id="viewResultsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Other Management Options 
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="viewResultsDropdown">
                                         
@@ -214,7 +214,7 @@ $(document).ready(function() {
 
                     if (selectedDrug.length > 0) {
                         selectedDrug.forEach(function(drug) {
-                            var drugInput = '<input type="text" class="form-control" style="width: 300px; display: inline-block;" name="drugContainer[]" value="' + drug + ':"> Quantity: <input type="number" class="form-control" style="width: 70px; display: inline-block;" name="totalNumber[]" min="0"><br>';
+                            var drugInput = '<input type="text" class="form-control" name="drugContainer[]" value="' + drug + ':"><br>';
 
                             drugContainer.append(drugInput);
                         });

@@ -16,10 +16,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       
 </head>
-<body>
+<style>
+        .icon-image {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+    </style>
+<body  style ="margin-top:200px">
 
    <!--Cards-->
-   <section class="p-5 bg-secondary"> 
+   <section class="p-5"> 
         <div class="container">
             <div class="row text-center g-4">
                 <div class="col-md">
@@ -27,7 +34,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                     
                         <div class="card-body text-center">
                             <div class="h1 mb-3">
-                                <i class="bi bi-people-fill text-primary"></i>
+                            <img src="img/laboratory.png" alt="Outpatient" class="icon-image">
                             </div>
                             <h3 class="card-title mb-3 text-primary">Bill Laboratory</h3>
                             <a href="laboratorytest_form.php" class="btn btn-primary">Proceed</a>               
@@ -51,7 +58,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                     
                         <div class="card-body text-center">
                             <div class="h1 mb-3">
-                                <i class="bi bi-people text-primary"></i>
+                            <img src="img/x-ray.png" alt="Outpatient" class="icon-image">
                             </div>
                             <h3 class="card-title mb-3 text-primary">Bill Radiology</h3>
                             <a href="radiology_set_price.php" class="btn btn-primary">Proceed</a>

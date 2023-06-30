@@ -21,14 +21,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
     }
   </style>
 </head>
-<body>
+<body style ="margin-top:200px">
   <div class="container">
     <div class="row mt-5">
       <div class="col-md-6 offset-md-3">
         <div class="form-container">
           <form action="laboratoryinsert_price.php" method="POST" onsubmit="return validateForm()">
           <div class= "card-header mb-1">
-            <h4 class="text-center">Setting Test Price</h4>
+            <h4 class="text-center">Setting Lab Test Price</h4>
             </div>
             <div class="form-group">
               <?php if (isset($_GET['error'])) {?>
@@ -55,7 +55,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
               <small id="priceWarning" class="text-danger" style="display: none;">Price should be a positive number.</small>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary">Set Price</button>
             </div>
           </form>
         </div>

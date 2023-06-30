@@ -75,7 +75,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
     }
   </style>
 </head>
-<body>
+<body style="margin-top:200px">
 <?php
 if(isset($_GET['respond']) && isset($_GET['test'])) {
   $test = $_GET['test'];
@@ -96,7 +96,7 @@ if(isset($_GET['respond']) && isset($_GET['test'])) {
     <div class="col-md-4">
       <form method="post" action="lab_action.php" class="border p-3 rounded">
         <div class= "card-header mb-1">
-        <h4 class=" text-center"><i class="fas fa-calendar-plus"></i> Sending lab results</h4>
+        <h4 class=" text-center"><i class="fas fa-calendar-plus"></i> Return lab results</h4>
         </div>
         <?php if (isset($_GET['error'])) {?>
           <p class="error text-center"><?php echo $_GET['error']; ?></p>
@@ -118,7 +118,7 @@ if(isset($_GET['respond']) && isset($_GET['test'])) {
           <textarea name="results" id="results" rows="2" required class="form-control"></textarea>
         </div>
         <div class="text-center">
-          <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit</button>
+          <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Return</button>
           <a class="btn btn-secondary " href="laboratory.php"> Back</a>
         </div>
       </form>

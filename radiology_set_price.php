@@ -21,7 +21,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
     }
   </style>
 </head>
-<body>
+<body style ="margin-top:200px">
   <!--NavBar-->
  <div class="container-fluid mb-5"> <?php include 'unavbar.php'; ?></div>
 
@@ -58,7 +58,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
               <small id="priceWarning" class="text-danger" style="display: none;">Price should be a positive number.</small>
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary">Set Price</button>
             </div>
           </form>
         </div>

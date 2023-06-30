@@ -18,7 +18,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
         <link rel="stylesheet" href="bootstrap-5.0.0/css/bootstrap.min.css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
-    <body>
+    <body style ="margin-top:150px">
         <!-- Navbar -->
         <?php
         include "unavbar.php";
@@ -68,7 +68,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                                         <input type="date" value="" name="discharge_date" class="form-control" required/>
                                     </div>
                                     <div class="form-group text-center p-4">
-                                        <button type="submit" class="btn btn-primary" name="discharge">Submit</button>
+                                        <button type="submit" class="btn btn-primary" name="discharge">Discharge</button>
                                     </div>
                                 </form>
                             </div>

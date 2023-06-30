@@ -102,8 +102,19 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname']) && isset($_SESSION['prof
 
                                                         <td><?php echo $row["occupation"]; ?></td>
                                                         <td class='btn-group btn-group-justified'>                                    
-                                                                <a href='user_prescribe_form.php?view=<?php echo $row["id"]; ?>' class='badge bg-primary'>Prescribe</a>
-                                                        </td>
+                                                        <a href='user_prescribe_form.php?view=<?php echo $row["id"]; ?>' class='badge bg-primary'>Prescribe</a> &nbsp;
+                                                        <div class='dropdown'>
+                                                            <button class='badge text-light bg-secondary dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                                                                View Test Results
+                                                            </button>
+                                                            <div class='dropdown-menu ' aria-labelledby='dropdownMenuButton'>
+                                                                <a class='dropdown-item' href='view_lab_results.php?view_results=<?php echo $row["id"]; ?>'>Lab Results</a>
+                                                                <a class='dropdown-item' href='radiology_view.php?viewing=<?php echo $row["id"]; ?>'>Radiology Results</a>
+                                                                <a class='dropdown-item' href='hiv_test_results.php?hiv_results=<?php echo $row["id"]; ?>'>HIV Results</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+
                                                     </tr>
                                                 <?php  
                                                 }

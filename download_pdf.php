@@ -1,7 +1,7 @@
 <?php
 // Include the Composer autoloader
 require 'vendor/autoload.php';
-include "config.php";
+include "comfig.php";
 include 'user_regdb.php';
 
 use Dompdf\Dompdf;
@@ -67,7 +67,7 @@ if (isset($_GET['download'])) {
   $html .= '<table class="table table-striped">';
   $html .= '<thead>';
   $html .= '<h4>Section B: Drugs and Dosage</h4>';
-  $html .= '<tr><th style="padding: 10px; border: 1px solid black;">Drug Name</th><th style="padding: 10px; border: 1px solid black;">Drug Price (MWK)</th></tr>';
+  $html .= '<tr><th style="padding: 10px; border: 1px solid black;">Drug Name</th><th style="padding: 10px; border: 1px solid black;">Quantity</th><th style="padding: 10px; border: 1px solid black;">Drug Price (MWK)</th></tr>';
   $html .= '</thead>';
   $html .= '<tbody>';
 
@@ -75,15 +75,21 @@ if (isset($_GET['download'])) {
 
   // Fetch the matching drugs based on drug name from the drug table
   foreach ($drugs as $drug) {
+   
+    $stmt = null;
+    if ($age <= 12) {
+        $stmt = $mysqli->prepare("SELECT drug_name, quantity1 AS quantity, drug_price1 AS drug_price FROM drug WHERE drug_name LIKE ?");
+    } else {
+        $stmt = $mysqli->prepare("SELECT drug_name, quantity2 AS quantity, drug_price2 AS drug_price FROM drug WHERE drug_name LIKE ?");
+    }
     $drugNamePattern = "%$drug%";
-    $stmt = $mysqli->prepare("SELECT drug_name, drug_price2 FROM drug WHERE drug_name LIKE ?");
     $stmt->bind_param("s", $drugNamePattern);
     $stmt->execute();
     $result = $stmt->get_result();
     if ($result->num_rows > 0) {
       while ($row = $result->fetch_assoc()) {
-        $html .= '<tr><td style="padding: 10px; border: 1px solid black;">' . $row["drug_name"] . '</td><td style="padding: 10px; border: 1px solid black;">' . $row["drug_price2"] . '</td></tr>';
-        $total_amount += $row["drug_price2"];
+        $html .= '<tr><td style="padding: 10px; border: 1px solid black;">' . $row["drug_name"] . '</td><td style="padding: 10px; border: 1px solid black;">' . $row["quantity"] . '</td><td style="padding: 10px; border: 1px solid black;">' . $row["drug_price"] . '</td></tr>';
+        $total_amount += $row["drug_price"];
       }
     }
   }

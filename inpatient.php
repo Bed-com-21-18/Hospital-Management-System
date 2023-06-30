@@ -25,10 +25,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
             });
         </script>
 </head>
-<body>
+<body style ="margin-top:150px">
 
    <!--NavBar-->
-   <nav class="navbar navbar-expand py-1"style="background-color:#F1F6F9;" >
+   <nav class="navbar navbar-expand py-1" >
             <div class="container">
 			<h5 class="navbar-brand">
                     <b>Admitted Patient List</b>

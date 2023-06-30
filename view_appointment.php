@@ -1,7 +1,7 @@
 <?php 
     include 'doctor_regdb.php';
     include "comfig.php";
-    include "dnavbar.php";
+    include "unavbar.php";
     if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 
 ?>
@@ -78,7 +78,7 @@
                     <td><?php echo $row['status']; ?></td>
                     <td><?php echo $row['reason']; ?></td>
                     <td class='btn-group btn-group-justfied'>
-                        <a href='prescribe_form.php?viewing=<?php echo $row["patient_id"]; ?>&id=<?php echo $row["id"]; ?>' class='badge bg-primary'>Prescribe</a>
+                        <a href='user_prescribe_form.php?view=<?php echo $row["patient_id"]; ?>&id=<?php echo $row["id"]; ?>' class='badge bg-primary'>Prescribe</a>
                     </td>
                 </tr>
             <?php

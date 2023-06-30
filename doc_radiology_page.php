@@ -32,7 +32,7 @@
 
      <!-- Navbar -->
      <?php
-            include "dnavbar.php";
+            include "unavbar.php";
 
             
             if(isset($_GET['doc_page'])){

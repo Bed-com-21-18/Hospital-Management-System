@@ -84,7 +84,7 @@ form .error {
     }
   </style>
 </head>
-<body>
+<body style="margin-top : 200px">
   <!--NavBar-->
  <div class="container-fluid mb-5"> <?php include 'unavbar.php'; ?></div>
 

@@ -16,10 +16,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       
 </head>
-<body>
+<body style ="margin-top:100px">
 
    <!--NavBar-->
-   <nav class="navbar navbar-expand py-3" style="background-color:#F1F6F9;">
+   <nav class="navbar navbar-expand py-3">
       <div class="container">
          <h3 class="navbar-brand">Finance</h3>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">

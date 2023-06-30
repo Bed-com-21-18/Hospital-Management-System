@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
-    include "dnavbar.php";
+    include "unavbar.php";
     include "comfig.php";
     
     if (isset($_GET['delete'])) {

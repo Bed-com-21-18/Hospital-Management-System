@@ -68,7 +68,7 @@ form .error {
     }
   </style>
 </head>
-<body>
+<body  style ="margin-top:200px">
 <?php
     if(isset($_GET['add_status'])){
   $id = $_GET['add_status'];

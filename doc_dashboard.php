@@ -2,6 +2,8 @@
        include "doctor_regdb.php";
        include "comfig.php";
     if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
+        $prof = $_SESSION['prof'];
+        $role = $_SESSION['role'];
 
 ?>
 
@@ -27,7 +29,7 @@
     <br>
     <br>
     <br>
-    
+ 
     <!--Cards-->
     <section class="modules p-5 "style="margin-top:100px;"> 
         <div class="container">

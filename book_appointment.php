@@ -83,7 +83,7 @@ form .error {
     }
   </style>
 </head>
-<body>
+<body> <br><br><br>
 <?php
     if(isset($_GET['book'])){
   $id = $_GET['book'];
@@ -144,7 +144,7 @@ form .error {
             <textarea name="reason" id="reason" rows="2" required class="form-control"></textarea>
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit</button>
+            <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Book</button>
           </div>
         </form>
       </div>

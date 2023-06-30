@@ -28,7 +28,7 @@
     <body>
 
      <!-- Navbar -->
-     <div class="container-fluid mb-5"> <?php include 'anavbar.php'; ?></div>
+     <div class="container-fluid mb-5"> <?php include 'unavbar.php'; ?></div>
 
 
         <!--Form-->
@@ -82,10 +82,10 @@
                                     <td><?php echo $row['uname']; ?></td>
                                     <td><?= $row['email']; ?></td>
                                     <td><?php echo $row['prof']; ?></td>
-                                    <td class="btn-group btn-group-justified">                                       
-                                         <a href="user_regdb.php?delete=<?php echo $row['id']; ?>" class="badge bg-danger mx-1" 
-                                         onclick="return confirm('This will be deleted completely?');">Delete</a>
-                                        <a href="user_reg.php?edit=<?php echo $row['id']; ?>" class="badge bg-success">Edit</a>
+                                    <td class="btn-group btn-group-justified">
+                                    <a href="user_reg.php?edit=<?php echo $row['id']; ?>" class="badge bg-success"><i class="bi bi-pencil-fill"></i></a>                                       
+                                    <a href="user_regdb.php?delete=<?php echo $row['id']; ?>" class="badge bg-danger mx-1" onclick="return confirm('This will be deleted completely?');"><i class="bi bi-trash-fill"></i></a>
+
                                     </td> 
                                 </tr>
                             <?php }?>
@@ -98,10 +98,11 @@
                                     <td><?= $row['uname']; ?></td>
                                     <td><?= $row['email']; ?></td>
                                     <td><?= $row['prof']; ?></td>
-                                    <td class="btn-group btn-group-justified">                                       
-                                         <a href="doctor_regdb.php?delete=<?php echo $row['id']; ?>" class="badge bg-danger mx-1" 
-                                         onclick="return confirm('This will be deleted completely?');">Delete</a>
-                                        <a href="user_reg.php?edit=<?php echo $row['id']; ?>" class="badge bg-success">Edit</a>
+                                    <td class="btn-group btn-group-justified">  
+                                    <a href="user_reg.php?edit=<?php echo $row['id']; ?>" class="badge bg-success"><i class="bi bi-pencil-fill"></i></a>                                     
+                                    <a href="doctor_regdb.php?delete=<?php echo $row['id']; ?>" class="badge bg-danger mx-1" onclick="return confirm('This will be deleted completely?');"><i class="bi bi-trash-fill"></i></a>
+
+                                        
                                     </td> 
                                 </tr>
                             <?php }?>
@@ -114,10 +115,11 @@
                                         <td><?= $row['uname']; ?></td>
                                         <td><?= $row['email']; ?></td>
                                         <td><?= $row['prof']; ?></td>
-                                        <td class="btn-group btn-group-justified">                                       
-                                            <a href="admin_regdb.php?delete=<?php echo $row['id']; ?>" class="badge bg-danger mx-1" 
-                                            onclick="return confirm('This will be deleted completely?');">Delete</a>
-                                            <a href="user_reg.php?edit=<?php echo $row['id']; ?>" class="badge bg-success">Edit</a>
+                                        <td class="btn-group btn-group-justified"> 
+                                        <a href="user_reg.php?edit=<?php echo $row['id']; ?>" class="badge bg-success"><i class="bi bi-pencil-fill"></i></a>                                      
+                                        <a href="admin_regdb.php?delete=<?php echo $row['id']; ?>" class="badge bg-danger mx-1" onclick="return confirm('This will be deleted completely?');"><i class="bi bi-trash-fill"></i></a>
+
+                                     
                                         </td> 
                                     </tr>
                                 <?php }?>

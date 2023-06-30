@@ -57,7 +57,7 @@
                     <div class="col-md-5">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="text-center text-secondary">Add results</h4>
+                                <h4 class="text-center text-secondary">Return HIV/AIDS results</h4>
                             </div>
                              <div class="card-body">
                                 <form action="hiv_testdb.php" method="POST" enctype="multipart/form-data">
@@ -85,7 +85,7 @@
                                             <input type="date" value="" name="dates" class="form-control" required/>
                                         </div>
                                         <div class="form-group text-center p-4">
-                                            <button type="submit" class="btn btn-primary" name="hiv_testing">Submit</button>
+                                            <button type="submit" class="btn btn-primary" name="hiv_testing">Return</button>
                                         </div>
                                     </form>
                             </div>
