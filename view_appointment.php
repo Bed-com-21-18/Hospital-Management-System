@@ -67,6 +67,7 @@
             echo '<tbody>';
             while ($row = mysqli_fetch_assoc($result)) {
                 $id = $row['id'];
+                $patient_id = $row['patient_id'];
             ?>
                 <tr>
                     <td><?php echo $row['name']; ?></td>
@@ -78,8 +79,8 @@
                     <td><?php echo $row['status']; ?></td>
                     <td><?php echo $row['reason']; ?></td>
                     <td class='btn-group btn-group-justfied'>
-                        <a href='user_prescribe_form.php?view=<?php echo $row["patient_id"]; ?>&id=<?php echo $row["id"]; ?>' class='badge bg-primary'>Prescribe</a>
-                    </td>
+                    <a class='badge bg-primary' href="user_prescribe.php?patient_id=<?php echo $patient_id; ?>&id=<?php echo $row["id"]; ?>&success=Symptoms, measurements, and general examination were already added"> Proceed</a>&nbsp; 
+                        </td>
                 </tr>
             <?php
             }

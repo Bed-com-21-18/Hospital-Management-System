@@ -170,18 +170,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
 
                 if (isset($_SESSION['uname'])) {
                     $username = $_SESSION['uname'];
-                    $stmt = $mysqli->prepare("SELECT * FROM user WHERE uname = ?");
-                    $stmt->bind_param("s", $username);
-                    $result = $stmt->execute();
-
-                    if ($result === false) {
-                        // Display an error message if the query execution failed
-                        echo "<div class='alert alert-danger' role='alert'>Error: " . $stmt->error . "</div>";
-                    } else {
+                    
                         // Display the user's username if the query execution succeeded
-                        $user = $stmt->get_result()->fetch_assoc();
                         $prescribed_on = date("H:i:s d-m-Y ");
-                        echo "<p class='list-group-item'><b style='color: green;'>Prescribed by</b><b> " . $user['uname'] . "   </b>&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  <b style='color: green;'>Prescribed at </b><b>" . $prescribed_on . " </b></p>";
+                        echo "<p class='list-group-item'><b style='color: green;'>Prescribed by</b><b> " . $username . "   </b>&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;  <b style='color: green;'>Prescribed at </b><b>" . $prescribed_on . " </b></p>";
                         echo "<a href='download_pdf.php?download=" . $id . "' class='btn btn-primary'>Print</a>";
                         echo "&nbsp"; echo "&nbsp"; echo "&nbsp"; echo "&nbsp";
                         echo "&nbsp"; echo "&nbsp"; echo "&nbsp"; echo "&nbsp";
@@ -191,7 +183,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
                         $stmt = $mysqli->prepare("UPDATE patient SET prescribed_by=?, prescribed_on=?, total_bills=? WHERE id=?");
                         $stmt->bind_param("ssss", $username, $prescribed_on, $total_bill, $patient_id);
                         $stmt->execute();
-                    }
+                    
                 }
                 ?>
 

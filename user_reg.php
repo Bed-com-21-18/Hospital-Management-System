@@ -63,14 +63,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])){
                                 <label for="professional">Professional</label>
                                 <select name="prof" required class="form-select">
                                     <option disabled selected>Select Professional</option>
-                                    <option value="Cardiologist" <?php echo isset($_GET['prof']) && $_GET['prof'] == 'Cardiologist' ? 'selected' : ''; ?>>Cardiologist</option>
                                     <option value="Radiologist" <?php echo isset($_GET['prof']) && $_GET['prof'] == 'Radiologist' ? 'selected' : ''; ?>>Radiologist</option>
-                                    <option value="Dermatologist" <?php echo isset($_GET['prof']) && $_GET['prof'] == 'Dermatologist' ? 'selected' : ''; ?>>Dermatologist</option>
-                                    <option value="Gastroenterologist" <?php echo isset($_GET['prof']) && $_GET['prof'] == 'Gastroenterologist' ? 'selected' : ''; ?>>Gastroenterologist</option>
-                                    <option value="Neurologist" <?php echo isset($_GET['prof']) && $_GET['prof'] == 'Neurologist' ? 'selected' : ''; ?>>Neurologist</option>
-                                    <option value="Orthopedic" <?php echo isset($_GET['prof']) && $_GET['prof'] == 'Orthopedic' ? 'selected' : ''; ?>>Orthopedic</option>
                                     <option value="Medical Lab Scientist" <?php echo isset($_GET['prof']) && $_GET['prof'] == 'Medical Lab Scientist' ? 'selected' : ''; ?>>Medical Lab Scientist</option>
-                                    <option value="Pediatric" <?php echo isset($_GET['prof']) && $_GET['prof'] == 'Pediatric' ? 'selected' : ''; ?>>Pediatric</option>
                                     <option value="Surgeon" <?php echo isset($_GET['prof']) && $_GET['prof'] == 'Surgeon' ? 'selected' : ''; ?>>Surgeon</option>
                                     <option value="Physiotherapist" <?php echo isset($_GET['prof']) && $_GET['prof'] == 'Physiotherapist' ? 'selected' : ''; ?>>Physiotherapist</option>
                                     <option value="Nurse" <?php echo isset($_GET['prof']) && $_GET['prof'] == 'Nurse' ? 'selected' : ''; ?>>Nurse</option>

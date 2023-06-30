@@ -45,6 +45,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['uname'])) {
             $name = $row['name'];
             $age = $row['age'];
             $date = $row['gender'];
+            if (isset($_GET['id'])) {
+                $appoint_id = $_GET['id'];
+                 $_SESSION['$appoint_id '] = $appoint_id; 
+ 
+             }
         }
         ?>
 
